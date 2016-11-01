@@ -14,12 +14,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
         public float MaximumX = 90F;
         public bool smooth;
         public float smoothTime = 5f;
-        public bool lockCursor = true;
+        public bool lockCursor = false;
 
 
         private Quaternion m_CharacterTargetRot;
         private Quaternion m_CameraTargetRot;
-        private bool m_cursorIsLocked = true;
+        private bool m_cursorIsLocked = false;
 
         public void Init(Transform character, Transform camera)
         {
@@ -57,7 +57,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void SetCursorLock(bool value)
         {
-            lockCursor = value;
+            lockCursor = false;
             if(!lockCursor)
             {//we force unlock the cursor if the user disable the cursor locking helper
                 Cursor.lockState = CursorLockMode.None;
@@ -80,7 +80,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if(Input.GetMouseButtonUp(0))
             {
-                m_cursorIsLocked = true;
+				m_cursorIsLocked = false;
             }
 
             if (m_cursorIsLocked)

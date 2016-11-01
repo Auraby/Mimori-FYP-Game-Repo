@@ -42,6 +42,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+		//MouseLooking Enabled
+		private bool canLook = true;
+
         // Use this for initialization
         private void Start()
         {
@@ -81,8 +84,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-        }
 
+        }
+			
 
         private void PlayLandingSound()
         {

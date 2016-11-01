@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Utility;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour {
 	public Camera camera;
@@ -11,6 +14,7 @@ public class Player : MonoBehaviour {
 	public Transform gunEnd;
 
 	//IronSights
+	[Header("Iron Sights")]
 	public GameObject gun_IronSight;
 	public Transform  gunEnd_IronSight;
 	public int isIronSight;
@@ -18,6 +22,13 @@ public class Player : MonoBehaviour {
 	//objectives
 	public Text Objective;
 
+	//SkillTree /Pause Game
+	public bool isPaused;
+	public Image SkillTreePanel;
+	[HideInInspector]
+	public CursorLockMode curseMode;
+	[HideInInspector]
+	public MouseLook mouselook;
 
 	RaycastHit hit;
 	Ray ray;
@@ -28,6 +39,9 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		isIronSight = 0;
+		isPaused = false;
+		Cursor.visible = false;
+		curseMode = CursorLockMode.Locked;
 		//interactDistance = Vector3.Distance (interactObj.transform.position, this.gameObject.transform.position);
 		normal = Shader.Find ("Standard");
 		outline = Shader.Find ("Outlined/Silhouetted Diffuse");
@@ -59,6 +73,31 @@ public class Player : MonoBehaviour {
 				gunEnd_IronSight.gameObject.SetActive (false);
 			}
 		}
+
+		///Check If Tab is pressed
+		if (Input.GetKeyUp (KeyCode.Tab)) {
+			Debug.Log (isPaused);	
+			//Paused Game If it Isn't Paused Yet
+			//isPaused = true;
+			if (isPaused == false) {
+				Cursor.visible = true;
+				curseMode = CursorLockMode.None;
+				SkillTreePanel.gameObject.SetActive (true);
+				//Freeze Time
+				Time.timeScale = 0;
+				isPaused = true;
+			} else {
+				isPaused = false;
+				SkillTreePanel.gameObject.SetActive (false);
+				Cursor.visible = false;
+				curseMode = CursorLockMode.Locked;
+				//unFreeze Time
+				Time.timeScale = 1;
+			}
+
+		}
+
+		Cursor.lockState = curseMode;
 
 		if (Input.GetButtonDown ("Fire1"))
 		{

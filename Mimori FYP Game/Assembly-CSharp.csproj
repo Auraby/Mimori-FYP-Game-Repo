@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Audio\AudioController.cs" />
      <Compile Include="Assets\Scripts\Enmar\EnmarAttackAreaScript.cs" />
      <Compile Include="Assets\Scripts\Enmar\EnmarController.cs" />
+     <Compile Include="Assets\Scripts\HUD\EventSystem.cs" />
      <Compile Include="Assets\Scripts\HUD\Health.cs" />
      <Compile Include="Assets\Scripts\HUD\Shoot.cs" />
      <Compile Include="Assets\Scripts\MainMenu\MainMenuCameraController.cs" />
