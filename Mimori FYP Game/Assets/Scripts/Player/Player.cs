@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Utility;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour {
 	public Camera camera;
@@ -9,6 +13,23 @@ public class Player : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public Transform gunEnd;
 
+	//IronSights
+	[Header("Iron Sights")]
+	public GameObject gun_IronSight;
+	public Transform  gunEnd_IronSight;
+	public int isIronSight;
+
+	//objectives
+	public Text Objective;
+
+	//SkillTree /Pause Game
+	public bool isPaused;
+	public Image SkillTreePanel;
+	[HideInInspector]
+	public CursorLockMode curseMode;
+	[HideInInspector]
+	public MouseLook mouselook;
+
 	RaycastHit hit;
 	Ray ray;
 	GameObject interactingObj;
@@ -17,21 +38,80 @@ public class Player : MonoBehaviour {
 	RaycastHit tempHit;
 	// Use this for initialization
 	void Start () {
+		isIronSight = 0;
+		isPaused = false;
+		Cursor.visible = false;
+		curseMode = CursorLockMode.Locked;
 		//interactDistance = Vector3.Distance (interactObj.transform.position, this.gameObject.transform.position);
 		normal = Shader.Find ("Standard");
 		outline = Shader.Find ("Outlined/Silhouetted Diffuse");
 	}
 
+	public void OnTriggerEnter(Collider obj){
+		if (obj.gameObject.tag == "Objective2") {
+			Objective.text = "Kill 10 Mobs and obtain skillpoint".ToString ();
+		}
+		if (obj.gameObject.tag == "Objective1") {
+			Objective.text = "Complete puzzle to unlock hidden treasure".ToString ();
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetMouseButtonDown (2)) {
+			if (isIronSight < 1) {
+				isIronSight ++;
+				gun.gameObject.SetActive (false);
+				gunEnd.gameObject.SetActive (false);
+				gun_IronSight.gameObject.SetActive (true);
+				gunEnd_IronSight.gameObject.SetActive (true);
+			} else {
+				isIronSight --;
+				gun.gameObject.SetActive (true);
+				gunEnd.gameObject.SetActive (true);
+				gun_IronSight.gameObject.SetActive (false);
+				gunEnd_IronSight.gameObject.SetActive (false);
+			}
+		}
+
+		///Check If Tab is pressed
+		if (Input.GetKeyUp (KeyCode.Tab)) {
+			Debug.Log (isPaused);	
+			//Paused Game If it Isn't Paused Yet
+			//isPaused = true;
+			if (isPaused == false) {
+				Cursor.visible = true;
+				curseMode = CursorLockMode.None;
+				SkillTreePanel.gameObject.SetActive (true);
+				//Freeze Time
+				Time.timeScale = 0;
+				isPaused = true;
+			} else {
+				isPaused = false;
+				SkillTreePanel.gameObject.SetActive (false);
+				Cursor.visible = false;
+				curseMode = CursorLockMode.Locked;
+				//unFreeze Time
+				Time.timeScale = 1;
+			}
+
+		}
+
+		Cursor.lockState = curseMode;
+
 		if (Input.GetButtonDown ("Fire1"))
 		{
-			// Create the Bullet from the Bullet Prefab
-			GameObject bullet = (GameObject)Instantiate(bulletPrefab,gunEnd.position,gunEnd.rotation);
+			//Check if Player has enabled IronSight
+			if (isIronSight >= 1) {
+				GameObject bullet_IronSight = (GameObject)Instantiate (bulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
+				bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.forward * 50;
+			} else {
+				// Create the Bullet from the Bullet Prefab
+				GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
 
-			// Add velocity to the bullet
-			bullet.GetComponent<Rigidbody>().velocity = gunEnd.forward * 50;
-
+				// Add velocity to the bullet
+				bullet.GetComponent<Rigidbody> ().velocity = gunEnd.forward * 50;
+			}
 			// Destroy the bullet after 2 seconds
 			//Destroy(bullet, 2.0f);   
 		}
