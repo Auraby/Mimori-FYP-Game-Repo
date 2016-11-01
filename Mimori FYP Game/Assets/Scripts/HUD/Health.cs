@@ -30,7 +30,6 @@ public class Health : MonoBehaviour {
 	public GameObject skilleffect3;
 	public GameObject skilleffect4;
 
-
 	public Transform player;
 	public GameObject player1;
 
