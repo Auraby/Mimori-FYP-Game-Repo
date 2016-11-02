@@ -7,7 +7,9 @@ public class EnmarController : MonoBehaviour {
     public enum FSMState { Walking, Attacking, LaserAttack, Dying}
     public enum LaserState { Charging, Shooting, ShootFinish}
 
+    [Header("Enmar FSM current state")]
     public FSMState enmarState;
+    [Header("Laser attack current state")]
     public LaserState laserStatus;
     #endregion
 
@@ -25,22 +27,27 @@ public class EnmarController : MonoBehaviour {
 
     #region Laser Attack
     //Gameobjects
+    [Header("Laser prefabs")]
     public GameObject laserBeam;
     public GameObject laserCharge;
     public GameObject laserOrigin;
+
     GameObject laserChargeGO;
-    Transform chargepulse;
+    GameObject laserBeamGO;
+    Transform chargePulse;
     public GameObject player;
-    public GameObject pointA, pointB;
+    Vector3 playerLastPos;
+    
 
     //bool
-    public bool isCharing = false;
+    public bool isCharging = false;
 
     //Float
     public float rotationValue;
     public float laserDamage = 10;
 
     //Variables
+    [Header("Time variables")]
     public float time;
     public float laserChargeTime;
 
@@ -68,6 +75,7 @@ public class EnmarController : MonoBehaviour {
         DetectAreaToAttack();
         //enmarHead.transform.Rotate()
         time += Time.deltaTime;
+        GetPlayerLocation();
         switch (enmarState)
         {
             case FSMState.Walking:
@@ -82,7 +90,7 @@ public class EnmarController : MonoBehaviour {
                     //{
                     //    enmarState = FSMState.LaserAttack;
                     //}
-                    isCharing = false;
+                    isCharging = false;
                 }
                 break;
 
@@ -93,7 +101,7 @@ public class EnmarController : MonoBehaviour {
                         case LaserState.Charging:
                             {
                                 laserChargeTime += Time.deltaTime;
-                                if (isCharing == false)
+                                if (isCharging == false)
                                 {
                                     ChargeLaser();
                                 }
@@ -101,7 +109,7 @@ public class EnmarController : MonoBehaviour {
                                 float lerpValue = time / 3;
                                 lerpValue = Mathf.Sin(lerpValue * Mathf.PI * 0.5f);
 
-                                chargepulse.localScale = Vector3.Lerp(chargepulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
+                                chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
 
                                 if (laserChargeTime > 6)
                                 {
@@ -116,7 +124,7 @@ public class EnmarController : MonoBehaviour {
 
                         case LaserState.Shooting:
                             {
-                                isCharing = false;
+                                isCharging = false;
                                 laserStatus = LaserState.ShootFinish;
                             }
                             break;
@@ -159,16 +167,27 @@ public class EnmarController : MonoBehaviour {
         }
     }
 
+    public void GetPlayerLocation()
+    {
+        Debug.DrawLine(laserOrigin.transform.position, player.transform.position,Color.red);
+        playerLastPos = player.transform.position;
+    }
+
     public void ChargeLaser()
     {
-        isCharing = true;
+        isCharging = true;
         
         //if(time < )
         laserChargeGO = (GameObject)Instantiate(laserCharge, laserOrigin.transform.position, laserOrigin.transform.rotation,laserOrigin.transform);
-        chargepulse = laserChargeGO.transform.GetChild(0).transform;
-        chargepulse.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        chargePulse = laserChargeGO.transform.GetChild(0).transform;
+        chargePulse.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         laserChargeGO.transform.position = laserOrigin.transform.position;
         laserChargeGO.transform.rotation = laserOrigin.transform.rotation; 
        
+    }
+
+    public void ShootLaserBeam()
+    {
+        laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation, laserOrigin.transform);
     }
 }
