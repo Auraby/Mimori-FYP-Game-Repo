@@ -13,6 +13,7 @@ public class RangeMinionFSM : MonoBehaviour {
 
 	public AnimationClip attackClip;
 	public float attackRange = 8f;
+	public float boundRange = 40f;
 
 	public double impactTime = 0.36;
 
@@ -21,6 +22,7 @@ public class RangeMinionFSM : MonoBehaviour {
 	public int damage;
 
 	public GameObject[] patrolPoints;
+	public GameObject boundPoint;
 	public GameObject bulletPrefab;
 	public Transform shootPoint;
 
