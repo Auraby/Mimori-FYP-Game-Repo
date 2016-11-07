@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
 	public Transform gunEnd;
 
 	//IronSights
-	[Header("Iron Sights")]
+	//[Header("Iron Sights")]
 	public GameObject gun_IronSight;
 	public Transform  gunEnd_IronSight;
 	public int isIronSight;
@@ -29,6 +29,12 @@ public class Player : MonoBehaviour {
 	public CursorLockMode curseMode;
 	[HideInInspector]
 	public MouseLook mouselook;
+
+	//ironsight
+	public float lerpDelay;
+	[HideInInspector]
+	public float time;
+	FirstPersonController fpc;
 
 	RaycastHit hit;
 	Ray ray;
@@ -45,6 +51,8 @@ public class Player : MonoBehaviour {
 		//interactDistance = Vector3.Distance (interactObj.transform.position, this.gameObject.transform.position);
 		normal = Shader.Find ("Standard");
 		outline = Shader.Find ("Outlined/Silhouetted Diffuse");
+		fpc = GameObject.FindObjectOfType<FirstPersonController> ();
+
 	}
 
 	public void OnTriggerEnter(Collider obj){
@@ -56,10 +64,19 @@ public class Player : MonoBehaviour {
 		}
 	}
 
+
+
 	// Update is called once per frame
 	void Update () {
+
+
 		if (Input.GetMouseButtonDown (2)) {
 			if (isIronSight < 1) {
+				isIronSight++;
+			} else {
+				isIronSight--;
+			}
+			/*if (isIronSight < 1) {
 				isIronSight ++;
 				gun.gameObject.SetActive (false);
 				gunEnd.gameObject.SetActive (false);
@@ -71,8 +88,25 @@ public class Player : MonoBehaviour {
 				gunEnd.gameObject.SetActive (true);
 				gun_IronSight.gameObject.SetActive (false);
 				gunEnd_IronSight.gameObject.SetActive (false);
-			}
+			}*/
+
 		}
+
+		if (isIronSight < 1) {
+			gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3(0.357f,gun.transform.localPosition.y,gun.transform.localPosition.z), Time.deltaTime * 8);
+			fpc.m_WalkSpeed = 5.0f;
+			fpc.IronSight = false;
+		} else {
+			gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3 (0, gun.transform.localPosition.y, gun.transform.localPosition.z), Time.deltaTime * 8);
+			//when ironsight , isWalking is enabled
+			fpc.m_IsWalking = true;
+			fpc.IronSight = true;
+			//fpc.m_RunSpeed = 2.0f;
+			//Disables The use of Sprinting Calls DisableSprint Function
+			//When IronSight Activated , Decrease WalkSpeed
+			fpc.m_WalkSpeed = 2.0f;
+		}
+
 
 		///Check If Tab is pressed
 		if (Input.GetKeyUp (KeyCode.Tab)) {

@@ -8,45 +8,50 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
+
     public class FirstPersonController : MonoBehaviour
     {
-        [SerializeField] private bool m_IsWalking;
-        [SerializeField] private float m_WalkSpeed;
-        [SerializeField] private float m_RunSpeed;
-        [SerializeField] [Range(0f, 1f)] private float m_RunstepLenghten;
-        [SerializeField] private float m_JumpSpeed;
-        [SerializeField] private float m_StickToGroundForce;
-        [SerializeField] private float m_GravityMultiplier;
-        [SerializeField] private MouseLook m_MouseLook;
-        [SerializeField] private bool m_UseFovKick;
-        [SerializeField] private FOVKick m_FovKick = new FOVKick();
-        [SerializeField] private bool m_UseHeadBob;
-        [SerializeField] private CurveControlledBob m_HeadBob = new CurveControlledBob();
-        [SerializeField] private LerpControlledBob m_JumpBob = new LerpControlledBob();
-        [SerializeField] private float m_StepInterval;
-        [SerializeField] private AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
-        [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
-        [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
+        [SerializeField] public bool m_IsWalking;
+        [SerializeField] public float m_WalkSpeed;
+        [SerializeField] public float m_RunSpeed;
+        [SerializeField] [Range(0f, 1f)] public float m_RunstepLenghten;
+        [SerializeField] public float m_JumpSpeed;
+        [SerializeField] public float m_StickToGroundForce;
+        [SerializeField] public float m_GravityMultiplier;
+        [SerializeField] public MouseLook m_MouseLook;
+        [SerializeField] public bool m_UseFovKick;
+        [SerializeField] public FOVKick m_FovKick = new FOVKick();
+        [SerializeField] public bool m_UseHeadBob;
+        [SerializeField] public CurveControlledBob m_HeadBob = new CurveControlledBob();
+        [SerializeField] public LerpControlledBob m_JumpBob = new LerpControlledBob();
+        [SerializeField] public float m_StepInterval;
+        [SerializeField] public AudioClip[] m_FootstepSounds;    // an array of footstep sounds that will be randomly selected from.
+        [SerializeField] public AudioClip m_JumpSound;           // the sound played when character leaves the ground.
+        [SerializeField] public AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
-        private Camera m_Camera;
-        private bool m_Jump;
-        private float m_YRotation;
-        private Vector2 m_Input;
-        private Vector3 m_MoveDir = Vector3.zero;
-        private CharacterController m_CharacterController;
-        private CollisionFlags m_CollisionFlags;
-        private bool m_PreviouslyGrounded;
-        private Vector3 m_OriginalCameraPosition;
-        private float m_StepCycle;
-        private float m_NextStep;
-        private bool m_Jumping;
-        private AudioSource m_AudioSource;
+
+		[HideInInspector] public Camera m_Camera;
+		[HideInInspector] public bool m_Jump;
+		[HideInInspector] public float m_YRotation;
+		[HideInInspector] public Vector2 m_Input;
+		[HideInInspector] public Vector3 m_MoveDir = Vector3.zero;
+		[HideInInspector] public CharacterController m_CharacterController;
+		[HideInInspector] public CollisionFlags m_CollisionFlags;
+		[HideInInspector] public bool m_PreviouslyGrounded;
+		[HideInInspector] public Vector3 m_OriginalCameraPosition;
+		[HideInInspector] public float m_StepCycle;
+		[HideInInspector] public float m_NextStep;
+		[HideInInspector] public bool m_Jumping;
+		[HideInInspector] public AudioSource m_AudioSource;
 
 		//MouseLooking Enabled
-		private bool canLook = true;
+		public bool canLook = true;
+
+		//IronSight
+		public bool IronSight = false;
 
         // Use this for initialization
-        private void Start()
+        public void Start()
         {
             m_CharacterController = GetComponent<CharacterController>();
             m_Camera = Camera.main;
@@ -58,11 +63,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
         }
 
 
         // Update is called once per frame
-        private void Update()
+        public void Update()
         {
             RotateView();
             // the jump state needs to read here to make sure it is not missed
@@ -85,10 +91,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
 
+
+
         }
 			
 
-        private void PlayLandingSound()
+        public void PlayLandingSound()
         {
             m_AudioSource.clip = m_LandSound;
             m_AudioSource.Play();
@@ -96,7 +104,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void FixedUpdate()
+        public void FixedUpdate()
         {
             float speed;
             GetInput(out speed);
@@ -138,14 +146,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void PlayJumpSound()
+        public void PlayJumpSound()
         {
             m_AudioSource.clip = m_JumpSound;
             m_AudioSource.Play();
         }
 
 
-        private void ProgressStepCycle(float speed)
+        public void ProgressStepCycle(float speed)
         {
             if (m_CharacterController.velocity.sqrMagnitude > 0 && (m_Input.x != 0 || m_Input.y != 0))
             {
@@ -164,7 +172,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void PlayFootStepAudio()
+        public void PlayFootStepAudio()
         {
             if (!m_CharacterController.isGrounded)
             {
@@ -181,7 +189,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void UpdateCameraPosition(float speed)
+        public void UpdateCameraPosition(float speed)
         {
             Vector3 newCameraPosition;
             if (!m_UseHeadBob)
@@ -205,7 +213,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void GetInput(out float speed)
+        public void GetInput(out float speed)
         {
             // Read input
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
@@ -216,7 +224,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
+			if(!IronSight){
             m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+			}
 #endif
             // set the desired speed to be walking or running
             speed = m_IsWalking ? m_WalkSpeed : m_RunSpeed;
@@ -238,13 +248,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        private void RotateView()
+        public void RotateView()
         {
             m_MouseLook.LookRotation (transform, m_Camera.transform);
         }
 
 
-        private void OnControllerColliderHit(ControllerColliderHit hit)
+        public void OnControllerColliderHit(ControllerColliderHit hit)
         {
             Rigidbody body = hit.collider.attachedRigidbody;
             //dont move the rigidbody if the character is on top of it
