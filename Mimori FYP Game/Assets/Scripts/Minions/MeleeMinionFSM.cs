@@ -17,6 +17,7 @@ public class MeleeMinionFSM : MonoBehaviour
 
 	public AnimationClip attackClip;
 	public float attackRange = 1.25f;
+	public float boundRange = 120f;
 	
 	public double impactTime = 0.36;
 	
@@ -25,6 +26,7 @@ public class MeleeMinionFSM : MonoBehaviour
 	public int damage;
 	
 	public GameObject[] patrolPoints;
+	public GameObject boundPoint;
 
 	//private
 	private enum State { Patrol, Idle, Chase };
@@ -33,7 +35,6 @@ public class MeleeMinionFSM : MonoBehaviour
 	//private Fighter opponent;
 	private int stunTime;
 
-	//private Animator anim;
 	private float restTime;
 	private bool playerHitted = false;
 	private Vector3 goalPoint;
@@ -63,6 +64,13 @@ public class MeleeMinionFSM : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		Debug.Log (Vector3.Distance (player.position, boundPoint.transform.position));
+		
+		if(Vector3.Distance(boundPoint.transform.position, player.position)<boundRange)
+		{
+			DoPatrol ();
+		}
+
 		if (playerHitted == true) {
 			restTime -= Time.deltaTime;
 		}
@@ -98,7 +106,7 @@ public class MeleeMinionFSM : MonoBehaviour
 			{
 				if(!inAttackRange())
 				{
-					//anim.Play (run.name);
+					anim.Play (run.name);
 					MoveToward(player.transform.position);
 					if (Vector3.Distance(player.transform.position, transform.position) > detectRange * 1.2f)
 					{
@@ -108,12 +116,18 @@ public class MeleeMinionFSM : MonoBehaviour
 				}
 				else
 				{
-					GetComponent<Animation>().Play(attackClip.name);
-					attack();
-					if(GetComponent<Animation>()[attackClip.name].time>0.9*GetComponent<Animation>()[attackClip.name].length)
-					{
-						impacted = false;
+					if (Vector3.Distance (player.position, boundPoint.transform.position) > boundRange) {
+						currentState = State.Patrol;
+					} else {
+						GetComponent<Animation>().Play(attackClip.name);
+						attack();
+						transform.LookAt(player);
+						if(GetComponent<Animation>()[attackClip.name].time>0.9*GetComponent<Animation>()[attackClip.name].length)
+						{
+							impacted = false;
+						}
 					}
+
 				}
 			}
 		}
@@ -124,7 +138,7 @@ public class MeleeMinionFSM : MonoBehaviour
 	}
 	private void DoPatrol()
 	{
-		//anim.Play (walk.name);
+		anim.Play (walk.name);
 		// move towards:
 		if (MoveToward(goalPoint))
 		{
@@ -134,7 +148,7 @@ public class MeleeMinionFSM : MonoBehaviour
 	
 	private void DoIdle()
 	{
-		//anim.Play (idle.name);
+		anim.Play (idle.name);
 		countDown -= Time.deltaTime;
 		if (countDown <= 0)
 		{
