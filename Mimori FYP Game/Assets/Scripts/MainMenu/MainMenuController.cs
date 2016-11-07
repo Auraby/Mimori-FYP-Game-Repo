@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour {
 
@@ -61,6 +62,8 @@ public class MainMenuController : MonoBehaviour {
         exitBtn.anchoredPosition = new Vector2(-265, exitBtn.anchoredPosition.y);
 
         optionsMenu.anchoredPosition = new Vector2(335, optionsMenu.anchoredPosition.y);
+
+        //SceneManager.LoadSceneAsync();
 	}
 	
 	// Update is called once per frame
@@ -178,6 +181,18 @@ public class MainMenuController : MonoBehaviour {
         playMMMoveoutBool = false;
 
         pressAnyKeyText.CrossFadeAlpha(0.0f, 1f, false);
+
+        MainMenuCameraController.instance.startMoveCameraToTitleScreen();
+    }
+
+    public void playGameButtonPressed()
+    {
+        //SceneManager.LoadScene();
+    }
+
+    public void exitButtonPressed()
+    {
+        Application.Quit();
     }
 
     #endregion

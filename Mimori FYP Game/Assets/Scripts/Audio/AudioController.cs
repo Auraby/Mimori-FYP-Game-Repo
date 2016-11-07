@@ -38,8 +38,9 @@ public class AudioController : MonoBehaviour {
         ClearAudioSources();
 
         //Get new audio sources
-        GetAllBGMAudioSources();
-        GetAllSFXAudioSources();
+        //GetAllBGMAudioSources();
+        //GetAllSFXAudioSources();
+        GetAllAudioTypes();
     }
 
 	// Use this for initialization
@@ -217,6 +218,29 @@ public class AudioController : MonoBehaviour {
 
         foreach(AudioTypeComponent audiotypeComponent in atComponent)
         {
+            if(audiotypeComponent.currentType == AudioTypeComponent.audioType.BGM)
+            {
+                if(audiotypeComponent.gameObject.GetComponent<AudioSource>() != null)
+                {
+                    BGMList.Add(audiotypeComponent.gameObject.GetComponent<AudioSource>());
+                }
+                else
+                {
+                    Debug.Log("No BGM sources found");
+                }
+            }
+
+            if(audiotypeComponent.currentType == AudioTypeComponent.audioType.SFX)
+            {
+                if(audiotypeComponent.gameObject.GetComponent<AudioSource>() != null)
+                {
+                    SFXList.Add(audiotypeComponent.gameObject.GetComponent<AudioSource>());
+                }
+                else
+                {
+                    Debug.Log("No SFX sources found");
+                }
+            }
 
         }
     }
@@ -226,6 +250,7 @@ public class AudioController : MonoBehaviour {
     {
         BGMGO = null;
         SFXGO = null;
+        atComponent = null;
 
         BGMList.Clear();
         SFXList.Clear();
