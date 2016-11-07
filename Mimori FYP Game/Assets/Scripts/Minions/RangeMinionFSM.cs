@@ -13,6 +13,7 @@ public class RangeMinionFSM : MonoBehaviour {
 
 	public AnimationClip attackClip;
 	public float attackRange = 8f;
+	public float boundRange = 40f;
 
 	public double impactTime = 0.36;
 
@@ -21,6 +22,7 @@ public class RangeMinionFSM : MonoBehaviour {
 	public int damage;
 
 	public GameObject[] patrolPoints;
+	public GameObject boundPoint;
 	public GameObject bulletPrefab;
 	public Transform shootPoint;
 
@@ -97,7 +99,7 @@ public class RangeMinionFSM : MonoBehaviour {
 				if(!inAttackRange())
 				{
 					GetComponent<NavMeshAgent>().Resume();
-					//anim.Play (run.name);
+					anim.Play (run.name);
 					MoveToward(player.transform.position);
 					if (Vector3.Distance(player.transform.position, transform.position) > detectRange * 1.2f)
 					{
@@ -107,14 +109,14 @@ public class RangeMinionFSM : MonoBehaviour {
 				}
 				else
 				{
-					//GetComponent<Animation>().Play(attackClip.name);
+					GetComponent<Animation>().Play(attackClip.name);
 					GetComponent<NavMeshAgent>().Stop();
 					transform.LookAt(player);
 					attack();
-//					if(GetComponent<Animation>()[attackClip.name].time>0.9*GetComponent<Animation>()[attackClip.name].length)
-//					{
-//						impacted = false;
-//					}
+					if(GetComponent<Animation>()[attackClip.name].time>0.9*GetComponent<Animation>()[attackClip.name].length)
+					{
+						impacted = false;
+					}
 				}
 			}
 		}
@@ -125,7 +127,7 @@ public class RangeMinionFSM : MonoBehaviour {
 	}
 	private void DoPatrol()
 	{
-		//anim.Play (walk.name);
+		anim.Play (walk.name);
 		// move towards:
 		if (MoveToward(goalPoint))
 		{
@@ -135,7 +137,7 @@ public class RangeMinionFSM : MonoBehaviour {
 
 	private void DoIdle()
 	{
-		//anim.Play (idle.name);
+		anim.Play (idle.name);
 		countDown -= Time.deltaTime;
 		if (countDown <= 0)
 		{
@@ -184,15 +186,17 @@ public class RangeMinionFSM : MonoBehaviour {
 	//added code
 	void attack()
 	{
-		//if (GetComponent<Animation>() [attackClip.name].time > GetComponent<Animation>() [attackClip.name].length * impactTime&&!impacted&&GetComponent<Animation>()[attackClip.name].time<0.9*GetComponent<Animation>()[attackClip.name].length) 
-		//{
+		if (GetComponent<Animation>() [attackClip.name].time > GetComponent<Animation>() [attackClip.name].length * impactTime&&!impacted&&GetComponent<Animation>()[attackClip.name].time<0.9*GetComponent<Animation>()[attackClip.name].length) 
+		{
 			GameObject bullet = (GameObject)Instantiate(bulletPrefab,shootPoint.position,shootPoint.rotation);
 
 			// Add velocity to the bullet
-			bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 40;
+			bullet.transform.LookAt(player);
+			bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 10;
+			//bullet.transform.position = Vector3.MoveTowards(shootPoint.position, player.transform.position, Time.deltaTime * 10);
 			//opponent.getHit(damage);
 			impacted = true;
-		////}
+		}
 	}
 
 	public void getHit(double damage)
