@@ -24,6 +24,9 @@ public class AudioController : MonoBehaviour {
     public GameObject[] SFXGO;
     public List<AudioSource> SFXList = new List<AudioSource>();
 
+    //All Audio Types
+    public AudioTypeComponent[] atComponent;
+
     //For Testing SFX
     public AudioSource test1;
 
@@ -188,6 +191,7 @@ public class AudioController : MonoBehaviour {
         if (SFXGO == null)
         {
             SFXGO = GameObject.FindGameObjectsWithTag("SFX");
+           // SFXGO = GameObject.find;
 
             if (SFXGO != null)
             {
@@ -205,6 +209,16 @@ public class AudioController : MonoBehaviour {
                 Debug.Log("No SFX sources found");
             }
         }        
+    }
+
+    public void GetAllAudioTypes()
+    {
+        atComponent = FindObjectsOfType(typeof(AudioTypeComponent)) as AudioTypeComponent[];
+
+        foreach(AudioTypeComponent audiotypeComponent in atComponent)
+        {
+
+        }
     }
 
     //Reset Data
