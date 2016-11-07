@@ -125,6 +125,8 @@ public class EnmarController : MonoBehaviour {
                         case LaserState.Shooting:
                             {
                                 isCharging = false;
+                                laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation, laserOrigin.transform);
+                                laserBeamGO.transform.LookAt(player.transform.position);
                                 laserStatus = LaserState.ShootFinish;
                             }
                             break;

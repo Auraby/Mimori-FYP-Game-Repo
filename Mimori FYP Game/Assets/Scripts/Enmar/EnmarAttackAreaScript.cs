@@ -7,12 +7,14 @@ public class EnmarAttackAreaScript : MonoBehaviour {
 
     public areaName aName;
 
+    ParticleSystem part;
 
     public static EnmarAttackAreaScript instance { get; set; }
 
     // Use this for initialization
     void Start () {
         instance = this;
+        part = gameObject.GetComponent<ParticleSystem>();
 	}
 	
 	// Update is called once per frame
@@ -59,5 +61,22 @@ public class EnmarAttackAreaScript : MonoBehaviour {
                     break;
             }
         }
+    }
+
+    public void OnParticleCollision(GameObject other)
+    {
+       // Debug.Log("Hit player");
+
+        if(other.gameObject.tag == "Player")
+        {
+            var ps = part.subEmitters;
+            ps.collision1.maxParticles = 0;
+            Debug.Log("Hit Player");
+        }
+    }
+
+    public void OnParticleTrigger(GameObject other)
+    {
+
     }
 }
