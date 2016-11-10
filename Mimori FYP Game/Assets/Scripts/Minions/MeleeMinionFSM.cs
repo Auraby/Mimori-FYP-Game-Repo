@@ -17,7 +17,7 @@ public class MeleeMinionFSM : MonoBehaviour
 
 	public AnimationClip attackClip;
 	public float attackRange = 1.25f;
-	public float boundRange = 120f;
+	public float boundRange;
 	
 	public double impactTime = 0.36;
 	
@@ -32,6 +32,8 @@ public class MeleeMinionFSM : MonoBehaviour
 	private enum State { Patrol, Idle, Chase };
 	private State currentState;
 	private bool impacted;
+	private bool goBack = false;
+
 	//private Fighter opponent;
 	private int stunTime;
 
@@ -60,15 +62,20 @@ public class MeleeMinionFSM : MonoBehaviour
 		// start AI
 		PickState();
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
-		Debug.Log (Vector3.Distance (player.position, boundPoint.transform.position));
+		//Debug.Log (Vector3.Distance (transform.position, boundPoint.transform.position));
 		
-		if(Vector3.Distance(boundPoint.transform.position, player.position)<boundRange)
-		{
-			DoPatrol ();
+		if (Vector3.Distance (transform.position, boundPoint.transform.position) > boundRange) {
+			goBack = true;
+		} else if(Vector3.Distance (transform.position, boundPoint.transform.position) < boundRange/2){
+			goBack = false;
+		}
+
+		if (goBack) {
+			currentState = State.Patrol;
 		}
 
 		if (playerHitted == true) {
@@ -104,21 +111,19 @@ public class MeleeMinionFSM : MonoBehaviour
 		{
 			if(stunTime<=0)
 			{
-				if(!inAttackRange())
-				{
-					anim.Play (run.name);
-					MoveToward(player.transform.position);
-					if (Vector3.Distance(player.transform.position, transform.position) > detectRange * 1.2f)
+				if (!goBack) {
+					if(!inAttackRange())
 					{
-						currentState = State.Patrol;
-						goalPoint = player.transform.position;
+						anim.Play (run.name);
+						MoveToward(player.transform.position);
+						if (Vector3.Distance(player.transform.position, transform.position) > detectRange * 1.2f)
+						{
+							currentState = State.Patrol;
+							goalPoint = player.transform.position;
+						}
 					}
-				}
-				else
-				{
-					if (Vector3.Distance (player.position, boundPoint.transform.position) > boundRange) {
-						currentState = State.Patrol;
-					} else {
+					else
+					{
 						GetComponent<Animation>().Play(attackClip.name);
 						attack();
 						transform.LookAt(player);
@@ -126,8 +131,8 @@ public class MeleeMinionFSM : MonoBehaviour
 						{
 							impacted = false;
 						}
-					}
 
+					}
 				}
 			}
 		}

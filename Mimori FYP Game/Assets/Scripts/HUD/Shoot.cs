@@ -51,29 +51,29 @@ public class Shoot : MonoBehaviour {
 
 		//if (currGunIsAuto) {}
 			if (Input.GetMouseButton (0)) {
-				Debug.Log ("Charging");
+				//Debug.Log ("Charging");
 			if (IsCharging && gameObject.GetComponent<Player>().isIronSight < 1) {
 				
-					GameObject ChargeBullet = Instantiate (ChargingEffect, gameObject.GetComponent<Player> ().gunEnd.position, gameObject.GetComponent<Player> ().gunEnd.rotation) as GameObject;
-					ChargeBullet.transform.parent = transform;
-					Destroy (ChargeBullet, 1.0f);
+//					GameObject ChargeBullet = Instantiate (ChargingEffect, gameObject.GetComponent<Player> ().gunEnd.position, gameObject.GetComponent<Player> ().gunEnd.rotation) as GameObject;
+//					ChargeBullet.transform.parent = transform;
+//					Destroy (ChargeBullet, 1.0f);
 				}
-				ChargingTime += Time.deltaTime;
+				//ChargingTime += Time.deltaTime;
 			}
 
 			
 
 		if (Input.GetMouseButtonUp (0)) {
-			ChargingTime = 0f;
-			Destroy (ChargeBullet, 1.0f);
+//			ChargingTime = 0f;
+//			Destroy (ChargeBullet, 1.0f);
 		}
 
-		if (ChargingTime >= ChargeFire) {
-			IsCharging = false;
-			Destroy (ChargeBullet, 1.0f);
-			gameObject.GetComponent<Health> ().manabarslider.value -= gun1bulletcst;
-			gameObject.GetComponent<Health> ().manabar -= gun1bulletcst;
-		}
+//		if (ChargingTime >= ChargeFire) {
+//			IsCharging = false;
+//			Destroy (ChargeBullet, 1.0f);
+//			gameObject.GetComponent<Health> ().manabarslider.value -= gun1bulletcst;
+//			gameObject.GetComponent<Health> ().manabar -= gun1bulletcst;
+//		}
 		//Switching the guns 
 		switch (weaponswitch) {
 		case 0:
