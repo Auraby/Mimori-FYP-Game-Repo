@@ -68,8 +68,6 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
-
 		if (Input.GetMouseButtonDown (2)) {
 			if (isIronSight < 1) {
 				isIronSight++;
@@ -144,7 +142,7 @@ public class Player : MonoBehaviour {
 				GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
 
 				// Add velocity to the bullet
-				bullet.GetComponent<Rigidbody> ().velocity = gunEnd.forward * 50;
+				bullet.GetComponent<Rigidbody> ().velocity = gunEnd.forward * 150;
 			}
 			// Destroy the bullet after 2 seconds
 			//Destroy(bullet, 2.0f);   

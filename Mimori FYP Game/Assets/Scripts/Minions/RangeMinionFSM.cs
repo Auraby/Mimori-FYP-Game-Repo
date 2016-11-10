@@ -13,7 +13,7 @@ public class RangeMinionFSM : MonoBehaviour {
 
 	public AnimationClip attackClip;
 	public float attackRange = 8f;
-	public float boundRange = 40f;
+	public float boundRange;
 
 	public double impactTime = 0.36;
 
@@ -30,6 +30,7 @@ public class RangeMinionFSM : MonoBehaviour {
 	private enum State { Patrol, Idle, Chase };
 	private State currentState;
 	private bool impacted;
+	private bool goBack = false;
 	//private Fighter opponent;
 	private int stunTime;
 
@@ -63,6 +64,16 @@ public class RangeMinionFSM : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if (Vector3.Distance (transform.position, boundPoint.transform.position) > boundRange) {
+			goBack = true;
+		} else if(Vector3.Distance (transform.position, boundPoint.transform.position) < boundRange/2){
+			goBack = false;
+		}
+
+		if (goBack) {
+			currentState = State.Patrol;
+		}
+
 		if (playerHitted == true) {
 			restTime -= Time.deltaTime;
 		}
@@ -96,28 +107,31 @@ public class RangeMinionFSM : MonoBehaviour {
 		{
 			if(stunTime<=0)
 			{
-				if(!inAttackRange())
-				{
-					GetComponent<NavMeshAgent>().Resume();
-					anim.Play (run.name);
-					MoveToward(player.transform.position);
-					if (Vector3.Distance(player.transform.position, transform.position) > detectRange * 1.2f)
+				if (!goBack) {
+					if(!inAttackRange())
 					{
-						currentState = State.Patrol;
-						goalPoint = player.transform.position;
+						GetComponent<NavMeshAgent>().Resume();
+						anim.Play (run.name);
+						MoveToward(player.transform.position);
+						if (Vector3.Distance(player.transform.position, transform.position) > detectRange * 1.2f)
+						{
+							currentState = State.Patrol;
+							goalPoint = player.transform.position;
+						}
+					}
+					else
+					{
+						GetComponent<Animation>().Play(attackClip.name);
+						GetComponent<NavMeshAgent>().Stop();
+						transform.LookAt(player);
+						attack();
+						if(GetComponent<Animation>()[attackClip.name].time>0.9*GetComponent<Animation>()[attackClip.name].length)
+						{
+							impacted = false;
+						}
 					}
 				}
-				else
-				{
-					GetComponent<Animation>().Play(attackClip.name);
-					GetComponent<NavMeshAgent>().Stop();
-					transform.LookAt(player);
-					attack();
-					if(GetComponent<Animation>()[attackClip.name].time>0.9*GetComponent<Animation>()[attackClip.name].length)
-					{
-						impacted = false;
-					}
-				}
+
 			}
 		}
 		else
