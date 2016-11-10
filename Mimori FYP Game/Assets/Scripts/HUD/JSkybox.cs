@@ -73,14 +73,15 @@ public class JSkybox : MonoBehaviour {
 	private float SkyboxBlendFactor= 0.0f;  
 
 	public Material skyboxmaterial;
-
+	public bool isForestNightFall;
 	/// Initializes working variables and performs starting calculations.  
 	void Initialize()  
 	{  
+		currentPhase = DayPhase.Day;
 		quarterDay = dayCycleLength * 0.25f;  
 		halfquarterDay = dayCycleLength * 0.125f;  
 		dawnTime = 0.0f;  
-		currentCycleTime = 0;
+		currentCycleTime = 200;
 		dayTime = dawnTime + halfquarterDay;  
 		duskTime = dayTime + quarterDay + halfquarterDay;  
 		nightTime = duskTime + halfquarterDay;  
@@ -152,12 +153,16 @@ public class JSkybox : MonoBehaviour {
 		UpdateFog();  
 		UpdateSkyboxBlendFactor ();
 		UpdateDaylight ();
-		// Update the current cycle time:  
-		currentCycleTime += Time.deltaTime * 5.8f;  
-		currentCycleTime = currentCycleTime % dayCycleLength;  
-		//rotates the sun
-		transform.RotateAround (Vector3.zero, Vector3.right, Time.deltaTime * 0.1f);
-		transform.LookAt (Vector3.zero);
+		isForestNightFall = ForestNightFall.instance.ForestNightFallActivate;
+		if (isForestNightFall) {
+			currentCycleTime += Time.deltaTime * 11.5f;  
+			Debug.Log (currentCycleTime);
+			currentCycleTime = currentCycleTime % dayCycleLength;  
+			// Update the current cycle time: 
+			//rotates the sun
+			transform.RotateAround (Vector3.zero, Vector3.right, Time.deltaTime * 2.0f);
+			transform.LookAt (Vector3.zero);
+		}
 
 	}  
 
@@ -219,8 +224,11 @@ public class JSkybox : MonoBehaviour {
 		}  
 
 		//transform.Rotate(Vector3.up * ((Time.deltaTime / dayCycleLength) * 360.0f), Space.Self);  
-		transform.RotateAround (rotation.position, Vector3.forward, ((Time.deltaTime / dayCycleLength) * 360.0f));  
+		if (isForestNightFall) {
+			transform.RotateAround (rotation.position, Vector3.forward, ((Time.deltaTime / dayCycleLength) * 360.0f));  
+		}
 	}  
+
 
 	private void UpdateSkyboxBlendFactor(){  
 		//Debug.Log (SkyboxBlendFactor);
