@@ -4,7 +4,7 @@ using System.Collections;
 public class EnmarController : MonoBehaviour {
 
     #region FSM
-    public enum FSMState { Walking, Attacking, LaserAttack, Dying}
+    public enum FSMState { Walking, AttackDelayState, Attacking, AnimationPlaying, LaserAttack, Dying}
     public enum LaserState { Charging, Shooting, ShootFinish}
 
     [Header("Enmar FSM current state")]
@@ -15,19 +15,26 @@ public class EnmarController : MonoBehaviour {
 
     #region Normal Attack
     //Gameobjects
+    [Header("Normal Attack")]
+    public GameObject rightHand, leftHand;
     public GameObject attackArea1, attackArea2;
 
     public bool hasEnteredArea1 = false;
     public bool hasEnteredArea2 = false;
 
+    bool isRightHandAttack = false;
+    bool isLeftHandAttack = false;
+
     //Float
     public float slamDamage = 20;
-
+    public float attackDelay = 6f;
+    public float attackTime;
+    public float tempTime;
     #endregion
 
     #region Laser Attack
     //Gameobjects
-    [Header("Laser prefabs")]
+    [Header("Laser Attack")]
     public GameObject laserBeam;
     public GameObject laserCharge;
     public GameObject laserOrigin;
@@ -54,9 +61,19 @@ public class EnmarController : MonoBehaviour {
     #endregion
 
     #region Health
-
+    [Header("Health")]
     public float enmarMaxHealth = 100;
 
+    #endregion
+
+    #region Transform Points
+    [Header("Transform Points")]
+    public Transform pointToWalkTo;
+    #endregion
+
+    #region Animation
+    [Header("Animation")]
+    public Animator enmarAnim;
     #endregion
 
     public static EnmarController instance { get; set; }
@@ -65,14 +82,15 @@ public class EnmarController : MonoBehaviour {
     void Start () {
 
         instance = this;
-       // enmarState = FSMState.Walking;
-        enmarState = FSMState.Attacking;
+        enmarState = FSMState.Walking;
+        enmarAnim = gameObject.GetComponent<Animator>();
+        //enmarState = FSMState.Attacking;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         //laserBeam.transform.Rotate(5, 10, 5);
-        DetectAreaToAttack();
+        
         //enmarHead.transform.Rotate()
         time += Time.deltaTime;
         GetPlayerLocation();
@@ -80,20 +98,94 @@ public class EnmarController : MonoBehaviour {
         {
             case FSMState.Walking:
                 {
+                    //play animation
 
+                    //walk
+                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, pointToWalkTo.transform.position, Time.deltaTime * 10);
+
+                    if (gameObject.transform.position == pointToWalkTo.transform.position)
+                    {
+                        enmarAnim.SetTrigger("Reached");
+                        //enmarAnim.SetBool("ReachedDestination", true);
+                        enmarState = FSMState.AttackDelayState;
+                    }
+                }
+                break;
+
+            case FSMState.AttackDelayState:
+                {
+                    rightHand.transform.position = Vector3.Lerp(rightHand.transform.position,new Vector3(2.07f, 37.2f, 70f), Time.deltaTime);
+                    leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(-21.7f, 37.2f, 70f),Time.deltaTime);
+                    attackTime += Time.deltaTime;
+                    if (attackTime > attackDelay)
+                    {
+                        attackTime = 0;
+                        enmarState = FSMState.Attacking;
+                        
+                    }
+
+                    isCharging = false;
                 }
                 break;
 
             case FSMState.Attacking:
                 {
-                    //if(time > 3)
-                    //{
-                    //    enmarState = FSMState.LaserAttack;
-                    //}
+                    int rng = Random.Range(1, 4);
+                    switch (rng)
+                    {
+                        case 1:
+                            {
+                                // DetectAreaToAttack
+                                enmarState = FSMState.AnimationPlaying;
+                            }
+                            break;
+
+                        case 2:
+                            {
+                                enmarState = FSMState.LaserAttack;
+                            }
+                            break;
+
+                        case 3:
+                            {
+                                //DetectAreaToAttack();
+                                enmarState = FSMState.AnimationPlaying;
+                            }
+                            break;
+
+                        case 4:
+                            {
+                                enmarState = FSMState.LaserAttack;
+                            }
+                            break;
+
+                        default:
+                            {
+                                //DetectAreaToAttack();
+                                enmarState = FSMState.AnimationPlaying;
+                            }
+                            break;
+                    }
+                    //DetectAreaToAttack();
+
                     isCharging = false;
                 }
                 break;
 
+            case FSMState.AnimationPlaying:
+                {
+                    DetectAreaToAttack();
+                    
+                    tempTime += Time.deltaTime;
+                    if(tempTime > 7)
+                    {
+                        tempTime = 0;
+                        enmarState = FSMState.AttackDelayState;
+                    }
+                }
+                break;
+
+            #region FSM Laser Attack
             case FSMState.LaserAttack:
                 {
                     switch (laserStatus)
@@ -134,14 +226,21 @@ public class EnmarController : MonoBehaviour {
                         case LaserState.ShootFinish:
                             {
 
-                                enmarState = FSMState.Attacking;
+                                enmarState = FSMState.AttackDelayState;
                                 laserStatus = LaserState.Charging;
                             }
                             break;
                     }
                 }
                 break;
+            #endregion
 
+
+            case FSMState.Dying:
+                {
+
+                }
+                break;
             default:
                 {
 
@@ -150,21 +249,17 @@ public class EnmarController : MonoBehaviour {
         }
 	}
 
-
-    public void slamHands()
-    {
-
-    }
-
     public void DetectAreaToAttack()
     {
         if(hasEnteredArea1 == true)
         {
+            PrimeRightHand();
             Debug.Log("Area 1 entered");
         }
 
         if(hasEnteredArea2 == true)
         {
+            PrimeLeftHand();
             Debug.Log("Area 2 entered");
         }
     }
@@ -191,5 +286,18 @@ public class EnmarController : MonoBehaviour {
     public void ShootLaserBeam()
     {
         laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation, laserOrigin.transform);
+    }
+
+    public void PrimeRightHand()
+    {
+        rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(rightHand.transform.position.x, 20, rightHand.transform.position.z), Time.deltaTime);
+        //enmarState = FSMState.AttackDelayState;
+    }
+
+    public void PrimeLeftHand()
+    {
+        //leftHand.GetComponent<Rigidbody>().AddForce(Vector3.down * 100000);
+        leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(leftHand.transform.position.x, 20, leftHand.transform.position.z), Time.deltaTime);
+        //enmarState = FSMState.AttackDelayState;
     }
 }
