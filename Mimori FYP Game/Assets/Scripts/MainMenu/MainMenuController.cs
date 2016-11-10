@@ -49,6 +49,9 @@ public class MainMenuController : MonoBehaviour {
     public float exitBtnXPos;
     public float optionsMenuXPos;
 
+    //Async operatiosn
+    AsyncOperation aSyncOp;
+
 
 	// Use this for initialization
 	void Start () {
@@ -63,7 +66,8 @@ public class MainMenuController : MonoBehaviour {
 
         optionsMenu.anchoredPosition = new Vector2(335, optionsMenu.anchoredPosition.y);
 
-        //SceneManager.LoadSceneAsync();
+        aSyncOp = SceneManager.LoadSceneAsync("Mimori");
+        aSyncOp.allowSceneActivation = false;
 	}
 	
 	// Update is called once per frame
@@ -187,7 +191,8 @@ public class MainMenuController : MonoBehaviour {
 
     public void playGameButtonPressed()
     {
-        //SceneManager.LoadScene();
+        //SceneManager.LoadScene("Mimori");
+        aSyncOp.allowSceneActivation = true;
     }
 
     public void exitButtonPressed()

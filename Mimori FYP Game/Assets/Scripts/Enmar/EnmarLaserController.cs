@@ -12,6 +12,10 @@ public class EnmarLaserController : MonoBehaviour {
     //Instantiate clone
     GameObject LBI;
 
+    public float laserResideTime;
+
+    bool isLaserHit = false;
+
     public static EnmarLaserController instance { get; set; }
     // Use this for initialization
     void Start () {
@@ -29,6 +33,18 @@ public class EnmarLaserController : MonoBehaviour {
 
         //var subEmitter = part.subEmitters;
         //if (subEmitter.collision1.isStopped == true)
+
+        if (isLaserHit == true)
+        {
+            laserResideTime += Time.deltaTime;
+
+            if (laserResideTime > 4)
+            {
+                laserResideTime = 0;
+                isLaserHit = false;
+                Destroy(EnmarController.instance.laserBeamGO);
+            }
+        }
     }
 
     public void OnParticleCollision(GameObject other)
@@ -46,7 +62,10 @@ public class EnmarLaserController : MonoBehaviour {
         {
             var pse = part.subEmitters;
             pse.collision1.maxParticles = 100;
+
         }
+
+        isLaserHit = true;
 
         var ps = part.subEmitters;
         //LBI = (GameObject)Instantiate(laserBlastImpact, ps.collision1.transform.position, ps.collision1.transform.rotation,gameObject.transform);

@@ -61,21 +61,4 @@ public class EnmarAttackAreaScript : MonoBehaviour {
         }
     }
 
-<<<<<<< HEAD
-   
-=======
-    public void OnParticleCollision(GameObject other)
-    {
-       // Debug.Log("Hit player");
-
-        if(other.gameObject.tag == "Player")
-        {
-            var ps = part.subEmitters;
-            ps.collision1.maxParticles = 0;
-            Debug.Log("Hit Player");
-        }
-    }
-
-  
->>>>>>> refs/remotes/origin/master
 }
