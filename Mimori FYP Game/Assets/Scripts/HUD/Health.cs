@@ -33,6 +33,7 @@ public class Health : MonoBehaviour {
 	public Transform player;
 	public GameObject player1;
 
+    public static Health instance { get; set; }
 	// Use this for initialization
 	void Start () {
 		regentime = 2;
@@ -43,6 +44,7 @@ public class Health : MonoBehaviour {
 		manabar = maxmana;
 		healthbarslider.value = healthbar;
 		manabarslider.value = manabar;
+        instance = this;
 		//InvokeRepeating ("MPRegen", 0.0f, 1.0f / manaregen); 
 	
 	}

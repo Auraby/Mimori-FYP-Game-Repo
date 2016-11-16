@@ -15,6 +15,8 @@ public class EnmarLaserController : MonoBehaviour {
     public float laserResideTime;
 
     bool isLaserHit = false;
+    [HideInInspector]
+    public bool isSpawnTrigger = false;
 
     public static EnmarLaserController instance { get; set; }
     // Use this for initialization
@@ -26,13 +28,21 @@ public class EnmarLaserController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //if (LBI.GetComponent<SphereCollider>().radius < 3)
-        //{
-        //    LBI.GetComponent<SphereCollider>().radius += Time.deltaTime;
-        //}
+        if(LBI != null)
+        {
+            if (LBI.GetComponent<SphereCollider>().radius < 3)
+            {
+                LBI.GetComponent<SphereCollider>().radius += Time.deltaTime;
+            }
+        }
+       
 
-        //var subEmitter = part.subEmitters;
-        //if (subEmitter.collision1.isStopped == true)
+        var subEmitter = part.subEmitters;
+        if (subEmitter.collision1.isStopped == true)
+        {
+            Destroy(LBI);
+        }
+
 
         if (isLaserHit == true)
         {
@@ -62,16 +72,20 @@ public class EnmarLaserController : MonoBehaviour {
         {
             var pse = part.subEmitters;
             pse.collision1.maxParticles = 100;
-
+           
+            if(isSpawnTrigger == false)
+            {
+                LBI = (GameObject)Instantiate(laserBlastImpact, other.transform.position, other.transform.rotation);
+                isSpawnTrigger = true;
+            }
+            
+            Debug.Log("Hit Floor");
         }
 
-        isLaserHit = true;
-
-        var ps = part.subEmitters;
-        //LBI = (GameObject)Instantiate(laserBlastImpact, ps.collision1.transform.position, ps.collision1.transform.rotation,gameObject.transform);
-
-        
+        isLaserHit = true;     
         
 
     }
+
+   
 }

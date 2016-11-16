@@ -61,7 +61,7 @@ public class EnmarController : MonoBehaviour {
 
     //Variables
     [Header("Time variables")]
-    public float time;
+    public float walkTime;
     public float laserChargeTime;
 
     #endregion
@@ -74,16 +74,33 @@ public class EnmarController : MonoBehaviour {
 
     #region Transform Points
     [Header("Transform Points")]
+    public GameObject enmarOrigin;
     public Transform pointToWalkTo;
+    //[HideInInspector]
+    public bool reached = false;
     #endregion
 
     #region Animation
     [Header("Animation")]
     public Animator enmarAnim;
+
+    Hashtable walkHash = new Hashtable();
+    #endregion
+
+    #region Misc
+    public CapsuleCollider[] bodyColliders;
+    public TerrainCollider terrainCollider;
     #endregion
 
     public static EnmarController instance { get; set; }
 
+    void Awake()
+    {
+        //walkHash.Add("position", pointToWalkTo.transform.position);
+        //walkHash.Add("speed", 30);
+        //walkHash.Add("time", 5);
+        //walkHash.Add("easetype", iTween.EaseType.linear);
+    }
     // Use this for initialization
     void Start () {
 
@@ -94,25 +111,30 @@ public class EnmarController : MonoBehaviour {
         rightHand.SetActive(false);
         leftHand.SetActive(false);
         //enmarState = FSMState.Attacking;
+
+        IgnoreBodyGroundCollisions();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         //laserBeam.transform.Rotate(5, 10, 5);
-        
+        Debug.DrawRay(player.gameObject.transform.position, Vector3.down);
         //enmarHead.transform.Rotate()
-        time += Time.deltaTime;
+        
         GetPlayerLocation();
         switch (enmarState)
         {
             case FSMState.Walking:
                 {
                     //play animation
-
+                    walkTime += Time.deltaTime;
                     //walk
-                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, pointToWalkTo.transform.position, Time.deltaTime * 20);
-
-                    if (gameObject.transform.position == pointToWalkTo.transform.position)
+                    //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, pointToWalkTo.transform.position, Time.deltaTime * 20);
+                    //iTween.MoveTo(gameObject, pointToWalkTo.transform.position, 60);
+                    //iTween.MoveTo(gameObject, walkHash);
+                    //if (gameObject.transform.position == pointToWalkTo.transform.position)
+                    //if(walkTime > 5)
+                    if(reached == true)
                     {
                         enmarAnim.SetTrigger("Reached");
                         //enmarAnim.Stop();
@@ -129,14 +151,15 @@ public class EnmarController : MonoBehaviour {
                     //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position,new Vector3(2.07f, 37.2f, 70f), Time.deltaTime);
                     //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(-21.7f, 37.2f, 70f),Time.deltaTime);
                     //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(2021.15f, 74.36f, 336.36f), Time.deltaTime);
-                   // leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(1985.69f, 74.36f, 336.36f), Time.deltaTime);
-                    //enmarAnim.ResetTrigger("");
+                    // leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(1985.69f, 74.36f, 336.36f), Time.deltaTime);
+                    iTween.RotateTo(gameObject, new Vector3(0, 135, 0), 3);
                     attackTime += Time.deltaTime;
                     if (attackTime > attackDelay)
                     {
                         attackTime = 0;
                         enmarState = FSMState.Attacking;
-                        
+                        enmarAnim.ResetTrigger("FinishedRightAttack");
+                        enmarAnim.ResetTrigger("FinishedLeftAttack");
                     }
 
                     isCharging = false;
@@ -189,9 +212,12 @@ public class EnmarController : MonoBehaviour {
 
             case FSMState.AnimationPlaying:
                 {                   
-                    
+                    if(hasEnteredArea2 == true)
+                    {
+                        iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
+                    }
                     tempTime += Time.deltaTime;
-                    if(tempTime > 3)
+                    if(tempTime > 9)
                     {
                         tempTime = 0;
                         enmarAnim.SetTrigger("FinishedRightAttack");
@@ -208,7 +234,7 @@ public class EnmarController : MonoBehaviour {
                     {
                         case LaserState.Warning:
                             {
-
+                                DetectFloorBelowPlayer();
                                 ShowLaserWarningCircle();
                                 laserStatus = LaserState.Charging;
                             }
@@ -222,10 +248,10 @@ public class EnmarController : MonoBehaviour {
                                     ChargeLaser();
                                 }
 
-                                float lerpValue = time / 3;
-                                lerpValue = Mathf.Sin(lerpValue * Mathf.PI * 0.5f);
+                                //float lerpValue = time / 3;
+                                //lerpValue = Mathf.Sin(lerpValue * Mathf.PI * 0.5f);
 
-                                chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
+                                chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);          
 
                                 if (laserChargeTime > 6)
                                 {
@@ -251,7 +277,7 @@ public class EnmarController : MonoBehaviour {
                         case LaserState.ShootFinish:
                             {
 
-                                //Destroy(laserWarningCircleGO);
+                                Destroy(laserWarningCircleGO);
                                 enmarState = FSMState.AttackDelayState;
                                 laserStatus = LaserState.Warning;
                             }
@@ -293,7 +319,7 @@ public class EnmarController : MonoBehaviour {
     public void GetPlayerLocation()
     {
         Debug.DrawLine(laserOrigin.transform.position, player.transform.position,Color.red);
-        playerLastPos = player.transform.position;
+        //playerLastPos = player.transform.position;
     }
 
     public void ChargeLaser()
@@ -312,8 +338,7 @@ public class EnmarController : MonoBehaviour {
 
     public void ShowLaserWarningCircle()
     {
-        //laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, player.transform.position, player.transform.rotation);
-        playerLastPos = player.transform.position;
+        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, playerLastPos, player.transform.rotation);
     }
 
     public void ShootLaserBeam()
@@ -337,5 +362,31 @@ public class EnmarController : MonoBehaviour {
         //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(leftHand.transform.position.x, 20, leftHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackLeft");
         //enmarState = FSMState.AttackDelayState;
+    }
+
+    public void DetectFloorBelowPlayer()
+    {
+        RaycastHit hit;
+        Ray laserRay = new Ray(player.gameObject.transform.position,Vector3.down);
+        if (Physics.Raycast(laserRay, out hit))
+        {
+            if(hit.normal.y == 90)
+            {
+                Debug.Log("Square Up");
+            }
+        }
+    }
+
+    public void HandHitWall()
+    {
+        
+    }
+
+    public void IgnoreBodyGroundCollisions()
+    {
+        foreach(CapsuleCollider go in bodyColliders)
+        {
+            Physics.IgnoreCollision(go, terrainCollider);
+        }
     }
 }
