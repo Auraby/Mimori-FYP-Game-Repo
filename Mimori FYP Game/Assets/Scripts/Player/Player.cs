@@ -13,6 +13,9 @@ public class Player : MonoBehaviour {
 	public GameObject bulletPrefab;
 	public Transform gunEnd;
 
+	public GameObject eoe;
+	public GameObject eoeParticle;
+
 	//IronSights
 	//[Header("Iron Sights")]
 	public GameObject gun_IronSight;
@@ -162,6 +165,14 @@ public class Player : MonoBehaviour {
 
 				if (!interactText.active) {
 					interactText.active = true;
+				}
+				if (Input.GetKey (KeyCode.F)) {
+					if (hit.collider.name == "enmarDead") {
+						eoeParticle.SetActive (true);
+						eoe.SetActive (true);
+						hit.collider.GetComponent<FadeObjectInOut> ().FadeOut (4f);
+						hit.collider.tag = "Untagged";
+					}
 				}
 			} else {
 				if (tempHit.collider != null) {
