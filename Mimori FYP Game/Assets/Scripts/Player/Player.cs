@@ -37,14 +37,15 @@ public class Player : MonoBehaviour {
 	public float lerpDelay;
 	[HideInInspector]
 	public float time;
-	FirstPersonController fpc;
 
+	FirstPersonController fpc;
 	RaycastHit hit;
 	Ray ray;
 	GameObject interactingObj;
 	Shader outline;
 	Shader normal;
 	RaycastHit tempHit;
+
 	// Use this for initialization
 	void Start () {
 		isIronSight = 0;
@@ -55,7 +56,6 @@ public class Player : MonoBehaviour {
 		normal = Shader.Find ("Standard");
 		outline = Shader.Find ("Outlined/Silhouetted Diffuse");
 		fpc = GameObject.FindObjectOfType<FirstPersonController> ();
-
 	}
 
 	public void OnTriggerEnter(Collider obj){
@@ -166,7 +166,7 @@ public class Player : MonoBehaviour {
 				if (!interactText.active) {
 					interactText.active = true;
 				}
-				if (Input.GetKey (KeyCode.F)) {
+				if (Input.GetKeyDown (KeyCode.F)) {
 					if (hit.collider.name == "enmarDead") {
 						eoeParticle.SetActive (true);
 						eoe.SetActive (true);
@@ -185,5 +185,26 @@ public class Player : MonoBehaviour {
 
 		}
 
+		//Save Load Test
+		if(Input.GetKeyDown(KeyCode.F5)){
+			GameController.gameController.playerPositionX = transform.position.x;
+			GameController.gameController.playerPositionY = transform.position.y;
+			GameController.gameController.playerPositionZ = transform.position.z;
+
+			GameController.gameController.playerRotationX = transform.rotation.x;
+			GameController.gameController.playerRotationY = transform.rotation.y;
+			GameController.gameController.playerRotationZ = transform.rotation.z;
+
+			GameController.gameController.Save ();
+		}
+
+		if(Input.GetKeyDown(KeyCode.F9)){
+			GameController.gameController.Load ();
+			transform.position = new Vector3 (
+				GameController.gameController.playerPositionX,
+				GameController.gameController.playerPositionY,
+				GameController.gameController.playerPositionZ
+			);
+		}
 	}
 }
