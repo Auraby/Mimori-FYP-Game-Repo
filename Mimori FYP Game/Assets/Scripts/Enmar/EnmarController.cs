@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class EnmarController : MonoBehaviour {
 
     #region FSM
     public enum FSMState { Walking, AttackDelayState, Attacking, AnimationPlaying, LaserAttack, Dying}
-    public enum LaserState { Warning, Charging, Shooting, ShootFinish}
+    public enum LaserState { Aiming, Charging, Shooting, ShootFinish}
 
     [Header("Enmar FSM current state")]
     public FSMState enmarState;
@@ -49,7 +50,8 @@ public class EnmarController : MonoBehaviour {
     public GameObject laserWarningCircleGO;
     Transform chargePulse;
     public GameObject player;
-    Vector3 playerLastPos;
+    [HideInInspector]
+    public Vector3 playerLastPos;
     
 
     //bool
@@ -90,6 +92,8 @@ public class EnmarController : MonoBehaviour {
     #region Misc
     public CapsuleCollider[] bodyColliders;
     public TerrainCollider terrainCollider;
+
+    bool isPlayerGrounded;
     #endregion
 
     public static EnmarController instance { get; set; }
@@ -113,6 +117,8 @@ public class EnmarController : MonoBehaviour {
         //enmarState = FSMState.Attacking;
 
         IgnoreBodyGroundCollisions();
+
+        
 	}
 	
 	// Update is called once per frame
@@ -120,8 +126,8 @@ public class EnmarController : MonoBehaviour {
         //laserBeam.transform.Rotate(5, 10, 5);
         Debug.DrawRay(player.gameObject.transform.position, Vector3.down);
         //enmarHead.transform.Rotate()
-        
-        GetPlayerLocation();
+        isPlayerGrounded = FirstPersonController.instance.m_CharacterController.isGrounded;
+
         switch (enmarState)
         {
             case FSMState.Walking:
@@ -232,11 +238,16 @@ public class EnmarController : MonoBehaviour {
                 {
                     switch (laserStatus)
                     {
-                        case LaserState.Warning:
+                        case LaserState.Aiming:
                             {
-                                DetectFloorBelowPlayer();
-                                ShowLaserWarningCircle();
-                                laserStatus = LaserState.Charging;
+                                if(isPlayerGrounded == true)
+                                {
+                                    DetectFloorBelowPlayer();
+                                    GetPlayerLocation();
+                                    ShowLaserWarningCircle();
+                                    laserStatus = LaserState.Charging;
+                                }
+                                
                             }
                             break;
 
@@ -279,7 +290,7 @@ public class EnmarController : MonoBehaviour {
 
                                 Destroy(laserWarningCircleGO);
                                 enmarState = FSMState.AttackDelayState;
-                                laserStatus = LaserState.Warning;
+                                laserStatus = LaserState.Aiming;
                             }
                             break;
                     }
@@ -319,7 +330,11 @@ public class EnmarController : MonoBehaviour {
     public void GetPlayerLocation()
     {
         Debug.DrawLine(laserOrigin.transform.position, player.transform.position,Color.red);
-        //playerLastPos = player.transform.position;
+        if(isPlayerGrounded == true)
+        {
+            playerLastPos = player.transform.position;
+        }
+        
     }
 
     public void ChargeLaser()
@@ -338,7 +353,11 @@ public class EnmarController : MonoBehaviour {
 
     public void ShowLaserWarningCircle()
     {
-        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, playerLastPos, player.transform.rotation);
+        if(isPlayerGrounded == true)
+        {
+            laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, playerLastPos, player.transform.rotation);
+        }
+        
     }
 
     public void ShootLaserBeam()
