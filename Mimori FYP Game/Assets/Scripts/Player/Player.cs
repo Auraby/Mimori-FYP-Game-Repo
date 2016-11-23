@@ -191,10 +191,6 @@ public class Player : MonoBehaviour {
 			GameController.gameController.playerPositionY = transform.position.y;
 			GameController.gameController.playerPositionZ = transform.position.z;
 
-			GameController.gameController.playerRotationX = transform.rotation.x;
-			GameController.gameController.playerRotationY = transform.rotation.y;
-			GameController.gameController.playerRotationZ = transform.rotation.z;
-
 			GameController.gameController.Save ();
 		}
 
@@ -205,6 +201,7 @@ public class Player : MonoBehaviour {
 				GameController.gameController.playerPositionY,
 				GameController.gameController.playerPositionZ
 			);
+
 		}
 	}
 }
