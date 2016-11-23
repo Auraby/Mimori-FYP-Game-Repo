@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnmarLaserController : MonoBehaviour {
 
 
     ParticleSystem part;
+    public List<ParticleCollisionEvent> collisionEvents;
 
     //The empty gameobject that contains the sphere collider
     public GameObject laserBlastImpact;
@@ -18,11 +20,15 @@ public class EnmarLaserController : MonoBehaviour {
     [HideInInspector]
     public bool isSpawnTrigger = false;
 
+    [HideInInspector]
+    public Vector3 laserHitPos;
+
     public static EnmarLaserController instance { get; set; }
     // Use this for initialization
     void Start () {
         instance = this;
         part = gameObject.GetComponent<ParticleSystem>();
+        collisionEvents = new List<ParticleCollisionEvent>();
     }
 	
 	// Update is called once per frame
@@ -60,29 +66,42 @@ public class EnmarLaserController : MonoBehaviour {
     public void OnParticleCollision(GameObject other)
     {
         // Debug.Log("Hit player");
+        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
 
-        if (other.gameObject.tag == "Player")
-        {
-            var pse = part.subEmitters;
-            pse.collision1.maxParticles = 0;
-            Debug.Log("Hit Player");
-        }
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        int i = 0;
 
-        else
+        while (i < numCollisionEvents)
         {
-            var pse = part.subEmitters;
-            pse.collision1.maxParticles = 100;
-           
-            if(isSpawnTrigger == false)
+            laserHitPos = collisionEvents[i].intersection;
+
+            if (other.gameObject.tag == "Player")
             {
-                LBI = (GameObject)Instantiate(laserBlastImpact, other.transform.position, other.transform.rotation);
-                isSpawnTrigger = true;
+                var pse = part.subEmitters;
+                pse.collision1.maxParticles = 0;
+                Debug.Log("Hit Player");
             }
-            
-            Debug.Log("Hit Floor");
+
+            else
+            {
+                var pse = part.subEmitters;
+                pse.collision1.maxParticles = 100;
+
+                if (isSpawnTrigger == false)
+                {
+                    LBI = (GameObject)Instantiate(laserBlastImpact, laserHitPos, other.transform.rotation);
+                    isSpawnTrigger = true;
+                }
+
+                Debug.Log("Hit Floor");
+            }
+
+            isLaserHit = true;
+
+            i++;
         }
 
-        isLaserHit = true;     
+        
         
 
     }
