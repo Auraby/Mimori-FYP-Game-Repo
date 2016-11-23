@@ -44,8 +44,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 		[HideInInspector] public bool m_Jumping;
 		[HideInInspector] public AudioSource m_AudioSource;
 
-        public static FirstPersonController instance { get; set; }
-
 		//MouseLooking Enabled
 		public bool canLook = true;
 
@@ -66,7 +64,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
 
-            instance = this;
         }
 
 
