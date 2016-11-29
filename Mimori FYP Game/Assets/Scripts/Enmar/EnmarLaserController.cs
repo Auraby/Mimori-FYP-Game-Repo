@@ -15,6 +15,7 @@ public class EnmarLaserController : MonoBehaviour {
     GameObject LBI;
 
     public float laserResideTime;
+    public float laserWallDamage;
 
     bool isLaserHit = false;
     [HideInInspector]
@@ -29,6 +30,7 @@ public class EnmarLaserController : MonoBehaviour {
         instance = this;
         part = gameObject.GetComponent<ParticleSystem>();
         collisionEvents = new List<ParticleCollisionEvent>();
+        isSpawnTrigger = false;
     }
 	
 	// Update is called once per frame
@@ -59,6 +61,7 @@ public class EnmarLaserController : MonoBehaviour {
                 laserResideTime = 0;
                 isLaserHit = false;
                 Destroy(EnmarController.instance.laserBeamGO);
+                Destroy(LBI);
             }
         }
     }
@@ -79,6 +82,7 @@ public class EnmarLaserController : MonoBehaviour {
             {
                 var pse = part.subEmitters;
                 pse.collision1.maxParticles = 0;
+                Health.instance.currentHealth -= EnmarController.instance.laserDamage;
                 Debug.Log("Hit Player");
             }
 
@@ -86,7 +90,7 @@ public class EnmarLaserController : MonoBehaviour {
             {
                 var pse = part.subEmitters;
                 pse.collision1.maxParticles = 100;
-
+                Level1Controller.instance.currentWallHealth -= laserWallDamage;
                 if (isSpawnTrigger == false)
                 {
                     LBI = (GameObject)Instantiate(laserBlastImpact, laserHitPos, other.transform.rotation);

@@ -29,6 +29,7 @@ public class EnmarController : MonoBehaviour {
 
     //Float
     public float slamDamage = 20;
+    public float wallDamage = 20;
     public float attackDelay = 6f;
     public float attackTime;
     public float tempTime;
@@ -71,6 +72,10 @@ public class EnmarController : MonoBehaviour {
     #region Health
     [Header("Health")]
     public float enmarMaxHealth = 100;
+    public float enmarCurrentHealth;
+
+    [HideInInspector]
+    public bool enmarIsDead = false;
 
     #endregion
 
@@ -93,6 +98,8 @@ public class EnmarController : MonoBehaviour {
     public CapsuleCollider[] bodyColliders;
     public TerrainCollider terrainCollider;
 
+    public GameObject fpsCamera;
+
     bool isPlayerGrounded;
     #endregion
 
@@ -111,6 +118,7 @@ public class EnmarController : MonoBehaviour {
         instance = this;
         enmarState = FSMState.Walking;
         enmarAnim = gameObject.GetComponent<Animator>();
+        enmarCurrentHealth = enmarMaxHealth;
 
         rightHand.SetActive(false);
         leftHand.SetActive(false);
@@ -128,188 +136,198 @@ public class EnmarController : MonoBehaviour {
         //enmarHead.transform.Rotate()
         isPlayerGrounded = FirstPersonController.instance.m_CharacterController.isGrounded;
 
-        switch (enmarState)
-        {
-            case FSMState.Walking:
-                {
-                    //play animation
-                    walkTime += Time.deltaTime;
-                    //walk
-                    //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, pointToWalkTo.transform.position, Time.deltaTime * 20);
-                    //iTween.MoveTo(gameObject, pointToWalkTo.transform.position, 60);
-                    //iTween.MoveTo(gameObject, walkHash);
-                    //if (gameObject.transform.position == pointToWalkTo.transform.position)
-                    //if(walkTime > 5)
-                    if(reached == true)
-                    {
-                        enmarAnim.SetTrigger("Reached");
-                        //enmarAnim.Stop();
-                        //rightHand.SetActive(true);
-                        //leftHand.SetActive(true);
-                        //enmarAnim.SetBool("ReachedDestination", true);
-                        enmarState = FSMState.AttackDelayState;
-                    }
-                }
-                break;
-
-            case FSMState.AttackDelayState:
-                {
-                    //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position,new Vector3(2.07f, 37.2f, 70f), Time.deltaTime);
-                    //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(-21.7f, 37.2f, 70f),Time.deltaTime);
-                    //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(2021.15f, 74.36f, 336.36f), Time.deltaTime);
-                    // leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(1985.69f, 74.36f, 336.36f), Time.deltaTime);
-                    iTween.RotateTo(gameObject, new Vector3(0, 135, 0), 3);
-                    attackTime += Time.deltaTime;
-                    if (attackTime > attackDelay)
-                    {
-                        attackTime = 0;
-                        enmarState = FSMState.Attacking;
-                        enmarAnim.ResetTrigger("FinishedRightAttack");
-                        enmarAnim.ResetTrigger("FinishedLeftAttack");
-                    }
-
-                    isCharging = false;
-                }
-                break;
-
-            case FSMState.Attacking:
-                {
-                    int rng = Random.Range(1, 4);
-                    switch (rng)
-                    {
-                        case 1:
-                            {
-                                DetectAreaToAttack();
-                                enmarState = FSMState.AnimationPlaying;
-                            }
-                            break;
-
-                        case 2:
-                            {
-                                enmarState = FSMState.LaserAttack;
-                            }
-                            break;
-
-                        case 3:
-                            {
-                                DetectAreaToAttack();
-                                enmarState = FSMState.AnimationPlaying;
-                            }
-                            break;
-
-                        case 4:
-                            {
-                                enmarState = FSMState.LaserAttack;
-                            }
-                            break;
-
-                        default:
-                            {
-                                DetectAreaToAttack();
-                                enmarState = FSMState.AnimationPlaying;
-                            }
-                            break;
-                    }
-                    //DetectAreaToAttack();
-
-                    isCharging = false;
-                }
-                break;
-
-            case FSMState.AnimationPlaying:
-                {                   
-                    if(hasEnteredArea2 == true)
-                    {
-                        iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
-                    }
-                    tempTime += Time.deltaTime;
-                    if(tempTime > 9)
-                    {
-                        tempTime = 0;
-                        enmarAnim.SetTrigger("FinishedRightAttack");
-                        enmarAnim.SetTrigger("FinishedLeftAttack");
-                        enmarState = FSMState.AttackDelayState;
-                    }
-                }
-                break;
-
-            #region FSM Laser Attack
-            case FSMState.LaserAttack:
-                {
-                    switch (laserStatus)
-                    {
-                        case LaserState.Aiming:
-                            {
-                                if(isPlayerGrounded == true)
-                                {
-                                    DetectFloorBelowPlayer();
-                                    GetPlayerLocation();
-                                    ShowLaserWarningCircle();
-                                    laserStatus = LaserState.Charging;
-                                }
-                                
-                            }
-                            break;
-
-                        case LaserState.Charging:
-                            {
-                                laserChargeTime += Time.deltaTime;
-                                if (isCharging == false)
-                                {
-                                    ChargeLaser();
-                                }
-
-                                //float lerpValue = time / 3;
-                                //lerpValue = Mathf.Sin(lerpValue * Mathf.PI * 0.5f);
-
-                                chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);          
-
-                                if (laserChargeTime > 6)
-                                {
-                                    laserChargeTime = 0;
-                                    Destroy(laserChargeGO);
-                                    laserStatus = LaserState.Shooting;
-                                }
-
-                                //laserStatus = LaserState.Shooting;
-                            }
-                            break;
-
-                        case LaserState.Shooting:
-                            {
-                                isCharging = false;
-                                laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation, laserOrigin.transform);
-                                //laserBeamGO.transform.LookAt(player.transform.position);
-                                laserBeamGO.transform.LookAt(playerLastPos);
-                                laserStatus = LaserState.ShootFinish;
-                            }
-                            break;
-
-                        case LaserState.ShootFinish:
-                            {
-
-                                Destroy(laserWarningCircleGO);
-                                enmarState = FSMState.AttackDelayState;
-                                laserStatus = LaserState.Aiming;
-                            }
-                            break;
-                    }
-                }
-                break;
-            #endregion
-
-
-            case FSMState.Dying:
-                {
-
-                }
-                break;
-            default:
-                {
-
-                }
-                break;
+        if(enmarCurrentHealth <= 0)
+        {   
+            enmarState = FSMState.Dying;
         }
+        if (enmarIsDead == false)
+        {
+            switch (enmarState)
+            {
+                case FSMState.Walking:
+                    {
+                        //play animation
+                        walkTime += Time.deltaTime;
+                        //walk
+                        //gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, pointToWalkTo.transform.position, Time.deltaTime * 20);
+                        //iTween.MoveTo(gameObject, pointToWalkTo.transform.position, 60);
+                        //iTween.MoveTo(gameObject, walkHash);
+                        //if (gameObject.transform.position == pointToWalkTo.transform.position)
+                        //if(walkTime > 5)
+                        //shakeCamera(3, 1);
+                        if (reached == true)
+                        {
+                            enmarAnim.SetTrigger("Reached");
+                            //enmarAnim.Stop();
+                            //rightHand.SetActive(true);
+                            //leftHand.SetActive(true);
+                            //enmarAnim.SetBool("ReachedDestination", true);
+                            enmarState = FSMState.AttackDelayState;
+                        }
+                    }
+                    break;
+
+                case FSMState.AttackDelayState:
+                    {
+                        //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position,new Vector3(2.07f, 37.2f, 70f), Time.deltaTime);
+                        //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(-21.7f, 37.2f, 70f),Time.deltaTime);
+                        //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(2021.15f, 74.36f, 336.36f), Time.deltaTime);
+                        // leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(1985.69f, 74.36f, 336.36f), Time.deltaTime);
+                        iTween.RotateTo(gameObject, new Vector3(0, 135, 0), 3);
+                        attackTime += Time.deltaTime;
+                        if (attackTime > attackDelay)
+                        {
+                            attackTime = 0;
+                            enmarState = FSMState.Attacking;
+                            enmarAnim.ResetTrigger("FinishedRightAttack");
+                            enmarAnim.ResetTrigger("FinishedLeftAttack");
+                        }
+
+                        isCharging = false;
+                    }
+                    break;
+
+                case FSMState.Attacking:
+                    {
+                        int rng = Random.Range(1, 4);
+                        switch (rng)
+                        {
+                            case 1:
+                                {
+                                    DetectAreaToAttack();
+                                    enmarState = FSMState.AnimationPlaying;
+                                }
+                                break;
+
+                            case 2:
+                                {
+                                    enmarState = FSMState.LaserAttack;
+                                }
+                                break;
+
+                            case 3:
+                                {
+                                    DetectAreaToAttack();
+                                    enmarState = FSMState.AnimationPlaying;
+                                }
+                                break;
+
+                            case 4:
+                                {
+                                    enmarState = FSMState.LaserAttack;
+                                }
+                                break;
+
+                            default:
+                                {
+                                    DetectAreaToAttack();
+                                    enmarState = FSMState.AnimationPlaying;
+                                }
+                                break;
+                        }
+                        //DetectAreaToAttack();
+
+                        isCharging = false;
+                    }
+                    break;
+
+                case FSMState.AnimationPlaying:
+                    {
+                        if (hasEnteredArea2 == true)
+                        {
+                            iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
+                        }
+                        tempTime += Time.deltaTime;
+                        if (tempTime > 9)
+                        {
+                            tempTime = 0;
+                            enmarAnim.SetTrigger("FinishedRightAttack");
+                            enmarAnim.SetTrigger("FinishedLeftAttack");
+                            enmarState = FSMState.AttackDelayState;
+                        }
+                    }
+                    break;
+
+                #region FSM Laser Attack
+                case FSMState.LaserAttack:
+                    {
+                        switch (laserStatus)
+                        {
+                            case LaserState.Aiming:
+                                {
+                                    if (isPlayerGrounded == true)
+                                    {
+                                        DetectFloorBelowPlayer();
+                                        GetPlayerLocation();
+                                        ShowLaserWarningCircle();
+                                        laserStatus = LaserState.Charging;
+                                    }
+
+                                }
+                                break;
+
+                            case LaserState.Charging:
+                                {
+                                    laserChargeTime += Time.deltaTime;
+                                    if (isCharging == false)
+                                    {
+                                        ChargeLaser();
+                                    }
+
+                                    //float lerpValue = time / 3;
+                                    //lerpValue = Mathf.Sin(lerpValue * Mathf.PI * 0.5f);
+
+                                    chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
+
+                                    if (laserChargeTime > 6)
+                                    {
+                                        laserChargeTime = 0;
+                                        Destroy(laserChargeGO);
+                                        laserStatus = LaserState.Shooting;
+                                    }
+
+                                    //laserStatus = LaserState.Shooting;
+                                }
+                                break;
+
+                            case LaserState.Shooting:
+                                {
+                                    isCharging = false;
+                                    laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation, laserOrigin.transform);
+                                    //laserBeamGO.transform.LookAt(player.transform.position);
+                                    laserBeamGO.transform.LookAt(playerLastPos);
+                                    laserStatus = LaserState.ShootFinish;
+                                }
+                                break;
+
+                            case LaserState.ShootFinish:
+                                {
+
+                                    Destroy(laserWarningCircleGO);
+                                    enmarState = FSMState.AttackDelayState;
+                                    laserStatus = LaserState.Aiming;
+                                }
+                                break;
+                        }
+                    }
+                    break;
+                #endregion
+
+
+                case FSMState.Dying:
+                    {
+                        enmarAnim.SetBool("EnmarDead", true);
+                        //iTween.RotateTo(gameObject, new Vector3(0, 80, 0), 3);
+                    }
+                    break;
+                default:
+                    {
+
+                    }
+                    break;
+            }
+        }
+        
 	}
 
     public void DetectAreaToAttack()
@@ -362,7 +380,7 @@ public class EnmarController : MonoBehaviour {
 
     public void ShootLaserBeam()
     {
-        laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation, laserOrigin.transform);
+        laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation);
         laserBeamGO.SetActive(true);
     }
 
@@ -396,10 +414,6 @@ public class EnmarController : MonoBehaviour {
         }
     }
 
-    public void HandHitWall()
-    {
-        
-    }
 
     public void IgnoreBodyGroundCollisions()
     {
@@ -407,5 +421,20 @@ public class EnmarController : MonoBehaviour {
         {
             Physics.IgnoreCollision(go, terrainCollider);
         }
+    }
+
+    public void SetEnmarDead()
+    {
+        enmarIsDead = true;
+    }
+
+    public void DamageWall()
+    {
+        Level1Controller.instance.currentWallHealth -= wallDamage;
+    }
+
+    public void shakeCamera()
+    {
+        player.GetComponent<CameraShake>().ShakeCamera(0.1f, 0.1f);
     }
 }

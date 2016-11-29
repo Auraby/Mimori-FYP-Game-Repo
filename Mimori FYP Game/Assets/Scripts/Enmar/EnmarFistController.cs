@@ -21,7 +21,7 @@ public class EnmarFistController : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player")
         {
-            Health.instance.healthbar -= 20.0f;
+            Health.instance.currentHealth -= 20.0f;
             Health.instance.healthbarslider.value -= 20.0f;
         }
     }

@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class EnmarLaserAoEController : MonoBehaviour {
 
-    public float laserDamage;
+    public float laserDamageOverTime;
     public float laserImpactRadius;
 
     public static EnmarLaserAoEController instance { get; set; }
@@ -24,22 +25,24 @@ public class EnmarLaserAoEController : MonoBehaviour {
         {
             //whatever that contains health here
             //"Something".instance."h
-
+            
 
             //linear falloff effect
-            //float proximity = (location - player.transform.position).maginitue;
-            //float effect = 1 - (proximity / radius);
+            float proximity = (location - FirstPersonController.instance.gameObject.transform.position).magnitude;
+            float effect = 1 - (proximity / radius);
 
-            //player.health -= (damage * effect);
-            
+            Health.instance.currentHealth -= (damage * effect);
+
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
-            AOEDamagePlayer(gameObject.transform.position, laserImpactRadius, laserDamage);
+            //AOEDamagePlayer(gameObject.transform.position, laserImpactRadius, laserDamageOverTime);
+            Health.instance.currentHealth -= laserDamageOverTime;
+            Debug.Log("Player inside circle");
         }
     }
 }
