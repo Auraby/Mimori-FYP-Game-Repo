@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class Health : MonoBehaviour {
-	public float healthbar;
+	public float currentHealth;
 	public Slider healthbarslider;
 	public Slider manabarslider;
 	public float maxmana;
@@ -33,16 +33,18 @@ public class Health : MonoBehaviour {
 	public Transform player;
 	public GameObject player1;
 
+    public static Health instance { get; set; }
 	// Use this for initialization
 	void Start () {
 		regentime = 2;
 		manaregen = 2.0f;
 		maxhealth = 100.0f;
 		maxmana = 100.0f;
-		healthbar = maxhealth;
+		currentHealth = maxhealth;
 		manabar = maxmana;
-		healthbarslider.value = healthbar;
+		healthbarslider.value = currentHealth;
 		manabarslider.value = manabar;
+        instance = this;
 		//InvokeRepeating ("MPRegen", 0.0f, 1.0f / manaregen); 
 	
 	}
@@ -57,7 +59,7 @@ public class Health : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.tag == "Enemy") {
 			Debug.Log ("HIT, HIT");
-			healthbar -= 20.0f;
+			currentHealth -= 20.0f;
 			healthbarslider.value -= 20.0f;
 		}
 	}
@@ -76,6 +78,8 @@ public class Health : MonoBehaviour {
 			manabar += manaregen * Time.deltaTime;
 			manabarslider.value += manaregen * Time.deltaTime;
 		}
+
+        healthbarslider.value = currentHealth;
 
 		//SPELL ABILITIES
 		if(Input.GetKeyDown(KeyCode.Alpha1)){
