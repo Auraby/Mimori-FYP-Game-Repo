@@ -5,7 +5,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class EnmarController : MonoBehaviour {
 
     #region FSM
-    public enum FSMState { Walking, AttackDelayState, Attacking, AnimationPlaying, LaserAttack, Dying}
+    public enum FSMState { WaitForGameToStart, Walking, AttackDelayState, Attacking, AnimationPlaying, LaserAttack, Dying, GameOver}
     public enum LaserState { Aiming, Charging, Shooting, ShootFinish}
 
     [Header("Enmar FSM current state")]
@@ -116,13 +116,14 @@ public class EnmarController : MonoBehaviour {
     void Start () {
 
         instance = this;
-        enmarState = FSMState.Walking;
+        enmarState = FSMState.WaitForGameToStart;
         enmarAnim = gameObject.GetComponent<Animator>();
         enmarCurrentHealth = enmarMaxHealth;
 
         rightHand.SetActive(false);
         leftHand.SetActive(false);
         //enmarState = FSMState.Attacking;
+        
 
         IgnoreBodyGroundCollisions();
 
@@ -140,6 +141,11 @@ public class EnmarController : MonoBehaviour {
         {   
             enmarState = FSMState.Dying;
         }
+        //Player health, someone's naming anyhow
+        if(Health.instance.currentHealth <= 0)
+        {
+            enmarState = FSMState.GameOver;
+        }
         if (enmarIsDead == false)
         {
             switch (enmarState)
@@ -155,6 +161,7 @@ public class EnmarController : MonoBehaviour {
                         //if (gameObject.transform.position == pointToWalkTo.transform.position)
                         //if(walkTime > 5)
                         //shakeCamera(3, 1);
+                        enmarAnim.SetTrigger("StartMoving");
                         if (reached == true)
                         {
                             enmarAnim.SetTrigger("Reached");
@@ -173,7 +180,7 @@ public class EnmarController : MonoBehaviour {
                         //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(-21.7f, 37.2f, 70f),Time.deltaTime);
                         //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(2021.15f, 74.36f, 336.36f), Time.deltaTime);
                         // leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(1985.69f, 74.36f, 336.36f), Time.deltaTime);
-                        iTween.RotateTo(gameObject, new Vector3(0, 135, 0), 3);
+                        //iTween.RotateTo(gameObject, new Vector3(0, 135, 0), 3);
                         attackTime += Time.deltaTime;
                         if (attackTime > attackDelay)
                         {
@@ -233,10 +240,6 @@ public class EnmarController : MonoBehaviour {
 
                 case FSMState.AnimationPlaying:
                     {
-                        if (hasEnteredArea2 == true)
-                        {
-                            iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
-                        }
                         tempTime += Time.deltaTime;
                         if (tempTime > 9)
                         {
@@ -320,6 +323,12 @@ public class EnmarController : MonoBehaviour {
                         //iTween.RotateTo(gameObject, new Vector3(0, 80, 0), 3);
                     }
                     break;
+
+                case FSMState.GameOver:
+                    {
+
+                    }
+                    break;
                 default:
                     {
 
@@ -398,6 +407,7 @@ public class EnmarController : MonoBehaviour {
         //leftHand.GetComponent<Rigidbody>().AddForce(Vector3.down * 100000);
         //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(leftHand.transform.position.x, 20, leftHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackLeft");
+        //iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
         //enmarState = FSMState.AttackDelayState;
     }
 
@@ -437,4 +447,6 @@ public class EnmarController : MonoBehaviour {
     {
         player.GetComponent<CameraShake>().ShakeCamera(0.1f, 0.1f);
     }
+
+   
 }

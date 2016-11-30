@@ -16,10 +16,19 @@ public class Level1Controller : MonoBehaviour {
     public float wallMaxHealth = 100;
     public float currentWallHealth;
 
+    [Header("OpeningSequenceVariables")]
+    public GameObject openingSequence;
+    public Image openingBlackScreen;
+    public Image openingblackTopPanel, openingblackBottomPanel;
+    public Text openingText;
+    public float startTime = 0f;
+
+    [Header("GameOverScreen Variables")]
     public GameObject gameOverScreen;
     public Image gameoverBlackPanel;
     public Text gameoverText;
-    public Text gameoverTextSubtitle;
+    public Text gameoverTextSubtitleWall;
+    public Text gameoverTextSubitilePlayer;
 
     public float gameOverWaitTime = 6f;
     public float gameoverTime = 0f;
@@ -32,11 +41,18 @@ public class Level1Controller : MonoBehaviour {
 	void Start () {
 
         instance = this;
+        //Starting Cinematics
+        objectiveSlider.gameObject.SetActive(false);
+
+        //GameOver Screen
         gameoverBlackPanel.canvasRenderer.SetAlpha(0.0f);
         gameoverText.canvasRenderer.SetAlpha(0.0f);
-        gameoverTextSubtitle.canvasRenderer.SetAlpha(0.0f);
+        gameoverTextSubtitleWall.canvasRenderer.SetAlpha(0.0f);
+        gameoverTextSubitilePlayer.canvasRenderer.SetAlpha(0.0f);
+
+
         //gameOverScreen.SetActive(false);
-        levelProgress = LevelState.Playing;
+        levelProgress = LevelState.Start;
         currentWallHealth = wallMaxHealth;
         objectiveSlider.value = currentWallHealth;
 	}
@@ -69,16 +85,36 @@ public class Level1Controller : MonoBehaviour {
 
         switch (levelProgress)
         {
+            case LevelState.Start:
+                {
+                    startTime += Time.deltaTime;
+                    if(startTime > 5)
+                    {
+                        openingBlackScreen.CrossFadeAlpha(0, 2, false);
+                        openingblackTopPanel.CrossFadeAlpha(0, 3, false);
+                        openingblackBottomPanel.CrossFadeAlpha(0, 3, false);
+                        openingText.CrossFadeAlpha(0, 2, false);
+                    }
+                   if(startTime > 7)
+                    {
+                        levelProgress = LevelState.Playing;
+                        startTime = 0;
+                        EnmarController.instance.enmarState = EnmarController.FSMState.Walking;
+                    }
+                }
+                break;
+
             case LevelState.Playing:
                 {
                     currObjective.text = "Prevent Enmar from destroying the gate:";
-                    
+                    objectiveSlider.gameObject.SetActive(true);                
                 }
                 break;
 
             case LevelState.Win:
                 {
-
+                    currObjective.text = "Objective Completed";
+                    objectiveSlider.gameObject.SetActive(false);
                 }
                 break;
 
@@ -90,7 +126,7 @@ public class Level1Controller : MonoBehaviour {
                            // gameOverScreen.SetActive(true);
                             gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
                             gameoverText.CrossFadeAlpha(1, 3, false);
-                            gameoverTextSubtitle.CrossFadeAlpha(1, 5, false);
+                            gameoverTextSubitilePlayer.CrossFadeAlpha(1, 5, false);
                         
                         if(gameoverTime > gameOverWaitTime)
                         {
@@ -102,7 +138,9 @@ public class Level1Controller : MonoBehaviour {
 
                     if(wallDestroyed == true)
                     {
-
+                        gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
+                        gameoverText.CrossFadeAlpha(1, 3, false);
+                        gameoverTextSubtitleWall.CrossFadeAlpha(1, 5, false);
                     }
                 }
                 break;
