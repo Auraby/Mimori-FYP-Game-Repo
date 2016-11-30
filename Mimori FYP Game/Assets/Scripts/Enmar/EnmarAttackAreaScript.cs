@@ -59,6 +59,20 @@ public class EnmarAttackAreaScript : MonoBehaviour {
                     break;
             }
         }
+
+        if (col.gameObject.tag == "Enmar")
+        {
+            EnmarController.instance.reached = true;
+        }
+
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Enmar")
+        {
+            EnmarController.instance.reached = true;
+        }
     }
 
 }
