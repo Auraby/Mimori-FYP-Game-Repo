@@ -67,7 +67,7 @@ public class MeleeMinionFSM : MonoBehaviour
 	void Update () 
 	{
 		//Debug.Log (Vector3.Distance (transform.position, boundPoint.transform.position));
-		
+		Debug.Log(stunTime);
 		if (Vector3.Distance (transform.position, boundPoint.transform.position) > boundRange) {
 			goBack = true;
 		} else if(Vector3.Distance (transform.position, boundPoint.transform.position) < boundRange/2){
@@ -224,21 +224,23 @@ public class MeleeMinionFSM : MonoBehaviour
 		CancelInvoke("stunCountDown");
 		stunTime += seconds +1;
 		InvokeRepeating("stunCountDown", 0f, 1f);
+		this.gameObject.GetComponent<NavMeshAgent> ().Stop ();
 	}
 	
 	void stunCountDown()
 	{
-		Debug.Log(stunTime);
 		stunTime = stunTime - 1;
 		
 		if(stunTime==0)
 		{
+			this.gameObject.GetComponent<NavMeshAgent> ().Resume ();
 			CancelInvoke("stunCountDown");
 		}
 	}
 	
 	void dieMethod()
 	{
+		GetComponent<NavMeshAgent> ().Stop ();
 		GetComponent<Animation>().Play (die.name);
 		
 		if(GetComponent<Animation>()[die.name].time>GetComponent<Animation>()[die.name].length*0.9)

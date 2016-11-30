@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
 	public GameObject gun;
 	public GameObject bulletPrefab;
 	public Transform gunEnd;
+	public Image eoeImg;
 
 	public GameObject eoe;
 	public GameObject eoeParticle;
@@ -45,9 +46,19 @@ public class Player : MonoBehaviour {
 	Shader outline;
 	Shader normal;
 	RaycastHit tempHit;
+	float shootDelay = 0;
 
 	// Use this for initialization
 	void Start () {
+		//Continue Player
+		if(GameController.loadingGame){
+			transform.position = new Vector3 (
+				GameController.gameController.playerPositionX,
+				GameController.gameController.playerPositionY,
+				GameController.gameController.playerPositionZ
+			);
+		}
+
 		isIronSight = 0;
 		isPaused = false;
 		Cursor.visible = false;
@@ -71,6 +82,9 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (shootDelay > 0) {
+			shootDelay -= Time.deltaTime;
+		}
 		if (Input.GetMouseButtonDown (2)) {
 			if (isIronSight < 1) {
 				isIronSight++;
@@ -134,22 +148,27 @@ public class Player : MonoBehaviour {
 
 		Cursor.lockState = curseMode;
 
-		if (Input.GetButtonDown ("Fire1"))
+		if (Input.GetButton ("Fire1"))
 		{
-			//Check if Player has enabled IronSight
-			if (isIronSight >= 1) {
-				GameObject bullet_IronSight = (GameObject)Instantiate (bulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
-				bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.forward * 50;
-			} else {
-				// Create the Bullet from the Bullet Prefab
-				GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
+			if (shootDelay <= 0) {
+				//Check if Player has enabled IronSight
+				if (isIronSight >= 1) {
+					GameObject bullet_IronSight = (GameObject)Instantiate (bulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
+					bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.forward * 50;
+				} else {
+					// Create the Bullet from the Bullet Prefab
+					GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
 
-				// Add velocity to the bullet
-				bullet.GetComponent<Rigidbody> ().velocity = gunEnd.forward * 150;
+					// Add velocity to the bullet
+					bullet.GetComponent<Rigidbody> ().velocity = gunEnd.forward * 150;
+				}
+				// Destroy the bullet after 2 seconds
+				//Destroy(bulshoolet, 2.0f);
+				shootDelay = 0.2f;
 			}
-			// Destroy the bullet after 2 seconds
-			//Destroy(bullet, 2.0f);   
+
 		}
+
 		//Debug.DrawRay(camera.transform.position, camera.transform.forward * 30, Color.yellow);
 		//Debug.DrawRay(gun.transform.position, gun.transform.forward * 30, Color.yellow);
 		ray = camera.ScreenPointToRay(crosshair.transform.position);
@@ -172,6 +191,15 @@ public class Player : MonoBehaviour {
 						eoe.SetActive (true);
 						hit.collider.GetComponent<FadeObjectInOut> ().FadeOut (4f);
 						hit.collider.tag = "Untagged";
+					}
+
+					if (hit.collider.name == "EoE") {
+						eoe.SetActive (false);
+						eoeImg.gameObject.SetActive (true);
+					}
+
+					if (hit.collider.name == "Door_a") {
+						hit.collider.GetComponent<Animation> ().Play ();
 					}
 				}
 			} else {
@@ -201,7 +229,6 @@ public class Player : MonoBehaviour {
 				GameController.gameController.playerPositionY,
 				GameController.gameController.playerPositionZ
 			);
-
 		}
 	}
 }

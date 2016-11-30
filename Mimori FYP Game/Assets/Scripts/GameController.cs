@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class GameController : MonoBehaviour {
+	public string currentScene;
+	public static bool loadingGame = false;
 	public static GameController gameController;
 	//Player Position
 	public float playerPositionX;
@@ -23,7 +26,14 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start () {
-	
+		
+	}
+
+	void Update(){
+		if (SceneManager.GetActiveScene ().name != "MainMenu") {
+			currentScene = SceneManager.GetActiveScene ().name;
+		}
+		//Debug.Log (currentScene);
 	}
 
 	public void Save(){
@@ -36,6 +46,8 @@ public class GameController : MonoBehaviour {
 		pData.playerPosX = playerPositionX;
 		pData.playerPosY = playerPositionY;
 		pData.playerPosZ = playerPositionZ;
+
+		pData.curScene = currentScene;
 
 		//Write the object to the file & close it
 		bf.Serialize(file,pData);
@@ -53,6 +65,8 @@ public class GameController : MonoBehaviour {
 			playerPositionX = pData.playerPosX;
 			playerPositionY = pData.playerPosY;
 			playerPositionZ = pData.playerPosZ;
+
+			currentScene = pData.curScene;
 		}
 	}
 
@@ -61,15 +75,11 @@ public class GameController : MonoBehaviour {
 			File.Delete (Application.persistentDataPath + "/PlayerInfo.mi");
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
 
 [Serializable]
 class PlayerData {
+	public string curScene;
 	//Player Position
 	public float playerPosX;
 	public float playerPosY;
