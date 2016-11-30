@@ -3,7 +3,8 @@ using System.Collections;
 
 public class OutpostManager : MonoBehaviour {
 	public GameObject[] minions;
-	public Mesh captured;
+	public GameObject defaultCircle;
+	public GameObject capturedCircle;
 
 	private bool isCaptured = false;
 	private bool allDied = false;
@@ -25,7 +26,8 @@ public class OutpostManager : MonoBehaviour {
 			}
 
 			if (allDied) {
-				GetComponent<MeshFilter> ().mesh = captured;
+				defaultCircle.SetActive (false);
+				capturedCircle.SetActive (true);
 				isCaptured = true;
 			}
 		}
