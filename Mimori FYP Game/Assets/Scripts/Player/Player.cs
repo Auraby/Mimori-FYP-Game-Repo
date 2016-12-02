@@ -12,6 +12,10 @@ public class Player : MonoBehaviour {
 	public GameObject gun;
 	public GameObject bulletPrefab;
 	public Transform gunEnd;
+	public Image eoeImg;
+
+	public GameObject eoe;
+	public GameObject eoeParticle;
 
 	//IronSights
 	//[Header("Iron Sights")]
@@ -34,16 +38,27 @@ public class Player : MonoBehaviour {
 	public float lerpDelay;
 	[HideInInspector]
 	public float time;
-	FirstPersonController fpc;
 
+	FirstPersonController fpc;
 	RaycastHit hit;
 	Ray ray;
 	GameObject interactingObj;
 	Shader outline;
 	Shader normal;
 	RaycastHit tempHit;
+	float shootDelay = 0;
+
 	// Use this for initialization
 	void Start () {
+		//Continue Player
+		if(GameController.loadingGame){
+			transform.position = new Vector3 (
+				GameController.gameController.playerPositionX,
+				GameController.gameController.playerPositionY,
+				GameController.gameController.playerPositionZ
+			);
+		}
+
 		isIronSight = 0;
 		isPaused = false;
 		Cursor.visible = false;
@@ -52,7 +67,6 @@ public class Player : MonoBehaviour {
 		normal = Shader.Find ("Standard");
 		outline = Shader.Find ("Outlined/Silhouetted Diffuse");
 		fpc = GameObject.FindObjectOfType<FirstPersonController> ();
-
 	}
 
 	public void OnTriggerEnter(Collider obj){
@@ -68,6 +82,9 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (shootDelay > 0) {
+			shootDelay -= Time.deltaTime;
+		}
 		if (Input.GetMouseButtonDown (2)) {
 			if (isIronSight < 1) {
 				isIronSight++;
@@ -131,22 +148,27 @@ public class Player : MonoBehaviour {
 
 		Cursor.lockState = curseMode;
 
-		if (Input.GetButtonDown ("Fire1"))
+		if (Input.GetButton ("Fire1"))
 		{
-			//Check if Player has enabled IronSight
-			if (isIronSight >= 1) {
-				GameObject bullet_IronSight = (GameObject)Instantiate (bulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
-				bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.forward * 50;
-			} else {
-				// Create the Bullet from the Bullet Prefab
-				GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
+			if (shootDelay <= 0) {
+				//Check if Player has enabled IronSight
+				if (isIronSight >= 1) {
+					GameObject bullet_IronSight = (GameObject)Instantiate (bulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
+					bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.forward * 50;
+				} else {
+					// Create the Bullet from the Bullet Prefab
+					GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
 
-				// Add velocity to the bullet
-				bullet.GetComponent<Rigidbody> ().velocity = gunEnd.forward * 150;
+					// Add velocity to the bullet
+					bullet.GetComponent<Rigidbody> ().velocity = gunEnd.forward * 150;
+				}
+				// Destroy the bullet after 2 seconds
+				//Destroy(bulshoolet, 2.0f);
+				shootDelay = 0.2f;
 			}
-			// Destroy the bullet after 2 seconds
-			//Destroy(bullet, 2.0f);   
+
 		}
+
 		//Debug.DrawRay(camera.transform.position, camera.transform.forward * 30, Color.yellow);
 		//Debug.DrawRay(gun.transform.position, gun.transform.forward * 30, Color.yellow);
 		ray = camera.ScreenPointToRay(crosshair.transform.position);
@@ -163,6 +185,23 @@ public class Player : MonoBehaviour {
 				if (!interactText.active) {
 					interactText.active = true;
 				}
+				if (Input.GetKeyDown (KeyCode.F)) {
+					if (hit.collider.name == "enmarDead") {
+						eoeParticle.SetActive (true);
+						eoe.SetActive (true);
+						hit.collider.GetComponent<FadeObjectInOut> ().FadeOut (4f);
+						hit.collider.tag = "Untagged";
+					}
+
+					if (hit.collider.name == "EoE") {
+						eoe.SetActive (false);
+						eoeImg.gameObject.SetActive (true);
+					}
+
+					if (hit.collider.name == "Door_a") {
+						hit.collider.GetComponent<Animation> ().Play ();
+					}
+				}
 			} else {
 				if (tempHit.collider != null) {
 					tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.shader = normal;
@@ -174,5 +213,22 @@ public class Player : MonoBehaviour {
 
 		}
 
+		//Save Load Test
+		if(Input.GetKeyDown(KeyCode.F5)){
+			GameController.gameController.playerPositionX = transform.position.x;
+			GameController.gameController.playerPositionY = transform.position.y;
+			GameController.gameController.playerPositionZ = transform.position.z;
+
+			GameController.gameController.Save ();
+		}
+
+		if(Input.GetKeyDown(KeyCode.F9)){
+			GameController.gameController.Load ();
+			transform.position = new Vector3 (
+				GameController.gameController.playerPositionX,
+				GameController.gameController.playerPositionY,
+				GameController.gameController.playerPositionZ
+			);
+		}
 	}
 }

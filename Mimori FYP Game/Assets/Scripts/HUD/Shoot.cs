@@ -43,7 +43,7 @@ public class Shoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
-			Debug.Log ("Shoot");
+			//Debug.Log ("Shoot");
 			IsCharging = true;
 			gameObject.GetComponent<Health> ().manabarslider.value -= 5.0f;
 			gameObject.GetComponent<Health> ().manabar -= 5.0f;
@@ -75,41 +75,41 @@ public class Shoot : MonoBehaviour {
 //			gameObject.GetComponent<Health> ().manabar -= gun1bulletcst;
 //		}
 		//Switching the guns 
-		switch (weaponswitch) {
-		case 0:
-			gameObject.GetComponent<Player> ().gun = weapon1;
-			gameObject.GetComponent<Player> ().gunEnd = weapon1_GunEnd;
-
-			weapon1.gameObject.SetActive (true);
-			weapon1_GunEnd.gameObject.SetActive (true);
-			weapon2.gameObject.SetActive (false);
-			weapon2_GunEnd.gameObject.SetActive (false);
-			weapon3.gameObject.SetActive (false);
-			weapon3_GunEnd.gameObject.SetActive (false);
-			break;
-		case 1:
-			gameObject.GetComponent<Player> ().gun = weapon2;
-			gameObject.GetComponent<Player> ().gunEnd = weapon2_GunEnd;
-
-			weapon1.gameObject.SetActive (false);
-			weapon1_GunEnd.gameObject.SetActive (false);
-			weapon2.gameObject.SetActive (true);
-			weapon2_GunEnd.gameObject.SetActive (true);
-			weapon3.gameObject.SetActive (false);
-			weapon3_GunEnd.gameObject.SetActive (false);
-			break;
-		case 2:
-			gameObject.GetComponent<Player> ().gun = weapon3;
-			gameObject.GetComponent<Player> ().gunEnd = weapon3_GunEnd;
-
-			weapon1.gameObject.SetActive (false);
-			weapon1_GunEnd.gameObject.SetActive (false);
-			weapon2.gameObject.SetActive (false);
-			weapon2_GunEnd.gameObject.SetActive (false);
-			weapon3.gameObject.SetActive (true);
-			weapon3_GunEnd.gameObject.SetActive (true);
-			break;
-		}
+//		switch (weaponswitch) {
+//		case 0:
+//			gameObject.GetComponent<Player> ().gun = weapon1;
+//			gameObject.GetComponent<Player> ().gunEnd = weapon1_GunEnd;
+//
+//			weapon1.gameObject.SetActive (true);
+//			weapon1_GunEnd.gameObject.SetActive (true);
+//			weapon2.gameObject.SetActive (false);
+//			weapon2_GunEnd.gameObject.SetActive (false);
+//			weapon3.gameObject.SetActive (false);
+//			weapon3_GunEnd.gameObject.SetActive (false);
+//			break;
+//		case 1:
+//			gameObject.GetComponent<Player> ().gun = weapon2;
+//			gameObject.GetComponent<Player> ().gunEnd = weapon2_GunEnd;
+//
+//			weapon1.gameObject.SetActive (false);
+//			weapon1_GunEnd.gameObject.SetActive (false);
+//			weapon2.gameObject.SetActive (true);
+//			weapon2_GunEnd.gameObject.SetActive (true);
+//			weapon3.gameObject.SetActive (false);
+//			weapon3_GunEnd.gameObject.SetActive (false);
+//			break;
+//		case 2:
+//			gameObject.GetComponent<Player> ().gun = weapon3;
+//			gameObject.GetComponent<Player> ().gunEnd = weapon3_GunEnd;
+//
+//			weapon1.gameObject.SetActive (false);
+//			weapon1_GunEnd.gameObject.SetActive (false);
+//			weapon2.gameObject.SetActive (false);
+//			weapon2_GunEnd.gameObject.SetActive (false);
+//			weapon3.gameObject.SetActive (true);
+//			weapon3_GunEnd.gameObject.SetActive (true);
+//			break;
+//		}
 
 		//switch to previous gun
 		if (Input.GetKeyDown (KeyCode.Q)) {

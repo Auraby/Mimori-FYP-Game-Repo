@@ -59,23 +59,20 @@ public class EnmarAttackAreaScript : MonoBehaviour {
                     break;
             }
         }
+
+        if (col.gameObject.tag == "Enmar")
+        {
+            EnmarController.instance.reached = true;
+        }
+
     }
 
-<<<<<<< HEAD
-   
-=======
-    public void OnParticleCollision(GameObject other)
+    public void OnTriggerStay(Collider other)
     {
-       // Debug.Log("Hit player");
-
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Enmar")
         {
-            var ps = part.subEmitters;
-            ps.collision1.maxParticles = 0;
-            Debug.Log("Hit Player");
+            EnmarController.instance.reached = true;
         }
     }
 
-  
->>>>>>> refs/remotes/origin/master
 }

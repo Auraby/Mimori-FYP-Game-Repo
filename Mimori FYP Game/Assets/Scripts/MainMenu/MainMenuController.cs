@@ -1,16 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 public class MainMenuController : MonoBehaviour {
 
     //TitleScreen Buttons
     [Header("Main Menu Buttons")]
     public RectTransform playBtn;
+	public RectTransform continueBtn;
     public RectTransform optionBtn;
     public RectTransform creditBtn;
     public RectTransform exitBtn;
+
+	public Button continueBtnGUI;
 
     //OptionScreen Buttons
     [Header("Option Menu Buttons")]
@@ -44,16 +50,22 @@ public class MainMenuController : MonoBehaviour {
     //Transition postition values
     [Header("Transition Position Values")]
     public float playBtnXPos;
+	public float continueBtnXPos;
     public float optionBtnXPos;
     public float creditBtnXPos;
     public float exitBtnXPos;
     public float optionsMenuXPos;
+
+    //Async operatiosn
+    AsyncOperation aSyncOp;
 
 
 	// Use this for initialization
 	void Start () {
 
         playBtn.anchoredPosition = new Vector2(-265, playBtn.anchoredPosition.y);
+
+		continueBtn.anchoredPosition = new Vector2 (-265, continueBtn.anchoredPosition.y);
 
         optionBtn.anchoredPosition = new Vector2(-265, optionBtn.anchoredPosition.y);
 
@@ -63,11 +75,20 @@ public class MainMenuController : MonoBehaviour {
 
         optionsMenu.anchoredPosition = new Vector2(335, optionsMenu.anchoredPosition.y);
 
-        //SceneManager.LoadSceneAsync();
+        aSyncOp = SceneManager.LoadSceneAsync("Mimori");
+        aSyncOp.allowSceneActivation = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//Check if there's a save file
+		//if yes, enable continue button
+		if (File.Exists (Application.persistentDataPath + "/PlayerInfo.mi")) {
+			continueBtnGUI.interactable = true;
+		} else {
+			continueBtnGUI.interactable = false;
+		}
+
 
         if (playMMMoveoutBool == true)
         {
@@ -187,7 +208,10 @@ public class MainMenuController : MonoBehaviour {
 
     public void playGameButtonPressed()
     {
-        //SceneManager.LoadScene();
+        //SceneManager.LoadScene("Mimori");
+		//If a save file exists, delete it
+		GameController.gameController.Delete();
+        aSyncOp.allowSceneActivation = true;
     }
 
     public void exitButtonPressed()
@@ -205,16 +229,20 @@ public class MainMenuController : MonoBehaviour {
 
         playBtn.anchoredPosition = new Vector2(Mathf.Lerp(playBtn.anchoredPosition.x, -265, lerpValue), playBtn.anchoredPosition.y);
 
-        if (time > 0.1)
+		if (time > 0.1)
+		{
+			continueBtn.anchoredPosition = new Vector2(Mathf.Lerp(continueBtn.anchoredPosition.x, -265, lerpValue), continueBtn.anchoredPosition.y);
+		}
+        if (time > 0.2)
         {
             optionBtn.anchoredPosition = new Vector2(Mathf.Lerp(optionBtn.anchoredPosition.x, -265, lerpValue), optionBtn.anchoredPosition.y);
         }
-        if (time > 0.2)
+        if (time > 0.3)
         {
             creditBtn.anchoredPosition = new Vector2(Mathf.Lerp(creditBtn.anchoredPosition.x, -265, lerpValue), creditBtn.anchoredPosition.y);
       
         }
-        if (time > 0.3)
+        if (time > 0.4)
         {
             exitBtn.anchoredPosition = new Vector2(Mathf.Lerp(exitBtn.anchoredPosition.x, -265, lerpValue), exitBtn.anchoredPosition.y);
            
@@ -229,16 +257,20 @@ public class MainMenuController : MonoBehaviour {
 
         playBtn.anchoredPosition = new Vector2(Mathf.Lerp(playBtn.anchoredPosition.x, playBtnXPos, lerpValue), playBtn.anchoredPosition.y);
 
-        if (time > 0.1)
+		if (time > 0.1)
+		{
+			continueBtn.anchoredPosition = new Vector2(Mathf.Lerp(continueBtn.anchoredPosition.x, optionBtnXPos, lerpValue), continueBtn.anchoredPosition.y);
+		}
+        if (time > 0.2)
         {
             optionBtn.anchoredPosition = new Vector2(Mathf.Lerp(optionBtn.anchoredPosition.x, optionBtnXPos, lerpValue), optionBtn.anchoredPosition.y);
         }
-        if (time > 0.2)
+        if (time > 0.3)
         {
             creditBtn.anchoredPosition = new Vector2(Mathf.Lerp(creditBtn.anchoredPosition.x, creditBtnXPos, lerpValue), creditBtn.anchoredPosition.y);
            
         }
-        if (time > 0.3)
+        if (time > 0.4)
         {
             exitBtn.anchoredPosition = new Vector2(Mathf.Lerp(exitBtn.anchoredPosition.x, exitBtnXPos, lerpValue), exitBtn.anchoredPosition.y);
             

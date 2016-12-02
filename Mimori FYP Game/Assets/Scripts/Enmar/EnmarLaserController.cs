@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnmarLaserController : MonoBehaviour {
 
 
     ParticleSystem part;
+    public List<ParticleCollisionEvent> collisionEvents;
 
     //The empty gameobject that contains the sphere collider
     public GameObject laserBlastImpact;
@@ -12,47 +14,101 @@ public class EnmarLaserController : MonoBehaviour {
     //Instantiate clone
     GameObject LBI;
 
+    public float laserResideTime;
+    public float laserWallDamage;
+
+    bool isLaserHit = false;
+    [HideInInspector]
+    public bool isSpawnTrigger = false;
+
+    [HideInInspector]
+    public Vector3 laserHitPos;
+
     public static EnmarLaserController instance { get; set; }
     // Use this for initialization
     void Start () {
         instance = this;
         part = gameObject.GetComponent<ParticleSystem>();
+        collisionEvents = new List<ParticleCollisionEvent>();
+        isSpawnTrigger = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        //if (LBI.GetComponent<SphereCollider>().radius < 3)
-        //{
-        //    LBI.GetComponent<SphereCollider>().radius += Time.deltaTime;
-        //}
+        if(LBI != null)
+        {
+            if (LBI.GetComponent<SphereCollider>().radius < 3)
+            {
+                LBI.GetComponent<SphereCollider>().radius += Time.deltaTime;
+            }
+        }
+       
 
-        //var subEmitter = part.subEmitters;
-        //if (subEmitter.collision1.isStopped == true)
+        var subEmitter = part.subEmitters;
+        if (subEmitter.collision1.isStopped == true)
+        {
+            Destroy(LBI);
+        }
+
+
+        if (isLaserHit == true)
+        {
+            laserResideTime += Time.deltaTime;
+
+            if (laserResideTime > 4)
+            {
+                laserResideTime = 0;
+                isLaserHit = false;
+                Destroy(EnmarController.instance.laserBeamGO);
+                Destroy(LBI);
+            }
+        }
     }
 
     public void OnParticleCollision(GameObject other)
     {
         // Debug.Log("Hit player");
+        int numCollisionEvents = part.GetCollisionEvents(other, collisionEvents);
 
-        if (other.gameObject.tag == "Player")
+        Rigidbody rb = other.GetComponent<Rigidbody>();
+        int i = 0;
+
+        while (i < numCollisionEvents)
         {
-            var pse = part.subEmitters;
-            pse.collision1.maxParticles = 0;
-            Debug.Log("Hit Player");
-        }
+            laserHitPos = collisionEvents[i].intersection;
 
-        else
-        {
-            var pse = part.subEmitters;
-            pse.collision1.maxParticles = 100;
-        }
+            if (other.gameObject.tag == "Player")
+            {
+                var pse = part.subEmitters;
+                pse.collision1.maxParticles = 0;
+                Health.instance.currentHealth -= EnmarController.instance.laserDamage;
+                Debug.Log("Hit Player");
+            }
 
-        var ps = part.subEmitters;
-        //LBI = (GameObject)Instantiate(laserBlastImpact, ps.collision1.transform.position, ps.collision1.transform.rotation,gameObject.transform);
+            else
+            {
+                var pse = part.subEmitters;
+                pse.collision1.maxParticles = 100;
+                Level1Controller.instance.currentWallHealth -= laserWallDamage;
+                if (isSpawnTrigger == false)
+                {
+                    LBI = (GameObject)Instantiate(laserBlastImpact, laserHitPos, other.transform.rotation);
+                    isSpawnTrigger = true;
+                }
+
+                Debug.Log("Hit Floor");
+            }
+
+            isLaserHit = true;
+
+            i++;
+        }
 
         
         
 
     }
+
+   
 }
