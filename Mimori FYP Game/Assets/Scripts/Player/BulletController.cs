@@ -2,11 +2,11 @@
 using System.Collections;
 
 public class BulletController : MonoBehaviour {
-
+    private GameObject player;
 	private float liveTime = 1f;
 	// Use this for initialization
 	void Start () {
-	
+        player = GameObject.FindGameObjectWithTag("Player");
 	}
 	
 	// Update is called once per frame
@@ -21,13 +21,25 @@ public class BulletController : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.tag == "MeleeMinion") {
-			other.GetComponent<MeleeMinionFSM> ().getHit (20);
-			Destroy (this.gameObject);
-		}
-		if (other.gameObject.tag == "RangeMinion") {
-			other.GetComponent<RangeMinionFSM> ().getHit (20);
-			Destroy (this.gameObject);
-		}
+        if(Vector3.Distance(other.transform.position, player.transform.position) <= 40)
+        {
+            if (other.gameObject.tag == "MeleeMinion")
+            {
+                other.GetComponent<MeleeMinionFSM>().getHit(10);
+                Destroy(this.gameObject);
+            }
+            if (other.gameObject.tag == "RangeMinion")
+            {
+                other.GetComponent<RangeMinionFSM>().getHit(10);
+                Destroy(this.gameObject);
+            }
+        }
+
+        if (this.gameObject.tag == "EnemySkill") {
+            if (other.gameObject.tag == "Player") {
+                other.GetComponent<Health>().currentHealth -= 2.5f;
+            }
+        }
+		
 	}
 }

@@ -16,14 +16,14 @@ public class MeleeMinionFSM : MonoBehaviour
 	public Transform player;
 
 	public AnimationClip attackClip;
-	public float attackRange = 1.25f;
+	public float attackRange;
 	public float boundRange;
 	
 	public double impactTime = 0.36;
 	
 	public int maxHealth;
 	public int  health;
-	public int damage;
+	int damage = 5;
 	
 	public GameObject[] patrolPoints;
 	public GameObject boundPoint;
@@ -49,6 +49,8 @@ public class MeleeMinionFSM : MonoBehaviour
 	private const float TURN_LIMIT = 60;
 	private const float ANIM_DAMP = 0.5f;
 
+    private bool attackAnimPlayed = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -67,7 +69,7 @@ public class MeleeMinionFSM : MonoBehaviour
 	void Update () 
 	{
 		//Debug.Log (Vector3.Distance (transform.position, boundPoint.transform.position));
-		Debug.Log(stunTime);
+		//Debug.Log(stunTime);
 		if (Vector3.Distance (transform.position, boundPoint.transform.position) > boundRange) {
 			goBack = true;
 		} else if(Vector3.Distance (transform.position, boundPoint.transform.position) < boundRange/2){
@@ -143,7 +145,14 @@ public class MeleeMinionFSM : MonoBehaviour
 	}
 	private void DoPatrol()
 	{
-		anim.Play (walk.name);
+        if (goBack)
+        {
+            anim.Play(run.name);
+        }
+        else {
+            anim.Play(walk.name);
+        }
+		
 		// move towards:
 		if (MoveToward(goalPoint))
 		{
@@ -204,7 +213,8 @@ public class MeleeMinionFSM : MonoBehaviour
 	{
 		if (GetComponent<Animation>() [attackClip.name].time > GetComponent<Animation>() [attackClip.name].length * impactTime&&!impacted&&GetComponent<Animation>()[attackClip.name].time<0.9*GetComponent<Animation>()[attackClip.name].length) 
 		{
-			//opponent.getHit(damage);
+            //opponent.getHit(damage);
+            player.GetComponent<Health>().currentHealth -= damage;
 			impacted = true;
 		}
 	}
