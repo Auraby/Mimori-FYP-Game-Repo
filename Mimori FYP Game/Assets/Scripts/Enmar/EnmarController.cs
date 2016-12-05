@@ -30,9 +30,10 @@ public class EnmarController : MonoBehaviour {
     //Float
     public float slamDamage = 20;
     public float wallDamage = 20;
-    public float attackDelay = 6f;
+    public float attackIntervalDelay = 6f;
     public float attackTime;
     public float tempTime;
+    public float slamWaitDelay = 5f;
     #endregion
 
     #region Laser Attack
@@ -180,9 +181,11 @@ public class EnmarController : MonoBehaviour {
                         //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(-21.7f, 37.2f, 70f),Time.deltaTime);
                         //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(2021.15f, 74.36f, 336.36f), Time.deltaTime);
                         // leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(1985.69f, 74.36f, 336.36f), Time.deltaTime);
-                        //iTween.RotateTo(gameObject, new Vector3(0, 135, 0), 3);
+                        
+                        isLeftHandAttack = false;
+                        isRightHandAttack = false;
                         attackTime += Time.deltaTime;
-                        if (attackTime > attackDelay)
+                        if (attackTime > attackIntervalDelay)
                         {
                             attackTime = 0;
                             enmarState = FSMState.Attacking;
@@ -240,8 +243,17 @@ public class EnmarController : MonoBehaviour {
 
                 case FSMState.AnimationPlaying:
                     {
+                        if(isRightHandAttack == true)
+                        {
+                            iTween.RotateTo(gameObject, new Vector3(0, 143, 0), 3);
+                        }
+                        if(isLeftHandAttack == true)
+                        {
+                            iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
+                        }
+
                         tempTime += Time.deltaTime;
-                        if (tempTime > 9)
+                        if (tempTime > slamWaitDelay)
                         {
                             tempTime = 0;
                             enmarAnim.SetTrigger("FinishedRightAttack");
@@ -258,13 +270,13 @@ public class EnmarController : MonoBehaviour {
                         {
                             case LaserState.Aiming:
                                 {
-                                    if (isPlayerGrounded == true)
-                                    {
-                                        DetectFloorBelowPlayer();
-                                        GetPlayerLocation();
-                                        ShowLaserWarningCircle();
+                                    //if (isPlayerGrounded == true)
+                                    //{
+                                    //    DetectFloorBelowPlayer();
+                                    //    GetPlayerLocation();
+                                    //    ShowLaserWarningCircle();
                                         laserStatus = LaserState.Charging;
-                                    }
+                                   // }
 
                                 }
                                 break;
@@ -284,9 +296,18 @@ public class EnmarController : MonoBehaviour {
 
                                     if (laserChargeTime > 6)
                                     {
+                                        if (isPlayerGrounded == true)
+                                        {
+                                            DetectFloorBelowPlayer();
+                                            GetPlayerLocation();
+                                            ShowLaserWarningCircle();
+                                            
+                                        }
+
                                         laserChargeTime = 0;
                                         Destroy(laserChargeGO);
                                         laserStatus = LaserState.Shooting;
+
                                     }
 
                                     //laserStatus = LaserState.Shooting;
@@ -398,6 +419,7 @@ public class EnmarController : MonoBehaviour {
         //rightHand.SetActive(true);
         //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(rightHand.transform.position.x, 20, rightHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackRight");
+        isRightHandAttack = true;
         //enmarState = FSMState.AttackDelayState;
     }
 
@@ -407,6 +429,7 @@ public class EnmarController : MonoBehaviour {
         //leftHand.GetComponent<Rigidbody>().AddForce(Vector3.down * 100000);
         //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(leftHand.transform.position.x, 20, leftHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackLeft");
+        isLeftHandAttack = true;
         //iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
         //enmarState = FSMState.AttackDelayState;
     }
@@ -448,5 +471,9 @@ public class EnmarController : MonoBehaviour {
         player.GetComponent<CameraShake>().ShakeCamera(0.1f, 0.1f);
     }
 
+    public void ResetRotation()
+    {
+        iTween.RotateTo(gameObject, new Vector3(0, 136.638f, 0), 3);
+    }
    
 }
