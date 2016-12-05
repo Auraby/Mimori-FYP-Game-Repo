@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 	public string currentScene;
@@ -13,9 +14,24 @@ public class GameController : MonoBehaviour {
 	public float playerPositionX;
 	public float playerPositionY;
 	public float playerPositionZ;
-	//Player Rotation
+    //Player Rotation
 
-	// Use this for initialization
+    #region Game Over Variables
+    [Header("GameOverScreen Variables")]
+    public GameObject gameOverScreen;
+    public Image gameoverBlackPanel;
+    public Text gameoverText;
+    public Text gameoverTextSubtitle;
+
+    public float gameOverWaitTime = 6f;
+    public float gameoverTime = 0f;
+
+    //Make this true if game over from anything
+    public bool loseGame = false;
+    public bool playerDie = false;
+    #endregion
+
+    // Use this for initialization
 	void Awake(){
 		if (gameController == null) {
 			DontDestroyOnLoad (gameObject);
@@ -26,14 +42,62 @@ public class GameController : MonoBehaviour {
 	}
 
 	void Start () {
-		
+        //GameOver Screen
+        gameoverBlackPanel.canvasRenderer.SetAlpha(0.0f);
+        gameoverText.canvasRenderer.SetAlpha(0.0f);
+        gameoverTextSubtitle.canvasRenderer.SetAlpha(0.0f);
 	}
 
 	void Update(){
 		if (SceneManager.GetActiveScene ().name != "MainMenu") {
 			currentScene = SceneManager.GetActiveScene ().name;
-		}
-		//Debug.Log (currentScene);
+        }
+
+        #region Lose Conditions
+        //Lose Conditions here
+        if (Health.instance.currentHealth <= 0)
+        {
+            loseGame = true;
+            playerDie = true;
+        }
+
+        if (Level1Controller.instance.currentWallHealth <= 0)
+        {
+            loseGame = true;
+        }
+        #endregion
+
+        #region Gameover screen
+        if (loseGame == true)
+        {
+            gameoverTime += Time.deltaTime;
+           
+            gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
+            gameoverText.CrossFadeAlpha(1, 3, false);
+            gameoverTextSubtitle.CrossFadeAlpha(1, 5, false);
+
+            // Change the subtitles according to how the game is lost
+            if (playerDie == true)
+            {
+                gameoverTextSubtitle.text = "You Died";
+            }
+
+            if (Level1Controller.instance.wallDestroyed == true)
+            {
+                gameoverTextSubtitle.text = "Wall Destroyed";
+            }
+
+            if (gameoverTime > gameOverWaitTime)
+            {
+                //load checkpoint here(after a while) (if want do buttons then change the code
+                //SceneManager.LoadScene("Gate of Telluris");
+            }
+
+        }
+        #endregion
+
+
+        //Debug.Log (currentScene);
 	}
 
 	public void Save(){
