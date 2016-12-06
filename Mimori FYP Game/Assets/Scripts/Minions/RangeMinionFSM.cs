@@ -206,10 +206,11 @@ public class RangeMinionFSM : MonoBehaviour {
 
 			// Add velocity to the bullet
 			bullet.transform.LookAt(player);
-			bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 10;
-			//bullet.transform.position = Vector3.MoveTowards(shootPoint.position, player.transform.position, Time.deltaTime * 10);
-			//opponent.getHit(damage);
-			impacted = true;
+			bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 50;
+            //bullet.transform.position = Vector3.MoveTowards(shootPoint.position, player.transform.position, Time.deltaTime * 10);
+            //opponent.getHit(damage);
+            player.GetComponent<Health>().currentHealth -= damage/2;
+            impacted = true;
 		}
 	}
 

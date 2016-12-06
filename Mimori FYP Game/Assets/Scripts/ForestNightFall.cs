@@ -11,7 +11,9 @@ public class ForestNightFall : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider obj){
-		ForestNightFallActivate = true;	
+        if (obj.gameObject.tag == "Player") {
+            ForestNightFallActivate = true;
+        }
 	}
 
 	// Update is called once per frame

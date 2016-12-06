@@ -45,6 +45,7 @@ public class Player : MonoBehaviour {
 	GameObject interactingObj;
 	Shader outline;
 	Shader normal;
+	public Shader unoOutline;
 	RaycastHit tempHit;
 	float shootDelay = 0;
 
@@ -179,17 +180,19 @@ public class Player : MonoBehaviour {
 				//Debug.Log (" Looking At " + hit.collider.name.ToString());
 				tempHit = hit;
 				if (tempHit.collider != null) {
-					tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.shader = outline;
+					//tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.shader = outline;
+					tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.SetColor("_OutlineColor",Color.green);
 				}
 
-				if (!interactText.active) {
-					interactText.active = true;
+				if (!interactText.activeSelf) {
+					interactText.gameObject.SetActive(true);
 				}
 				if (Input.GetKeyDown (KeyCode.F)) {
 					if (hit.collider.name == "enmarDead") {
 						eoeParticle.SetActive (true);
 						eoe.SetActive (true);
-						hit.collider.GetComponent<FadeObjectInOut> ().FadeOut (4f);
+						//hit.collider.GetComponent<FadeObjectInOut> ().FadeOut (4f);
+						hit.collider.GetComponent<FadeObjectInOut>().interacted = true;
 						hit.collider.tag = "Untagged";
 					}
 
@@ -201,13 +204,17 @@ public class Player : MonoBehaviour {
 					if (hit.collider.name == "Door_a") {
 						hit.collider.GetComponent<Animation> ().Play ();
 					}
+                    if (hit.collider.name == "chest_close") {
+                        hit.collider.gameObject.SetActive(false);
+                    }
 				}
 			} else {
 				if (tempHit.collider != null) {
-					tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.shader = normal;
+					//tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.shader = unoOutline;
+					tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.SetColor("_OutlineColor",Color.black);
 				}
-				if (interactText.active) {
-					interactText.active = false;
+				if (interactText.activeSelf) {
+					interactText.gameObject.SetActive(false);
 				}
 			}
 
