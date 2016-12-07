@@ -101,6 +101,10 @@ public class EnmarController : MonoBehaviour {
 
     public GameObject fpsCamera;
 
+    public GameObject dustParticles;
+    [HideInInspector]
+    public GameObject dustParticlesGO;
+
     bool isPlayerGrounded;
     #endregion
 
@@ -121,8 +125,6 @@ public class EnmarController : MonoBehaviour {
         enmarAnim = gameObject.GetComponent<Animator>();
         enmarCurrentHealth = enmarMaxHealth;
 
-        rightHand.SetActive(false);
-        leftHand.SetActive(false);
         //enmarState = FSMState.Attacking;
         
 
@@ -184,6 +186,7 @@ public class EnmarController : MonoBehaviour {
                         
                         isLeftHandAttack = false;
                         isRightHandAttack = false;
+                        
                         attackTime += Time.deltaTime;
                         if (attackTime > attackIntervalDelay)
                         {
@@ -245,11 +248,11 @@ public class EnmarController : MonoBehaviour {
                     {
                         if(isRightHandAttack == true)
                         {
-                            iTween.RotateTo(gameObject, new Vector3(0, 143, 0), 3);
+                            iTween.RotateTo(gameObject, new Vector3(0, 128.257f, 0), 3);
                         }
                         if(isLeftHandAttack == true)
                         {
-                            iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
+                            //iTween.RotateTo(gameObject, new Vector3(0, 130.724f, 0), 3);
                         }
 
                         tempTime += Time.deltaTime;
@@ -258,7 +261,9 @@ public class EnmarController : MonoBehaviour {
                             tempTime = 0;
                             enmarAnim.SetTrigger("FinishedRightAttack");
                             enmarAnim.SetTrigger("FinishedLeftAttack");
+                            //ResetRotation();ds
                             enmarState = FSMState.AttackDelayState;
+                            Destroy(dustParticlesGO);
                         }
                     }
                     break;
@@ -275,6 +280,7 @@ public class EnmarController : MonoBehaviour {
                                     //    DetectFloorBelowPlayer();
                                     //    GetPlayerLocation();
                                     //    ShowLaserWarningCircle();
+                                        attackTime = 0;
                                         laserStatus = LaserState.Charging;
                                    // }
 
@@ -294,7 +300,7 @@ public class EnmarController : MonoBehaviour {
 
                                     chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
 
-                                    if (laserChargeTime > 6)
+                                    if (laserChargeTime > 8)
                                     {
                                         if (isPlayerGrounded == true)
                                         {
@@ -341,6 +347,7 @@ public class EnmarController : MonoBehaviour {
                 case FSMState.Dying:
                     {
                         enmarAnim.SetBool("EnmarDead", true);
+                        Destroy(laserChargeGO);
                         //iTween.RotateTo(gameObject, new Vector3(0, 80, 0), 3);
                     }
                     break;
@@ -468,12 +475,25 @@ public class EnmarController : MonoBehaviour {
 
     public void shakeCamera()
     {
-        player.GetComponent<CameraShake>().ShakeCamera(0.1f, 0.1f);
+        player.GetComponent<CameraShake>().ShakeCamera(0.2f, 0.2f);
     }
 
     public void ResetRotation()
     {
         iTween.RotateTo(gameObject, new Vector3(0, 136.638f, 0), 3);
+    }
+
+    public void SpawnDustParticle()
+    {
+        if (isRightHandAttack)
+        {
+            dustParticlesGO = (GameObject)Instantiate(dustParticles, rightHand.transform.position, rightHand.transform.rotation);
+        }
+
+        if (isLeftHandAttack)
+        {
+            dustParticlesGO = (GameObject)Instantiate(dustParticles, leftHand.transform.position, leftHand.transform.rotation);
+        }
     }
    
 }
