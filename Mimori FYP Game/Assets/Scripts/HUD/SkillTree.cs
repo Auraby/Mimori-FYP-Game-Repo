@@ -56,6 +56,34 @@ public class SkillTree : MonoBehaviour {
 	public Button SpeedActive2_Btn;
 	public Button SpeedPassive1_Btn;
 
+	//Execute Spells/Cooldowns
+	public Image spell1;
+	public Image spell2;
+	public Image spell3;
+	public Image spell4;
+	//Spell Cooldown
+	public float s1cooldown;
+	public float s2cooldown;
+	public float s3cooldown;
+	public float s4cooldown;
+	public bool spell1activate;
+	public bool spell2activate;
+	public bool spell3activate;
+	public bool spell4activate;
+
+	//Spell Effects prefab 
+	public GameObject skilleffect1;
+	public GameObject skilleffect2;
+	public GameObject skilleffect3;
+	public GameObject skilleffect4;
+
+	//Temp Spell Storing
+	private GameObject Skillspelleffect1;
+	private GameObject Skillspelleffect2;
+	private GameObject Skillspelleffect3;
+	private GameObject Skillspelleffect4;
+
+
 	//Stats
 	public float incSpeed;
 	//public Toggle ChargeShot;
@@ -85,10 +113,14 @@ public class SkillTree : MonoBehaviour {
 
 	public bool disableContSkillP;
 
+	public GameObject playerobj;
+
+	Slot slot;
 
 	// Use this for initialization
 	void Start () {
 		checkSkillPoint = 10;
+
 	}
 
 
@@ -100,6 +132,77 @@ public class SkillTree : MonoBehaviour {
 			//Display SkillTree
 		}
 		SkillPointsTXT.text = checkSkillPoint.ToString ();
+
+		//SPELL ABILITIES
+		if (Input.GetKeyDown (KeyCode.Alpha1)) {
+				//Debug.Log (gameObject.GetComponent<Slot> ().getgameobject (1));
+				//string currSlotSpellName = gameObject.GetComponent<Slot> ().getgameobject (1);
+				//switch (currSlotSpellName) {
+				Skillspelleffect1 = (GameObject)Instantiate (skilleffect1, playerobj.transform.position, Quaternion.identity);
+				spell1.gameObject.SetActive (true);
+				spell1activate = true;
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha2)){
+				Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
+				spell2.gameObject.SetActive (true);
+				spell2activate = true;
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha3)){
+			Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
+				spell3.gameObject.SetActive (true);
+
+				spell3activate = true;
+				//Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
+		}
+		if (Input.GetKeyDown (KeyCode.Alpha4)) {
+			Skillspelleffect4 = (GameObject)Instantiate (skilleffect4, playerobj.transform.position, Quaternion.identity);
+			spell4.gameObject.transform.SetParent (playerobj.transform);
+			Skillspelleffect4.transform.SetAsFirstSibling ();
+				spell4.gameObject.SetActive (true);
+				spell4activate = true;
+				//Skillspelleffect4 = (GameObject)Instantiate (skilleffect4, playerobj.transform.position, Quaternion.identity);
+		
+		}
+		if (spell1activate == true && spell1.fillAmount <= 0) {
+			Destroy (Skillspelleffect1);
+			spell1activate = false;
+			spell1.gameObject.SetActive (false);
+			spell1.fillAmount = 1.0f;
+		}
+		if(spell1activate == true){
+			spell1.fillAmount -= 0.5f * Time.deltaTime;
+		}
+
+		if (spell2activate == true && spell2.fillAmount <= 0) {
+			Destroy (Skillspelleffect2);
+			spell2activate = false;
+			spell2.gameObject.SetActive (false);
+			spell2.fillAmount = 1.0f;
+		}
+		if(spell2activate == true){
+			spell2.fillAmount -= 0.5f * Time.deltaTime;
+		}
+
+		if (spell3activate == true && spell3.fillAmount <= 0) {
+			Destroy (Skillspelleffect3);
+			spell3activate = false;
+			spell3.gameObject.SetActive (false);
+			spell3.fillAmount = 1.0f;
+		}
+		if(spell3activate == true){
+			spell3.fillAmount -= 0.5f * Time.deltaTime;
+		}
+
+		if (spell4activate == true && spell4.fillAmount <= 0) {
+			Destroy (Skillspelleffect4);
+			spell4activate = false;
+			spell4.gameObject.SetActive (false);
+			spell4.fillAmount = 1.0f;
+		}
+		if(spell4activate == true){
+			spell4.fillAmount -= 0.5f * Time.deltaTime;
+		}
+
 	}
 
 

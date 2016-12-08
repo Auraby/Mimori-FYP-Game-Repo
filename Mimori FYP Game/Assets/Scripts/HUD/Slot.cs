@@ -21,27 +21,36 @@ public class Slot : MonoBehaviour , IDropHandler{
 	private GameObject currskill;
 	private GameObject newskill;
 
+	private GameObject[] slotobjectlist = new GameObject[4];
+	private bool[] slotobjectisTaken = new bool[4];
 	void Start(){
 		i = 0;
 	}
 
 	public void ManageSlots(GameObject newskills){
-
 		if (this.gameObject == slot1) {
 			DragHandler.slotchecklist [0] = 1;
 			DragHandler.SlotIsTaken [0] = true;
+			slotobjectisTaken[0] = true;
+			slotobjectlist [0] = DragHandler.itemBeingDragged.gameObject;
 			currskill = newskills;
 		} else if (this.gameObject == slot2) {
 			DragHandler.slotchecklist [1] = 2;
 			DragHandler.SlotIsTaken [1] = true;
+			slotobjectisTaken[1] = true;
+			slotobjectlist [1] = DragHandler.itemBeingDragged.gameObject;
 			currskill = newskills;
 		} else if (this.gameObject == slot3) {
 			DragHandler.slotchecklist [2] = 3;
 			DragHandler.SlotIsTaken [2] = true;
+			slotobjectisTaken[2] = true;
+			slotobjectlist [2] = DragHandler.itemBeingDragged.gameObject;
 			currskill = newskills;
 		} else {
 			DragHandler.slotchecklist [3] = 4;
 			DragHandler.SlotIsTaken [3] = true;
+			slotobjectisTaken[3] = true;
+			slotobjectlist [3] = DragHandler.itemBeingDragged.gameObject;
 			currskill = newskills;
 		}
 	}
@@ -49,7 +58,6 @@ public class Slot : MonoBehaviour , IDropHandler{
 	public void DeleteSlots(){
 		if (this.gameObject == slot1) {
 			Destroy (currskill);
-
 		} else if (this.gameObject == slot2) {
 			Destroy (currskill);
 		
@@ -62,6 +70,21 @@ public class Slot : MonoBehaviour , IDropHandler{
 		}
 
 	}
+
+
+	public string getgameobject(int index){
+		if (index == 1) {
+			return slotobjectlist [0].gameObject.name.ToString();
+		} else if (index == 2) {
+			return slotobjectlist [1].gameObject.name.ToString();
+		} else if (index == 3) {
+			return slotobjectlist [2].gameObject.name.ToString();
+		} else {
+			return slotobjectlist [3].gameObject.name.ToString();
+		}
+		
+	}
+
 
 	#region IDropHandler implementation
 
@@ -72,6 +95,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			if (DragHandler.SlotIsTaken [i] == false) {
 				//DragHandler.slotchecklist [i] = 1;
 				DragHandler.SlotIsTaken [i] = true;
+
 				//DragHandler.getGameObjectSkill [i] = DragHandler.itemBeingDragged.gameObject;
 				//DragHandler.skillName [i] = DragHandler.itemBeingDragged.name;
 				//DragHandler.CurrSlotItem = DragHandler.itemBeingDragged.gameObject;
