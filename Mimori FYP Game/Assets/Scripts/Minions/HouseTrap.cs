@@ -1,21 +1,25 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HouseTrap : MonoBehaviour {
-	public GameObject chest;
+public class HouseTrap : MonoBehaviour
+{
+    public GameObject chest;
     public Transform player;
     public GameObject monster;
     public GameObject spawn1, spawn2;
 
     bool spawned = false;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (!chest.activeSelf && !spawned) {
+    // Use this for initialization
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!chest.activeSelf && !spawned)
+        {
             GameObject spawnedMon1 = (GameObject)Instantiate(monster, spawn1.transform.position, spawn1.transform.rotation);
             GameObject spawnedMon2 = (GameObject)Instantiate(monster, spawn2.transform.position, spawn2.transform.rotation);
 
@@ -30,5 +34,9 @@ public class HouseTrap : MonoBehaviour {
 
             spawned = true;
         }
-	}
+        if (GameController.gameController.houseTrapActivated)
+        {
+            chest.SetActive(false);
+        }
+    }
 }
