@@ -43,7 +43,7 @@ public class RangeMinionFSM : MonoBehaviour {
 	private NavMeshAgent nav;
 	private Animation anim;
 
-	private const float ARRIVE_AT_GOAL = 1f;
+	private const float ARRIVE_AT_GOAL = 10f;
 	private const float TURN_LIMIT = 60;
 	private const float ANIM_DAMP = 0.5f;
 
@@ -64,6 +64,7 @@ public class RangeMinionFSM : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+        Debug.Log(currentState);
 		if (Vector3.Distance (transform.position, boundPoint.transform.position) > boundRange) {
 			goBack = true;
 		} else if(Vector3.Distance (transform.position, boundPoint.transform.position) < boundRange/2){

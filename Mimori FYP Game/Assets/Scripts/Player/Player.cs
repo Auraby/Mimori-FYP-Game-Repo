@@ -6,11 +6,19 @@ using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
 
 public class Player : MonoBehaviour {
-	public Camera camera;
+    //demo variables
+    public GameObject canvas;
+    public Image gameoverBlackPanel;
+    public Text gameoverText;
+    public Text gameoverTextSubtitle;
+    //-------------
+
+    public Camera camera;
 	public GameObject interactText;
 	public GameObject crosshair;
 	public GameObject gun;
 	public GameObject bulletPrefab;
+    public GameObject muzzleFlash;
 	public Transform gunEnd;
 	public Image eoeImg;
 
@@ -86,6 +94,30 @@ public class Player : MonoBehaviour {
 		if (shootDelay > 0) {
 			shootDelay -= Time.deltaTime;
 		}
+
+        //demo code
+        if (Input.GetKeyDown(KeyCode.L)) {
+            if (canvas.activeSelf) {
+                gun.SetActive(false);
+                canvas.SetActive(false);
+            }
+
+            else
+            {
+                gameoverBlackPanel.canvasRenderer.SetAlpha(0.0f);
+                gameoverText.canvasRenderer.SetAlpha(0.0f);
+                gameoverTextSubtitle.canvasRenderer.SetAlpha(0.0f);
+                gun.SetActive(true);
+                canvas.SetActive(true);
+            }
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.K)) {
+            this.gameObject.GetComponent<Health>().currentHealth = 100;
+        }
+        //--------
+
 		if (Input.GetMouseButtonDown (2)) {
 			if (isIronSight < 1) {
 				isIronSight++;
@@ -159,9 +191,10 @@ public class Player : MonoBehaviour {
 				} else {
 					// Create the Bullet from the Bullet Prefab
 					GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
+                    //GameObject muzzle = (GameObject)Instantiate(muzzleFlash, gunEnd.position, gunEnd.rotation,gunEnd);
 
 					// Add velocity to the bullet
-					bullet.GetComponent<Rigidbody> ().velocity = gunEnd.forward * 150;
+					bullet.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
 				}
 				// Destroy the bullet after 2 seconds
 				//Destroy(bulshoolet, 2.0f);
