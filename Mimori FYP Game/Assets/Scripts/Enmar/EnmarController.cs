@@ -101,6 +101,13 @@ public class EnmarController : MonoBehaviour {
 
     public GameObject fpsCamera;
 
+    public GameObject dustParticles;
+    [HideInInspector]
+    public GameObject dustParticlesGO;
+
+    public GameObject leftSide;
+    public GameObject rightSide;
+
     bool isPlayerGrounded;
     #endregion
 
@@ -121,8 +128,6 @@ public class EnmarController : MonoBehaviour {
         enmarAnim = gameObject.GetComponent<Animator>();
         enmarCurrentHealth = enmarMaxHealth;
 
-        rightHand.SetActive(false);
-        leftHand.SetActive(false);
         //enmarState = FSMState.Attacking;
         
 
@@ -184,6 +189,7 @@ public class EnmarController : MonoBehaviour {
                         
                         isLeftHandAttack = false;
                         isRightHandAttack = false;
+                        Destroy(laserWarningCircleGO);
                         attackTime += Time.deltaTime;
                         if (attackTime > attackIntervalDelay)
                         {
@@ -246,10 +252,12 @@ public class EnmarController : MonoBehaviour {
                         if(isRightHandAttack == true)
                         {
                             iTween.RotateTo(gameObject, new Vector3(0, 143, 0), 3);
+                            
                         }
                         if(isLeftHandAttack == true)
                         {
                             iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
+                            
                         }
 
                         tempTime += Time.deltaTime;
@@ -258,7 +266,9 @@ public class EnmarController : MonoBehaviour {
                             tempTime = 0;
                             enmarAnim.SetTrigger("FinishedRightAttack");
                             enmarAnim.SetTrigger("FinishedLeftAttack");
+                            //ResetRotation();ds
                             enmarState = FSMState.AttackDelayState;
+                            Destroy(dustParticlesGO);
                         }
                     }
                     break;
@@ -275,6 +285,7 @@ public class EnmarController : MonoBehaviour {
                                     //    DetectFloorBelowPlayer();
                                     //    GetPlayerLocation();
                                     //    ShowLaserWarningCircle();
+                                        attackTime = 0;
                                         laserStatus = LaserState.Charging;
                                    // }
 
@@ -294,7 +305,7 @@ public class EnmarController : MonoBehaviour {
 
                                     chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
 
-                                    if (laserChargeTime > 6)
+                                    if (laserChargeTime > 8)
                                     {
                                         if (isPlayerGrounded == true)
                                         {
@@ -341,6 +352,8 @@ public class EnmarController : MonoBehaviour {
                 case FSMState.Dying:
                     {
                         enmarAnim.SetBool("EnmarDead", true);
+                        Destroy(laserChargeGO);
+                        Destroy(laserWarningCircleGO);
                         //iTween.RotateTo(gameObject, new Vector3(0, 80, 0), 3);
                     }
                     break;
@@ -393,7 +406,7 @@ public class EnmarController : MonoBehaviour {
         laserChargeGO = (GameObject)Instantiate(laserCharge, laserOrigin.transform.position, laserOrigin.transform.rotation,laserOrigin.transform);
         laserChargeGO.SetActive(true);
         chargePulse = laserChargeGO.transform.GetChild(0).transform;
-        chargePulse.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        //chargePulse.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         laserChargeGO.transform.position = laserOrigin.transform.position;
         laserChargeGO.transform.rotation = laserOrigin.transform.rotation; 
        
@@ -420,6 +433,7 @@ public class EnmarController : MonoBehaviour {
         //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(rightHand.transform.position.x, 20, rightHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackRight");
         isRightHandAttack = true;
+        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, rightSide.transform.position, rightSide.transform.rotation);
         //enmarState = FSMState.AttackDelayState;
     }
 
@@ -430,6 +444,7 @@ public class EnmarController : MonoBehaviour {
         //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(leftHand.transform.position.x, 20, leftHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackLeft");
         isLeftHandAttack = true;
+        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, leftSide.transform.position, leftSide.transform.rotation);
         //iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
         //enmarState = FSMState.AttackDelayState;
     }
@@ -463,17 +478,30 @@ public class EnmarController : MonoBehaviour {
 
     public void DamageWall()
     {
-        Level1Controller.instance.currentWallHealth -= wallDamage;
+        //Level1Controller.instance.currentWallHealth -= wallDamage;
     }
 
     public void shakeCamera()
     {
-        player.GetComponent<CameraShake>().ShakeCamera(0.1f, 0.1f);
+        player.GetComponent<CameraShake>().ShakeCamera(0.2f, 0.2f);
     }
 
     public void ResetRotation()
     {
         iTween.RotateTo(gameObject, new Vector3(0, 136.638f, 0), 3);
+    }
+
+    public void SpawnDustParticle()
+    {
+        if (isRightHandAttack)
+        {
+            dustParticlesGO = (GameObject)Instantiate(dustParticles, rightHand.transform.position, rightHand.transform.rotation);
+        }
+
+        if (isLeftHandAttack)
+        {
+            dustParticlesGO = (GameObject)Instantiate(dustParticles, leftHand.transform.position, leftHand.transform.rotation);
+        }
     }
    
 }

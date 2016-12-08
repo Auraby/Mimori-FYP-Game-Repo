@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EyeOfEnmarSkill : MonoBehaviour {
 	public GameObject eoeSkillPref;
@@ -23,9 +24,14 @@ public class EyeOfEnmarSkill : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (eoeImg.IsActive()) {
-			EyeOfEnmar ();
-		}
+        if(SceneManager.GetActiveScene().name == "Mimori")
+        {
+            if (eoeImg.IsActive())
+            {
+                EyeOfEnmar();
+            }
+        }
+		
 
 	}
 

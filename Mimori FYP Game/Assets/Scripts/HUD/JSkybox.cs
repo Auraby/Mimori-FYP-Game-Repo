@@ -135,7 +135,6 @@ public class JSkybox : MonoBehaviour {
 		if (minutes < 10){  
 			mins = "0"+minutes;  
 		}  
-		GUI.Button(new Rect(500, 20, 100, 26), currentPhase.ToString() +" : "+jam+":"+mins);  
 	}  
 
 	// Update is called once per frame  
