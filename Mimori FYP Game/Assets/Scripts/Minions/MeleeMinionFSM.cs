@@ -45,7 +45,7 @@ public class MeleeMinionFSM : MonoBehaviour
 	private NavMeshAgent nav;
 	private Animation anim;
 	
-	private const float ARRIVE_AT_GOAL = 1f;
+	private const float ARRIVE_AT_GOAL = 3f;
 	private const float TURN_LIMIT = 60;
 	private const float ANIM_DAMP = 0.5f;
 
@@ -69,7 +69,7 @@ public class MeleeMinionFSM : MonoBehaviour
 	void Update () 
 	{
 		//Debug.Log (Vector3.Distance (transform.position, boundPoint.transform.position));
-		//Debug.Log(stunTime);
+		//Debug.Log(currentState);
 		if (Vector3.Distance (transform.position, boundPoint.transform.position) > boundRange) {
 			goBack = true;
 		} else if(Vector3.Distance (transform.position, boundPoint.transform.position) < boundRange/2){
@@ -211,7 +211,9 @@ public class MeleeMinionFSM : MonoBehaviour
 	//added code
 	void attack()
 	{
-		if (GetComponent<Animation>() [attackClip.name].time > GetComponent<Animation>() [attackClip.name].length * impactTime&&!impacted&&GetComponent<Animation>()[attackClip.name].time<0.9*GetComponent<Animation>()[attackClip.name].length) 
+		if (GetComponent<Animation>() [attackClip.name].time > GetComponent<Animation>() [attackClip.name].length * impactTime &&
+            !impacted &&
+            GetComponent<Animation>()[attackClip.name].time<0.9*GetComponent<Animation>()[attackClip.name].length) 
 		{
             //opponent.getHit(damage);
             player.GetComponent<Health>().currentHealth -= damage;
