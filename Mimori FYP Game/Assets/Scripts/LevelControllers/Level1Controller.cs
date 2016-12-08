@@ -29,6 +29,9 @@ public class Level1Controller : MonoBehaviour {
     public bool playerDied = false;
     public bool wallDestroyed = false;
 
+    [HideInInspector]
+    public AsyncOperation aSyncOp;
+
     public static Level1Controller instance { get; set; }
 	// Use this for initialization
 	void Start () {
@@ -44,7 +47,10 @@ public class Level1Controller : MonoBehaviour {
         levelProgress = LevelState.Start;
         currentWallHealth = wallMaxHealth;
         objectiveSlider.value = currentWallHealth;
-	}
+
+        aSyncOp = SceneManager.LoadSceneAsync("Mimori");
+        aSyncOp.allowSceneActivation = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {

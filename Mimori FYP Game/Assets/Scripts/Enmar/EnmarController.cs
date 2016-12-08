@@ -105,6 +105,9 @@ public class EnmarController : MonoBehaviour {
     [HideInInspector]
     public GameObject dustParticlesGO;
 
+    public GameObject leftSide;
+    public GameObject rightSide;
+
     bool isPlayerGrounded;
     #endregion
 
@@ -186,7 +189,7 @@ public class EnmarController : MonoBehaviour {
                         
                         isLeftHandAttack = false;
                         isRightHandAttack = false;
-                        
+                        Destroy(laserWarningCircleGO);
                         attackTime += Time.deltaTime;
                         if (attackTime > attackIntervalDelay)
                         {
@@ -248,11 +251,13 @@ public class EnmarController : MonoBehaviour {
                     {
                         if(isRightHandAttack == true)
                         {
-                            iTween.RotateTo(gameObject, new Vector3(0, 128.257f, 0), 3);
+                            iTween.RotateTo(gameObject, new Vector3(0, 143, 0), 3);
+                            
                         }
                         if(isLeftHandAttack == true)
                         {
-                            //iTween.RotateTo(gameObject, new Vector3(0, 130.724f, 0), 3);
+                            iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
+                            
                         }
 
                         tempTime += Time.deltaTime;
@@ -348,6 +353,7 @@ public class EnmarController : MonoBehaviour {
                     {
                         enmarAnim.SetBool("EnmarDead", true);
                         Destroy(laserChargeGO);
+                        Destroy(laserWarningCircleGO);
                         //iTween.RotateTo(gameObject, new Vector3(0, 80, 0), 3);
                     }
                     break;
@@ -400,7 +406,7 @@ public class EnmarController : MonoBehaviour {
         laserChargeGO = (GameObject)Instantiate(laserCharge, laserOrigin.transform.position, laserOrigin.transform.rotation,laserOrigin.transform);
         laserChargeGO.SetActive(true);
         chargePulse = laserChargeGO.transform.GetChild(0).transform;
-        chargePulse.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        //chargePulse.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         laserChargeGO.transform.position = laserOrigin.transform.position;
         laserChargeGO.transform.rotation = laserOrigin.transform.rotation; 
        
@@ -427,6 +433,7 @@ public class EnmarController : MonoBehaviour {
         //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(rightHand.transform.position.x, 20, rightHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackRight");
         isRightHandAttack = true;
+        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, rightSide.transform.position, rightSide.transform.rotation);
         //enmarState = FSMState.AttackDelayState;
     }
 
@@ -437,6 +444,7 @@ public class EnmarController : MonoBehaviour {
         //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(leftHand.transform.position.x, 20, leftHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackLeft");
         isLeftHandAttack = true;
+        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, leftSide.transform.position, leftSide.transform.rotation);
         //iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
         //enmarState = FSMState.AttackDelayState;
     }
@@ -470,7 +478,7 @@ public class EnmarController : MonoBehaviour {
 
     public void DamageWall()
     {
-        Level1Controller.instance.currentWallHealth -= wallDamage;
+        //Level1Controller.instance.currentWallHealth -= wallDamage;
     }
 
     public void shakeCamera()
