@@ -74,6 +74,16 @@ public class JSkybox : MonoBehaviour {
 
 	public Material skyboxmaterial;
 	public bool isForestNightFall;
+
+    public GameObject player;
+    public GameObject dest;
+
+    //Rotation Variable
+    Quaternion originalRot;
+    //Vector3 originalRot;
+    Quaternion targetRot;
+    //Vector3 targetRot;
+    
 	/// Initializes working variables and performs starting calculations.  
 	void Initialize()  
 	{  
@@ -88,7 +98,9 @@ public class JSkybox : MonoBehaviour {
 		timePerHour = dayCycleLength/hoursPerDay;  
 		mainlight = GetComponent<Light> ();
 		if (mainlight.GetComponent<Light>() != null)  
-		{ lightIntensity = mainlight.intensity; }  
+		{ lightIntensity = mainlight.intensity; }
+
+        
 	}  
 
 	/// Sets the script control fields to reasonable default values for an acceptable day/night cycle effect.  
@@ -106,8 +118,12 @@ public class JSkybox : MonoBehaviour {
 
 	// Use this for initialization  
 	void Start()  
-	{  
-		Initialize();  
+	{
+        originalRot = transform.rotation;
+        //originalRot = transform.eulerAngles;
+        targetRot = Quaternion.AngleAxis(30, new Vector3(0, 0, 1));
+        //targetRot = new Vector3(65f, 0, 0);
+        Initialize();  
 	}  
 
 	void OnGUI(){  
@@ -124,7 +140,8 @@ public class JSkybox : MonoBehaviour {
 
 	// Update is called once per frame  
 	void Update()  
-	{  
+	{
+        //Debug.Log(Vector3.Distance(player.transform.position, dest.transform.position));
 		// Rudementary phase-check algorithm:  
 		if (currentCycleTime > nightTime && currentPhase == DayPhase.Dusk)  
 		{  
@@ -153,16 +170,26 @@ public class JSkybox : MonoBehaviour {
 		UpdateFog();  
 		UpdateSkyboxBlendFactor ();
 		UpdateDaylight ();
-		isForestNightFall = ForestNightFall.instance.ForestNightFallActivate;
+        //isForestNightFall = ForestNightFall.instance.ForestNightFallActivate;
+        isForestNightFall = DayNightDistance.instance.ForestNightFallActivate;
 		if (isForestNightFall) {
-			currentCycleTime += Time.deltaTime * 11.5f;  
-			Debug.Log (currentCycleTime);
-			currentCycleTime = currentCycleTime % dayCycleLength;  
-			// Update the current cycle time: 
-			//rotates the sun
-			transform.RotateAround (Vector3.zero, Vector3.right, Time.deltaTime * 2.0f);
-			transform.LookAt (Vector3.zero);
-		}
+            //currentCycleTime += Time.deltaTime * 80f;
+            currentCycleTime = DayNightDistance.instance.distance * 1500;
+            
+            currentCycleTime = currentCycleTime % dayCycleLength;
+            // Update the current cycle time: 
+            //rotates the sun
+            //transform.RotateAround(Vector3.zero, Vector3.right, DayNightDistance.instance.distance * 10);
+            //transform.rotation = Quaternion.Lerp(originalRot, targetRot, DayNightDistance.instance.distance);
+            this.gameObject.GetComponent<Light>().intensity = Vector3.Distance(player.transform.position,dest.transform.position)/214;
+            //originalRot = new Vector3(
+            // Mathf.LerpAngle(originalRot.x, targetRot.x, DayNightDistance.instance.distance),
+            // Mathf.LerpAngle(originalRot.y, targetRot.y, DayNightDistance.instance.distance),
+            // Mathf.LerpAngle(originalRot.z, targetRot.z, DayNightDistance.instance.distance));
+
+            //transform.eulerAngles = originalRot;
+            //transform.LookAt(Vector3.zero);
+        }
 
 	}  
 
@@ -208,13 +235,13 @@ public class JSkybox : MonoBehaviour {
 	/// directional light, if any.  
 	private void UpdateDaylight()  
 	{  
-		if (currentPhase == DayPhase.Dawn)  
-		{  
-			float relativeTime = currentCycleTime - dawnTime;  
-			RenderSettings.ambientLight = Color.Lerp(fullDark, fullLight, relativeTime / halfquarterDay);  
-			if (mainlight.GetComponent<Light>() != null)  
-			{ mainlight.intensity = lightIntensity * (relativeTime / halfquarterDay); }  
-		}  
+		if (currentPhase == DayPhase.Dawn)
+        {
+            float relativeTime = currentCycleTime - dawnTime;
+            RenderSettings.ambientLight = Color.Lerp(fullDark, fullLight, relativeTime / halfquarterDay);
+            if (mainlight.GetComponent<Light>() != null)
+            { mainlight.intensity = lightIntensity * (relativeTime / halfquarterDay); }
+        }  
 		else if (currentPhase == DayPhase.Dusk)  
 		{  
 			float relativeTime = currentCycleTime - duskTime;  
@@ -225,7 +252,8 @@ public class JSkybox : MonoBehaviour {
 
 		//transform.Rotate(Vector3.up * ((Time.deltaTime / dayCycleLength) * 360.0f), Space.Self);  
 		if (isForestNightFall) {
-			transform.RotateAround (rotation.position, Vector3.forward, ((Time.deltaTime / dayCycleLength) * 360.0f));  
+                //transform.RotateAround(rotation.position, Vector3.forward, ((Time.deltaTime / dayCycleLength) * 360.0f));
+			
 		}
 	}  
 

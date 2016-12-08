@@ -21,17 +21,7 @@ public class Level1Controller : MonoBehaviour {
     public Image openingBlackScreen;
     public Image openingblackTopPanel, openingblackBottomPanel;
     public Text openingText;
-    public float startTime = 0f;
-
-    [Header("GameOverScreen Variables")]
-    public GameObject gameOverScreen;
-    public Image gameoverBlackPanel;
-    public Text gameoverText;
-    public Text gameoverTextSubtitleWall;
-    public Text gameoverTextSubitilePlayer;
-
-    public float gameOverWaitTime = 6f;
-    public float gameoverTime = 0f;
+    public float startTime;
 
     public bool playerDied = false;
     public bool wallDestroyed = false;
@@ -44,11 +34,7 @@ public class Level1Controller : MonoBehaviour {
         //Starting Cinematics
         objectiveSlider.gameObject.SetActive(false);
 
-        //GameOver Screen
-        gameoverBlackPanel.canvasRenderer.SetAlpha(0.0f);
-        gameoverText.canvasRenderer.SetAlpha(0.0f);
-        gameoverTextSubtitleWall.canvasRenderer.SetAlpha(0.0f);
-        gameoverTextSubitilePlayer.canvasRenderer.SetAlpha(0.0f);
+        
 
 
         //gameOverScreen.SetActive(false);
@@ -120,28 +106,7 @@ public class Level1Controller : MonoBehaviour {
 
             case LevelState.Lose:
                 {
-                    gameoverTime += Time.deltaTime;
-                    if (playerDied == true)
-                    {
-                           // gameOverScreen.SetActive(true);
-                            gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
-                            gameoverText.CrossFadeAlpha(1, 3, false);
-                            gameoverTextSubitilePlayer.CrossFadeAlpha(1, 5, false);
-                        
-                        if(gameoverTime > gameOverWaitTime)
-                        {
-                            //load checkpoint here
-                            //SceneManager.LoadScene("Gate of Telluris");
-                        }
-                       
-                    }
-
-                    if(wallDestroyed == true)
-                    {
-                        gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
-                        gameoverText.CrossFadeAlpha(1, 3, false);
-                        gameoverTextSubtitleWall.CrossFadeAlpha(1, 5, false);
-                    }
+                    
                 }
                 break;
         }
