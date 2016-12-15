@@ -75,7 +75,7 @@ public class MainMenuController : MonoBehaviour {
 
         optionsMenu.anchoredPosition = new Vector2(335, optionsMenu.anchoredPosition.y);
 
-        aSyncOp = SceneManager.LoadSceneAsync("Mimori");
+        aSyncOp = SceneManager.LoadSceneAsync("Gate of Telluris");
         aSyncOp.allowSceneActivation = false;
 	}
 	
