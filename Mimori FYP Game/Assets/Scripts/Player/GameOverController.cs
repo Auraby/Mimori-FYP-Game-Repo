@@ -34,6 +34,7 @@ public class GameOverController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(loseGame);
         #region Lose Conditions
         //Lose Conditions here
         if (Health.instance.currentHealth <= 0)
