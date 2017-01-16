@@ -22,7 +22,8 @@ public class GameController : MonoBehaviour
     public bool outpost3Captured = false;
     public bool outpost4Captured = false;
     public bool houseTrapActivated = false;
-
+    //Forest of Misery
+    public bool hordeCleared = false;
     // Use this for initialization
     void Awake()
     {
@@ -71,6 +72,8 @@ public class GameController : MonoBehaviour
         pData.o3Captured = outpost3Captured;
         pData.o4Captured = outpost4Captured;
         pData.htActivated = houseTrapActivated;
+        //Save Horde Progress
+        pData.hCleared = hordeCleared;
         //Write the object to the file & close it
         bf.Serialize(file, pData);
         file.Close();
@@ -97,6 +100,8 @@ public class GameController : MonoBehaviour
             outpost3Captured = pData.o3Captured;
             outpost4Captured = pData.o4Captured;
             houseTrapActivated = pData.htActivated;
+            //load horde progress
+            hordeCleared = pData.hCleared;
         }
     }
 
@@ -123,4 +128,6 @@ class PlayerData
     public bool o3Captured = false;
     public bool o4Captured = false;
     public bool htActivated = false;
+    //Forest of Misery
+    public bool hCleared = false;
 }

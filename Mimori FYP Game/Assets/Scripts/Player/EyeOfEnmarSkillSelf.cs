@@ -12,9 +12,21 @@ public class EyeOfEnmarSkillSelf : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other){
-		if (other.gameObject.tag == "MeleeMinion") {
-			Debug.Log ("stun");
-			other.gameObject.GetComponent<MeleeMinionFSM> ().getStun (1);
-		}
-	}
+        if (other.gameObject.tag == "MeleeMinion")
+        {
+            other.gameObject.GetComponent<MeleeMinionFSM>().getStun(1);
+        }
+        if (other.gameObject.tag == "HordeMeleeMinion")
+        {
+            other.gameObject.GetComponent<HordeMeleeMinion>().getStun(1);
+        }
+        if (other.gameObject.tag == "RangeMinion")
+        {
+            other.gameObject.GetComponent<RangeMinionFSM>().getStun(1);
+        }
+        if (other.gameObject.tag == "HordeRangeMinion")
+        {
+            other.gameObject.GetComponent<HordeRangeMinion>().getStun(1);
+        }
+    }
 }

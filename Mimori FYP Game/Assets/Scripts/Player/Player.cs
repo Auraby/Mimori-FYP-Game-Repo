@@ -200,16 +200,16 @@ public class Player : MonoBehaviour {
 				//Destroy(bulshoolet, 2.0f);
 				shootDelay = 0.2f;
 			}
-
-		}
+        }
 
 		//Debug.DrawRay(camera.transform.position, camera.transform.forward * 30, Color.yellow);
 		//Debug.DrawRay(gun.transform.position, gun.transform.forward * 30, Color.yellow);
-		ray = camera.ScreenPointToRay(crosshair.transform.position);
+		//ray = camera.ScreenPointToRay(crosshair.transform.position);
+		ray = new Ray(camera.transform.position, camera.transform.forward);
 		if (Physics.Raycast(ray, out hit)) {
 			// Do something with the object that was hit by the raycast.
 
-			if (hit.collider.tag == "InteractObject" && Vector3.Distance (hit.transform.position, this.gameObject.transform.position) < 5) {
+			if (hit.collider.tag == "InteractObject" && Vector3.Distance (hit.transform.position, this.gameObject.transform.position) < 7) {
 				//Debug.Log (" Looking At " + hit.collider.name.ToString());
 				tempHit = hit;
 				if (tempHit.collider != null) {
@@ -240,6 +240,10 @@ public class Player : MonoBehaviour {
                     if (hit.collider.name == "chest_close") {
                         hit.collider.gameObject.SetActive(false);
                     }
+					if (hit.collider.name == "Generator") {
+						hit.collider.gameObject.SetActive(false);
+						FoMController.timerStart = true;
+					}
 				}
 			} else {
 				if (tempHit.collider != null) {
