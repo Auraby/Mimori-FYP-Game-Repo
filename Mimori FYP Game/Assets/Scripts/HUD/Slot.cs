@@ -11,41 +11,45 @@ public class Slot : MonoBehaviour , IDropHandler{
 		}
 	}*/
 
-	public GameObject slot1;
-	public GameObject slot2;
-	public GameObject slot3;
-	public GameObject slot4;
+	public  static GameObject Slot1;
+	public static GameObject Slot2;
+	public static GameObject Slot3;
+	public static GameObject Slot4;
+	public  static GameObject[] slotobjectlist = new GameObject[4];
+	public  static bool[] slotobjectisTaken = new bool[4]{false, false, false, false};
+	public static int i;
+	private  string getcurrskillname;
+	private  GameObject currskill;
+	private  GameObject newskill;
 
-	public int i;
-
-	private GameObject currskill;
-	private GameObject newskill;
-
-	private GameObject[] slotobjectlist = new GameObject[4];
-	private bool[] slotobjectisTaken = new bool[4];
 	void Start(){
 		i = 0;
+
 	}
 
 	public void ManageSlots(GameObject newskills){
-		if (this.gameObject == slot1) {
+		if (this.gameObject.name == "Slot 1") {
 			DragHandler.slotchecklist [0] = 1;
 			DragHandler.SlotIsTaken [0] = true;
 			slotobjectisTaken[0] = true;
 			slotobjectlist [0] = DragHandler.itemBeingDragged.gameObject;
 			currskill = newskills;
-		} else if (this.gameObject == slot2) {
+			Debug.Log ("ManageSlots1");
+
+		} else if (this.gameObject.name == "Slot 2") {
 			DragHandler.slotchecklist [1] = 2;
 			DragHandler.SlotIsTaken [1] = true;
 			slotobjectisTaken[1] = true;
 			slotobjectlist [1] = DragHandler.itemBeingDragged.gameObject;
 			currskill = newskills;
-		} else if (this.gameObject == slot3) {
+			Debug.Log ("ManageSlots2");
+		} else if (this.gameObject.name == "Slot 3") {
 			DragHandler.slotchecklist [2] = 3;
 			DragHandler.SlotIsTaken [2] = true;
 			slotobjectisTaken[2] = true;
 			slotobjectlist [2] = DragHandler.itemBeingDragged.gameObject;
 			currskill = newskills;
+			Debug.Log ("ManageSlots3");
 		} else {
 			DragHandler.slotchecklist [3] = 4;
 			DragHandler.SlotIsTaken [3] = true;
@@ -54,20 +58,32 @@ public class Slot : MonoBehaviour , IDropHandler{
 			currskill = newskills;
 		}
 	}
-
+		
 	public void DeleteSlots(){
-		if (this.gameObject == slot1) {
-			Destroy (currskill);
-		} else if (this.gameObject == slot2) {
-			Destroy (currskill);
 		
-		} else if (this.gameObject == slot3) {
-			Destroy (currskill);
-		
-		} else {
-			Destroy (currskill);
-		
+		for (int c = 0; c < 4; c++) {
+			if (slotobjectlist [c].gameObject.name.Contains (DragHandler.itemBeingDragged.gameObject.name)) {
+				Debug.Log ("GAMEOBJECT DELETED");
+				slotobjectisTaken [c] = false;
+				Destroy (slotobjectlist [c].gameObject);
+				break;
+			} else if (slotobjectlist [c].gameObject == null) {
+
+			}
 		}
+
+		/*if (this.gameObject == Slot1) {
+			Destroy (currskill);
+		} else if (this.gameObject == Slot2) {
+			Destroy (currskill);
+
+		} else if (this.gameObject == Slot3) {
+			Destroy (currskill);
+		} else if (this.gameObject == Slot4) {
+			Destroy (currskill);
+		}*/
+
+
 
 	}
 
@@ -90,9 +106,9 @@ public class Slot : MonoBehaviour , IDropHandler{
 
 	public void OnDrop (PointerEventData eventData)
 	{
+		newskill = DragHandler.itemBeingDragged.gameObject;
 		for (i = 0; i < DragHandler.slotchecklist.Length; i++) {
-			newskill = DragHandler.itemBeingDragged.gameObject;
-			if (DragHandler.SlotIsTaken [i] == false) {
+			if (slotobjectisTaken [i] == false) {
 				//DragHandler.slotchecklist [i] = 1;
 				DragHandler.SlotIsTaken [i] = true;
 
@@ -100,6 +116,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 				//DragHandler.skillName [i] = DragHandler.itemBeingDragged.name;
 				//DragHandler.CurrSlotItem = DragHandler.itemBeingDragged.gameObject;
 				ManageSlots (newskill);
+			
 				DragHandler.itemBeingDragged.transform.position = this.gameObject.transform.position;
 				DragHandler.itemBeingDragged.transform.SetParent(this.gameObject.transform);
 				DragHandler.itemBeingDragged.transform.localScale = new Vector3(DragHandler.itemBeingDragged.transform.localScale.x/1.0f, DragHandler.itemBeingDragged.transform.localScale.y/0.65f, DragHandler.itemBeingDragged.transform.localScale.z/1.0f);
@@ -107,16 +124,15 @@ public class Slot : MonoBehaviour , IDropHandler{
 				DragHandler.itemBeingDragged.transform.SetAsFirstSibling ();
 				//Debug.Log (DragHandler.SlotIsTaken [i]);
 				//Debug.Log (i);
-		
 				break;
 
-			} else if(DragHandler.SlotIsTaken [i] == true){
+			} else if(slotobjectisTaken [i] == true){
 				 //DragHandler.isDraggedIntoSlot = true;
 					DeleteSlots ();	
-				    ManageSlots(newskill);
-					DragHandler.getGameObjectSkill [i] = DragHandler.itemBeingDragged.gameObject;
-					DragHandler.CurrSlotItem = DragHandler.itemBeingDragged.gameObject;
-					DragHandler.skillName [i] = DragHandler.itemBeingDragged.name;
+				   ManageSlots (newskill);
+					//DragHandler.getGameObjectSkill [i] = DragHandler.itemBeingDragged.gameObject;
+					//DragHandler.CurrSlotItem = DragHandler.itemBeingDragged.gameObject;
+					//DragHandler.skillName [i] = DragHandler.itemBeingDragged.name;
 				    DragHandler.itemBeingDragged.transform.position = this.gameObject.transform.position;
 				    DragHandler.itemBeingDragged.transform.SetParent(this.gameObject.transform);
 				    DragHandler.itemBeingDragged.transform.localScale = new Vector3(DragHandler.itemBeingDragged.transform.localScale.x/1.0f, DragHandler.itemBeingDragged.transform.localScale.y/0.65f, DragHandler.itemBeingDragged.transform.localScale.z/1.0f);
@@ -129,12 +145,10 @@ public class Slot : MonoBehaviour , IDropHandler{
 			}
 
 		} 
-
 			
 			//Debug.Log ("SkillDropped");
 			//ExecuteEvents.ExecuteHierarchy<ItemHasChanged>(gameObject,null,(x,y) => x.HasChanged ());
 
 	}	
-
 	#endregion
 }

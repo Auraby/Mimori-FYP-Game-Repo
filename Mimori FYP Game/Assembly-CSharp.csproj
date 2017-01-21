@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
+    <ProjectGuid>{3B5CC26B-479D-2E19-9AC8-2E5C43A06989}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <BaseDirectory>Assets</BaseDirectory>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Temp\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_4_0;UNITY_5_4;UNITY_5;UNITY_ANALYTICS;ENABLE_NEW_BUGREPORTER;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_EDITOR_RETINA;ENABLE_RETINA_GUISTYLES;ENABLE_FRAME_DEBUGGER;ENABLE_GENERICS;ENABLE_HOME_SCREEN;ENABLE_IMAGEEFFECTS;ENABLE_LIGHT_PROBES_LEGACY;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_PLUGIN_INSPECTOR;ENABLE_SHADOWS;ENABLE_SPRITERENDERER_FLIPPING;ENABLE_SPRITES;ENABLE_SPRITE_POLYGON;ENABLE_TERRAIN;ENABLE_RAKNET;ENABLE_UNET;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;INCLUDE_DYNAMIC_GI;INCLUDE_GI;INCLUDE_IL2CPP;INCLUDE_DIRECTX12;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_LOCALIZATION;ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION;ENABLE_EDITOR_TESTS_RUNNER;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_TEXTUREID_MAP;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_EVENT_QUEUE;ENABLE_CLUSTERINPUT;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;CROSS_PLATFORM_INPUT</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Temp\bin\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>0169</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.XML" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="UnityEngine">
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>D:/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+     <Compile Include="Assets\Arkham Interactive\Toony\Skies\Scripts\Levelloader.cs" />
+     <Compile Include="Assets\Arkham Interactive\Toony\Skies\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\Addons\UnluckDistanceDisabler.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\Demo\SmoothCameraOrbit.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\FlockChild.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\FlockChildSound.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\FlockController.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\FlockScare.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\FlockWaypointTrigger.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\LandingButtons.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\LandingSpot.cs" />
+     <Compile Include="Assets\Bird Flocks\Scripts\LandingSpotController.cs" />
+     <Compile Include="Assets\Day Night Cycle\Scripts\DayNightController.cs" />
+     <Compile Include="Assets\Day Night Cycle\Scripts\DemoScripts\RoatateCamera.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\BloomOptimized.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Blur.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\BlurOptimized.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\CameraMotionBlur.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionCurves.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionLookup.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionRamp.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ContrastEnhance.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ContrastStretch.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\CreaseShading.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\DepthOfField.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\DepthOfFieldDeprecated.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\EdgeDetection.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Fisheye.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\GlobalFog.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Grayscale.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ImageEffectBase.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ImageEffects.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\MotionBlur.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\NoiseAndGrain.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\NoiseAndScratches.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsHelper.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Quads.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ScreenOverlay.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\SepiaTone.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\SunShafts.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\TiltShift.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Tonemapping.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Triangles.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Twirl.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs" />
+     <Compile Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Project\Scripts\FxCycle.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Project\Scripts\SoundFxArray.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Project\Scripts\TextFader.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundAutoRotate.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundCycleSnapshots.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundDragSplineObject.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundEventListener.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundInk.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundLogoExample.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundManipulatorEvents.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundManipulatorStrength.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundNextSceneWithEnter.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundOffsetSourceSplineTime.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundPingPongMove.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundProceduralMeshTarget.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundRecordingExample.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundRecordingMultiExample.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundRotateWithKeys.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundRotationNormal.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundScenes.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundSineMoveObject.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundSwitchMultithreadingMethod.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Scene Scripts\PlaygroundTurbulenceOnGameObjects.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\AddRemoveManipulatorsInRadius.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\CircleEmit.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\CycleParticleSystems.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitAtMousePosition.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitByAmountC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitDuringSpecifiedTime.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitFromTransformsC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitOnOffByDistanceC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitOnOffMultiByDistance.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitOnOffOnClickC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitOnOffOnMousePressedC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitOnTranslation.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EmitWhenMoving.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EnableDisableByDistanceC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EnableDisableOnClickC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\EventListenerEnableSystems.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\FlickerParticles.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\FollowerEventExample.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\GlobalEventListeners.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\KillParticleWithinEventRangeC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ManipulatorContainsParticlesC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\MultiEmitOnEvent.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\PaintAtMousePositionC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ParticleEventListenerC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ParticleMaskingPercentage.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ParticleParabola.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ParticlePickupWithGlobalManipulator.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ParticlePickupWithLocalManipulator.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ParticleSystemScaler.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ParticleSystemsSequence.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\PauseCalculationByDistanceAngleC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\PlaygroundFollowSimple.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ProtectParticlesFromManipulator.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ProtectParticlesFromManipulatorById.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\RelationPositionTransform.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\SetSkinnedMeshUpdateRate.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\SetStickyParticleExample.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\SnapshotToLocalPosition.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\SpawnPrefabOnClickC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\SwitchCachedParticleSystemC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\SwitchCachedWorldObjectsC.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\SwitchMultithreading.cs" />
+     <Compile Include="Assets\Particle Playground\Examples\Example Scripts\Simple Scripts\ViewportSplineParticles.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Follow\PlaygroundFollow.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Recorder\PlaygroundMultiRecorder.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Recorder\PlaygroundRecorder.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Recorder\Scripts\PlaygroundCompression.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Recorder\Scripts\PlaygroundRecorderData.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Recorder\Scripts\RecordedFrame.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Recorder\Scripts\SerializedFrame.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Recorder\Scripts\SerializedParticle.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Splines\PlaygroundSpline.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Splines\PlaygroundSplineMesh.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Trails\Playground Trail Assets\Scripts\ParticlePlaygroundTrail.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Trails\Playground Trail Assets\Scripts\ParticlePlaygroundTrailPoint.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Trails\Playground Trail Assets\Scripts\PlaygroundTrailParent.cs" />
+     <Compile Include="Assets\Particle Playground\Extensions\Playground Trails\PlaygroundTrails.cs" />
+     <Compile Include="Assets\Particle Playground\Playground Assets\Scripts\PlaygroundFlickeringPointLight.cs" />
+     <Compile Include="Assets\Particle Playground\Playground Assets\Scripts\PlaygroundSineOverflow.cs" />
+     <Compile Include="Assets\Particle Playground\Playground Assets\Scripts\PlaygroundSineRotation.cs" />
+     <Compile Include="Assets\Particle Playground\Playground Assets\Scripts\PlaygroundSwarmPositioning.cs" />
+     <Compile Include="Assets\Particle Playground\Scripts\PlaygroundC.cs" />
+     <Compile Include="Assets\Particle Playground\Scripts\PlaygroundParticlesC.cs" />
+     <Compile Include="Assets\Particle Playground\Scripts\Presets\PlaygroundBrushPresetC.cs" />
+     <Compile Include="Assets\Particle Playground\Scripts\Presets\PlaygroundPresetCircleShotC.cs" />
+     <Compile Include="Assets\Particle Playground\Scripts\Presets\PlaygroundPresetLaserC.cs" />
+     <Compile Include="Assets\Scripts\Audio\AudioController.cs" />
+     <Compile Include="Assets\Scripts\Audio\AudioTypeComponent.cs" />
+     <Compile Include="Assets\Scripts\Camera\CameraShake.cs" />
+     <Compile Include="Assets\Scripts\DayNightDistance.cs" />
+     <Compile Include="Assets\Scripts\Debugging Scripts\ScriptForDebuggingStuff.cs" />
+     <Compile Include="Assets\Scripts\Enmar\EnmarAttackAreaScript.cs" />
+     <Compile Include="Assets\Scripts\Enmar\EnmarController.cs" />
+     <Compile Include="Assets\Scripts\Enmar\EnmarFistController.cs" />
+     <Compile Include="Assets\Scripts\Enmar\EnmarLaserAoEController.cs" />
+     <Compile Include="Assets\Scripts\Enmar\EnmarLaserController.cs" />
+     <Compile Include="Assets\Scripts\Enmar\EnmarVulnerablePoints.cs" />
+     <Compile Include="Assets\Scripts\Enmar\EoEParticleController.cs" />
+     <Compile Include="Assets\Scripts\Enmar\EyeOfEnmarController.cs" />
+     <Compile Include="Assets\Scripts\FadeObjectInOut.cs" />
+     <Compile Include="Assets\Scripts\ForestNightFall.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\HUD\DayNightCycle.cs" />
+     <Compile Include="Assets\Scripts\HUD\DragHandler.cs" />
+     <Compile Include="Assets\Scripts\HUD\DragHandlerV2.cs" />
+     <Compile Include="Assets\Scripts\HUD\Health.cs" />
+     <Compile Include="Assets\Scripts\HUD\JSkybox.cs" />
+     <Compile Include="Assets\Scripts\HUD\Shoot.cs" />
+     <Compile Include="Assets\Scripts\HUD\SkillTree.cs" />
+     <Compile Include="Assets\Scripts\HUD\Skill_Ability_Tree.cs" />
+     <Compile Include="Assets\Scripts\HUD\SkyIntensity.cs" />
+     <Compile Include="Assets\Scripts\HUD\Slot.cs" />
+     <Compile Include="Assets\Scripts\InvisibleWallsController.cs" />
+     <Compile Include="Assets\Scripts\LevelControllers\Level1Controller.cs" />
+     <Compile Include="Assets\Scripts\LoadGame.cs" />
+     <Compile Include="Assets\Scripts\MainMenu\MainMenuCameraController.cs" />
+     <Compile Include="Assets\Scripts\MainMenu\MainMenuController.cs" />
+     <Compile Include="Assets\Scripts\Minions\HouseTrap.cs" />
+     <Compile Include="Assets\Scripts\Minions\MeleeMinionFSM.cs" />
+     <Compile Include="Assets\Scripts\Minions\RangeMinionFSM.cs" />
+     <Compile Include="Assets\Scripts\Outpost\OutpostManager.cs" />
+     <Compile Include="Assets\Scripts\Player\BulletController.cs" />
+     <Compile Include="Assets\Scripts\Player\EyeOfEnmarSkill.cs" />
+     <Compile Include="Assets\Scripts\Player\EyeOfEnmarSkillSelf.cs" />
+     <Compile Include="Assets\Scripts\Player\GameOverController.cs" />
+     <Compile Include="Assets\Scripts\Player\Player.cs" />
+     <Compile Include="Assets\Scripts\RussianBoxCreator.cs" />
+     <Compile Include="Assets\Scripts\Telluris\TellurisWallController.cs" />
+     <Compile Include="Assets\UNOShader\Bin\Scripts\UNOShaderData.cs" />
+     <Compile Include="Assets\UNOShader\Bin\Scripts\UNOShaderHelper.cs" />
+     <Compile Include="Assets\UNOShader\Bin\Scripts\UNOShaderUVAnimate.cs" />
+     <Compile Include="Assets\UNOShader\UNLIT\Samples\Scripts\Bounce.cs" />
+     <Compile Include="Assets\UNOShader\UNLIT\Samples\Scripts\CameraPan.cs" />
+     <Compile Include="Assets\UNOShader\UNLIT\Samples\Scripts\ColorPropertyChange.cs" />
+     <Compile Include="Assets\UNOShader\UNLIT\Samples\Scripts\DiffuseDecalTint.cs" />
+     <Compile Include="Assets\UNOShader\UNLIT\Samples\Scripts\FloatPropertyChange.cs" />
+     <Compile Include="Assets\UNOShader\UNLIT\Samples\Scripts\ShadowColorChange.cs" />
+     <Compile Include="Assets\UNOShader\UNLIT\Samples\Scripts\SpinY.cs" />
+     <Compile Include="Assets\UNOShader\UNOShaderSettings.cs" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\UNOShaderUNLIT.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
+     <None Include="Assets\Particle Playground\Graphics\Shaders\Alpha Blended Texture With Color Tint.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT VertexCol SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
+     <None Include="Assets\Day-Night Skyboxes\readme.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Rim SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse Outline .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Decal Reflection Rim .shader" />
+     <None Include="Assets\Shaders\Fx\ParticleAdditiveBlend.shader" />
+     <None Include="Assets\Medieval_House\Info.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse Decal Emis SH .shader" />
+     <None Include="Assets\Particle Playground\Graphics\Shaders\VertexLit Color.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Emis VertexCol SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
+     <None Include="Assets\Particle Playground\Graphics\Shaders\Alpha Blended Texture.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Emis SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Helpers_Shadows_AlphaCutout.shader" />
+     <None Include="Assets\A_piece_of_nature\Readme.txt" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Helpers_Outlines.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
+     <None Include="Assets\NatureStarterKit2\info.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\Projectors\Guidelines.txt" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse VertexCol SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Outline SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Decal Reflection Rim Outline .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse ZwriteOff SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Outline .shader" />
+     <None Include="Assets\Justin Assets\FYPMaterial\SkyBoxBlendV2.shader" />
+     <None Include="Assets\Bird Flocks\Butterfly African Monarch\Shaders\Normal-Diffuse-NoCull.shader" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Fallback_VertexUNLIT_Transparent.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Outline .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse Emis SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
+     <None Include="Assets\RPG Battle Music\readme.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
+     <None Include="Assets\Day Night Cycle\ReadMe.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Helpers_RGBAshow.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Decal .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Emis VertexCol .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse Outline SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Emis SH .shader" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+     <None Include="Assets\PainterlyNature\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT AlphaCutout Color Diffuse SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse VertexCol .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Reflection Rim SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Decal Reflection Rim Outline SH .shader" />
+     <None Include="Assets\Bird Flocks\C# Scripts\- IMPORTANT - Version Change Readme.txt" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse VertexCol SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Emis ZwriteOff VertexCol .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Reflection .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Emis VertexCol SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Emis .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT .shader" />
+     <None Include="Assets\Textures and Sprites\SF UI\Background\LICENSE.txt" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Decal Reflection Rim SH .shader" />
+     <None Include="Assets\Day-Night Skyboxes\Textures\Readme for Assigning.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT VertexCol .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse ZwriteOff .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Helpers_Shadows_Transparent.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Outline SH .shader" />
+     <None Include="Assets\Justin Assets\FYPMaterial\SkyBoxBlend.shader" />
+     <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Fallback_VertexUNLIT.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse Rim SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse VertexCol .shader" />
+     <None Include="Assets\UNOShader\UNLIT Upgrade from 4 to 5.txt" />
+     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Rim Outline .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Helpers_Shadows.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
+     <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Xray SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT AlphaCutout Color Diffuse .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse Rim .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader" />
+     <None Include="Assets\Shaders\TVStatic.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse SH .shader" />
+     <None Include="Assets\Shader\Additive_Base.shader" />
+     <None Include="Assets\Shaders\OutlineShader.shader" />
+     <None Include="Assets\Particle Playground\Examples\Example Project\-Readme.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\SepiaToneEffect.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\TwirlEffect.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse Emis .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Decal Reflection .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Xray .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Diffuse SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse Decal Emis .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Emis VertexCol .shader" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Helpers_Xray.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Decal SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Reflection Rim .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader" />
+     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse Rim Outline .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Emis ZwriteOff VertexCol SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Emis .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
+     <None Include="Assets\Particle Playground\Graphics\Shaders\VertexLit Texture.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse ZwriteOff VertexCol SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
+     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
+     <None Include="Assets\Bird Flocks\Included Assets\Unluck Software Feather Particles\Feathers - Readme.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+     <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Reflection SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse .shader" />
+     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Diffuse .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Diffuse Rim Outline SH .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
+     <None Include="Assets\Particle Playground\Graphics\Shaders\Vertex Color.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Decal Reflection SH .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color .shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Rim Outline SH .shader" />
+     <None Include="Assets\read me.txt" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
+     <None Include="Assets\WatchTower\ReadMe.txt" />
+     <None Include="Assets\UNOShader\Bin\Shaders\UNOShader_Fallback_VertexUNLIT_TransparentNoZ.shader" />
+     <None Include="Assets\Bird Flocks\Bird Flock Readme.txt" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Transparent Color Diffuse ZwriteOff VertexCol .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
+     <None Include="Assets\UNOShader\UNLIT\Shaders\Shader Library\UNOShaderUNLIT Color Rim .shader" />
+     <None Include="Assets\NatureStarterKit2\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{5504F014-CAE9-53F4-379E-C936E6491142}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  
+</Project>
