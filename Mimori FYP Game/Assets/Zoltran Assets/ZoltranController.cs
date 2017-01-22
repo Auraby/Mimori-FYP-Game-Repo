@@ -5,19 +5,24 @@ using System.Collections.Generic;
 public class ZoltranController : MonoBehaviour {
 
     public enum ZoltranStates { Start, FindWaypoint, Moving, Attacking, Vanish, Appear, Chase, Dying}
-    public enum AttackMode { Normal, BulletHell};
+    public enum AttackMode { Normal, BulletHell}
+    public enum ZoltranActivity { NormalMoving, Waiting }
 
     [Header("Zoltran Properties")]
     public ZoltranStates currentState;
     public AttackMode currentAttackMode;
+    public ZoltranActivity currentActivity;
     public float zMaxHealth = 100;
     public float zCurrentHealth;
+    public float zMaxBHHealth = 100;
+    public float zCurrentBHHealth;
     public float rotateSpeed;
     public int zoltranID;
     public bool isPattern1 = false;
     public bool isPattern2 = false;
     public bool isPattern3 = false;
     public bool isIllusion = false;
+    public bool diedInBH = false;
 
     #region Attacks
     //public List<AttackInfo> actions = new List<AttackInfo>();
@@ -115,216 +120,230 @@ public class ZoltranController : MonoBehaviour {
     {
         Debug.Log("Illusion List COunt: " + illusionList.Count);
         Debug.DrawRay(orbEnd1.transform.position, orbEnd1.transform.forward, Color.red);
-        switch (currentAttackMode)
+
+        if (currentActivity == ZoltranActivity.NormalMoving)
         {
-            case AttackMode.Normal:
-                {
-                    if(zCurrentHealth <= 80 && illusionList.Count == 2 && isPattern1 == false)
+            switch (currentAttackMode)
+            {
+                #region Normal Attack Mode
+                case AttackMode.Normal:
                     {
-                        BulletHellController.instance.currentPattern = BulletHellController.Pattern.One;
-                        isPattern1 = true;
-                        BulletHellController.instance.patternNo = 1;
-                        currentAttackMode = AttackMode.BulletHell;
-                    }
+                        zCurrentBHHealth = zMaxBHHealth;
+                        diedInBH = false;
 
-                    if(zCurrentHealth <= 60 && illusionList.Count == 2 && isPattern2 == false)
-                    {
-                        BulletHellController.instance.currentPattern = BulletHellController.Pattern.Two;
-                        isPattern2 = true;
-                        BulletHellController.instance.patternNo = 2;
-                        currentAttackMode = AttackMode.BulletHell;
-                    }
+                        if (zCurrentHealth <= 80 && illusionList.Count == 2 && isPattern1 == false)
+                        {
+                            BulletHellController.instance.currentPattern = BulletHellController.Pattern.One;
+                            isPattern1 = true;
+                            BulletHellController.instance.patternNo = 1;
+                            BulletHellController.instance.totalDiedinBH = 0;
+                            currentAttackMode = AttackMode.BulletHell;
+                        }
 
-                    if(zCurrentHealth <= 30 && illusionList.Count == 2 && isPattern3 == false)
-                    {
-                        BulletHellController.instance.currentPattern = BulletHellController.Pattern.Three;
-                        isPattern3 = true;
-                        BulletHellController.instance.patternNo = 3;
-                        currentAttackMode = AttackMode.BulletHell;
-                    }
+                        if (zCurrentHealth <= 60 && illusionList.Count == 2 && isPattern2 == false)
+                        {
+                            BulletHellController.instance.currentPattern = BulletHellController.Pattern.Two;
+                            isPattern2 = true;
+                            BulletHellController.instance.patternNo = 2;
+                            BulletHellController.instance.totalDiedinBH = 0;
+                            currentAttackMode = AttackMode.BulletHell;
+                        }
 
-                    #region Normal Mode
-                    switch (currentState)
-                    {
-                        case ZoltranStates.Start:
-                            {
-                                if(illusionList[0] != null)
+                        if (zCurrentHealth <= 30 && illusionList.Count == 2 && isPattern3 == false)
+                        {
+                            BulletHellController.instance.currentPattern = BulletHellController.Pattern.Three;
+                            isPattern3 = true;
+                            BulletHellController.instance.patternNo = 3;
+                            BulletHellController.instance.totalDiedinBH = 0;
+                            currentAttackMode = AttackMode.BulletHell;
+                        }
+
+                        #region Normal Mode
+                        switch (currentState)
+                        {
+                            case ZoltranStates.Start:
                                 {
-                                    illusionList[0].gameObject.GetComponent<ZoltranController>().zoltranID = 2;
-                                }
-
-                                if(illusionList[1] != null)
-                                {
-                                    illusionList[1].gameObject.GetComponent<ZoltranController>().zoltranID = 3;
-                                }
-                            }
-                            break;
-
-                        case ZoltranStates.FindWaypoint:
-                            {
-                                //Find random point to move to
-                                newWaypoint = generateRandomPositionInArea();
-                                currentState = ZoltranStates.Moving;
-                            }
-                            break;
-
-                        case ZoltranStates.Moving:
-                            {
-                                navAgent.Resume();
-                                navAgent.SetDestination(newWaypoint);
-                                if (gameObject.transform.position == newWaypoint)
-                                {
-                                    RotateTowardsPlayer();
-                                    attackRNG = CalculateRNGForAttack(2);
-                                    distToTarget = Vector3.Distance(player.transform.position, transform.position);
-                                    //currentState = ZoltranStates.Attacking;
-                                    StartCoroutine(SwitchToAttackState());
-                                }
-                            }
-                            break;
-
-                        case ZoltranStates.Attacking:
-                            {
-                                //transform.LookAt(player.transform.position);
-
-                                navAgent.Stop();
-
-
-                                if (distToTarget >= 50f)
-                                {
-                                    FireSoulBeam();
-                                }
-
-                                if (distToTarget >= 40 && distToTarget <= 50)
-                                {
-                                    StrafeShot();
-                                }
-
-                                if (distToTarget >= 30 && distToTarget <= 40)
-                                {
-                                    SoulShot();
-                                }
-
-                                if (distToTarget >= 20 && distToTarget <= 30)
-                                {
-                                    Tryshot();
-                                }
-
-                                //switch (attackRNG)
-                                //{
-                                //    case 0:
-                                //        {
-                                //            //SoulShot();
-                                //            //SpiralBurstRight();
-                                //            //FireSoulBeam();
-                                //            //SpiralBurstLeft();
-                                //            //Tryshot();
-                                //            StrafeShot();
-                                //        }
-                                //        break;
-
-                                //    case 1:
-                                //        {
-                                //            //SpiralBurstLeft();
-                                //            //FireSoulBeam();
-                                //            //SoulShot();
-                                //            // Tryshot();
-                                //            StrafeShot();
-                                //        }
-                                //        break;
-
-                                //    case 3:
-                                //        {
-                                //            //SoulShot();
-                                //            //FireSoulBeam();
-                                //            //SpiralBurstLeft();
-                                //            //Tryshot();
-                                //            StrafeShot();
-                                //        }
-                                //        break;
-                                //}
-                                //}
-
-                                //if (isIllusion == true)
-                                //    {
-                                //        currentState = ZoltranStates.Chase;
-                                //        isExplodeMode = true;
-                                //    }
-
-                                //SpiralBurst();
-                                //navAgent.stoppingDistance
-                                //if (attackTime <= Time.deltaTime)
-                                //{
-                                //    attackRNG = Random.Range(0, actions.Count);
-
-                                //    attackTime = Time.deltaTime + actions[attackRNG].coolDown;
-
-                                //    gameObject.GetComponent<Animation>().Play(actions[attackRNG].Anim.name);
-
-                                //    playerTarget.SendMessageUpwards(actions[0].TargetFunctionName, actions[0].damage, SendMessageOptions.DontRequireReceiver);
-                                //}
-                                //temptime += Time.deltaTime;
-                                if (temptime > 5)
-                                {
-                                    currentState = ZoltranStates.FindWaypoint;
-                                    temptime = 0;
-                                    if (isIllusion == false && illusionList.Count < IllusionLimit)
+                                    if (illusionList[0] != null)
                                     {
-                                        SpawnIllusions();
+                                        illusionList[0].gameObject.GetComponent<ZoltranController>().zoltranID = 2;
                                     }
 
+                                    if (illusionList[1] != null)
+                                    {
+                                        illusionList[1].gameObject.GetComponent<ZoltranController>().zoltranID = 3;
+                                    }
                                 }
-                            }
-                            break;
+                                break;
 
-                        case ZoltranStates.Vanish:
-                            {
-                                Poof(gameObject.transform.position);
-                                gameObject.transform.position = new Vector3(1000, 0, 1000);
-                                newWaypoint = generateRandomPositionInArea();
-                                temptime = 0;
-                                StartCoroutine(SwitchToAppearState());
+                            case ZoltranStates.FindWaypoint:
+                                {
+                                    //Find random point to move to
+                                    newWaypoint = generateRandomPositionInArea();
+                                    ResetRotations();
+                                    currentState = ZoltranStates.Moving;
+                                }
+                                break;
 
-                            }
-                            break;
+                            case ZoltranStates.Moving:
+                                {
+                                    navAgent.Resume();
+                                    navAgent.SetDestination(newWaypoint);
+                                    if (gameObject.transform.position == newWaypoint)
+                                    {
+                                        RotateTowardsPlayer();
+                                        attackRNG = CalculateRNGForAttack(2);
+                                        distToTarget = Vector3.Distance(player.transform.position, transform.position);
+                                        //currentState = ZoltranStates.Attacking;
+                                        StartCoroutine(SwitchToAttackState());
+                                    }
+                                }
+                                break;
+
+                            case ZoltranStates.Attacking:
+                                {
+                                    //transform.LookAt(player.transform.position);
+
+                                    navAgent.Stop();
 
 
-                        case ZoltranStates.Appear:
-                            {
-                                gameObject.transform.position = newWaypoint;
-                                RotateTowardsPlayer();
-                                StartCoroutine(SwitchToAttackState());
-                            }
-                            break;
+                                    if (distToTarget >= 50f)
+                                    {
+                                        FireSoulBeam();
+                                    }
 
-                        case ZoltranStates.Chase:
-                            {
-                                RushToPlayer();
-                            }
-                            break;
+                                    if (distToTarget >= 40 && distToTarget <= 50)
+                                    {
+                                        StrafeShot();
+                                    }
 
-                        case ZoltranStates.Dying:
-                            {
+                                    if (distToTarget >= 30 && distToTarget <= 40)
+                                    {
+                                        SoulShot();
+                                    }
 
-                            }
-                            break;
+                                    if (distToTarget >= 20 && distToTarget <= 30)
+                                    {
+                                        Tryshot();
+                                    }
 
-                        default:
-                            {
+                                    //switch (attackRNG)
+                                    //{
+                                    //    case 0:
+                                    //        {
+                                    //            //SoulShot();
+                                    //            //SpiralBurstRight();
+                                    //            //FireSoulBeam();
+                                    //            //SpiralBurstLeft();
+                                    //            //Tryshot();
+                                    //            StrafeShot();
+                                    //        }
+                                    //        break;
 
-                            }
-                            break;
+                                    //    case 1:
+                                    //        {
+                                    //            //SpiralBurstLeft();
+                                    //            //FireSoulBeam();
+                                    //            //SoulShot();
+                                    //            // Tryshot();
+                                    //            StrafeShot();
+                                    //        }
+                                    //        break;
+
+                                    //    case 3:
+                                    //        {
+                                    //            //SoulShot();
+                                    //            //FireSoulBeam();
+                                    //            //SpiralBurstLeft();
+                                    //            //Tryshot();
+                                    //            StrafeShot();
+                                    //        }
+                                    //        break;
+                                    //}
+                                    //}
+
+                                    //if (isIllusion == true)
+                                    //    {
+                                    //        currentState = ZoltranStates.Chase;
+                                    //        isExplodeMode = true;
+                                    //    }
+
+                                    //SpiralBurst();
+                                    //navAgent.stoppingDistance
+                                    //if (attackTime <= Time.deltaTime)
+                                    //{
+                                    //    attackRNG = Random.Range(0, actions.Count);
+
+                                    //    attackTime = Time.deltaTime + actions[attackRNG].coolDown;
+
+                                    //    gameObject.GetComponent<Animation>().Play(actions[attackRNG].Anim.name);
+
+                                    //    playerTarget.SendMessageUpwards(actions[0].TargetFunctionName, actions[0].damage, SendMessageOptions.DontRequireReceiver);
+                                    //}
+                                    temptime += Time.deltaTime;
+                                    if (temptime > 5)
+                                    {
+                                        currentState = ZoltranStates.FindWaypoint;
+                                        temptime = 0;
+                                        if (isIllusion == false && illusionList.Count < IllusionLimit)
+                                        {
+                                            SpawnIllusions();
+                                        }
+
+                                    }
+                                }
+                                break;
+
+                            case ZoltranStates.Vanish:
+                                {
+                                    Poof(gameObject.transform.position);
+                                    gameObject.transform.position = new Vector3(1000, 0, 1000);
+                                    newWaypoint = generateRandomPositionInArea();
+                                    temptime = 0;
+                                    StartCoroutine(SwitchToAppearState());
+
+                                }
+                                break;
+
+
+                            case ZoltranStates.Appear:
+                                {
+                                    gameObject.transform.position = newWaypoint;
+                                    RotateTowardsPlayer();
+                                    StartCoroutine(SwitchToAttackState());
+                                }
+                                break;
+
+                            case ZoltranStates.Chase:
+                                {
+                                    RushToPlayer();
+                                }
+                                break;
+
+                            case ZoltranStates.Dying:
+                                {
+
+                                }
+                                break;
+
+                            default:
+                                {
+
+                                }
+                                break;
+                        }
+                        #endregion
                     }
-                    #endregion
-                }
-                break;
+                    break;
 
-            case AttackMode.BulletHell:
-                {
-                    #region Bullet Hell
-                    if(BulletHellController.instance.patternNo == 1)
+                #endregion
+
+                #region Bullet Hell Mode
+                case AttackMode.BulletHell:
                     {
-                        if(zoltranID == 1)
+
+                        navAgent.Stop();
+
+                        if (zoltranID == 1)
                         {
                             gameObject.transform.position = new Vector3(BulletHellController.instance.pos1.x, gameObject.transform.position.y,
                                                                         BulletHellController.instance.pos1.z);
@@ -332,7 +351,7 @@ public class ZoltranController : MonoBehaviour {
                             gameObject.transform.rotation = BulletHellController.instance.rot1;
                         }
 
-                        if(zoltranID == 2)
+                        if (zoltranID == 2)
                         {
                             gameObject.transform.position = new Vector3(BulletHellController.instance.pos2.x, gameObject.transform.position.y,
                                                                         BulletHellController.instance.pos2.z);
@@ -347,12 +366,103 @@ public class ZoltranController : MonoBehaviour {
 
                             gameObject.transform.rotation = BulletHellController.instance.rot3;
                         }
-                    }
 
-                    #endregion
-                }
-                break;
+
+                        if (zCurrentBHHealth <= 0 && diedInBH == false)
+                        {
+                            BulletHellController.instance.totalDiedinBH += 1;
+                            diedInBH = true;
+                        }
+
+                        if (diedInBH == true)
+                        {
+                            Poof(gameObject.transform.position);
+                            gameObject.transform.position = new Vector3(1000, 0, 1000);
+                            currentActivity = ZoltranActivity.Waiting;
+                        }
+
+                        #region Bullet Hell
+                        if (BulletHellController.instance.patternNo == 1)
+                        {
+
+                            if (zoltranID == 1)
+                            {
+                                Tryshot();
+                            }
+
+                            if (zoltranID == 2)
+                            {
+                                StrafeShot();
+                            }
+
+                            if (zoltranID == 3)
+                            {
+                                StrafeShot();
+                            }
+
+                        }
+
+                        if (BulletHellController.instance.patternNo == 2)
+                        {
+
+                            if (zoltranID == 1)
+                            {
+                                StrafeShot();
+                            }
+
+                            if (zoltranID == 2)
+                            {
+                                Tryshot();
+                            }
+
+                            if (zoltranID == 3)
+                            {
+                                Tryshot();
+                            }
+
+                        }
+
+                        if (BulletHellController.instance.patternNo == 3)
+                        {
+
+                            if (zoltranID == 1)
+                            {
+                                Tryshot();
+                            }
+
+                            if (zoltranID == 2)
+                            {
+                                Tryshot();
+                            }
+
+                            if (zoltranID == 3)
+                            {
+                                Tryshot();
+                            }
+
+                        }
+
+
+
+                        #endregion
+                    }
+                    break;
+                #endregion
+            }
         }
+
+        if (currentActivity == ZoltranActivity.Waiting)
+        {
+            if (BulletHellController.instance.totalDiedinBH == 3)
+            {
+                currentAttackMode = AttackMode.Normal;
+                currentState = ZoltranStates.Vanish;
+                currentActivity = ZoltranActivity.NormalMoving;
+            }
+        }
+        
+
+
         //SpiralBurst();
         
 
@@ -389,9 +499,10 @@ public class ZoltranController : MonoBehaviour {
     #region Attacks
     public void SoulShot()
     {
-       orbEnd2.transform.LookAt(player.transform.position);
-       orbEnd3.transform.LookAt(player.transform.position);
+       //orbEnd2.transform.LookAt(player.transform.position);
+       //orbEnd3.transform.LookAt(player.transform.position);
         //RotateTowardsPlayer();
+       mouthEnd.transform.LookAt(player.transform.position);
 
         if (Time.time > ssnextFire)
         {
@@ -652,9 +763,20 @@ public class ZoltranController : MonoBehaviour {
         return rng;
     }
 
-    public void checkWhatZoltran()
+    public void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Bullet")
+        {
+            if (currentAttackMode == AttackMode.Normal)
+            {
+                zCurrentHealth -= 5;
+            }
 
+            if (currentAttackMode == AttackMode.BulletHell)
+            {
+                zCurrentBHHealth -= 5;
+            }
+        }
     }
     #endregion
 

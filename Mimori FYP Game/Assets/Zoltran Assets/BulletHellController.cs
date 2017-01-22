@@ -13,6 +13,8 @@ public class BulletHellController : MonoBehaviour {
     public Vector3 pos1, pos2, pos3;
     public Quaternion rot1, rot2, rot3;
 
+    public int totalDiedinBH;
+
     public static BulletHellController instance { get; set; }
 
 	// Use this for initialization
