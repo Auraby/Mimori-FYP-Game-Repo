@@ -84,8 +84,9 @@ public class ZoltranController : MonoBehaviour {
 
     [Header("Illusion Count")]
     #region Illusions
-    public List<GameObject> illusionList = new List<GameObject>();
+    public static List<GameObject> illusionList = new List<GameObject>();
     public int IllusionLimit = 2;
+    public GameObject mainZoltran;
     #endregion
 
     #region Misc
@@ -108,7 +109,7 @@ public class ZoltranController : MonoBehaviour {
     {
         instance = this;
         navAgent = GetComponent<NavMeshAgent>();
-        currentState = ZoltranStates.FindWaypoint;
+        //currentState = ZoltranStates.FindWaypoint;
         zCurrentHealth = zMaxHealth;
         isExplodeMode = false;
         exploded = false;
@@ -131,47 +132,94 @@ public class ZoltranController : MonoBehaviour {
                         zCurrentBHHealth = zMaxBHHealth;
                         diedInBH = false;
 
-                        if (zCurrentHealth <= 80 && illusionList.Count == 2 && isPattern1 == false)
+                        if (isIllusion == false)
                         {
-                            BulletHellController.instance.currentPattern = BulletHellController.Pattern.One;
-                            isPattern1 = true;
-                            BulletHellController.instance.patternNo = 1;
-                            BulletHellController.instance.totalDiedinBH = 0;
-                            currentAttackMode = AttackMode.BulletHell;
+                            if (zCurrentHealth <= 80 && illusionList.Count == 2 && isPattern1 == false)
+                            {
+                                BulletHellController.instance.currentPattern = BulletHellController.Pattern.One;
+                                isPattern1 = true;
+                                BulletHellController.instance.patternNo = 1;
+                                BulletHellController.instance.totalDiedinBH = 0;
+                                ResetRotations();
+                                currentAttackMode = AttackMode.BulletHell;
+                            }
+
+                            if (zCurrentHealth <= 60 && illusionList.Count == 2 && isPattern2 == false)
+                            {
+                                BulletHellController.instance.currentPattern = BulletHellController.Pattern.Two;
+                                isPattern2 = true;
+                                BulletHellController.instance.patternNo = 2;
+                                BulletHellController.instance.totalDiedinBH = 0;
+                                ResetRotations();
+                                currentAttackMode = AttackMode.BulletHell;
+                            }
+
+                            if (zCurrentHealth <= 30 && illusionList.Count == 2 && isPattern3 == false)
+                            {
+                                BulletHellController.instance.currentPattern = BulletHellController.Pattern.Three;
+                                isPattern3 = true;
+                                BulletHellController.instance.patternNo = 3;
+                                BulletHellController.instance.totalDiedinBH = 0;
+                                ResetRotations();
+                                currentAttackMode = AttackMode.BulletHell;
+                            }
                         }
 
-                        if (zCurrentHealth <= 60 && illusionList.Count == 2 && isPattern2 == false)
+                        else
                         {
-                            BulletHellController.instance.currentPattern = BulletHellController.Pattern.Two;
-                            isPattern2 = true;
-                            BulletHellController.instance.patternNo = 2;
-                            BulletHellController.instance.totalDiedinBH = 0;
-                            currentAttackMode = AttackMode.BulletHell;
+                            if (mainZoltran.GetComponent<ZoltranController>().zCurrentHealth <= 80 && illusionList.Count == 2 && isPattern1 == false)
+                            {
+                                BulletHellController.instance.currentPattern = BulletHellController.Pattern.One;
+                                isPattern1 = true;
+                                BulletHellController.instance.patternNo = 1;
+                                BulletHellController.instance.totalDiedinBH = 0;
+                                ResetRotations();
+                                currentAttackMode = AttackMode.BulletHell;
+                            }
+
+                            if (mainZoltran.GetComponent<ZoltranController>().zCurrentHealth <= 60 && illusionList.Count == 2 && isPattern2 == false)
+                            {
+                                BulletHellController.instance.currentPattern = BulletHellController.Pattern.Two;
+                                isPattern2 = true;
+                                BulletHellController.instance.patternNo = 2;
+                                BulletHellController.instance.totalDiedinBH = 0;
+                                ResetRotations();
+                                currentAttackMode = AttackMode.BulletHell;
+                            }
+
+                            if (mainZoltran.GetComponent<ZoltranController>().zCurrentHealth <= 30 && illusionList.Count == 2 && isPattern3 == false)
+                            {
+                                BulletHellController.instance.currentPattern = BulletHellController.Pattern.Three;
+                                isPattern3 = true;
+                                BulletHellController.instance.patternNo = 3;
+                                BulletHellController.instance.totalDiedinBH = 0;
+                                ResetRotations();
+                                currentAttackMode = AttackMode.BulletHell;
+                            }
                         }
 
-                        if (zCurrentHealth <= 30 && illusionList.Count == 2 && isPattern3 == false)
-                        {
-                            BulletHellController.instance.currentPattern = BulletHellController.Pattern.Three;
-                            isPattern3 = true;
-                            BulletHellController.instance.patternNo = 3;
-                            BulletHellController.instance.totalDiedinBH = 0;
-                            currentAttackMode = AttackMode.BulletHell;
-                        }
+                        
 
                         #region Normal Mode
                         switch (currentState)
                         {
                             case ZoltranStates.Start:
                                 {
-                                    if (illusionList[0] != null)
+                                    if (isIllusion == true)
                                     {
-                                        illusionList[0].gameObject.GetComponent<ZoltranController>().zoltranID = 2;
-                                    }
+                                        if (illusionList.Count == 1)
+                                        {
+                                            illusionList[0].gameObject.GetComponent<ZoltranController>().zoltranID = 2;
+                                        }
 
-                                    if (illusionList[1] != null)
-                                    {
-                                        illusionList[1].gameObject.GetComponent<ZoltranController>().zoltranID = 3;
+                                        if (illusionList.Count == 2)
+                                        {
+                                            illusionList[1].gameObject.GetComponent<ZoltranController>().zoltranID = 3;
+                                        }
                                     }
+                                    
+
+                                    currentState = ZoltranStates.FindWaypoint;
                                 }
                                 break;
 
@@ -296,7 +344,7 @@ public class ZoltranController : MonoBehaviour {
                             case ZoltranStates.Vanish:
                                 {
                                     Poof(gameObject.transform.position);
-                                    gameObject.transform.position = new Vector3(1000, 0, 1000);
+                                    gameObject.transform.position = new Vector3(10000, 0, 10000);
                                     newWaypoint = generateRandomPositionInArea();
                                     temptime = 0;
                                     StartCoroutine(SwitchToAppearState());
@@ -309,6 +357,7 @@ public class ZoltranController : MonoBehaviour {
                                 {
                                     gameObject.transform.position = newWaypoint;
                                     RotateTowardsPlayer();
+                                    ResetRotations();
                                     StartCoroutine(SwitchToAttackState());
                                 }
                                 break;
@@ -458,6 +507,7 @@ public class ZoltranController : MonoBehaviour {
                 currentAttackMode = AttackMode.Normal;
                 currentState = ZoltranStates.Vanish;
                 currentActivity = ZoltranActivity.NormalMoving;
+                ResetRotations();
             }
         }
         
@@ -709,7 +759,7 @@ public class ZoltranController : MonoBehaviour {
     public void ResetRotations()
     {
         orbEnd1.transform.rotation = Quaternion.identity;
-        mouthEnd.transform.rotation = Quaternion.identity;
+        mouthEnd.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         mouthEnd.transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(0, 30, 0));
     }
 
@@ -769,7 +819,16 @@ public class ZoltranController : MonoBehaviour {
         {
             if (currentAttackMode == AttackMode.Normal)
             {
-                zCurrentHealth -= 5;
+                if (!isIllusion)
+                {
+                    zCurrentHealth -= 5;
+                }
+
+                else
+                {
+                    gameObject.GetComponent<ZoltranIllusionController>().illusionCurrentHealth -= 5;
+                }
+                
             }
 
             if (currentAttackMode == AttackMode.BulletHell)
