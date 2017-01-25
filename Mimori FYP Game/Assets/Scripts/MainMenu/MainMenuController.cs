@@ -182,6 +182,8 @@ public class MainMenuController : MonoBehaviour {
         playOMMoveInBool = false;
 
         time = 0;
+
+        GetComponent<AudioSource>().Play();
     }
 
     public void optionsButtonPressed()
@@ -194,6 +196,8 @@ public class MainMenuController : MonoBehaviour {
         playOMMoveOutBool = false;
 
         time = 0;
+
+        GetComponent<AudioSource>().Play();
     }
 
     public void enterMenuButtonPressed()
@@ -212,6 +216,8 @@ public class MainMenuController : MonoBehaviour {
 		//If a save file exists, delete it
 		GameController.gameController.Delete();
         aSyncOp.allowSceneActivation = true;
+
+        GetComponent<AudioSource>().Play();
     }
 
     public void exitButtonPressed()

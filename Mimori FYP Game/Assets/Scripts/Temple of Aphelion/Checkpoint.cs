@@ -37,6 +37,10 @@ public class Checkpoint : MonoBehaviour {
             {
                 savedPos = new Vector3(0, 56, 470);
             }
+            if (this.gameObject.name == "Checkpoint 5")
+            {
+                savedPos = new Vector3(63, 56, 295);
+            }
         }
     }
 }

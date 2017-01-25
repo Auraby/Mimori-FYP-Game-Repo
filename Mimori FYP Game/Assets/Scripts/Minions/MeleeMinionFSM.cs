@@ -113,7 +113,8 @@ public class MeleeMinionFSM : MonoBehaviour
 		{
 			if(stunTime<=0)
 			{
-				if (!goBack) {
+                Player.inCombatCD = 10;
+                if (!goBack) {
 					if(!inAttackRange())
 					{
 						anim.Play (run.name);

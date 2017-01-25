@@ -27,23 +27,27 @@ public class BulletController : MonoBehaviour {
             {
                 other.GetComponent<MeleeMinionFSM>().getHit(10);
                 Destroy(this.gameObject);
+                Player.inCombatCD = 10;
             }
             if (other.gameObject.tag == "RangeMinion")
             {
                 other.GetComponent<RangeMinionFSM>().getHit(10);
                 Destroy(this.gameObject);
+                Player.inCombatCD = 10;
             }
 
 			if (other.gameObject.tag == "HordeMeleeMinion")
 			{
 				other.GetComponent<HordeMeleeMinion>().getHit(10);
 				Destroy(this.gameObject);
-			}
+                Player.inCombatCD = 10;
+            }
 			if (other.gameObject.tag == "HordeRangeMinion")
 			{
 				other.GetComponent<HordeRangeMinion>().getHit(10);
 				Destroy(this.gameObject);
-			}
+                Player.inCombatCD = 10;
+            }
         }
 
         if (this.gameObject.tag == "EnemySkill") {
