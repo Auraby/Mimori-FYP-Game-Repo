@@ -332,6 +332,7 @@ public class ZoltranController : MonoBehaviour {
                                     {
                                         currentState = ZoltranStates.FindWaypoint;
                                         temptime = 0;
+                                        ResetRotations();
                                         if (isIllusion == false && illusionList.Count < IllusionLimit)
                                         {
                                             SpawnIllusions();
@@ -344,7 +345,8 @@ public class ZoltranController : MonoBehaviour {
                             case ZoltranStates.Vanish:
                                 {
                                     Poof(gameObject.transform.position);
-                                    gameObject.transform.position = new Vector3(10000, 0, 10000);
+                                    //gameObject.transform.position = new Vector3(5000, 0, 5000);
+                                    gameObject.SetActive(false);
                                     newWaypoint = generateRandomPositionInArea();
                                     temptime = 0;
                                     StartCoroutine(SwitchToAppearState());
@@ -759,8 +761,9 @@ public class ZoltranController : MonoBehaviour {
     public void ResetRotations()
     {
         orbEnd1.transform.rotation = Quaternion.identity;
-        mouthEnd.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-        mouthEnd.transform.GetChild(0).rotation = Quaternion.Euler(new Vector3(0, 30, 0));
+        mouthEnd.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
+        mouthEnd.transform.GetChild(0).localRotation = Quaternion.Euler(new Vector3(0, 30, 0));
+        //Debug.Log("Resetted rotation");
     }
 
     public void CheckPlayerProximity()
@@ -787,7 +790,7 @@ public class ZoltranController : MonoBehaviour {
         float xTerrainMax = MovementArea.GetComponent<Collider>().bounds.max.x;
         float zTerrainMin = MovementArea.GetComponent<Collider>().bounds.min.z;
         float zTerrainMax = MovementArea.GetComponent<Collider>().bounds.max.z;
-        Vector3 position = new Vector3(Random.Range(xTerrainMin, xTerrainMax), 0, Random.Range(zTerrainMin, zTerrainMax));
+        Vector3 position = new Vector3(Random.Range(xTerrainMin, xTerrainMax), gameObject.transform.position.y, Random.Range(zTerrainMin, zTerrainMax));
         NavMeshHit hit;
         NavMesh.SamplePosition(position, out hit, 5f, 1);
         position = hit.position;
