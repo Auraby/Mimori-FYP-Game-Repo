@@ -87,6 +87,7 @@ public class PushingTrap : MonoBehaviour {
             pushSpeed = 0;
             revertSpeed = 20;
             revert = true; //step 3, start reverting the trap back to its original position
+            GetComponent<AudioSource>().Play();
         }
 
         if (other.gameObject.tag == "Player") {

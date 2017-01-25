@@ -3,6 +3,8 @@ using System.Collections;
 
 public class RotateSkybox : MonoBehaviour {
     public Material skybox;
+
+    float rotate;
 	// Use this for initialization
 	void Start () {
 	
@@ -10,6 +12,8 @@ public class RotateSkybox : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        skybox.SetFloat("_Rotation", Time.deltaTime);
+        rotate += Time.deltaTime * 0.25f;
+        skybox.SetFloat("_Rotation", rotate);
+        
 	}
 }
