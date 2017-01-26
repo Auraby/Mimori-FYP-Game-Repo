@@ -11,6 +11,8 @@ public class Health : MonoBehaviour {
 	public float maxhealth;
 	public float manaregen;
 	public int regentime;
+	public GameObject questObjective;
+
 
 	public Transform player;
 	public GameObject player1;
@@ -60,7 +62,13 @@ public class Health : MonoBehaviour {
 			manabar += manaregen * Time.deltaTime;
 			manabarslider.value += manaregen * Time.deltaTime;
 		}
-
+		if(Input.GetKeyDown(KeyCode.J)){
+			if (!questObjective.activeSelf) {
+				questObjective.SetActive (true);
+			} else {
+				questObjective.SetActive (false);
+			}
+		}
         healthbarslider.value = currentHealth;
 
 	}
