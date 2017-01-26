@@ -7,12 +7,15 @@ public class OutpostManager : MonoBehaviour
     public GameObject defaultCircle;
     public GameObject capturedCircle;
 
+    public AudioClip winning;
+
+    AudioSource bgm;
     //public bool isCaptured = false;
     private bool allDied = false;
     // Use this for initialization
     void Start()
     {
-
+        bgm = GameObject.Find("BGM").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -71,6 +74,7 @@ public class OutpostManager : MonoBehaviour
                 if (this.gameObject.name == "Outpost 1")
                 {
                     GameController.gameController.outpost1Captured = true;
+                    
                 }
                 else if (this.gameObject.name == "Outpost 2")
                 {
@@ -83,6 +87,12 @@ public class OutpostManager : MonoBehaviour
                 else if (this.gameObject.name == "Outpost 4")
                 {
                     GameController.gameController.outpost4Captured = true;
+                }
+                if (!Player.wSoundPlayed)
+                {
+                    bgm.clip = winning;
+                    bgm.Play();
+                    Player.wSoundPlayed = true;
                 }
                 defaultCircle.SetActive(false);
                 capturedCircle.SetActive(true);

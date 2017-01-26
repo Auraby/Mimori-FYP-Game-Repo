@@ -64,7 +64,6 @@ public class RangeMinionFSM : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-        Debug.Log(currentState);
 		if (Vector3.Distance (transform.position, boundPoint.transform.position) > boundRange) {
 			goBack = true;
 		} else if(Vector3.Distance (transform.position, boundPoint.transform.position) < boundRange/2){
@@ -108,7 +107,8 @@ public class RangeMinionFSM : MonoBehaviour {
 		{
 			if(stunTime<=0)
 			{
-				if (!goBack) {
+                Player.inCombatCD = 10;
+                if (!goBack) {
 					if(!inAttackRange())
 					{
 						GetComponent<NavMeshAgent>().Resume();
@@ -246,7 +246,7 @@ public class RangeMinionFSM : MonoBehaviour {
 	void dieMethod()
 	{
 		GetComponent<Animation>().Play (die.name);
-
+		GetComponent<NavMeshAgent> ().Stop ();
 		if(GetComponent<Animation>()[die.name].time>GetComponent<Animation>()[die.name].length*0.9)
 		{
 			Destroy(gameObject);

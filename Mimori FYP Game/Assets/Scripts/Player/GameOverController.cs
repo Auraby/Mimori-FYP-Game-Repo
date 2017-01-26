@@ -23,13 +23,14 @@ public class GameOverController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //Async
-        asyncOp = SceneManager.LoadSceneAsync("MainMenu");
-        asyncOp.allowSceneActivation = false;
         //GameOver Screen
         gameoverBlackPanel.canvasRenderer.SetAlpha(0.0f);
         gameoverText.canvasRenderer.SetAlpha(0.0f);
         gameoverTextSubtitle.canvasRenderer.SetAlpha(0.0f);
+        //Async
+        asyncOp = SceneManager.LoadSceneAsync("MainMenu");
+        asyncOp.allowSceneActivation = false;
+        
     }
 	
 	// Update is called once per frame

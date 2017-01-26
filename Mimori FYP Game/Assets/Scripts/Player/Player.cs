@@ -12,6 +12,8 @@ public class Player : MonoBehaviour {
     public Text gameoverText;
     public Text gameoverTextSubtitle;
     //-------------
+    public static float inCombatCD;
+    public static bool inCombat = false;
 
     public Camera camera;
 	public GameObject interactText;
@@ -57,10 +59,20 @@ public class Player : MonoBehaviour {
 	RaycastHit tempHit;
 	float shootDelay = 0;
 
-	// Use this for initialization
-	void Start () {
-		//Continue Player
-		if(GameController.loadingGame){
+    //Combat sounds
+    public AudioClip combat;
+    AudioClip originalClip;
+    AudioSource bgm;
+    bool cSoundPlayed = false;
+    bool bgmPlayed = false;
+    public static bool wSoundPlayed = false;
+
+    // Use this for initialization
+    void Start () {
+        bgm = GameObject.Find("BGM").GetComponent<AudioSource>();
+        originalClip = bgm.clip;
+        //Continue Player
+        if (GameController.loadingGame){
 			transform.position = new Vector3 (
 				GameController.gameController.playerPositionX,
 				GameController.gameController.playerPositionY,
@@ -91,6 +103,37 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        //check if in combat
+        if (inCombatCD > 0) {
+            inCombat = true;
+        }
+
+        if (inCombat)
+        {
+            if (!cSoundPlayed) {
+                bgm.clip = combat;
+                bgm.Play();
+                cSoundPlayed = true;
+                bgmPlayed = false;
+            }
+            
+            inCombatCD -= Time.deltaTime;
+        }
+        else {
+            if (!bgmPlayed) {
+                cSoundPlayed = false;
+                wSoundPlayed = false;
+                bgmPlayed = true;
+                bgm.clip = originalClip;
+                bgm.Play();
+            }
+        }
+
+        if (inCombatCD < 0) {
+            inCombatCD = 0;
+            inCombat = false;
+        }
+
 		if (shootDelay > 0) {
 			shootDelay -= Time.deltaTime;
 		}
@@ -192,7 +235,7 @@ public class Player : MonoBehaviour {
 					// Create the Bullet from the Bullet Prefab
 					GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
                     //GameObject muzzle = (GameObject)Instantiate(muzzleFlash, gunEnd.position, gunEnd.rotation,gunEnd);
-
+                    transform.GetChild(0).GetComponent<AudioSource>().Play();
 					// Add velocity to the bullet
 					bullet.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
 				}
@@ -200,16 +243,16 @@ public class Player : MonoBehaviour {
 				//Destroy(bulshoolet, 2.0f);
 				shootDelay = 0.2f;
 			}
-
-		}
+        }
 
 		//Debug.DrawRay(camera.transform.position, camera.transform.forward * 30, Color.yellow);
 		//Debug.DrawRay(gun.transform.position, gun.transform.forward * 30, Color.yellow);
-		ray = camera.ScreenPointToRay(crosshair.transform.position);
+		//ray = camera.ScreenPointToRay(crosshair.transform.position);
+		ray = new Ray(camera.transform.position, camera.transform.forward);
 		if (Physics.Raycast(ray, out hit)) {
 			// Do something with the object that was hit by the raycast.
 
-			if (hit.collider.tag == "InteractObject" && Vector3.Distance (hit.transform.position, this.gameObject.transform.position) < 5) {
+			if (hit.collider.tag == "InteractObject" && Vector3.Distance (hit.transform.position, this.gameObject.transform.position) < 7) {
 				//Debug.Log (" Looking At " + hit.collider.name.ToString());
 				tempHit = hit;
 				if (tempHit.collider != null) {
@@ -236,10 +279,15 @@ public class Player : MonoBehaviour {
 
 					if (hit.collider.name == "Door_a") {
 						hit.collider.GetComponent<Animation> ().Play ();
+                        hit.collider.GetComponent<AudioSource>().Play ();
 					}
                     if (hit.collider.name == "chest_close") {
                         hit.collider.gameObject.SetActive(false);
                     }
+					if (hit.collider.name == "Generator") {
+						hit.collider.gameObject.SetActive(false);
+						FoMController.timerStart = true;
+					}
 				}
 			} else {
 				if (tempHit.collider != null) {
