@@ -39,123 +39,116 @@ public class GunModSkills : MonoBehaviour {
 	void Update () {
         if (SceneManager.GetActiveScene().name != "Gate of Telluris")
         {
-            if (eoeImg.IsActive())
-            {
-                //EyeOfEnmar();
-            }
+            EyeOfEnmar();
             if (SceneManager.GetActiveScene().name == "Forest of Misery") {
-                SoulOfZoltran();
+                //SoulOfZoltran();
             }
         }
 		
 
 	}
 
-	void EyeOfEnmar(){
+	public void EyeOfEnmar(){
 		//Debug.Log (originalSize+","+endSize);
 		//Charging Eye of Enmar's skill
-		if (eoe != null) {
-			scale = eoe.transform.localScale;
-		}
+		if (gameObject.GetComponent<Shoot> ().gunmodcounter == 0) {
+			if (eoe != null) {
+				scale = eoe.transform.localScale;
+			}
 
-		if (eoeCD <= 0) {
-			if(Input.GetButton("Fire2")){
-				if (eoeChargeTime < 15) {
-					eoeChargeTime += Time.deltaTime*5;
-					//endSize = new Vector3 (eoeChargeTime+1, eoeChargeTime+1, eoeChargeTime+1);
-					//eoeSkillPref.transform.localScale = Vector3.Lerp (originalSize, endSize, eoeChargeTime);
+			if (eoeCD <= 0) {
+				if (Input.GetButton ("Fire2")) {
+					if (eoeChargeTime < 15) {
+						eoeChargeTime += Time.deltaTime * 5;
+						//endSize = new Vector3 (eoeChargeTime+1, eoeChargeTime+1, eoeChargeTime+1);
+						//eoeSkillPref.transform.localScale = Vector3.Lerp (originalSize, endSize, eoeChargeTime);
+					}
+				}
+				if (Input.GetButtonUp ("Fire2")) {
+					//eoeChargeTime = 0;
+					//eoeSkillPref.transform.localScale = originalSize;
+					eoeCD = 5;
+					eoe = (GameObject)Instantiate (eoeSkillPref, gunEnd.position, gunEnd.rotation);
+					startDestroy = true;
 				}
 			}
-			if(Input.GetButtonUp("Fire2")){
-				//eoeChargeTime = 0;
+
+			if (startDestroy) {
+				//eoe.transform.localScale = Vector3.Lerp (originalSize, endSize, Time.deltaTime*10);
+				if (scale.x < eoeChargeTime) {
+					scale.x += Time.deltaTime * 2.5f;
+					scale.y += Time.deltaTime * 2.5f;
+					scale.z += Time.deltaTime * 2.5f;
+				}
+
+				if (eoeDestroyTime < 2) {
+					eoeDestroyTime += Time.deltaTime;
+				}
+			}
+			if (eoeDestroyTime >= 2) {
+				eoeChargeTime = 0;
 				//eoeSkillPref.transform.localScale = originalSize;
-				eoeCD = 5;
-				eoe = (GameObject)Instantiate (eoeSkillPref, gunEnd.position, gunEnd.rotation);
-				startDestroy = true;
-			}
-		}
-
-		if (startDestroy) {
-			//eoe.transform.localScale = Vector3.Lerp (originalSize, endSize, Time.deltaTime*10);
-			if(scale.x < eoeChargeTime){
-				scale.x += Time.deltaTime *2.5f;
-				scale.y += Time.deltaTime *2.5f;
-				scale.z += Time.deltaTime *2.5f;
+				scale = originalSize;
+				startDestroy = false;
+				eoeDestroyTime = 0;
+				Destroy (GameObject.FindGameObjectWithTag ("EoESkill"));
 			}
 
-			if (eoeDestroyTime < 2) {
-				eoeDestroyTime += Time.deltaTime;
+			if (eoeCD >= 0) {
+				eoeCD -= Time.deltaTime;
 			}
-		}
-		if (eoeDestroyTime >= 2) {
-			eoeChargeTime = 0;
-			//eoeSkillPref.transform.localScale = originalSize;
-			scale = originalSize;
-			startDestroy = false;
-			eoeDestroyTime = 0;
-			Destroy (GameObject.FindGameObjectWithTag("EoESkill"));
-		}
 
-		if (eoeCD >= 0) {
-			eoeCD -= Time.deltaTime;
-		}
-
-		if (eoe != null) {
-			eoe.transform.localScale = scale;
+			if (eoe != null) {
+				eoe.transform.localScale = scale;
+			}
 		}
 	}
 
-    void SoulOfZoltran() {
-        if (Input.GetButtonDown("Fire2"))
-        {
-            if (!castingDecoy)
-            {
-                castingDecoy = true;
-            }
-            else {
-                castingDecoy = false;
-                tempDecoy.transform.position = castingOriginalPos;
-            }
-        }
+    public void SoulOfZoltran() {
+		if (gameObject.GetComponent<Shoot> ().gunmodcounter == 1) {
+			if (Input.GetButtonDown ("Fire2")) {
+				if (!castingDecoy) {
+					castingDecoy = true;
+				} else {
+					castingDecoy = false;
+					tempDecoy.transform.position = castingOriginalPos;
+				}
+			}
 
-        if (castingDecoy) {
-            RaycastHit hit;
-            Ray ray = new Ray(camera.transform.position, camera.transform.forward);
-            if (terrain.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity)) //only if player click on the terrain then will call this
-            {
-                lookPos = hit.point; //to get the location of the mouse click
-                Vector3 magicCirlePlacement = lookPos;
-                magicCirlePlacement.y = lookPos.y + 2;
-                tempDecoy.transform.position = magicCirlePlacement;
-                if (Vector3.Distance(lookPos, transform.position) > 30)
-                {
-                    tempDecoy.GetComponent<Renderer>().material.SetColor("_Color", new Color(1,0,0,0.5f));
-                }
-                else {
-                    tempDecoy.GetComponent<Renderer>().material.SetColor("_Color", new Color(1, 1, 1, 0.5f));
-                }
-                //mousePos = lookPos;
-            }
-            if (Input.GetButton("Fire1"))
-            {
-                if (Vector3.Distance(lookPos, transform.position) <= 30)
-                {
-                    tempDecoy.transform.position = castingOriginalPos;
-                    GameObject dropDecoy = (GameObject)Instantiate(decoy, new Vector3(lookPos.x, lookPos.y + 2, lookPos.z), Quaternion.identity);
-                    castingDecoy = false;
-                    dropDecoy.tag = "Player";
-                    this.gameObject.tag = "PlayerTemp";
-                }
-            }
-            //else if (goTerrain.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity))
-            //{ //only if player click on the terrain then will call this
-            //    Vector3 lookPos = hit.point; //to get the location of the mouse click
-            //                                 //GameObject newMagicCircle = (GameObject)Instantiate (AOEMagic, lookPos, MagicCastingPosition.rotation);
-            //    Vector3 magicCirlePlacement = lookPos;
-            //    magicCirlePlacement.y = lookPos.y + 1;
-            //    //AOEMagic.transform.position = magicCirlePlacement;
-            //    //mousePos = lookPos;
-            //}
-        }
-    }
+			if (castingDecoy) {
+				RaycastHit hit;
+				Ray ray = new Ray (camera.transform.position, camera.transform.forward);
+				if (terrain.GetComponent<Collider> ().Raycast (ray, out hit, Mathf.Infinity)) { //only if player click on the terrain then will call this
+					lookPos = hit.point; //to get the location of the mouse click
+					Vector3 magicCirlePlacement = lookPos;
+					magicCirlePlacement.y = lookPos.y + 2;
+					tempDecoy.transform.position = magicCirlePlacement;
+					if (Vector3.Distance (lookPos, transform.position) > 30) {
+						tempDecoy.GetComponent<Renderer> ().material.SetColor ("_Color", new Color (1, 0, 0, 0.5f));
+					} else {
+						tempDecoy.GetComponent<Renderer> ().material.SetColor ("_Color", new Color (1, 1, 1, 0.5f));
+					}
+					//mousePos = lookPos;
+				}
+				if (Input.GetButton ("Fire1")) {
+					if (Vector3.Distance (lookPos, transform.position) <= 30) {
+						tempDecoy.transform.position = castingOriginalPos;
+						GameObject dropDecoy = (GameObject)Instantiate (decoy, new Vector3 (lookPos.x, lookPos.y + 2, lookPos.z), Quaternion.identity);
+						castingDecoy = false;
+						dropDecoy.tag = "Player";
+						this.gameObject.tag = "PlayerTemp";
+					}
+				}
+				//else if (goTerrain.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity))
+				//{ //only if player click on the terrain then will call this
+				//    Vector3 lookPos = hit.point; //to get the location of the mouse click
+				//                                 //GameObject newMagicCircle = (GameObject)Instantiate (AOEMagic, lookPos, MagicCastingPosition.rotation);
+				//    Vector3 magicCirlePlacement = lookPos;
+				//    magicCirlePlacement.y = lookPos.y + 1;
+				//    //AOEMagic.transform.position = magicCirlePlacement;
+				//    //mousePos = lookPos;
+				//}
+			}
+		}
+	}
 }

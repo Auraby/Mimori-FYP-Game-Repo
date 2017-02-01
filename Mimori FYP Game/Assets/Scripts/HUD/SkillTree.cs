@@ -115,11 +115,23 @@ public class SkillTree : MonoBehaviour {
 
 	public GameObject playerobj;
 
+
+	public string slot1Skill = "";
+	public string slot2Skill = "";
+	public string slot3Skill = "";
+	public string slot4Skill = "";
+
+	public GameObject slot1obj;
+	public GameObject slot2obj;
+	public GameObject slot3obj;
+	public GameObject slot4obj;
+
 	Slot slot;
 
 	// Use this for initialization
 	void Start () {
 		checkSkillPoint = 10;
+
 
 	}
 
@@ -135,15 +147,14 @@ public class SkillTree : MonoBehaviour {
 
 		//SPELL ABILITIES
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
-			string slot1Skill = slot.getgameobject (1);
-			if(slot.getgameobject(1) != null){
+			if(slot1Skill != null){
 			switch (slot1Skill) {
 				case "Health Skill3":
 					Skillspelleffect4 = (GameObject)Instantiate (skilleffect4, playerobj.transform.position, Quaternion.identity);
 					//spell4.gameObject.transform.SetParent (playerobj.transform);
 					//Skillspelleffect4.transform.SetAsFirstSibling ();
-					spell4.gameObject.SetActive (true);
-					spell4activate = true;
+					spell1.gameObject.SetActive (true);
+					spell1activate = true;
 					break;
 				case "Mana Skill3":
 					Skillspelleffect1 = (GameObject)Instantiate (skilleffect1, playerobj.transform.position, Quaternion.identity);
@@ -152,43 +163,42 @@ public class SkillTree : MonoBehaviour {
 					break;
 				case "Power Skill1":
 					Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
-					spell2.gameObject.SetActive (true);
-					spell2activate = true;
+					spell1.gameObject.SetActive (true);
+					spell1activate = true;
 					break;
 				case "Speed Skill1":
 					Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
-					spell2.gameObject.SetActive (true);
-					spell2activate = true;
+					spell1.gameObject.SetActive (true);
+					spell1activate = true;
 					break;
 				case "Power Skill3":
 					Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
-					spell3.gameObject.SetActive (true);
-					spell3activate = true;
+					spell1.gameObject.SetActive (true);
+					spell1activate = true;
 					break;
 
 				case "Speed Skill3":
 					Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
-					spell3.gameObject.SetActive (true);
-					spell3activate = true;
+					spell1.gameObject.SetActive (true);
+					spell1activate = true;
 					break;
 			}
 			}
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha2)){
-			string slot2Skill = slot.getgameobject (2);
-			if(slot.getgameobject(2) != null){
+			if(slot2Skill != null){
 				switch (slot2Skill) {
 				case "Health Skill3":
 					Skillspelleffect4 = (GameObject)Instantiate (skilleffect4, playerobj.transform.position, Quaternion.identity);
 					//spell4.gameObject.transform.SetParent (playerobj.transform);
 					//Skillspelleffect4.transform.SetAsFirstSibling ();
-					spell4.gameObject.SetActive (true);
-					spell4activate = true;
+					spell2.gameObject.SetActive (true);
+					spell2activate = true;
 					break;
 				case "Mana Skill3":
 					Skillspelleffect1 = (GameObject)Instantiate (skilleffect1, playerobj.transform.position, Quaternion.identity);
-					spell1.gameObject.SetActive (true);
-					spell1activate = true;
+					spell2.gameObject.SetActive (true);
+					spell2activate = true;
 					break;
 				case "Power Skill1":
 					Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
@@ -202,43 +212,43 @@ public class SkillTree : MonoBehaviour {
 					break;
 				case "Power Skill3":
 					Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
-					spell3.gameObject.SetActive (true);
-					spell3activate = true;
+					spell2.gameObject.SetActive (true);
+					spell2activate = true;
 					break;
 
 				case "Speed Skill3":
 					Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
-					spell3.gameObject.SetActive (true);
-					spell3activate = true;
+					spell2.gameObject.SetActive (true);
+					spell2activate = true;
 					break;
 				}
 			}
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha3)){
-			string slot3Skill = slot.getgameobject (3);
-			if(slot.getgameobject(3) != null){
+
+			if(slot3Skill != null){
 				switch (slot3Skill) {
 				case "Health Skill3":
 					Skillspelleffect4 = (GameObject)Instantiate (skilleffect4, playerobj.transform.position, Quaternion.identity);
 					//spell4.gameObject.transform.SetParent (playerobj.transform);
 					//Skillspelleffect4.transform.SetAsFirstSibling ();
-					spell4.gameObject.SetActive (true);
-					spell4activate = true;
+					spell3.gameObject.SetActive (true);
+					spell3activate = true;
 					break;
 				case "Mana Skill3":
 					Skillspelleffect1 = (GameObject)Instantiate (skilleffect1, playerobj.transform.position, Quaternion.identity);
-					spell1.gameObject.SetActive (true);
-					spell1activate = true;
+					spell3.gameObject.SetActive (true);
+					spell3activate = true;
 					break;
 				case "Power Skill1":
 					Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
-					spell2.gameObject.SetActive (true);
-					spell2activate = true;
+					spell3.gameObject.SetActive (true);
+					spell3activate = true;
 					break;
 				case "Speed Skill1":
 					Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
-					spell2.gameObject.SetActive (true);
-					spell2activate = true;
+					spell3.gameObject.SetActive (true);
+					spell3activate = true;
 					break;
 				case "Power Skill3":
 					Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
@@ -255,8 +265,8 @@ public class SkillTree : MonoBehaviour {
 			}
 		}
 		if (Input.GetKeyDown (KeyCode.Alpha4)) {
-			string slot4Skill = slot.getgameobject (4);
-			if(slot.getgameobject(4) != null){
+
+			if(slot4Skill != null){
 				switch (slot4Skill) {
 				case "Health Skill3":
 					Skillspelleffect4 = (GameObject)Instantiate (skilleffect4, playerobj.transform.position, Quaternion.identity);
@@ -267,29 +277,29 @@ public class SkillTree : MonoBehaviour {
 					break;
 				case "Mana Skill3":
 					Skillspelleffect1 = (GameObject)Instantiate (skilleffect1, playerobj.transform.position, Quaternion.identity);
-					spell1.gameObject.SetActive (true);
-					spell1activate = true;
+					spell4.gameObject.SetActive (true);
+					spell4activate = true;
 					break;
 				case "Power Skill1":
 					Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
-					spell2.gameObject.SetActive (true);
-					spell2activate = true;
+					spell4.gameObject.SetActive (true);
+					spell4activate = true;
 					break;
 				case "Speed Skill1":
 					Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
-					spell2.gameObject.SetActive (true);
-					spell2activate = true;
+					spell4.gameObject.SetActive (true);
+					spell4activate = true;
 					break;
 				case "Power Skill3":
 					Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
-					spell3.gameObject.SetActive (true);
-					spell3activate = true;
+					spell4.gameObject.SetActive (true);
+					spell4activate = true;
 					break;
 
 				case "Speed Skill3":
 					Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
-					spell3.gameObject.SetActive (true);
-					spell3activate = true;
+					spell4.gameObject.SetActive (true);
+					spell4activate = true;
 					break;
 				}
 			}

@@ -15,7 +15,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 	public  static GameObject Slot2;
 	public  static GameObject Slot3;
 	public  static GameObject Slot4;
-	public  static GameObject[] slotobjectlist = new GameObject[4];
+	public   static GameObject[] slotobjectlist = new GameObject[4];
 	public  static bool[] slotobjectisTaken = new bool[4]{false, false, false, false};
 	public 	static int[] counterforloop = new int[4];
 	public   int i;
@@ -25,9 +25,11 @@ public class Slot : MonoBehaviour , IDropHandler{
 	public GameObject prevskill;
 	public bool checkforloop = false;
 
+	public GameObject FPSctrl;
+
 	void Start(){
 		i = 0;
-
+		FPSctrl.GetComponent<SkillTree> ();
 	}
 
 	public void ManageSlots(GameObject newskills){
@@ -35,9 +37,11 @@ public class Slot : MonoBehaviour , IDropHandler{
 		if (this.gameObject.name == "Slot 1") {
 			DragHandler.slotchecklist [0] = 1;
 			DragHandler.SlotIsTaken [0] = true;
+			slotobjectlist [1] = DragHandler.itemBeingDragged.gameObject;
 			slotobjectisTaken[0] = true;
-			slotobjectlist [0] = DragHandler.itemBeingDragged.gameObject;
+			FPSctrl.GetComponent<SkillTree> ().slot1Skill = DragHandler.itemBeingDragged.gameObject.name;
 			counterforloop [0] = 1;
+			
 
 			if (currskill != null) {
 				prevskill = currskill;
@@ -57,6 +61,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			DragHandler.SlotIsTaken [1] = true;
 			slotobjectisTaken[1] = true;
 			slotobjectlist [1] = DragHandler.itemBeingDragged.gameObject;
+			FPSctrl.GetComponent<SkillTree> ().slot2Skill = DragHandler.itemBeingDragged.gameObject.name;
 			counterforloop [1] = 2;
 
 			if (currskill != null) {
@@ -76,6 +81,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			DragHandler.SlotIsTaken [2] = true;
 			slotobjectisTaken[2] = true;
 			slotobjectlist [2] = DragHandler.itemBeingDragged.gameObject;
+			FPSctrl.GetComponent<SkillTree> ().slot3Skill = DragHandler.itemBeingDragged.gameObject.name;
 			counterforloop [2] = 3;
 			if (currskill != null) {
 				prevskill = currskill;
@@ -94,6 +100,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			DragHandler.SlotIsTaken [3] = true;
 			slotobjectisTaken[3] = true;
 			slotobjectlist [3] = DragHandler.itemBeingDragged.gameObject;
+			FPSctrl.GetComponent<SkillTree> ().slot4Skill = DragHandler.itemBeingDragged.gameObject.name;
 			counterforloop [3] = 4;
 			Debug.Log ("ManageSlots4");
 			if (currskill != null) {
@@ -148,14 +155,16 @@ public class Slot : MonoBehaviour , IDropHandler{
 
 	public string getgameobject(int index){
 		if (index == 1) {
-			return slotobjectlist [0].gameObject.name.ToString();
+			return slotobjectlist [0].gameObject.name;
 		} else if (index == 2) {
-			return slotobjectlist [1].gameObject.name.ToString();
+			return slotobjectlist [1].gameObject.name;
 		} else if (index == 3) {
-			return slotobjectlist [2].gameObject.name.ToString();
+			return slotobjectlist [2].gameObject.name;
 		} else {
-			return slotobjectlist [3].gameObject.name.ToString();
+			return slotobjectlist [3].gameObject.name;
 		}
+
+		
 		
 	}
 
