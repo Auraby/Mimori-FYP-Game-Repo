@@ -64,8 +64,8 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
 		if (isDragging) {
 			itemBeingDragged_Duplicate = Instantiate (itemBeingDragged) as GameObject;
 			itemBeingDragged_Duplicate.transform.SetParent (SkillTreeCanvas.transform, false);
+			itemBeingDragged_Duplicate.name = itemBeingDragged_Duplicate.name.Replace ("(Clone)", "");
 		}
-
 	}
 
 	#region IDragHandler implementation
