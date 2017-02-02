@@ -113,6 +113,11 @@ public class ZoltranController : MonoBehaviour {
         zCurrentHealth = zMaxHealth;
         isExplodeMode = false;
         exploded = false;
+
+        if(isIllusion == false)
+        {
+            illusionList.Clear();
+        }
 	
 	}
 	
@@ -198,7 +203,9 @@ public class ZoltranController : MonoBehaviour {
                             }
                         }
 
-                        
+                        if (zCurrentHealth <= 0) {
+                            currentState = ZoltranStates.Dying;
+                        }
 
                         #region Normal Mode
                         switch (currentState)
@@ -372,7 +379,7 @@ public class ZoltranController : MonoBehaviour {
 
                             case ZoltranStates.Dying:
                                 {
-
+                                    Debug.Log("Dead");
                                 }
                                 break;
 

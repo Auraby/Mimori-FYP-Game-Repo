@@ -91,7 +91,7 @@ public class PushingTrap : MonoBehaviour {
         }
 
         if (other.gameObject.tag == "Player") {
-            Vector3 direction = other.transform.position - transform.position;
+            Vector3 direction = new Vector3(other.transform.position.x, 65, other.transform.position.z) - transform.position;
             direction.Normalize();
             other.transform.Translate(direction * 200 * Time.deltaTime, Space.World);
         }

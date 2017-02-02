@@ -10,14 +10,20 @@ public class FoMController : MonoBehaviour {
 	public static int minionCount;
 	public GameObject blockPlayer, magicBarrier;
     public GameObject generator;
-
+    public AudioClip defaultBGM, hordeBGM, zoltranBGM;
+    
+    AudioSource audio;
+    bool playedDefaultBGM = false;
+    bool playedHordeBGM = false;
 	bool hordeOn = false;
 	float timeRemaining = 10f;
 	float spawnCD;
     bool hordeSpawned = false;
 	// Use this for initialization
 	void Start () {
-	
+        audio = GetComponent<AudioSource>();
+        audio.clip = defaultBGM;
+        audio.Play();
 	}
 	
 	// Update is called once per frame
@@ -36,11 +42,36 @@ public class FoMController : MonoBehaviour {
         if (GameController.gameController.hordeCleared) {
             generator.gameObject.SetActive(false);
             magicBarrier.gameObject.SetActive(false);
+            if (playedHordeBGM) {
+                audio.volume -= Time.deltaTime;
+            }
+            if (audio.volume <= 0) {
+                playedHordeBGM = false;
+            }
+        }
+        if (GameController.gameController.hordeCleared) {
+            if (!playedDefaultBGM && !playedHordeBGM) {
+                audio.clip = defaultBGM;
+                audio.Play();
+                audio.volume = 0.2f;
+                if (audio.volume < 0.2f) {
+                    audio.volume += Time.deltaTime / 4;
+                }
+                if (audio.volume >= 0.2f) {
+                    playedDefaultBGM = true;
+                }
+            }
         }
 	}
 
 	void TimerCountdown(){
 		if (timerStart) {
+            if (!playedHordeBGM && !GameController.gameController.hordeCleared) {
+                audio.clip = hordeBGM;
+                audio.volume = 0.8f;
+                audio.Play();
+                playedHordeBGM = true;
+            }
 			cdText.gameObject.SetActive (true);
 			blockPlayer.SetActive (true);
 			if (timeRemaining > 0) {
