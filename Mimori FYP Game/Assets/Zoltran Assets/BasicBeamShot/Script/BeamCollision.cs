@@ -12,6 +12,8 @@ public class BeamCollision : MonoBehaviour {
 
 	private BeamParam BP;
 
+    public float beamDamage;
+
 	// Use this for initialization
 	void Start () {
 		BL = (BeamLine)this.gameObject.transform.FindChild("BeamLine").GetComponent<BeamLine>();
@@ -47,7 +49,7 @@ public class BeamCollision : MonoBehaviour {
 
                 if(hit.collider.gameObject.tag == "Player")
                 {
-                    Health.instance.currentHealth -= 5;
+                    Health.instance.currentHealth -= beamDamage;
                 }
 			}
 			//print("find" + hit.collider.gameObject.name);
