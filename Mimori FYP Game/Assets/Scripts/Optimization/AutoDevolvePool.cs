@@ -3,13 +3,27 @@ using System.Collections;
 
 public class AutoDevolvePool : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    public int time = 2;
+
+    private float seconds = 0;
+    public ObjectPooling pooling;
+
+    void Start()
+    {
+        //pooling = GameObject.FindGameObjectWithTag("BulletPool").GetComponent<ObjectPooling>();
+    }
+
+    void Update()
+    {
+        seconds += Time.deltaTime;
+
+        if (seconds >= time)
+        {
+            //Debug.Log("devolvido");
+            pooling.DevolveInstance(gameObject);
+            seconds = 0;
+        }
+    }
+
+
 }

@@ -4,13 +4,14 @@ using System.Collections;
 public class ZoltranBulletController : MonoBehaviour {
 
     public int time = 2;
+    public float bulletDamage = 2;
 
     private float seconds = 0;
-    private ObjectPooling pooling;
+    public GameObject pooling;
 
     void Start()
     {
-        pooling = GameObject.FindGameObjectWithTag("BulletPool").GetComponent<ObjectPooling>();
+        //pooling = GameObject.FindGameObjectWithTag("BulletPool").GetComponent<ObjectPooling>();
     }
 
     void Update()
@@ -20,22 +21,23 @@ public class ZoltranBulletController : MonoBehaviour {
         if (seconds >= time)
         {
             //Debug.Log("devolvido");
-            pooling.DevolveInstance(gameObject);
+            pooling.GetComponent<ObjectPooling>().DevolveInstance(gameObject);
             seconds = 0;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Cover")
-        {
-            pooling.DevolveInstance(gameObject);
-        }
+        //if (other.gameObject.tag != "Player")
+        //{
+        //    pooling.DevolveInstance(gameObject);
+        //}
 
         if(other.gameObject.tag == "Player")
         {
             //Damage player here
-            pooling.DevolveInstance(gameObject);
+            pooling.GetComponent<ObjectPooling>().DevolveInstance(gameObject);
+            Health.instance.currentHealth -= bulletDamage;
         }
     }
 }
