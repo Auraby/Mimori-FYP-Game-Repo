@@ -74,6 +74,8 @@ public class GameController : MonoBehaviour
         pData.htActivated = houseTrapActivated;
         //Save Horde Progress
         pData.hCleared = hordeCleared;
+        //Dialogues
+        pData.dialogueCountTI = DialogueManager.templeIDialogueCount;
         //Write the object to the file & close it
         bf.Serialize(file, pData);
         file.Close();
@@ -102,6 +104,8 @@ public class GameController : MonoBehaviour
             houseTrapActivated = pData.htActivated;
             //load horde progress
             hordeCleared = pData.hCleared;
+            //Dialogues
+            DialogueManager.templeIDialogueCount = pData.dialogueCountTI;
         }
     }
 
@@ -130,4 +134,6 @@ class PlayerData
     public bool htActivated = false;
     //Forest of Misery
     public bool hCleared = false;
+    //Temple of Aphellion
+    public int dialogueCountTI;
 }
