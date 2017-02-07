@@ -3,7 +3,7 @@ using System.Collections;
 
 public class InvisibleWallsController : MonoBehaviour {
 
-    public Collider[] CollidersToIgnoreArray;
+    //public Collider[] CollidersToIgnoreArray;
 
 	// Use this for initialization
 	void Start () {
@@ -15,11 +15,19 @@ public class InvisibleWallsController : MonoBehaviour {
 	
 	}
 
-    public void IgnoreEverythingExceptPLayer()
+    //public void IgnoreEverythingExceptPLayer()
+    //{
+    //    foreach (Collider col in CollidersToIgnoreArray)
+    //    {
+    //        Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), col);
+    //    }
+    //}
+
+    public void OnCollisionEnter(Collision other)
     {
-        foreach (Collider col in CollidersToIgnoreArray)
+        if (other.gameObject.tag != "Player")
         {
-            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), col);
+            Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), gameObject.GetComponent<Collider>());
         }
     }
 }
