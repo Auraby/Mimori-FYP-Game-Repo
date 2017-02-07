@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
@@ -27,6 +28,8 @@ public class Player : MonoBehaviour {
 	public GameObject eoe;
 	public GameObject eoeParticle;
 
+    public GameObject dialogueBox;
+
 	//IronSights
 	//[Header("Iron Sights")]
 	public GameObject gun_IronSight;
@@ -37,10 +40,9 @@ public class Player : MonoBehaviour {
 	public Text Objective;
 
 	//SkillTree /Pause Game
-	public bool isPaused;
 	public Image SkillTreePanel;
 	[HideInInspector]
-	public CursorLockMode curseMode;
+	public static CursorLockMode curseMode;
 	[HideInInspector]
 	public MouseLook mouselook;
 
@@ -81,7 +83,7 @@ public class Player : MonoBehaviour {
 		}
 
 		isIronSight = 0;
-		isPaused = false;
+        FirstPersonController.isPaused = false;
 		Cursor.visible = false;
 		curseMode = CursorLockMode.Locked;
 		//interactDistance = Vector3.Distance (interactObj.transform.position, this.gameObject.transform.position);
@@ -90,19 +92,43 @@ public class Player : MonoBehaviour {
 		fpc = GameObject.FindObjectOfType<FirstPersonController> ();
 	}
 
-	public void OnTriggerEnter(Collider obj){
-		if (obj.gameObject.tag == "Objective2") {
-			Objective.text = "Kill 10 Mobs and obtain skillpoint".ToString ();
+	public void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Objective2") {
+            Objective.text = "Kill 10 Mobs and obtain skillpoint".ToString ();
 		}
-		if (obj.gameObject.tag == "Objective1") {
+		if (other.gameObject.tag == "Objective1") {
 			Objective.text = "Complete puzzle to unlock hidden treasure".ToString ();
 		}
+
+        if (other.gameObject.tag == "DialogueTrigger") {
+            if (!dialogueBox.activeSelf) {
+                if (SceneManager.GetActiveScene().name != "Temple of Aphelion")
+                {
+                    if (DialogueManager.templeIDialogueCount == 0)
+                    {
+                        dialogueBox.SetActive(true);
+                        Time.timeScale = 0;
+                        FirstPersonController.isPaused = true;
+                        canvas.SetActive(false);
+                        Destroy(other.gameObject);
+                    }
+                    if (DialogueManager.templeIDialogueCount == 1 && other.gameObject.name == "dTrigger2") {
+                        dialogueBox.SetActive(true);
+                        Time.timeScale = 0;
+                        FirstPersonController.isPaused = true;
+                        canvas.SetActive(false);
+                        Destroy(other.gameObject);
+                    }
+                }
+            }
+        }
 	}
 
 
 
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(DialogueManager.templeIDialogueCount);
         //check if in combat
         if (inCombatCD > 0) {
             inCombat = true;
@@ -201,21 +227,21 @@ public class Player : MonoBehaviour {
 
 		///Check If Tab is pressed
 		if (Input.GetKeyUp (KeyCode.Tab)) {
-			Debug.Log (isPaused);	
+			//Debug.Log (isPaused);	
 			//Paused Game If it Isn't Paused Yet
 			//isPaused = true;
-			if (isPaused == false) {
+			if (!FirstPersonController.isPaused) {
 				Cursor.visible = true;
 				curseMode = CursorLockMode.None;
 				SkillTreePanel.gameObject.SetActive (true);
 				//Freeze Time
 				Time.timeScale = 0;
-				isPaused = true;
+                FirstPersonController.isPaused = true;
 			} else {
-				isPaused = false;
+                FirstPersonController.isPaused = false;
 				SkillTreePanel.gameObject.SetActive (false);
 				Cursor.visible = false;
-				curseMode = CursorLockMode.Locked;
+				//curseMode = CursorLockMode.Locked;
 				//unFreeze Time
 				Time.timeScale = 1;
 			}
@@ -226,7 +252,7 @@ public class Player : MonoBehaviour {
 
 		if (Input.GetButton ("Fire1"))
 		{
-			if (shootDelay <= 0) {
+			if (shootDelay <= 0 && !FirstPersonController.isPaused) {
 				//Check if Player has enabled IronSight
 				if (isIronSight >= 1) {
 					GameObject bullet_IronSight = (GameObject)Instantiate (bulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
