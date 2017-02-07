@@ -6,28 +6,41 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class Level1Controller : MonoBehaviour {
 
-    public enum LevelState { Start, Playing, Win, Lose}
+    public enum LevelState { Start, Playing, Win, Lose }
 
     public LevelState levelProgress;
 
+    [Header("Win Lose Variables")]
     public Text currObjective;
     public Slider objectiveSlider;
 
     public float wallMaxHealth = 100;
     public float currentWallHealth;
 
+    public bool playerDied = false;
+    public bool wallDestroyed = false;
+
+    public FracturedObject fracturedGate;
+    public FracturedObject fracturedMetalGate;
+    //public fracture
+
+    [Header("Boss Information")]
+    public GameObject bossInfoPanel;
+    public Text bossNameText;
+    public Image bossImage;
+    public Slider bossHealthSlider;
+
     public GameObject tempPortal;
 
     [Header("OpeningSequenceVariables")]
     public GameObject openingSequence;
     public Image openingBlackScreen;
-    public Image openingblackTopPanel, openingblackBottomPanel;
+    //public Image openingblackTopPanel, openingblackBottomPanel;
     public Text openingText;
     public float startTime;
     public float waitTime;
 
-    public bool playerDied = false;
-    public bool wallDestroyed = false;
+    
 
     [HideInInspector]
     public AsyncOperation aSyncOp;
@@ -39,14 +52,16 @@ public class Level1Controller : MonoBehaviour {
         instance = this;
         //Starting Cinematics
         objectiveSlider.gameObject.SetActive(false);
+        bossInfoPanel.SetActive(false);
 
         tempPortal.SetActive(false);
 
+        bossHealthSlider.maxValue = EnmarController.instance.enmarMaxHealth;
 
         //gameOverScreen.SetActive(false);
         levelProgress = LevelState.Start;
         currentWallHealth = wallMaxHealth;
-        objectiveSlider.value = currentWallHealth;
+        bossHealthSlider.value = EnmarController.instance.enmarCurrentHealth;
 
         aSyncOp = SceneManager.LoadSceneAsync("Mimori");
         aSyncOp.allowSceneActivation = false;
@@ -55,7 +70,7 @@ public class Level1Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        objectiveSlider.value = currentWallHealth;
+        bossHealthSlider.value = EnmarController.instance.enmarCurrentHealth;
 
         //Enmar Health
         if (EnmarController.instance.enmarCurrentHealth <= 0)
@@ -86,8 +101,8 @@ public class Level1Controller : MonoBehaviour {
                     if(startTime > 5)
                     {
                         openingBlackScreen.CrossFadeAlpha(0, 2, false);
-                        openingblackTopPanel.CrossFadeAlpha(0, 3, false);
-                        openingblackBottomPanel.CrossFadeAlpha(0, 3, false);
+                        //openingblackTopPanel.CrossFadeAlpha(0, 3, false);
+                        //openingblackBottomPanel.CrossFadeAlpha(0, 3, false);
                         openingText.CrossFadeAlpha(0, 2, false);
                     }
                    if(startTime > waitTime)
@@ -101,8 +116,11 @@ public class Level1Controller : MonoBehaviour {
 
             case LevelState.Playing:
                 {
+                    bossNameText.text = "Prevent Enmar from destroying the gate:";
                     currObjective.text = "Prevent Enmar from destroying the gate:";
-                    objectiveSlider.gameObject.SetActive(true);                
+                    objectiveSlider.gameObject.SetActive(true);
+
+                    bossInfoPanel.SetActive(true);             
                 }
                 break;
 
@@ -110,16 +128,27 @@ public class Level1Controller : MonoBehaviour {
                 {
                     currObjective.text = "Objective Completed";
                     objectiveSlider.gameObject.SetActive(false);
+                    bossInfoPanel.SetActive(false);
                     tempPortal.SetActive(true);
                 }
                 break;
 
             case LevelState.Lose:
                 {
-                    
+                    EnmarController.instance.enmarState = EnmarController.FSMState.GameOver;
+                    StartCoroutine(WaitToExplode(10));
+                    //fracturedMetalGate.Explode(fracturedMetalGate.gameObject.transform.position, 10);
+                    //fracturedGate.CollapseChunks();
+                    //fracturedMetalGate.CollapseChunks();
                 }
                 break;
         }
         
 	}
+
+    private IEnumerator WaitToExplode(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        fracturedGate.Explode(fracturedGate.gameObject.transform.position, 10);
+    }
 }
