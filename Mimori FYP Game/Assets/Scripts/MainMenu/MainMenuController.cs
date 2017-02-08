@@ -3,7 +3,6 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 public class MainMenuController : MonoBehaviour {

@@ -110,7 +110,6 @@ public class ZoltranController : MonoBehaviour {
     public Vector3 lastPos;
     private bool reappearFromBH = false;
     [HideInInspector]
-    public StartZoltran startZoltran;
     private bool spawnCloud = false;
     #endregion
 
@@ -127,8 +126,6 @@ public class ZoltranController : MonoBehaviour {
         zCurrentHealth = zMaxHealth;
         isExplodeMode = false;
         exploded = false;
-
-        startZoltran = GameObject.Find("ZoltranStart").GetComponent<StartZoltran>();
 
         if(isIllusion == false)
         {
@@ -450,8 +447,8 @@ public class ZoltranController : MonoBehaviour {
 
                             case ZoltranStates.Dying:
                                 {
-                                    Debug.Log("Dead");
-                                    startZoltran.zoltranDied = true;
+                                    StartZoltran.zoltranDied = true;
+                                    GameController.gameController.fightingBoss = false;
                                     navAgent.Stop();
 
                                    

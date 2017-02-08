@@ -2,7 +2,9 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityStandardAssets.Characters.FirstPerson;
+using System.IO;
 
 public class PauseMenu : MonoBehaviour {
     public GameObject pauseMenu;
@@ -11,6 +13,7 @@ public class PauseMenu : MonoBehaviour {
     public GameObject mainCanvas;
     public Image gameoverBlackPanel;
     public Text gameoverText, gameoverTextSubtitle;
+    public Button saveGameBtn, loadGameBtn;
 
     //CursorLockMode cursMode;
     AsyncOperation aSyncOp;
@@ -22,6 +25,25 @@ public class PauseMenu : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        //if no save file exists, load game button is disabled
+        if (File.Exists(Application.persistentDataPath + "/PlayerInfo.mi"))
+        {
+            loadGameBtn.interactable = true;
+        }
+        else
+        {
+            loadGameBtn.interactable = false;
+        }
+        //unable to save during boss fight
+        if (!GameController.gameController.fightingBoss)
+        {
+            saveGameBtn.interactable = true;
+        }
+        else
+        {
+            saveGameBtn.interactable = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.O)) {
             if (!FirstPersonController.isPaused) {
                 mainCanvas.SetActive(false);
