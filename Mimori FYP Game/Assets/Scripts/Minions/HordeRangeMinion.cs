@@ -114,7 +114,7 @@ public class HordeRangeMinion : MonoBehaviour {
 
 			// Add velocity to the bullet
 			bullet.transform.LookAt(player.transform);
-			bullet.GetComponent<Rigidbody>().velocity = shootPoint.forward * 50;
+			bullet.GetComponent<Rigidbody>().velocity = shootPoint.right * 50;
             //bullet.transform.position = Vector3.MoveTowards(shootPoint.position, player.transform.position, Time.deltaTime * 10);
             //opponent.getHit(damage);
             //player.GetComponent<Health>().currentHealth -= damage/2;

@@ -11,7 +11,9 @@ public class GameController : MonoBehaviour
     public string currentScene;
     public static bool loadingGame = false;
     public static GameController gameController;
-    
+
+    //Combat status
+    public bool fightingBoss = false;
     //Player Position
     public float playerPositionX;
     public float playerPositionY;
@@ -75,7 +77,10 @@ public class GameController : MonoBehaviour
         //Save Horde Progress
         pData.hCleared = hordeCleared;
         //Dialogues
-        pData.dialogueCountTI = DialogueManager.templeIDialogueCount;
+        pData.dialogueCountForest = DialogueManager.forestDialogueCount;
+        pData.dialogueCountTemple = DialogueManager.templeIDialogueCount;
+        //Boss Cleared or not
+        pData.zDied = StartZoltran.zoltranDied;
         //Write the object to the file & close it
         bf.Serialize(file, pData);
         file.Close();
@@ -105,7 +110,10 @@ public class GameController : MonoBehaviour
             //load horde progress
             hordeCleared = pData.hCleared;
             //Dialogues
-            DialogueManager.templeIDialogueCount = pData.dialogueCountTI;
+            DialogueManager.forestDialogueCount = pData.dialogueCountForest;
+            DialogueManager.templeIDialogueCount = pData.dialogueCountTemple;
+            //Boss Cleared or not
+            StartZoltran.zoltranDied = pData.zDied;
         }
     }
 
@@ -133,7 +141,9 @@ class PlayerData
     public bool o4Captured = false;
     public bool htActivated = false;
     //Forest of Misery
+    public bool zDied = false;
     public bool hCleared = false;
+    public int dialogueCountForest;
     //Temple of Aphellion
-    public int dialogueCountTI;
+    public int dialogueCountTemple;
 }

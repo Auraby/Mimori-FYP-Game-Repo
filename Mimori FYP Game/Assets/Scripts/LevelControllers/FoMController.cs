@@ -14,7 +14,9 @@ public class FoMController : MonoBehaviour {
     
     AudioSource audio;
     bool playedDefaultBGM = false;
+    bool playedDefaultBGM2 = false;
     bool playedHordeBGM = false;
+    bool playedZoltranBGM = false;
 	bool hordeOn = false;
 	float timeRemaining = 10f;
 	float spawnCD;
@@ -28,6 +30,7 @@ public class FoMController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        Debug.Log(playedDefaultBGM2);
 		TimerCountdown ();
 		SpawnMinions ();
 		if (minionCount <= 0) {
@@ -61,6 +64,33 @@ public class FoMController : MonoBehaviour {
                     playedDefaultBGM = true;
                 }
             }
+        }
+
+        if (StartZoltran.zoltranStart && !playedZoltranBGM) {
+            audio.clip = zoltranBGM;
+            audio.volume = 0.6f;
+            audio.Play();
+            playedZoltranBGM = true;
+        }
+        if (StartZoltran.zoltranDied && audio.clip == zoltranBGM) {
+            audio.volume -= Time.deltaTime;
+        }
+        if (StartZoltran.zoltranDied && !playedDefaultBGM2) {
+            if (audio.volume <= 0) {
+                audio.Stop();
+                audio.clip = defaultBGM;
+                audio.Play();
+                audio.volume = 0.2f;
+                if (audio.volume < 0.2f)
+                {
+                    audio.volume += Time.deltaTime / 4;
+                }
+                if (audio.volume >= 0.2f)
+                {
+                    playedDefaultBGM2 = true;
+                }
+            }
+            
         }
 	}
 

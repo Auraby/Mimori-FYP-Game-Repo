@@ -102,33 +102,56 @@ public class Player : MonoBehaviour {
 
         if (other.gameObject.tag == "DialogueTrigger") {
             if (!dialogueBox.activeSelf) {
-                if (SceneManager.GetActiveScene().name != "Temple of Aphelion")
+                //Forest dialogue triggering
+                if (SceneManager.GetActiveScene().name == "Forest of Misery")
                 {
-                    if (DialogueManager.templeIDialogueCount == 0)
+                    if (DialogueManager.forestDialogueCount == 0 && other.gameObject.name == "dTrigger1")
                     {
-                        dialogueBox.SetActive(true);
-                        Time.timeScale = 0;
-                        FirstPersonController.isPaused = true;
-                        canvas.SetActive(false);
-                        Destroy(other.gameObject);
+                        DialogueTriggered(other);
+                    }
+                    if (DialogueManager.forestDialogueCount == 1 && other.gameObject.name == "dTrigger2")
+                    {
+                        DialogueTriggered(other);
+                    }
+                    if (DialogueManager.forestDialogueCount == 2 && other.gameObject.name == "ZoltranStart")
+                    {
+                        StartZoltran.zoltranStart = true;
+                        DialogueTriggered(other);
+                    }
+                    if (DialogueManager.forestDialogueCount == 3 && other.gameObject.name == "dTrigger4" && StartZoltran.zoltranDied)
+                    {
+                        DialogueTriggered(other);
+                    }
+                    if (DialogueManager.forestDialogueCount == 4 && other.gameObject.name == "dTrigger5")
+                    {
+                        DialogueTriggered(other);
+                    }
+                }
+                //Temple dialogue triggering
+                if (SceneManager.GetActiveScene().name == "Temple of Aphelion")
+                {
+                    if (DialogueManager.templeIDialogueCount == 0 && other.gameObject.name == "dTrigger1")
+                    {
+                        DialogueTriggered(other);
                     }
                     if (DialogueManager.templeIDialogueCount == 1 && other.gameObject.name == "dTrigger2") {
-                        dialogueBox.SetActive(true);
-                        Time.timeScale = 0;
-                        FirstPersonController.isPaused = true;
-                        canvas.SetActive(false);
-                        Destroy(other.gameObject);
+                        DialogueTriggered(other);
                     }
                 }
             }
         }
 	}
 
-
+    void DialogueTriggered(Collider other) {
+        dialogueBox.SetActive(true);
+        Time.timeScale = 0;
+        FirstPersonController.isPaused = true;
+        canvas.SetActive(false);
+        //Destroy(other.gameObject);
+    }
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(DialogueManager.templeIDialogueCount);
         //check if in combat
         if (inCombatCD > 0) {
             inCombat = true;

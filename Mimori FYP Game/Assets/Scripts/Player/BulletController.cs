@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class BulletController : MonoBehaviour {
+    public GameObject bulletImpact;
+
     private GameObject player;
 	private float liveTime = 1f;
 	// Use this for initialization
@@ -23,30 +25,33 @@ public class BulletController : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
         if(Vector3.Distance(other.transform.position, player.transform.position) <= 40)
         {
-            if (other.gameObject.tag == "MeleeMinion")
+            if (this.gameObject.tag != "EnemySkill")
             {
-                other.GetComponent<MeleeMinionFSM>().getHit(10);
-                Destroy(this.gameObject);
-                Player.inCombatCD = 10;
-            }
-            if (other.gameObject.tag == "RangeMinion")
-            {
-                other.GetComponent<RangeMinionFSM>().getHit(10);
-                Destroy(this.gameObject);
-                Player.inCombatCD = 10;
-            }
+                if (other.gameObject.tag == "MeleeMinion")
+                {
+                    other.GetComponent<MeleeMinionFSM>().getHit(10);
+                    DestroyBullet();
+                }
+                else if (other.gameObject.tag == "RangeMinion")
+                {
+                    other.GetComponent<RangeMinionFSM>().getHit(10);
+                    DestroyBullet();
+                }
 
-			if (other.gameObject.tag == "HordeMeleeMinion")
-			{
-				other.GetComponent<HordeMeleeMinion>().getHit(10);
-				Destroy(this.gameObject);
-                Player.inCombatCD = 10;
-            }
-			if (other.gameObject.tag == "HordeRangeMinion")
-			{
-				other.GetComponent<HordeRangeMinion>().getHit(10);
-				Destroy(this.gameObject);
-                Player.inCombatCD = 10;
+                else if (other.gameObject.tag == "HordeMeleeMinion")
+                {
+                    other.GetComponent<HordeMeleeMinion>().getHit(10);
+                    DestroyBullet();
+                }
+                else if (other.gameObject.tag == "HordeRangeMinion")
+                {
+                    other.GetComponent<HordeRangeMinion>().getHit(10);
+                    DestroyBullet();
+                }
+                else {
+                    GameObject bullet = (GameObject)Instantiate(bulletImpact, this.transform.position, Quaternion.identity);
+                    Destroy(this.gameObject);
+                }
             }
         }
 
@@ -58,4 +63,10 @@ public class BulletController : MonoBehaviour {
         }
 		
 	}
+
+    void DestroyBullet() {
+        GameObject bullet = (GameObject)Instantiate(bulletImpact, this.transform.position, Quaternion.identity);
+        Player.inCombatCD = 10;
+        Destroy(this.gameObject);
+    }
 }
