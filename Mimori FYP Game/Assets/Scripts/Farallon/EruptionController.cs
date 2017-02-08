@@ -10,8 +10,10 @@ public class EruptionController : MonoBehaviour {
 
     [Header("General Properties")]
     public float burstRate;
+    [HideInInspector]
     public float burstNextFire;
     public float warningRate;
+    [HideInInspector]
     public float warningNextFire;
 
     [Header("Positions")]
@@ -35,7 +37,9 @@ public class EruptionController : MonoBehaviour {
     private int eruptNum;
 
     [Header("Time")]
+    [HideInInspector]
     public float burstTime;
+    [HideInInspector]
     public float warningTime;
     private float eruptionTime;
     public float eruptionPeriod;
@@ -60,7 +64,7 @@ public class EruptionController : MonoBehaviour {
             case EruptionState.Assign:
                 {
                     AssignTransformsToArray();
-                    if(eruptPositionsArray[32] != null )
+                    if(eruptPositionsArray[9] != null )
                     currEruptState = EruptionState.Idle;
                 }
                 break;
@@ -147,7 +151,7 @@ public class EruptionController : MonoBehaviour {
                 if (choosenPositionsArray[numRNG])
                 {
                     eruptionParticleGO.transform.position = choosenPositionsArray[numRNG].position;
-                    eruptionParticleGO.transform.rotation = Quaternion.Euler(-90,0,0);
+                    //eruptionParticleGO.transform.rotation = Quaternion.Euler(0,0,0);
                 }
                 
             }
@@ -220,7 +224,7 @@ public class EruptionController : MonoBehaviour {
                 if (choosenPositionsArray[rng])
                 {
                     eruptionParticleGO.transform.position = choosenPositionsArray[rng].position;
-                    eruptionParticleGO.transform.rotation = Quaternion.Euler(-90, 0, 0);
+                    //eruptionParticleGO.transform.rotation = Quaternion.Euler(-90, 0, 0);
                 }
 
             }
