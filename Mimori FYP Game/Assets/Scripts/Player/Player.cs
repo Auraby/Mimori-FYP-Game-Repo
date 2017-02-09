@@ -59,7 +59,7 @@ public class Player : MonoBehaviour {
 	Shader normal;
 	public Shader unoOutline;
 	RaycastHit tempHit;
-	float shootDelay = 0;
+	public float shootDelay = 0;
 
     //Combat sounds
     public AudioClip combat;
