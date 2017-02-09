@@ -37,7 +37,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 		if (this.gameObject.name == "Slot 1") {
 			DragHandler.slotchecklist [0] = 1;
 			DragHandler.SlotIsTaken [0] = true;
-			slotobjectlist [1] = DragHandler.itemBeingDragged.gameObject;
+			slotobjectlist [0] = DragHandler.itemBeingDragged.gameObject;
 			slotobjectisTaken[0] = true;
 			FPSctrl.GetComponent<SkillTree> ().slot1Skill = DragHandler.itemBeingDragged.gameObject.name;
 			counterforloop [0] = 1;
@@ -134,14 +134,16 @@ public class Slot : MonoBehaviour , IDropHandler{
 
 		for (int c = 0; c < slotobjectlist.Length; c++) {
 			if (slotobjectlist [c] == null) {
-				
+				Debug.Log (c);
+				Debug.Log (slotobjectlist [c]);
+				Debug.Log ("NULL GAMEOBJECT");
 			} else {
 				if (slotobjectlist [c].gameObject != null) {
 					if (slotobjectlist [c].gameObject.name.Contains (DragHandler.itemBeingDragged.gameObject.name)) {
 						Debug.Log ("GAMEOBJECT DELETED");
 						slotobjectisTaken [c] = false;
 						Destroy (slotobjectlist [c].gameObject);
-						break;
+						//break;
 					}
 				}
 			 
@@ -176,13 +178,13 @@ public class Slot : MonoBehaviour , IDropHandler{
 		newskill = DragHandler.itemBeingDragged.gameObject;
 		for (i = 0; i < 5; i++) {
 				//Debug.Log (counterforloop.GetValue (i));
-			Debug.Log(counterforloop.GetValue(i));
+			//Debug.Log(counterforloop.GetValue(i));
 			if (slotobjectisTaken [i] == false && counterforloop [i] == 0) {
 					//DragHandler.slotchecklist [i] = 1;
 					//DragHandler.SlotIsTaken [i] = true;
 					//slotobjectisTaken [i] = true;
-					Debug.Log (counterforloop.GetValue (i));
-					Debug.Log (i);
+					//Debug.Log (counterforloop.GetValue (i));
+					//Debug.Log (i);
 					
 					//DragHandler.getGameObjectSkill [i] = DragHandler.itemBeingDragged.gameObject;
 					//DragHandler.skillName [i] = DragHandler.itemBeingDragged.name;
@@ -192,8 +194,8 @@ public class Slot : MonoBehaviour , IDropHandler{
 				DeleteSlots();
 			
 					DragHandler.itemBeingDragged.transform.position = this.gameObject.transform.position;
-					DragHandler.itemBeingDragged.transform.SetParent (this.gameObject.transform);
-					DragHandler.itemBeingDragged.transform.localScale = new Vector3 (DragHandler.itemBeingDragged.transform.localScale.x / 1.0f, DragHandler.itemBeingDragged.transform.localScale.y / 0.65f, DragHandler.itemBeingDragged.transform.localScale.z / 1.0f);
+				DragHandler.itemBeingDragged.transform.SetParent (this.gameObject.transform);
+					DragHandler.itemBeingDragged.transform.localScale = new Vector3 (DragHandler.itemBeingDragged.transform.localScale.x / 1.9f, DragHandler.itemBeingDragged.transform.localScale.y / 0.9f, DragHandler.itemBeingDragged.transform.localScale.z / 1.0f);
 					DragHandler.itemBeingDragged.GetComponent<DragHandler> ().enabled = false;
 					DragHandler.itemBeingDragged.transform.SetAsFirstSibling ();
 					//Debug.Log (DragHandler.SlotIsTaken [i]);
@@ -211,7 +213,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 					//DragHandler.skillName [i] = DragHandler.itemBeingDragged.name;
 				    DragHandler.itemBeingDragged.transform.position = this.gameObject.transform.position;
 				    DragHandler.itemBeingDragged.transform.SetParent(this.gameObject.transform);
-				    DragHandler.itemBeingDragged.transform.localScale = new Vector3(DragHandler.itemBeingDragged.transform.localScale.x/1.0f, DragHandler.itemBeingDragged.transform.localScale.y/0.65f, DragHandler.itemBeingDragged.transform.localScale.z/1.0f);
+				    DragHandler.itemBeingDragged.transform.localScale = new Vector3(DragHandler.itemBeingDragged.transform.localScale.x/1.9f, DragHandler.itemBeingDragged.transform.localScale.y/0.9f, DragHandler.itemBeingDragged.transform.localScale.z/1.0f);
 					DragHandler.itemBeingDragged.GetComponent<DragHandler> ().enabled = false;
 				    DragHandler.itemBeingDragged.transform.SetAsFirstSibling ();
 					//Debug.Log (DragHandler.SlotIsTaken [i]);
