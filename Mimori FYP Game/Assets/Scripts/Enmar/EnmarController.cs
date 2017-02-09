@@ -12,6 +12,8 @@ public class EnmarController : MonoBehaviour {
     public FSMState enmarState;
     [Header("Laser attack current state")]
     public LaserState laserStatus;
+
+    public static bool enmarDied = false;
     #endregion
 
     #region Normal Attack
@@ -20,6 +22,9 @@ public class EnmarController : MonoBehaviour {
     public GameObject rightHand;
     public GameObject leftHand;
     public GameObject attackArea1, attackArea2;
+
+    public AudioClip slamRoar;
+    public AudioClip slam;
 
     public bool hasEnteredArea1 = false;
     public bool hasEnteredArea2 = false;
@@ -39,10 +44,22 @@ public class EnmarController : MonoBehaviour {
     #region Laser Attack
     //Gameobjects
     [Header("Laser Attack")]
+    //Old
     public GameObject laserBeam;
     public GameObject laserCharge;
     public GameObject laserOrigin;
     public GameObject laserWarningCircle;
+
+    //New
+    public GameObject newLaserBeam;
+    public GameObject newLaserInnerBeam;
+    public Transform newLaserBeamParent;
+
+    public AudioClip charging;
+    public AudioClip shooting;
+
+    public bool chargingSoundPlayed = false;
+    public bool shootingSoundPlayed = false;
 
     [HideInInspector]
     public GameObject laserChargeGO;
@@ -109,6 +126,9 @@ public class EnmarController : MonoBehaviour {
     public GameObject rightSide;
 
     bool isPlayerGrounded;
+
+    private int gameoverState = 1;
+    public Transform gameoverTargetPoint;
     #endregion
 
     public static EnmarController instance { get; set; }
@@ -294,6 +314,13 @@ public class EnmarController : MonoBehaviour {
 
                             case LaserState.Charging:
                                 {
+                                    if (!chargingSoundPlayed) {
+                                        GetComponent<AudioSource>().clip = charging;
+                                        GetComponent<AudioSource>().volume = 0.8f;
+                                        GetComponent<AudioSource>().Play();
+                                        shootingSoundPlayed = false;
+                                        chargingSoundPlayed = true;
+                                    }
                                     laserChargeTime += Time.deltaTime;
                                     if (isCharging == false)
                                     {
@@ -305,7 +332,7 @@ public class EnmarController : MonoBehaviour {
 
                                     chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
 
-                                    if (laserChargeTime > 8)
+                                    if (laserChargeTime > 4)
                                     {
                                         if (isPlayerGrounded == true)
                                         {
@@ -315,8 +342,10 @@ public class EnmarController : MonoBehaviour {
                                             
                                         }
 
+                                        GetPlayerLocation();
                                         laserChargeTime = 0;
                                         Destroy(laserChargeGO);
+                                        laserOrigin.transform.LookAt(playerLastPos);
                                         laserStatus = LaserState.Shooting;
 
                                     }
@@ -327,11 +356,20 @@ public class EnmarController : MonoBehaviour {
 
                             case LaserState.Shooting:
                                 {
+                                    if (!shootingSoundPlayed) {
+                                        GetComponent<AudioSource>().clip = shooting;
+                                        GetComponent<AudioSource>().volume = 0.8f;
+                                        GetComponent<AudioSource>().Play();
+                                        chargingSoundPlayed = false;
+                                        shootingSoundPlayed = true;
+                                    }
                                     isCharging = false;
-                                    laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation, laserOrigin.transform);
+                                    //laserBeamGO = (GameObject)Instantiate(laserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation, laserOrigin.transform);
                                     //laserBeamGO.transform.LookAt(player.transform.position);
-                                    laserBeamGO.transform.LookAt(playerLastPos);
-                                    laserStatus = LaserState.ShootFinish;
+                                    //laserBeamGO.transform.LookAt(playerLastPos);
+                                    EyeBeam();
+                                    StartCoroutine(TimeTillLaserFinish(4));
+                                    
                                 }
                                 break;
 
@@ -352,6 +390,7 @@ public class EnmarController : MonoBehaviour {
                 case FSMState.Dying:
                     {
                         enmarAnim.SetBool("EnmarDead", true);
+                        enmarDied = true;
                         Destroy(laserChargeGO);
                         Destroy(laserWarningCircleGO);
                         //iTween.RotateTo(gameObject, new Vector3(0, 80, 0), 3);
@@ -360,6 +399,39 @@ public class EnmarController : MonoBehaviour {
 
                 case FSMState.GameOver:
                     {
+                        enmarAnim.SetTrigger("GameOver");
+
+                        switch (gameoverState)
+                        {
+                            case 1:
+                                {
+                                    attackTime = 0;
+                                    gameoverState = 2;
+                                    
+                                }
+                                break;
+
+                            case 2:
+                                {
+
+                                    StartCoroutine(WaitToShootFinalLaser(3));
+                                }
+                                break;
+
+                            case 3:
+                                {
+                                    EyeBeam();
+                                    StartCoroutine(TimeTillFinalLaserFinish(3));
+                                }
+                                break;
+
+                            case 4:
+                                {
+
+                                }
+                                break;
+                        }
+
 
                     }
                     break;
@@ -393,7 +465,13 @@ public class EnmarController : MonoBehaviour {
         Debug.DrawLine(laserOrigin.transform.position, player.transform.position,Color.red);
         if(isPlayerGrounded == true)
         {
-            playerLastPos = player.transform.position;
+            //playerLastPos = player.transform.position;
+            playerLastPos = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
+        }
+
+        else
+        {
+            playerLastPos = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z);
         }
         
     }
@@ -427,13 +505,28 @@ public class EnmarController : MonoBehaviour {
         laserBeamGO.SetActive(true);
     }
 
+    public void EyeBeam()
+    {
+        GameObject L1 = (GameObject)Instantiate(newLaserBeam, laserOrigin.transform.position, laserOrigin.transform.rotation);
+        L1.SetActive(true);
+        L1.GetComponent<BeamParam>().SetBeamParam(L1.GetComponent<BeamParam>());
+
+        GameObject L2 = (GameObject)Instantiate(newLaserInnerBeam, laserOrigin.transform.position, laserOrigin.transform.rotation);
+        L2.SetActive(true);
+        L2.GetComponent<BeamParam>().SetBeamParam(L2.GetComponent<BeamParam>());
+    }
+
     public void PrimeRightHand()
     {
         //rightHand.SetActive(true);
         //rightHand.transform.position = Vector3.Lerp(rightHand.transform.position, new Vector3(rightHand.transform.position.x, 20, rightHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackRight");
+        shootingSoundPlayed = false;
         isRightHandAttack = true;
         laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, rightSide.transform.position, rightSide.transform.rotation);
+        GetComponent<AudioSource>().clip = slamRoar;
+        GetComponent<AudioSource>().volume = 1f;
+        GetComponent<AudioSource>().Play();
         //enmarState = FSMState.AttackDelayState;
     }
 
@@ -443,8 +536,12 @@ public class EnmarController : MonoBehaviour {
         //leftHand.GetComponent<Rigidbody>().AddForce(Vector3.down * 100000);
         //leftHand.transform.position = Vector3.Lerp(leftHand.transform.position, new Vector3(leftHand.transform.position.x, 20, leftHand.transform.position.z), Time.deltaTime);
         enmarAnim.SetTrigger("AttackLeft");
+        shootingSoundPlayed = false;
         isLeftHandAttack = true;
         laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, leftSide.transform.position, leftSide.transform.rotation);
+        GetComponent<AudioSource>().clip = slamRoar;
+        GetComponent<AudioSource>().volume = 1f;
+        GetComponent<AudioSource>().Play();
         //iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
         //enmarState = FSMState.AttackDelayState;
     }
@@ -483,7 +580,7 @@ public class EnmarController : MonoBehaviour {
 
     public void shakeCamera()
     {
-        player.GetComponent<CameraShake>().ShakeCamera(0.2f, 0.2f);
+        player.GetComponent<CameraShake>().ShakeCamera(0.3f, 0.3f);
     }
 
     public void ResetRotation()
@@ -503,5 +600,53 @@ public class EnmarController : MonoBehaviour {
             dustParticlesGO = (GameObject)Instantiate(dustParticles, leftHand.transform.position, leftHand.transform.rotation);
         }
     }
-   
+
+    #region IEnumerators
+
+    private IEnumerator TimeTillLaserFinish(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        laserStatus = LaserState.ShootFinish;
+    }
+
+    private IEnumerator WaitToShootFinalLaser(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        laserChargeTime += Time.deltaTime;
+        if (isCharging == false)
+        {
+            ChargeLaser();
+        }
+
+        //float lerpValue = time / 3;
+        //lerpValue = Mathf.Sin(lerpValue * Mathf.PI * 0.5f);
+
+        chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
+
+        if (laserChargeTime > 8)
+        {
+            if (isPlayerGrounded == true)
+            {
+                DetectFloorBelowPlayer();
+                GetPlayerLocation();
+                ShowLaserWarningCircle();
+
+            }
+
+            laserChargeTime = 0;
+            Destroy(laserChargeGO);
+            laserOrigin.transform.LookAt(gameoverTargetPoint.position);
+            gameoverState = 3;
+
+        }
+    }
+
+    private IEnumerator TimeTillFinalLaserFinish(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        gameoverState = 4;
+    }
+
+    #endregion
+
 }

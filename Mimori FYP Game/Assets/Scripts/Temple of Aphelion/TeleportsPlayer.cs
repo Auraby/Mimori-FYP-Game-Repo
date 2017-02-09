@@ -17,7 +17,6 @@ public class TeleportsPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(player.transform.position);
         if (cdStart) {
             teleCD -= Time.deltaTime;
             teleParticle.gameObject.SetActive(true);

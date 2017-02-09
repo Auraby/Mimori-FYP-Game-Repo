@@ -11,7 +11,9 @@ public class GameController : MonoBehaviour
     public string currentScene;
     public static bool loadingGame = false;
     public static GameController gameController;
-    
+
+    //Combat status
+    public bool fightingBoss = false;
     //Player Position
     public float playerPositionX;
     public float playerPositionY;
@@ -74,6 +76,13 @@ public class GameController : MonoBehaviour
         pData.htActivated = houseTrapActivated;
         //Save Horde Progress
         pData.hCleared = hordeCleared;
+        //Dialogues
+        pData.dialogueCountGate = DialogueManager.enmarDialogueCount;
+        pData.dialogueCountForest = DialogueManager.forestDialogueCount;
+        pData.dialogueCountTemple = DialogueManager.templeIDialogueCount;
+        //Boss Cleared or not
+        pData.eDied = EnmarController.enmarDied;
+        pData.zDied = StartZoltran.zoltranDied;
         //Write the object to the file & close it
         bf.Serialize(file, pData);
         file.Close();
@@ -102,6 +111,13 @@ public class GameController : MonoBehaviour
             houseTrapActivated = pData.htActivated;
             //load horde progress
             hordeCleared = pData.hCleared;
+            //Dialogues
+            DialogueManager.enmarDialogueCount = pData.dialogueCountGate;
+            DialogueManager.forestDialogueCount = pData.dialogueCountForest;
+            DialogueManager.templeIDialogueCount = pData.dialogueCountTemple;
+            //Boss Cleared or not
+            EnmarController.enmarDied = pData.eDied;
+            StartZoltran.zoltranDied = pData.zDied;
         }
     }
 
@@ -122,6 +138,9 @@ class PlayerData
     public float playerPosX;
     public float playerPosY;
     public float playerPosZ;
+    //Gate of Telluris
+    public bool eDied = false;
+    public int dialogueCountGate;
     //Outpost Captured
     public bool o1Captured = false;
     public bool o2Captured = false;
@@ -129,5 +148,9 @@ class PlayerData
     public bool o4Captured = false;
     public bool htActivated = false;
     //Forest of Misery
+    public bool zDied = false;
     public bool hCleared = false;
+    public int dialogueCountForest;
+    //Temple of Aphellion
+    public int dialogueCountTemple;
 }
