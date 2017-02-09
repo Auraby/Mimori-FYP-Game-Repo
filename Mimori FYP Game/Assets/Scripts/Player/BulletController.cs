@@ -48,7 +48,7 @@ public class BulletController : MonoBehaviour {
                     other.GetComponent<HordeRangeMinion>().getHit(10);
                     DestroyBullet();
                 }
-                else {
+                else if (other.gameObject.tag != "DialogueTrigger" && other.gameObject.tag != "InvisibleWall"){
                     GameObject bullet = (GameObject)Instantiate(bulletImpact, this.transform.position, Quaternion.identity);
                     Destroy(this.gameObject);
                 }
