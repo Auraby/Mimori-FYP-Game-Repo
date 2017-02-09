@@ -18,11 +18,17 @@ public class ZoltranController : MonoBehaviour {
     public float zCurrentBHHealth;
     public float rotateSpeed;
     public int zoltranID;
+    [Space]
     public bool isPattern1 = false;
     public bool isPattern2 = false;
     public bool isPattern3 = false;
     public bool isIllusion = false;
     public bool diedInBH = false;
+    [Space]
+    public float maxrunningSpeed;
+    //the rate to increase the speed
+    public float spdIncRate;
+    private float nextspdInc;
 
     #region Attacks
     //public List<AttackInfo> actions = new List<AttackInfo>();
@@ -35,10 +41,6 @@ public class ZoltranController : MonoBehaviour {
 
     [Header("Bullet Spawn Points")]
     public GameObject mouthEnd;
-    public GameObject orbEnd1;
-    public GameObject orbEnd2;
-    public GameObject orbEnd3;
-
 
     [Header("SoulShot Properties")]
     public float ssfireRate;
@@ -100,21 +102,38 @@ public class ZoltranController : MonoBehaviour {
     public GameObject player;
     public float playerBulletDamage;
     public GameObject MovementArea;
-    public GameObject zoltranIllusions;
     public Transform waitingArea;
+    public GameObject respawnPoints;
+    public GameObject zolAura;
     [HideInInspector]
     public float temptime = 0;
     NavMeshAgent navAgent;
     Vector3 newWaypoint;
     private float distToTarget;
+    private float distToWaypoint;
+    [HideInInspector]
     public Vector3 lastPos;
     private bool reappearFromBH = false;
     [HideInInspector]
     private bool spawnCloud = false;
+    private bool vanishCloud = false;
+    private bool illuAppear = false;
+    private float zolYPosValue;
+    private Vector3 resPoint1, resPoint2, resPoint3;
+    private bool isPlayerClose = false;
+    private bool isPounced = false;
     #endregion
 
-    
-    
+    #region Animation
+    [Header("Animation Settings")]
+    public float increaseDelay = 2;
+    Animator zolAnim;
+    private float spdPara = 0;
+    private float delayPeriod;
+    #endregion
+
+
+
 
     public static ZoltranController instance { get; set; }
 	// Use this for initialization
@@ -122,10 +141,17 @@ public class ZoltranController : MonoBehaviour {
     {
         instance = this;
         navAgent = GetComponent<NavMeshAgent>();
+        //navAgent.speed = 0;
         //currentState = ZoltranStates.FindWaypoint;
         zCurrentHealth = zMaxHealth;
         isExplodeMode = false;
         exploded = false;
+        zolAnim = GetComponent<Animator>();
+        zolYPosValue = gameObject.transform.position.y;
+
+        resPoint1 = respawnPoints.transform.GetChild(0).transform.position;
+        resPoint2 = respawnPoints.transform.GetChild(1).transform.position;
+        resPoint3 = respawnPoints.transform.GetChild(2).transform.position;
 
         if(isIllusion == false)
         {
@@ -142,6 +168,19 @@ public class ZoltranController : MonoBehaviour {
         //Debug.Log("Waiting area Pos: " + waitingArea.position);
         //Debug.Log("Current Pos: " + gameObject.transform.position);
         //currentPos = gameObject.transform.position;
+
+        //Cheats
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            CheatToClearLevel();
+        }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            CheatToShowMainZoltran();
+        }
+        //..
+
 
         if (currentActivity == ZoltranActivity.NormalMoving)
         {
@@ -162,7 +201,8 @@ public class ZoltranController : MonoBehaviour {
                                 BulletHellController.instance.patternNo = 1;
                                 BulletHellController.instance.totalDiedinBH = 0;
                                 ResetRotations();
-                                currentAttackMode = AttackMode.BulletHell;
+                                zolAnim.SetTrigger("BhAtk");
+                                currentAttackMode = AttackMode.BulletHell;                                
                             }
 
                             if (zCurrentHealth <= 130 && isPattern2 == false)
@@ -172,6 +212,7 @@ public class ZoltranController : MonoBehaviour {
                                 BulletHellController.instance.patternNo = 2;
                                 BulletHellController.instance.totalDiedinBH = 0;
                                 ResetRotations();
+                                zolAnim.SetTrigger("BhAtk");
                                 currentAttackMode = AttackMode.BulletHell;
                             }
 
@@ -182,6 +223,7 @@ public class ZoltranController : MonoBehaviour {
                                 BulletHellController.instance.patternNo = 3;
                                 BulletHellController.instance.totalDiedinBH = 0;
                                 ResetRotations();
+                                zolAnim.SetTrigger("BhAtk");
                                 currentAttackMode = AttackMode.BulletHell;
                             }
                         }
@@ -195,6 +237,7 @@ public class ZoltranController : MonoBehaviour {
                                 BulletHellController.instance.patternNo = 1;
                                 BulletHellController.instance.totalDiedinBH = 0;
                                 ResetRotations();
+                                zolAnim.SetTrigger("BhAtk");
                                 currentAttackMode = AttackMode.BulletHell;
                             }
 
@@ -205,6 +248,7 @@ public class ZoltranController : MonoBehaviour {
                                 BulletHellController.instance.patternNo = 2;
                                 BulletHellController.instance.totalDiedinBH = 0;
                                 ResetRotations();
+                                zolAnim.SetTrigger("BhAtk");
                                 currentAttackMode = AttackMode.BulletHell;
                             }
 
@@ -215,6 +259,7 @@ public class ZoltranController : MonoBehaviour {
                                 BulletHellController.instance.patternNo = 3;
                                 BulletHellController.instance.totalDiedinBH = 0;
                                 ResetRotations();
+                                zolAnim.SetTrigger("BhAtk");
                                 currentAttackMode = AttackMode.BulletHell;
                             }
                         }
@@ -223,6 +268,7 @@ public class ZoltranController : MonoBehaviour {
                         {
                             if(isIllusion == false)
                             {
+                                zolAnim.SetTrigger("Dead");
                                 currentState = ZoltranStates.Dying;
                                 illusionOne.GetComponent<ZoltranController>().currentState = ZoltranStates.Dying;
                                 illusionTwo.GetComponent<ZoltranController>().currentState = ZoltranStates.Dying;
@@ -265,35 +311,48 @@ public class ZoltranController : MonoBehaviour {
                                     //}
                                     if(isIllusion == false)
                                     {
+
                                         illusionOne.transform.position = generateRandomPositionInArea();
                                         illusionTwo.transform.position = generateRandomPositionInArea();
                                         illusionOne.SetActive(true);
                                         illusionTwo.SetActive(true);
+
                                     }
 
                                     Poof(gameObject.transform.position);
-
+                                    //StartCoroutine(WaitToSwitchNormalAttackStates(4, ZoltranStates.FindWaypoint));
                                     currentState = ZoltranStates.FindWaypoint;
                                 }
                                 break;
 
                             case ZoltranStates.FindWaypoint:
                                 {
-                                    spawnCloud = false;
+                                    Debug.Log("Find Waypoint");
+                                    zolAnim.SetBool("Stunned", false);
+                                    zolAnim.ResetTrigger("NormalAtk");
+                                    
                                     //Find random point to move to
                                     newWaypoint = generateRandomPositionInArea();
                                     ResetRotations();
-                                    currentState = ZoltranStates.Moving;
+                                    StartCoroutine(WaitToSwitchNormalAttackStates(1, ZoltranStates.Moving)); 
+                                    //currentState = ZoltranStates.Moving;
                                 }
                                 break;
 
                             case ZoltranStates.Moving:
                                 {
+                                    zolAnim.ResetTrigger("NormalAtk");
                                     navAgent.Resume();
                                     navAgent.SetDestination(newWaypoint);
                                     lastPos = newWaypoint;
-                                    if (gameObject.transform.position == newWaypoint)
+
+                                    float tempdist = Vector3.Distance(transform.position, newWaypoint);
+                                   
+                                    if (tempdist < 15)
                                     {
+                                        zolAnim.SetFloat("Speed", 0.0f);
+                                        spdPara = 0;
+                                        navAgent.speed = 0;
                                         RotateTowardsPlayer();
                                         attackRNG = CalculateRNGForAttack(4);
                                         distToTarget = Vector3.Distance(player.transform.position, transform.position);
@@ -332,6 +391,8 @@ public class ZoltranController : MonoBehaviour {
 
                                                 case 1:
                                                     {
+                                                        zolAnim.SetFloat("Speed", 0);
+                                                        navAgent.speed = 0;
                                                         isExplodeMode = true;
                                                         currentState = ZoltranStates.Chase;
                                                     }
@@ -345,6 +406,8 @@ public class ZoltranController : MonoBehaviour {
 
                                                 case 3:
                                                     {
+                                                        zolAnim.SetFloat("Speed", 0);
+                                                        navAgent.speed = 0;
                                                         isExplodeMode = true;
                                                         currentState = ZoltranStates.Chase;
                                                     }
@@ -364,16 +427,28 @@ public class ZoltranController : MonoBehaviour {
 
                             case ZoltranStates.Vanish:
                                 {
+                                    spawnCloud = false;
+                                    navAgent.Stop();
+                                    navAgent.speed = 0;
+                                    //spdPara = 0;
+                                    zolAnim.SetFloat("Speed", 0);
                                     if (isIllusion)
                                     {
                                         zCurrentHealth = zMaxHealth;
                                     }
-                                    Poof(gameObject.transform.position);
+                                    if(vanishCloud == false)
+                                    {
+                                        Poof(gameObject.transform.position);
+                                        vanishCloud = true;
+                                    }
+                                    
                                     gameObject.transform.position = waitingArea.position;
+                                    zolAura.SetActive(false);
                                     //gameObject.SetActive(false);
                                     newWaypoint = generateRandomPositionInArea();
                                     Debug.Log(newWaypoint);
                                     temptime = 0;
+                                    
                                     StartCoroutine(SwitchToAppearState(4));
 
                                 }
@@ -382,37 +457,39 @@ public class ZoltranController : MonoBehaviour {
 
                             case ZoltranStates.Appear:
                                 {
-                                    Debug.Log(newWaypoint);
-                                    if (reappearFromBH == true)
+                                    
+                                    vanishCloud = false;
+                                    navAgent.Stop();
+                                    
+
+                                    if (zoltranID == 1)
                                     {
-                                       
-                                        gameObject.transform.position = lastPos;
-                                        RotateTowardsPlayer();
-                                        ResetRotations();
-                                        if (spawnCloud == false)
-                                        {
-                                            Poof(gameObject.transform.position);
-                                            spawnCloud = true;
-                                        }
-                                        StartCoroutine(SwitchToAttackState());
+                                        gameObject.transform.position = new Vector3(resPoint1.x, zolYPosValue, resPoint1.z);
+                                    }
+
+                                    else if (zoltranID == 2)
+                                    {
+                                        gameObject.transform.position = new Vector3(resPoint2.x, zolYPosValue, resPoint2.z);
                                     }
 
                                     else
                                     {
-                                        gameObject.transform.position = lastPos;
-                                        // gameObject.SetActive(true);
-                                        RotateTowardsPlayer();
-                                        ResetRotations();
-                                        if (spawnCloud == false)
-                                        {
-                                            Poof(gameObject.transform.position);
-                                            spawnCloud = true;
-                                        }
-                                        StartCoroutine(SwitchToAttackState());
-
+                                        gameObject.transform.position = new Vector3(resPoint3.x, zolYPosValue, resPoint3.z);
                                     }
-                                    //newWaypoint = generateRandomPositionInArea();
-                                   
+
+                                    // gameObject.SetActive(true);
+                                    zolAura.SetActive(true);
+                                    RotateTowardsPlayer();
+                                    ResetRotations();
+                                    if (spawnCloud == false)
+                                    {
+                                        Poof(gameObject.transform.position);
+                                        zolAnim.SetTrigger("Roar");
+                                        spawnCloud = true;
+                                    }
+                                    //StopAllCoroutines();
+                                    StartCoroutine(WaitToSwitchNormalAttackStates(1,ZoltranStates.FindWaypoint));
+                                   // currentState = ZoltranStates.FindWaypoint;
                                 }
                                 break;
 
@@ -420,33 +497,49 @@ public class ZoltranController : MonoBehaviour {
                                 {
                                     if (isIllusion == false)
                                     {
-                                        //Play animation
-
+                                        navAgent.Stop();
+                                        
                                         //wait to switch
-                                        StartCoroutine(WaitToSwitchNormalAttackStates(3, ZoltranStates.FindWaypoint));
+                                        StartCoroutine(WaitToSwitchNormalAttackStates(2, ZoltranStates.FindWaypoint));
                                     }
 
                                     else
                                     {
-                                        Poof(gameObject.transform.position);
-                                        gameObject.transform.position = waitingArea.position;
-                                        //gameObject.SetActive(false);
-                                        newWaypoint = generateRandomPositionInArea();
-                                        Debug.Log(newWaypoint);
-                                        temptime = 0;
-                                        StartCoroutine(SwitchToAppearState(3));
+                                        //Poof(gameObject.transform.position);
+                                        //gameObject.transform.position = waitingArea.position;
+                                        //temptime = 0;
+                                        //StartCoroutine(SwitchToAppearState(3));
+                                        currentState = ZoltranStates.Vanish;
                                     }
                                 }
                                 break;
 
                             case ZoltranStates.Chase:
                                 {
-                                    RushToPlayer();
+                                    //float tempIncrease = 0;
+
+                                    //if (tempIncrease <= 1)
+                                    //{
+                                    //    tempIncrease += Time.deltaTime / 10;
+                                    //    zolAnim.SetFloat("Speed", tempIncrease);
+                                    //}
+                                    //zolAnim.SetFloat("Speed", 1.0f);
+                                    //RushToPlayer();
+                                    ChasePlayer();
+                                    if(zolAnim.GetCurrentAnimatorStateInfo(0).IsName("Roar"))
+                                    {
+                                        currentState = ZoltranStates.FindWaypoint;
+                                        zolAnim.applyRootMotion = false;
+                                        isPlayerClose = false;
+                                        isPounced = false;
+                                    }
+
                                 }
                                 break;
 
                             case ZoltranStates.Dying:
                                 {
+                                    
                                     StartZoltran.zoltranDied = true;
                                     GameController.gameController.fightingBoss = false;
                                     navAgent.Stop();
@@ -454,8 +547,7 @@ public class ZoltranController : MonoBehaviour {
                                    
                                     if(isIllusion == false)
                                     {
-                                        //Play animation
-
+                                        zolAnim.SetBool("DieAlready", true);
                                         //Disappear
                                         StartCoroutine(WaitToDisableStuff(4, gameObject));
                                     }
@@ -609,6 +701,7 @@ public class ZoltranController : MonoBehaviour {
         {
             if (BulletHellController.instance.totalDiedinBH == 3)
             {
+                zolAnim.SetTrigger("BhFinish");
                 gameObject.transform.position = lastPos;
                 currentAttackMode = AttackMode.Normal;
                 currentState = ZoltranStates.Vanish;
@@ -630,22 +723,92 @@ public class ZoltranController : MonoBehaviour {
     void FixedUpdate()
     {
         CheckPlayerProximity();
-    }
 
-
-    public void SpawnIllusions()
-    {
-        if (illusionList.Count < IllusionLimit)
+        #region Walking Running Blend Tree & Nav Agent speed
+        if (currentState == ZoltranStates.Moving || currentState == ZoltranStates.Chase)
         {
-            Vector3 spawnLocation = new Vector3();
-            spawnLocation = generateRandomPositionInArea();
-            GameObject zolIllu = (GameObject)Instantiate(zoltranIllusions, spawnLocation, Quaternion.identity);
-            zolIllu.SetActive(true);
-            zolIllu.GetComponent<ZoltranController>().isIllusion = true;
-            illusionList.Add(zolIllu);
+            distToWaypoint = Vector3.Distance(gameObject.transform.position, newWaypoint);
+
+            if (distToWaypoint > 40)
+            {
+                if(spdPara <= 1)
+                {
+                    if(Time.time > delayPeriod)
+                    {
+                        delayPeriod = Time.time + increaseDelay;
+                        spdPara += 0.1f;
+                    }
+
+                }
+
+            }
+
+            
+            if (distToWaypoint < 20)
+            {
+                if(spdPara >= 0)
+                {
+                    if (Time.time > delayPeriod)
+                    {
+                        delayPeriod = Time.time + increaseDelay;
+                        spdPara -= 0.1f;
+                    }
+                }
+
+            }
+
+            zolAnim.SetFloat("Speed", spdPara);
+
+            #region Nav agent speed
+            if (distToWaypoint > 5)
+            {
+                if (navAgent.speed <= maxrunningSpeed)
+                {
+                    if (Time.time > nextspdInc)
+                    {
+                        nextspdInc = Time.time + spdIncRate;
+                        navAgent.speed += 1f;
+                    }
+
+                }
+
+            }
+
+
+            if (distToWaypoint < 10)
+            {
+                if (navAgent.speed >= 0)
+                {
+                    if (Time.time > nextspdInc)
+                    {
+                        nextspdInc = Time.time + spdIncRate;
+                        navAgent.speed -= 1f;
+                    }
+                }
+
+            }
+
+            #endregion
         }
-        
+        #endregion
+
+
     }
+
+
+    //public void SpawnIllusions()
+    //{
+    //    if (illusionList.Count < IllusionLimit)
+    //    {
+    //        Vector3 spawnLocation = new Vector3();
+    //        spawnLocation = generateRandomPositionInArea();
+    //        GameObject zolIllu = (GameObject)Instantiate(zoltranIllusions, spawnLocation, Quaternion.identity);
+    //        zolIllu.SetActive(true);
+    //        zolIllu.GetComponent<ZoltranController>().isIllusion = true;
+    //        illusionList.Add(zolIllu);
+    //    }
+
+    //}
 
     public void Poof(Vector3 lastKnownPos)
     {
@@ -659,36 +822,76 @@ public class ZoltranController : MonoBehaviour {
     {
         if (distToTarget >= 130f)
         {
+            zolAnim.SetTrigger("BeamAtk");
             FireSoulBeam();
+            temptime += Time.deltaTime;
+            if (temptime > 2.5f)
+            {
+                currentState = ZoltranStates.FindWaypoint;
+                temptime = 0;
+                ResetRotations();
+            }
         }
 
         if (distToTarget >= 100 && distToTarget <= 130)
         {
+            zolAnim.SetTrigger("NormalAtk");
             StrafeShot();
+            temptime += Time.deltaTime;
+            if (temptime > 4f)
+            {
+                currentState = ZoltranStates.FindWaypoint;
+                temptime = 0;
+                ResetRotations();
+            }
         }
 
         if (distToTarget >= 70 && distToTarget <= 100)
         {
+            zolAnim.SetTrigger("NormalAtk");
             SoulShot();
+            temptime += Time.deltaTime;
+            if (temptime > 4f)
+            {
+                currentState = ZoltranStates.FindWaypoint;
+                temptime = 0;
+                ResetRotations();
+            }
         }
 
         if (distToTarget >= 40 && distToTarget <= 70)
         {
+            zolAnim.SetTrigger("NormalAtk");
             Tryshot();
+            temptime += Time.deltaTime;
+            if (temptime > 4f)
+            {
+                currentState = ZoltranStates.FindWaypoint;
+                temptime = 0;
+                ResetRotations();
+            }
         }
 
         if (distToTarget >= 0 && distToTarget <= 40)
         {
+            zolAnim.SetTrigger("NormalAtk");
             Tryshot();
+            temptime += Time.deltaTime;
+            if (temptime > 4f)
+            {
+                currentState = ZoltranStates.FindWaypoint;
+                temptime = 0;
+                ResetRotations();
+            }
         }
 
-        temptime += Time.deltaTime;
-        if (temptime > 5)
-        {
-            currentState = ZoltranStates.FindWaypoint;
-            temptime = 0;
-            ResetRotations();
-        }
+        //temptime += Time.deltaTime;
+        //if (temptime > 2.5f)
+        //{
+        //    currentState = ZoltranStates.FindWaypoint;
+        //    temptime = 0;
+        //    ResetRotations();
+        //}
     }
 
     public void SoulShot()
@@ -821,6 +1024,64 @@ public class ZoltranController : MonoBehaviour {
         navAgent.speed = 25;
     }
 
+    public void ChasePlayer()
+    {
+        
+
+        float tempdistToTarget = Vector3.Distance(player.transform.position, transform.position);
+        
+
+        if(tempdistToTarget >= 35)
+        {
+            navAgent.Resume();
+            navAgent.SetDestination(player.transform.position);
+
+            if (spdPara <= 1)
+            {
+                if (Time.time > delayPeriod)
+                {
+                    delayPeriod = Time.time + increaseDelay;
+                    spdPara += 0.1f;
+                }
+
+            }
+
+            if (navAgent.speed <= maxrunningSpeed)
+            {
+                if (Time.time > nextspdInc)
+                {
+                    nextspdInc = Time.time + spdIncRate;
+                    navAgent.speed += 1f;
+                }
+
+            }
+            zolAnim.SetFloat("Speed", spdPara);
+        }
+
+        else
+        {
+            isPlayerClose = true;
+            isPounced = false;
+            navAgent.Stop();
+            zolAnim.applyRootMotion = true;
+        }
+
+
+        if(isPlayerClose == true)
+        {
+            Debug.Log("player is close");
+            if(isPounced == false)
+            {
+                Debug.Log("Pouncing");
+                navAgent.Stop();
+                zolAnim.SetTrigger("Pounce");
+                isExplodeMode = true;
+                isPounced = true;
+            }
+            
+        }
+    }
+
     public void Explode()
     {
         Collider[] objectsInRange = Physics.OverlapSphere(gameObject.transform.position, explosionRadius);
@@ -828,8 +1089,15 @@ public class ZoltranController : MonoBehaviour {
         {
             if (col.gameObject.tag == "Player")
             {
+                Debug.Log("Exploded");
                 //Minus Player health here 
-                player.GetComponent<Health>().currentHealth -= 20;
+                player.GetComponent<Health>().currentHealth -= explosionDamage;
+                isExplodeMode = false;
+                currentState = ZoltranStates.Vanish;
+            }
+
+            else
+            {
                 isExplodeMode = false;
                 currentState = ZoltranStates.Vanish;
             }
@@ -845,7 +1113,7 @@ public class ZoltranController : MonoBehaviour {
     #region Technical stuff and calculations
     public void ResetRotations()
     {
-        orbEnd1.transform.rotation = Quaternion.identity;
+        //orbEnd1.transform.rotation = Quaternion.identity;
         mouthEnd.transform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
         mouthEnd.transform.GetChild(0).localRotation = Quaternion.Euler(new Vector3(0, 30, 0));
         //Debug.Log("Resetted rotation");
@@ -859,6 +1127,9 @@ public class ZoltranController : MonoBehaviour {
             if (col.gameObject.tag == "Player")
             {
                 currentState = ZoltranStates.Vanish;
+
+                //For debugging explosion damage
+                player.GetComponent<Health>().currentHealth -= explosionDamage;
             }
 
             if(col.gameObject.tag == "Player" && isExplodeMode == true)
@@ -894,7 +1165,73 @@ public class ZoltranController : MonoBehaviour {
         transform.rotation = Quaternion.LookRotation(newDir);
     }
 
-    
+    public void IncreaseBlendTreeSpeedAndNavSpeed(float tempDist)
+    {
+        //distToWaypoint = Vector3.Distance(gameObject.transform.position, newWaypoint);
+
+        if (tempDist > 40)
+        {
+            if (spdPara <= 1)
+            {
+                if (Time.time > delayPeriod)
+                {
+                    delayPeriod = Time.time + increaseDelay;
+                    spdPara += 0.1f;
+                }
+
+            }
+
+        }
+
+
+        if (tempDist < 20)
+        {
+            if (spdPara >= 0)
+            {
+                if (Time.time > delayPeriod)
+                {
+                    delayPeriod = Time.time + increaseDelay;
+                    spdPara -= 0.1f;
+                }
+            }
+
+        }
+
+        zolAnim.SetFloat("Speed", spdPara);
+
+        #region Nav agent speed
+        if (tempDist > 20)
+        {
+            if (navAgent.speed <= maxrunningSpeed)
+            {
+                if (Time.time > nextspdInc)
+                {
+                    nextspdInc = Time.time + spdIncRate;
+                    navAgent.speed += 1f;
+                }
+
+            }
+
+        }
+
+
+        if (tempDist < 5)
+        {
+            if (navAgent.speed >= 0)
+            {
+                if (Time.time > nextspdInc)
+                {
+                    nextspdInc = Time.time + spdIncRate;
+                    navAgent.speed -= 1f;
+                }
+            }
+
+        }
+
+        #endregion
+    }
+
+
 
     public int CalculateRNGForAttack(int maxNumber)
     {
@@ -933,6 +1270,13 @@ public class ZoltranController : MonoBehaviour {
                 if(currentAttackMode == AttackMode.Normal)
                 {
                     currentState = ZoltranStates.Stunned;
+                    //Play animation
+                    zolAnim.SetBool("Stunned", true);
+                    navAgent.Stop();
+                    navAgent.speed = 0;
+                    spdPara = 0;
+                    zolAnim.SetFloat("Speed", 0);
+                    //StopAllCoroutines();
                 }
 
                 if(currentAttackMode == AttackMode.BulletHell)
@@ -947,6 +1291,26 @@ public class ZoltranController : MonoBehaviour {
             }
         }
     }
+
+    public void CheatToClearLevel()
+    {
+        isPattern1 = true;
+        isPattern2 = true;
+        isPattern3 = true;
+
+        if (!isIllusion)
+        {
+            zCurrentHealth = 10;
+        }
+    }
+
+    public void CheatToShowMainZoltran()
+    {
+        if (isIllusion)
+        {
+            zolAura.SetActive(false);
+        }
+    }
     #endregion
 
     #region IEnumerators
@@ -959,7 +1323,7 @@ public class ZoltranController : MonoBehaviour {
     private IEnumerator SwitchToAttackState()
     {
         
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         currentState = ZoltranStates.Attacking;
     }
 
@@ -992,6 +1356,18 @@ public class ZoltranController : MonoBehaviour {
     {
         yield return new WaitForSeconds(sec);
         thingToDisable.SetActive(false);
+    }
+
+    private IEnumerator WaitToSpawnIllusionsAtStart(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+       // Poof(gameObject.transform.position);
+        Poof(gameObject.transform.position);
+        //illusionOne.transform.position = generateRandomPositionInArea();
+        //illusionTwo.transform.position = generateRandomPositionInArea();
+        illusionOne.SetActive(true);
+        illusionTwo.SetActive(true);
+        illuAppear = true;
     }
     #endregion
 
