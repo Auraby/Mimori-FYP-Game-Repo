@@ -223,7 +223,7 @@ public class GunModSkillsV2 : MonoBehaviour
                 Physics.Raycast(camera.transform.position, camera.transform.forward, out hit);
                 if (hit.collider.gameObject.name == "Farallon")
                 {
-                    hit.collider.gameObject.GetComponent<FarallonController>().currWingHealth -= HoiDamage;
+                  //  hit.collider.gameObject.GetComponent<FarallonController>().currWingHealth -= HoiDamage;
                 }
                 isLightningStrike = false;
             }
