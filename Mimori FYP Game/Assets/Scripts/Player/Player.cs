@@ -92,7 +92,7 @@ public class Player : MonoBehaviour {
 		fpc = GameObject.FindObjectOfType<FirstPersonController> ();
 	}
 
-	public void OnTriggerEnter(Collider other){
+	public void OnTriggerStay(Collider other){
 		if (other.gameObject.tag == "Objective2") {
             Objective.text = "Kill 10 Mobs and obtain skillpoint".ToString ();
 		}
@@ -102,6 +102,24 @@ public class Player : MonoBehaviour {
 
         if (other.gameObject.tag == "DialogueTrigger") {
             if (!dialogueBox.activeSelf) {
+                //Gate dialogue triggering
+                Debug.Log(SceneManager.GetActiveScene().name+","+other.gameObject.name+","+Level1Controller.instance.startTime);
+                if (SceneManager.GetActiveScene().name == "Gate of Telluris") {
+                    if (other.gameObject.name == "dTrigger1") {
+                        if (DialogueManager.enmarDialogueCount == 0 && Level1Controller.instance.startTime > 10)
+                        {
+                            DialogueTriggered(other);
+                        }
+                        if (DialogueManager.enmarDialogueCount == 1 && EnmarController.instance.reached)
+                        {
+                            DialogueTriggered(other);
+                        }
+                        if (DialogueManager.enmarDialogueCount == 2 && EnmarController.enmarDied)
+                        {
+                            DialogueTriggered(other);
+                        }
+                    }
+                }
                 //Forest dialogue triggering
                 if (SceneManager.GetActiveScene().name == "Forest of Misery")
                 {

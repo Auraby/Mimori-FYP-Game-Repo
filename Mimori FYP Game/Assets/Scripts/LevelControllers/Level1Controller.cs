@@ -69,13 +69,21 @@ public class Level1Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+        //Debug.Log(startTime+","+DialogueManager.enmarDialogueCount);
         bossHealthSlider.value = EnmarController.instance.enmarCurrentHealth;
 
         //Enmar Health
         if (EnmarController.instance.enmarCurrentHealth <= 0)
         {
             levelProgress = LevelState.Win;
+        }
+
+        if (EnmarController.enmarDied)
+        {
+            GameController.gameController.fightingBoss = false;
+        }
+        else {
+            GameController.gameController.fightingBoss = true;
         }
 
         //Player health
@@ -105,12 +113,12 @@ public class Level1Controller : MonoBehaviour {
                         //openingblackBottomPanel.CrossFadeAlpha(0, 3, false);
                         openingText.CrossFadeAlpha(0, 2, false);
                     }
-                   if(startTime > waitTime)
-                    {
-                        levelProgress = LevelState.Playing;
-                        startTime = 0;
-                        EnmarController.instance.enmarState = EnmarController.FSMState.Walking;
-                    }
+                   //if(startTime > waitTime)
+                   // {
+                   //     levelProgress = LevelState.Playing;
+                   //     startTime = 0;
+                   //     EnmarController.instance.enmarState = EnmarController.FSMState.Walking;
+                   // }
                 }
                 break;
 

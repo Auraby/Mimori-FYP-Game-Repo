@@ -77,9 +77,11 @@ public class GameController : MonoBehaviour
         //Save Horde Progress
         pData.hCleared = hordeCleared;
         //Dialogues
+        pData.dialogueCountGate = DialogueManager.enmarDialogueCount;
         pData.dialogueCountForest = DialogueManager.forestDialogueCount;
         pData.dialogueCountTemple = DialogueManager.templeIDialogueCount;
         //Boss Cleared or not
+        pData.eDied = EnmarController.enmarDied;
         pData.zDied = StartZoltran.zoltranDied;
         //Write the object to the file & close it
         bf.Serialize(file, pData);
@@ -110,9 +112,11 @@ public class GameController : MonoBehaviour
             //load horde progress
             hordeCleared = pData.hCleared;
             //Dialogues
+            DialogueManager.enmarDialogueCount = pData.dialogueCountGate;
             DialogueManager.forestDialogueCount = pData.dialogueCountForest;
             DialogueManager.templeIDialogueCount = pData.dialogueCountTemple;
             //Boss Cleared or not
+            EnmarController.enmarDied = pData.eDied;
             StartZoltran.zoltranDied = pData.zDied;
         }
     }
@@ -134,6 +138,9 @@ class PlayerData
     public float playerPosX;
     public float playerPosY;
     public float playerPosZ;
+    //Gate of Telluris
+    public bool eDied = false;
+    public int dialogueCountGate;
     //Outpost Captured
     public bool o1Captured = false;
     public bool o2Captured = false;
