@@ -44,6 +44,7 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
 			startPosition = transform.position;
 			startParent = transform.parent;
 			GetComponent<CanvasGroup> ().blocksRaycasts = false;
+		
 		}
 	}
 		

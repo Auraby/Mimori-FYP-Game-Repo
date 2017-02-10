@@ -6,13 +6,14 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class DialogueManager : MonoBehaviour {
     public Text dText;
-    public string[] puzzleDialogLines, passwordDialogueLines, forestStartDialogues, isaacBackstoryDialogues, zoltranBattleDialogues, 
-        zoltranAfterBattleDialogues, templeExtDialogues;
+    public string[] enmarBeforeDialogues, enmarAppearedDialogues, enmarDiedDialogues, puzzleDialogLines, passwordDialogueLines, 
+        forestStartDialogues, isaacBackstoryDialogues, zoltranBattleDialogues, zoltranAfterBattleDialogues, templeExtDialogues;
     public int currentLine;
     public GameObject mainCanvas;
     public Image gameoverBlackPanel;
     public Text gameoverText, gameoverTextSubtitle;
 
+    public static int enmarDialogueCount = 0;
     public static int templeIDialogueCount = 0;
     public static int forestDialogueCount = 2;
 
@@ -26,13 +27,43 @@ public class DialogueManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return)) {
             currentLine++;
         }
-        //if (this.gameObject.activeSelf) {
-        //    Time.timeScale = 0;
-        //    FirstPersonController.isPaused = true;
-        //    mainCanvas.SetActive(false);
-        //}
 
-        
+        if (SceneManager.GetActiveScene().name == "Gate of Telluris") {
+            //GATE OF TELLURIS DIALOGUES
+            //Before Enmar spawn dialogues
+            if (currentLine >= enmarBeforeDialogues.Length && enmarDialogueCount == 0)
+            {
+                DialogueHandler();
+                enmarDialogueCount++;
+                Level1Controller.instance.levelProgress = Level1Controller.LevelState.Playing;
+                Level1Controller.instance.startTime = 0;
+                EnmarController.instance.enmarState = EnmarController.FSMState.Walking;
+            }
+            if (currentLine >= enmarAppearedDialogues.Length && enmarDialogueCount == 1)
+            {
+                DialogueHandler();
+                enmarDialogueCount++;
+            }
+            if (currentLine >= enmarDiedDialogues.Length && enmarDialogueCount == 2)
+            {
+                DialogueHandler();
+                enmarDialogueCount++;
+            }
+
+            if (enmarDialogueCount == 0)
+            {
+                dText.text = enmarBeforeDialogues[currentLine];
+            }
+            if (enmarDialogueCount == 1)
+            {
+                dText.text = enmarAppearedDialogues[currentLine];
+            }
+            if (enmarDialogueCount == 2)
+            {
+                dText.text = enmarDiedDialogues[currentLine];
+            }
+        }
+
         if (SceneManager.GetActiveScene().name == "Forest of Misery")
         {
             //FOREST DIALOGUES
