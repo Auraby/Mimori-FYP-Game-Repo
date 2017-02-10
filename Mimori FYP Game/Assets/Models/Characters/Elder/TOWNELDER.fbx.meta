@@ -1,0 +1,295 @@
+fileFormatVersion: 2
+guid: d14c4e9671c056546b1496e676948cc6
+timeCreated: 1486719940
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: group1
+    100002: IK
+    100004: ikHandle1
+    100006: ikHandle2
+    100008: ikHandle3
+    100010: joint1
+    100012: joint1 1
+    100014: joint10
+    100016: joint10 1
+    100018: joint11
+    100020: joint11 1
+    100022: joint16
+    100024: joint2
+    100026: joint2 1
+    100028: joint21
+    100030: joint22
+    100032: joint23
+    100034: joint24
+    100036: joint25
+    100038: joint26
+    100040: joint27
+    100042: joint28
+    100044: joint29
+    100046: joint3
+    100048: joint3 1
+    100050: joint30
+    100052: joint31
+    100054: joint31 1
+    100056: joint32
+    100058: joint33
+    100060: joint34
+    100062: joint35
+    100064: joint38
+    100066: joint4
+    100068: joint5
+    100070: joint6
+    100072: joint7
+    100074: joint8
+    100076: joint9
+    100078: joint9 1
+    100080: nurbsCircle1
+    100082: nurbsCircle10
+    100084: nurbsCircle10_ZERO
+    100086: nurbsCircle11
+    100088: nurbsCircle11_ZERO
+    100090: nurbsCircle12
+    100092: nurbsCircle12_ZERO
+    100094: nurbsCircle13
+    100096: nurbsCircle13_ZERO
+    100098: nurbsCircle14
+    100100: nurbsCircle14_ZERO
+    100102: nurbsCircle15
+    100104: nurbsCircle15_ZERO
+    100106: nurbsCircle16
+    100108: nurbsCircle16_ZERO
+    100110: nurbsCircle17
+    100112: nurbsCircle17_ZERO
+    100114: nurbsCircle18
+    100116: nurbsCircle18_ZERO
+    100118: nurbsCircle19
+    100120: nurbsCircle19_ZERO
+    100122: nurbsCircle2
+    100124: nurbsCircle20
+    100126: nurbsCircle20_ZERO
+    100128: nurbsCircle21
+    100130: nurbsCircle21_ZERO
+    100132: nurbsCircle22
+    100134: nurbsCircle22_ZERO
+    100136: nurbsCircle23
+    100138: nurbsCircle23_ZERO
+    100140: nurbsCircle24
+    100142: nurbsCircle24_ZERO
+    100144: nurbsCircle25
+    100146: nurbsCircle25_ZERO
+    100148: nurbsCircle26
+    100150: nurbsCircle26_ZERO
+    100152: nurbsCircle27
+    100154: nurbsCircle27_ZERO
+    100156: nurbsCircle28
+    100158: nurbsCircle28_ZERO
+    100160: nurbsCircle2_ZERO
+    100162: nurbsCircle3
+    100164: nurbsCircle3_ZERO
+    100166: nurbsCircle4
+    100168: nurbsCircle4_ZERO
+    100170: nurbsCircle5
+    100172: nurbsCircle5_ZERO
+    100174: nurbsCircle6
+    100176: nurbsCircle6_ZERO
+    100178: nurbsCircle7
+    100180: nurbsCircle7_ZERO
+    100182: nurbsCircle8
+    100184: nurbsCircle8_ZERO
+    100186: nurbsCircle9
+    100188: nurbsCircle9_ZERO
+    100190: polySurface1
+    100192: sunDirection
+    100194: //RootNode
+    100196: Townelder_0012:imagePlane9
+    100198: Townelder_0012:pCube1
+    100200: Townelder_0012:pCube2
+    100202: Townelder_0012:pCube3
+    100204: Townelder_0012:pCube4
+    100206: Townelder_0012:pSphere15
+    400000: group1
+    400002: IK
+    400004: ikHandle1
+    400006: ikHandle2
+    400008: ikHandle3
+    400010: joint1
+    400012: joint1 1
+    400014: joint10
+    400016: joint10 1
+    400018: joint11
+    400020: joint11 1
+    400022: joint16
+    400024: joint2
+    400026: joint2 1
+    400028: joint21
+    400030: joint22
+    400032: joint23
+    400034: joint24
+    400036: joint25
+    400038: joint26
+    400040: joint27
+    400042: joint28
+    400044: joint29
+    400046: joint3
+    400048: joint3 1
+    400050: joint30
+    400052: joint31
+    400054: joint31 1
+    400056: joint32
+    400058: joint33
+    400060: joint34
+    400062: joint35
+    400064: joint38
+    400066: joint4
+    400068: joint5
+    400070: joint6
+    400072: joint7
+    400074: joint8
+    400076: joint9
+    400078: joint9 1
+    400080: nurbsCircle1
+    400082: nurbsCircle10
+    400084: nurbsCircle10_ZERO
+    400086: nurbsCircle11
+    400088: nurbsCircle11_ZERO
+    400090: nurbsCircle12
+    400092: nurbsCircle12_ZERO
+    400094: nurbsCircle13
+    400096: nurbsCircle13_ZERO
+    400098: nurbsCircle14
+    400100: nurbsCircle14_ZERO
+    400102: nurbsCircle15
+    400104: nurbsCircle15_ZERO
+    400106: nurbsCircle16
+    400108: nurbsCircle16_ZERO
+    400110: nurbsCircle17
+    400112: nurbsCircle17_ZERO
+    400114: nurbsCircle18
+    400116: nurbsCircle18_ZERO
+    400118: nurbsCircle19
+    400120: nurbsCircle19_ZERO
+    400122: nurbsCircle2
+    400124: nurbsCircle20
+    400126: nurbsCircle20_ZERO
+    400128: nurbsCircle21
+    400130: nurbsCircle21_ZERO
+    400132: nurbsCircle22
+    400134: nurbsCircle22_ZERO
+    400136: nurbsCircle23
+    400138: nurbsCircle23_ZERO
+    400140: nurbsCircle24
+    400142: nurbsCircle24_ZERO
+    400144: nurbsCircle25
+    400146: nurbsCircle25_ZERO
+    400148: nurbsCircle26
+    400150: nurbsCircle26_ZERO
+    400152: nurbsCircle27
+    400154: nurbsCircle27_ZERO
+    400156: nurbsCircle28
+    400158: nurbsCircle28_ZERO
+    400160: nurbsCircle2_ZERO
+    400162: nurbsCircle3
+    400164: nurbsCircle3_ZERO
+    400166: nurbsCircle4
+    400168: nurbsCircle4_ZERO
+    400170: nurbsCircle5
+    400172: nurbsCircle5_ZERO
+    400174: nurbsCircle6
+    400176: nurbsCircle6_ZERO
+    400178: nurbsCircle7
+    400180: nurbsCircle7_ZERO
+    400182: nurbsCircle8
+    400184: nurbsCircle8_ZERO
+    400186: nurbsCircle9
+    400188: nurbsCircle9_ZERO
+    400190: polySurface1
+    400192: sunDirection
+    400194: //RootNode
+    400196: Townelder_0012:imagePlane9
+    400198: Townelder_0012:pCube1
+    400200: Townelder_0012:pCube2
+    400202: Townelder_0012:pCube3
+    400204: Townelder_0012:pCube4
+    400206: Townelder_0012:pSphere15
+    2300000: polySurface1
+    3300000: polySurface1
+    4300000: polySurface1
+    4300002: Townelder_0012:pCube2
+    4300004: Townelder_0012:pCube3
+    4300006: Townelder_0012:imagePlane9
+    4300008: Townelder_0012:pSphere15
+    4300010: Townelder_0012:pCube1
+    4300012: Townelder_0012:pCube4
+    9500000: //RootNode
+    13700000: Townelder_0012:imagePlane9
+    13700002: Townelder_0012:pCube1
+    13700004: Townelder_0012:pCube2
+    13700006: Townelder_0012:pCube3
+    13700008: Townelder_0012:pCube4
+    13700010: Townelder_0012:pSphere15
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

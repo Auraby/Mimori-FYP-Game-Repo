@@ -51,6 +51,9 @@ public class BeamCollision : MonoBehaviour {
                 {
                     Health.instance.currentHealth -= beamDamage;
                 }
+                if (hit.collider.gameObject.tag == "InvisibleWall") {
+                    Physics.IgnoreCollision(hit.collider, gameObject.GetComponent<Collider>());
+                }
 			}
 			//print("find" + hit.collider.gameObject.name);
 		}

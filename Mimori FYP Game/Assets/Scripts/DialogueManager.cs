@@ -7,13 +7,15 @@ using UnityStandardAssets.Characters.FirstPerson;
 public class DialogueManager : MonoBehaviour {
     public Text dText;
     public string[] enmarBeforeDialogues, enmarAppearedDialogues, enmarDiedDialogues, puzzleDialogLines, passwordDialogueLines, 
-        forestStartDialogues, isaacBackstoryDialogues, zoltranBattleDialogues, zoltranAfterBattleDialogues, templeExtDialogues;
+        forestStartDialogues, isaacBackstoryDialogues, zoltranBattleDialogues, zoltranAfterBattleDialogues, templeExtDialogues, elderDialogues,
+        elfirDialogueMimori, outpostDialogues;
     public int currentLine;
     public GameObject mainCanvas;
     public Image gameoverBlackPanel;
     public Text gameoverText, gameoverTextSubtitle;
 
     public static int enmarDialogueCount = 0;
+    public static int mimoriDialogueCount = 0;
     public static int templeIDialogueCount = 0;
     public static int forestDialogueCount = 2;
 
@@ -61,6 +63,37 @@ public class DialogueManager : MonoBehaviour {
             if (enmarDialogueCount == 2)
             {
                 dText.text = enmarDiedDialogues[currentLine];
+            }
+        }
+
+        if (SceneManager.GetActiveScene().name == "Mimori") {
+            //MIMORO DIALOGUES
+            //Elder chat dialogues
+            if (currentLine >= elderDialogues.Length && mimoriDialogueCount == 0) {
+                DialogueHandler();
+                mimoriDialogueCount++;
+            }
+            if (currentLine >= elfirDialogueMimori.Length && mimoriDialogueCount == 1)
+            {
+                DialogueHandler();
+                mimoriDialogueCount++;
+            }
+            if (currentLine >= outpostDialogues.Length && mimoriDialogueCount == 2)
+            {
+                DialogueHandler();
+                mimoriDialogueCount++;
+            }
+
+            if (mimoriDialogueCount == 0) {
+                dText.text = elderDialogues[currentLine];
+            }
+            if (mimoriDialogueCount == 1)
+            {
+                dText.text = elfirDialogueMimori[currentLine];
+            }
+            if (mimoriDialogueCount == 2)
+            {
+                dText.text = outpostDialogues[currentLine];
             }
         }
 
