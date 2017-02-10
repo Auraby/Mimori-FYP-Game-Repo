@@ -1,0 +1,1378 @@
+fileFormatVersion: 2
+guid: 98538d30b8353c146aaf20f0458ab5ba
+timeCreated: 1486613187
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: mainbody
+    100002: zoltran12:backAnkle_L
+    100004: zoltran12:backAnkle_R
+    100006: zoltran12:backHip_L
+    100008: zoltran12:backHip_R
+    100010: zoltran12:backKnee_L
+    100012: zoltran12:backKnee_R
+    100014: zoltran12:backRump_L
+    100016: zoltran12:backRump_R
+    100018: zoltran12:backToes_L
+    100020: zoltran12:backToes_R
+    100022: zoltran12:backToesEnd_L
+    100024: zoltran12:backToesEnd_R
+    100026: zoltran12:Chest_M
+    100028: zoltran12:DeformationSystem
+    100030: zoltran12:Ear_L
+    100032: zoltran12:Ear_R
+    100034: zoltran12:EarEnd_L
+    100036: zoltran12:EarEnd_R
+    100038: zoltran12:Eye_L
+    100040: zoltran12:Eye_R
+    100042: zoltran12:EyeEnd_L
+    100044: zoltran12:EyeEnd_R
+    100046: zoltran12:frontAnkle_L
+    100048: zoltran12:frontAnkle_R
+    100050: zoltran12:frontHip_L
+    100052: zoltran12:frontHip_R
+    100054: zoltran12:frontKnee_L
+    100056: zoltran12:frontKnee_R
+    100058: zoltran12:frontRump_L
+    100060: zoltran12:frontRump_R
+    100062: zoltran12:frontToes_L
+    100064: zoltran12:frontToes_R
+    100066: zoltran12:frontToesEnd_L
+    100068: zoltran12:frontToesEnd_R
+    100070: zoltran12:Geometry
+    100072: zoltran12:Head_M
+    100074: zoltran12:HeadEnd_M
+    100076: zoltran12:Jaw_M
+    100078: zoltran12:JawEnd_M
+    100080: zoltran12:Main
+    100082: zoltran12:model:claw1
+    100084: zoltran12:model:claw10
+    100086: zoltran12:model:claw11
+    100088: zoltran12:model:claw12
+    100090: zoltran12:model:claw2
+    100092: zoltran12:model:claw20
+    100094: zoltran12:model:claw21
+    100096: zoltran12:model:claw22
+    100098: zoltran12:model:claw3
+    100100: zoltran12:model:claw30
+    100102: zoltran12:model:claw31
+    100104: zoltran12:model:claw32
+    100106: zoltran12:model:claw_leftback
+    100108: zoltran12:model:claw_leftfront
+    100110: zoltran12:model:claw_rightback
+    100112: zoltran12:model:claw_rightfront
+    100114: zoltran12:model:ear_left
+    100116: zoltran12:model:ear_right
+    100118: zoltran12:model:eye_left
+    100120: zoltran12:model:eye_right
+    100122: zoltran12:model:geo
+    100124: zoltran12:model:nose
+    100126: zoltran12:model:spike1
+    100128: zoltran12:model:spike2
+    100130: zoltran12:model:spike3
+    100132: zoltran12:model:spike4
+    100134: zoltran12:model:spike5
+    100136: zoltran12:model:spike6
+    100138: zoltran12:model:spike_back
+    100140: zoltran12:model:spike_front
+    100142: zoltran12:model:tailmid
+    100144: zoltran12:model:teeth1
+    100146: zoltran12:model:teeth10
+    100148: zoltran12:model:teeth11
+    100150: zoltran12:model:teeth12
+    100152: zoltran12:model:teeth2
+    100154: zoltran12:model:teeth20
+    100156: zoltran12:model:teeth21
+    100158: zoltran12:model:teeth22
+    100160: zoltran12:model:teeth3
+    100162: zoltran12:model:teeth30
+    100164: zoltran12:model:teeth31
+    100166: zoltran12:model:teeth32
+    100168: zoltran12:model:teeth4
+    100170: zoltran12:model:teeth40
+    100172: zoltran12:model:teeth41
+    100174: zoltran12:model:teeth42
+    100176: zoltran12:model:teeth5
+    100178: zoltran12:model:teeth50
+    100180: zoltran12:model:teeth51
+    100182: zoltran12:model:teeth52
+    100184: zoltran12:model:teeth_leftbottom
+    100186: zoltran12:model:teeth_lefttop
+    100188: zoltran12:model:teeth_rightbottom
+    100190: zoltran12:model:teeth_righttop
+    100192: zoltran12:Neck_M
+    100194: zoltran12:NeckPart1_M
+    100196: zoltran12:NeckPart2_M
+    100198: zoltran12:Root_M
+    100200: zoltran12:Spine1_M
+    100202: zoltran12:Tail0_M
+    100204: zoltran12:Tail1_M
+    100206: zoltran12:Tail2_M
+    100208: zoltran12:Tail3_M
+    100210: zoltran12:Tail4_M
+    100212: zoltran12:Tail5_M
+    100214: zoltran12:Tail6_M
+    100216: //RootNode
+    400000: mainbody
+    400002: zoltran12:backAnkle_L
+    400004: zoltran12:backAnkle_R
+    400006: zoltran12:backHip_L
+    400008: zoltran12:backHip_R
+    400010: zoltran12:backKnee_L
+    400012: zoltran12:backKnee_R
+    400014: zoltran12:backRump_L
+    400016: zoltran12:backRump_R
+    400018: zoltran12:backToes_L
+    400020: zoltran12:backToes_R
+    400022: zoltran12:backToesEnd_L
+    400024: zoltran12:backToesEnd_R
+    400026: zoltran12:Chest_M
+    400028: zoltran12:DeformationSystem
+    400030: zoltran12:Ear_L
+    400032: zoltran12:Ear_R
+    400034: zoltran12:EarEnd_L
+    400036: zoltran12:EarEnd_R
+    400038: zoltran12:Eye_L
+    400040: zoltran12:Eye_R
+    400042: zoltran12:EyeEnd_L
+    400044: zoltran12:EyeEnd_R
+    400046: zoltran12:frontAnkle_L
+    400048: zoltran12:frontAnkle_R
+    400050: zoltran12:frontHip_L
+    400052: zoltran12:frontHip_R
+    400054: zoltran12:frontKnee_L
+    400056: zoltran12:frontKnee_R
+    400058: zoltran12:frontRump_L
+    400060: zoltran12:frontRump_R
+    400062: zoltran12:frontToes_L
+    400064: zoltran12:frontToes_R
+    400066: zoltran12:frontToesEnd_L
+    400068: zoltran12:frontToesEnd_R
+    400070: zoltran12:Geometry
+    400072: zoltran12:Head_M
+    400074: zoltran12:HeadEnd_M
+    400076: zoltran12:Jaw_M
+    400078: zoltran12:JawEnd_M
+    400080: zoltran12:Main
+    400082: zoltran12:model:claw1
+    400084: zoltran12:model:claw10
+    400086: zoltran12:model:claw11
+    400088: zoltran12:model:claw12
+    400090: zoltran12:model:claw2
+    400092: zoltran12:model:claw20
+    400094: zoltran12:model:claw21
+    400096: zoltran12:model:claw22
+    400098: zoltran12:model:claw3
+    400100: zoltran12:model:claw30
+    400102: zoltran12:model:claw31
+    400104: zoltran12:model:claw32
+    400106: zoltran12:model:claw_leftback
+    400108: zoltran12:model:claw_leftfront
+    400110: zoltran12:model:claw_rightback
+    400112: zoltran12:model:claw_rightfront
+    400114: zoltran12:model:ear_left
+    400116: zoltran12:model:ear_right
+    400118: zoltran12:model:eye_left
+    400120: zoltran12:model:eye_right
+    400122: zoltran12:model:geo
+    400124: zoltran12:model:nose
+    400126: zoltran12:model:spike1
+    400128: zoltran12:model:spike2
+    400130: zoltran12:model:spike3
+    400132: zoltran12:model:spike4
+    400134: zoltran12:model:spike5
+    400136: zoltran12:model:spike6
+    400138: zoltran12:model:spike_back
+    400140: zoltran12:model:spike_front
+    400142: zoltran12:model:tailmid
+    400144: zoltran12:model:teeth1
+    400146: zoltran12:model:teeth10
+    400148: zoltran12:model:teeth11
+    400150: zoltran12:model:teeth12
+    400152: zoltran12:model:teeth2
+    400154: zoltran12:model:teeth20
+    400156: zoltran12:model:teeth21
+    400158: zoltran12:model:teeth22
+    400160: zoltran12:model:teeth3
+    400162: zoltran12:model:teeth30
+    400164: zoltran12:model:teeth31
+    400166: zoltran12:model:teeth32
+    400168: zoltran12:model:teeth4
+    400170: zoltran12:model:teeth40
+    400172: zoltran12:model:teeth41
+    400174: zoltran12:model:teeth42
+    400176: zoltran12:model:teeth5
+    400178: zoltran12:model:teeth50
+    400180: zoltran12:model:teeth51
+    400182: zoltran12:model:teeth52
+    400184: zoltran12:model:teeth_leftbottom
+    400186: zoltran12:model:teeth_lefttop
+    400188: zoltran12:model:teeth_rightbottom
+    400190: zoltran12:model:teeth_righttop
+    400192: zoltran12:Neck_M
+    400194: zoltran12:NeckPart1_M
+    400196: zoltran12:NeckPart2_M
+    400198: zoltran12:Root_M
+    400200: zoltran12:Spine1_M
+    400202: zoltran12:Tail0_M
+    400204: zoltran12:Tail1_M
+    400206: zoltran12:Tail2_M
+    400208: zoltran12:Tail3_M
+    400210: zoltran12:Tail4_M
+    400212: zoltran12:Tail5_M
+    400214: zoltran12:Tail6_M
+    400216: //RootNode
+    4300000: zoltran12:model:tailmid
+    4300002: zoltran12:model:nose
+    4300004: zoltran12:model:ear_right
+    4300006: zoltran12:model:ear_left
+    4300008: zoltran12:model:eye_right
+    4300010: zoltran12:model:eye_left
+    4300012: zoltran12:model:claw1
+    4300014: zoltran12:model:claw2
+    4300016: zoltran12:model:claw3
+    4300018: zoltran12:model:claw12
+    4300020: zoltran12:model:claw22
+    4300022: zoltran12:model:claw32
+    4300024: zoltran12:model:claw11
+    4300026: zoltran12:model:claw21
+    4300028: zoltran12:model:claw31
+    4300030: zoltran12:model:claw10
+    4300032: zoltran12:model:claw20
+    4300034: zoltran12:model:claw30
+    4300036: zoltran12:model:teeth1
+    4300038: zoltran12:model:teeth2
+    4300040: zoltran12:model:teeth3
+    4300042: zoltran12:model:teeth4
+    4300044: zoltran12:model:teeth5
+    4300046: zoltran12:model:teeth12
+    4300048: zoltran12:model:teeth22
+    4300050: zoltran12:model:teeth32
+    4300052: zoltran12:model:teeth42
+    4300054: zoltran12:model:teeth52
+    4300056: zoltran12:model:teeth11
+    4300058: zoltran12:model:teeth21
+    4300060: zoltran12:model:teeth31
+    4300062: zoltran12:model:teeth41
+    4300064: zoltran12:model:teeth51
+    4300066: zoltran12:model:teeth10
+    4300068: zoltran12:model:teeth20
+    4300070: zoltran12:model:teeth30
+    4300072: zoltran12:model:teeth40
+    4300074: zoltran12:model:teeth50
+    4300076: zoltran12:model:spike4
+    4300078: zoltran12:model:spike5
+    4300080: zoltran12:model:spike6
+    4300082: zoltran12:model:spike1
+    4300084: zoltran12:model:spike2
+    4300086: zoltran12:model:spike3
+    4300088: mainbody
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: mainbody
+    13700002: zoltran12:model:claw1
+    13700004: zoltran12:model:claw10
+    13700006: zoltran12:model:claw11
+    13700008: zoltran12:model:claw12
+    13700010: zoltran12:model:claw2
+    13700012: zoltran12:model:claw20
+    13700014: zoltran12:model:claw21
+    13700016: zoltran12:model:claw22
+    13700018: zoltran12:model:claw3
+    13700020: zoltran12:model:claw30
+    13700022: zoltran12:model:claw31
+    13700024: zoltran12:model:claw32
+    13700026: zoltran12:model:ear_left
+    13700028: zoltran12:model:ear_right
+    13700030: zoltran12:model:eye_left
+    13700032: zoltran12:model:eye_right
+    13700034: zoltran12:model:nose
+    13700036: zoltran12:model:spike1
+    13700038: zoltran12:model:spike2
+    13700040: zoltran12:model:spike3
+    13700042: zoltran12:model:spike4
+    13700044: zoltran12:model:spike5
+    13700046: zoltran12:model:spike6
+    13700048: zoltran12:model:tailmid
+    13700050: zoltran12:model:teeth1
+    13700052: zoltran12:model:teeth10
+    13700054: zoltran12:model:teeth11
+    13700056: zoltran12:model:teeth12
+    13700058: zoltran12:model:teeth2
+    13700060: zoltran12:model:teeth20
+    13700062: zoltran12:model:teeth21
+    13700064: zoltran12:model:teeth22
+    13700066: zoltran12:model:teeth3
+    13700068: zoltran12:model:teeth30
+    13700070: zoltran12:model:teeth31
+    13700072: zoltran12:model:teeth32
+    13700074: zoltran12:model:teeth4
+    13700076: zoltran12:model:teeth40
+    13700078: zoltran12:model:teeth41
+    13700080: zoltran12:model:teeth42
+    13700082: zoltran12:model:teeth5
+    13700084: zoltran12:model:teeth50
+    13700086: zoltran12:model:teeth51
+    13700088: zoltran12:model:teeth52
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: "\nInbetween bone default rotation found in this file
+      is different from the one found in the source avatar:\n\t'zoltran12:backHip_L'
+      : rotation error = 15.521605 deg\n\nClip 'Take 001' has import animation warnings
+      that might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'zoltran12:backHip_R' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n\t'zoltran12:Spine1_M'
+      has translation animation that will be discarded.\n\t'zoltran12:Spine1_M' has
+      scale animation that will be discarded.\n\t'zoltran12:Chest_M' has translation
+      animation that will be discarded.\n\t'zoltran12:frontRump_R' has translation
+      animation that will be discarded.\n\t'zoltran12:frontRump_L' has translation
+      animation that will be discarded.\n\t'zoltran12:backHip_L' is inbetween humanoid
+      transforms and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 33
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: zoltran12:Geometry
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/mainbody
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_leftback
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_leftback/zoltran12:model:claw10
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_leftback/zoltran12:model:claw20
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_leftback/zoltran12:model:claw30
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_leftfront
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_leftfront/zoltran12:model:claw12
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_leftfront/zoltran12:model:claw22
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_leftfront/zoltran12:model:claw32
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_rightback
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_rightback/zoltran12:model:claw11
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_rightback/zoltran12:model:claw21
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_rightback/zoltran12:model:claw31
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_rightfront
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_rightfront/zoltran12:model:claw1
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_rightfront/zoltran12:model:claw2
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:claw_rightfront/zoltran12:model:claw3
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:ear_left
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:ear_right
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:eye_left
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:eye_right
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:nose
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:spike_back
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:spike_back/zoltran12:model:spike4
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:spike_back/zoltran12:model:spike5
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:spike_back/zoltran12:model:spike6
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:spike_front
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:spike_front/zoltran12:model:spike1
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:spike_front/zoltran12:model:spike2
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:spike_front/zoltran12:model:spike3
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:tailmid
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_leftbottom
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_leftbottom/zoltran12:model:teeth12
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_leftbottom/zoltran12:model:teeth22
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_leftbottom/zoltran12:model:teeth32
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_leftbottom/zoltran12:model:teeth42
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_leftbottom/zoltran12:model:teeth52
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_lefttop
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_lefttop/zoltran12:model:teeth10
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_lefttop/zoltran12:model:teeth20
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_lefttop/zoltran12:model:teeth30
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_lefttop/zoltran12:model:teeth40
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_lefttop/zoltran12:model:teeth50
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_rightbottom
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_rightbottom/zoltran12:model:teeth1
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_rightbottom/zoltran12:model:teeth2
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_rightbottom/zoltran12:model:teeth3
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_rightbottom/zoltran12:model:teeth4
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_rightbottom/zoltran12:model:teeth5
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_righttop
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_righttop/zoltran12:model:teeth11
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_righttop/zoltran12:model:teeth21
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_righttop/zoltran12:model:teeth31
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_righttop/zoltran12:model:teeth41
+        weight: 0
+      - path: zoltran12:Geometry/zoltran12:model:geo/zoltran12:model:teeth_righttop/zoltran12:model:teeth51
+        weight: 0
+      - path: zoltran12:Main
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_L/zoltran12:backHip_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_L/zoltran12:backHip_L/zoltran12:backKnee_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_L/zoltran12:backHip_L/zoltran12:backKnee_L/zoltran12:backAnkle_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_L/zoltran12:backHip_L/zoltran12:backKnee_L/zoltran12:backAnkle_L/zoltran12:backToes_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_L/zoltran12:backHip_L/zoltran12:backKnee_L/zoltran12:backAnkle_L/zoltran12:backToes_L/zoltran12:backToesEnd_L
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_R/zoltran12:backHip_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_R/zoltran12:backHip_R/zoltran12:backKnee_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_R/zoltran12:backHip_R/zoltran12:backKnee_R/zoltran12:backAnkle_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_R/zoltran12:backHip_R/zoltran12:backKnee_R/zoltran12:backAnkle_R/zoltran12:backToes_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:backRump_R/zoltran12:backHip_R/zoltran12:backKnee_R/zoltran12:backAnkle_R/zoltran12:backToes_R/zoltran12:backToesEnd_R
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_L/zoltran12:frontHip_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_L/zoltran12:frontHip_L/zoltran12:frontKnee_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_L/zoltran12:frontHip_L/zoltran12:frontKnee_L/zoltran12:frontAnkle_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_L/zoltran12:frontHip_L/zoltran12:frontKnee_L/zoltran12:frontAnkle_L/zoltran12:frontToes_L
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_L/zoltran12:frontHip_L/zoltran12:frontKnee_L/zoltran12:frontAnkle_L/zoltran12:frontToes_L/zoltran12:frontToesEnd_L
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_R/zoltran12:frontHip_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_R/zoltran12:frontHip_R/zoltran12:frontKnee_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_R/zoltran12:frontHip_R/zoltran12:frontKnee_R/zoltran12:frontAnkle_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_R/zoltran12:frontHip_R/zoltran12:frontKnee_R/zoltran12:frontAnkle_R/zoltran12:frontToes_R
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:frontRump_R/zoltran12:frontHip_R/zoltran12:frontKnee_R/zoltran12:frontAnkle_R/zoltran12:frontToes_R/zoltran12:frontToesEnd_R
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Ear_L
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Ear_L/zoltran12:EarEnd_L
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Ear_R
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Ear_R/zoltran12:EarEnd_R
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Eye_L
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Eye_L/zoltran12:EyeEnd_L
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Eye_R
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Eye_R/zoltran12:EyeEnd_R
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:HeadEnd_M
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Jaw_M
+        weight: 1
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Spine1_M/zoltran12:Chest_M/zoltran12:Neck_M/zoltran12:NeckPart1_M/zoltran12:NeckPart2_M/zoltran12:Head_M/zoltran12:Jaw_M/zoltran12:JawEnd_M
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Tail0_M
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Tail0_M/zoltran12:Tail1_M
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Tail0_M/zoltran12:Tail1_M/zoltran12:Tail2_M
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Tail0_M/zoltran12:Tail1_M/zoltran12:Tail2_M/zoltran12:Tail3_M
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Tail0_M/zoltran12:Tail1_M/zoltran12:Tail2_M/zoltran12:Tail3_M/zoltran12:Tail4_M
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Tail0_M/zoltran12:Tail1_M/zoltran12:Tail2_M/zoltran12:Tail3_M/zoltran12:Tail4_M/zoltran12:Tail5_M
+        weight: 0
+      - path: zoltran12:Main/zoltran12:DeformationSystem/zoltran12:Root_M/zoltran12:Tail0_M/zoltran12:Tail1_M/zoltran12:Tail2_M/zoltran12:Tail3_M/zoltran12:Tail4_M/zoltran12:Tail5_M/zoltran12:Tail6_M
+        weight: 0
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0.9
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 60
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: zoltran12:Root_M
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:backRump_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:backRump_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:backKnee_L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:backKnee_R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:backAnkle_L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:backAnkle_R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:Spine1_M
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:Chest_M
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:Neck_M
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:NeckPart2_M
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:frontRump_L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:frontRump_R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:frontHip_L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:frontHip_R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:frontKnee_L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:frontKnee_R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:frontAnkle_L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:frontAnkle_R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:backToes_L
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:backToes_R
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:Ear_L
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:Ear_R
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: zoltran12:Jaw_M
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: ZoltranWalk(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:Geometry
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:geo
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: mainbody
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw_leftback
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 3.6280655e-17, y: 0.0000000073527016, z: -0.00000000493433, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw10
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw20
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw30
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw_leftfront
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.525523e-15, y: 0.00000006470445, z: 0.00000006994144, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw12
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw22
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw32
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw_rightback
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 3.6280664e-17, y: -0.0000000073527024, z: 0.0000000049343307,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw11
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw21
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw31
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw_rightfront
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.525522e-15, y: -0.000000064704444, z: -0.00000006994144, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:claw3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:ear_left
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:ear_right
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:eye_left
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:eye_right
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:nose
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:spike_back
+      position: {x: -0, y: 0.000000004539176, z: 0.00000011035298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:spike4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:spike5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:spike6
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:spike_front
+      position: {x: -0, y: 0.000000004539176, z: 0.00000011035298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:spike1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:spike2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:spike3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:tailmid
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth_leftbottom
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth12
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth22
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth32
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth42
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth52
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth_lefttop
+      position: {x: -0, y: 0.000000004539176, z: 0.00000011035298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth10
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth20
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth30
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth40
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth50
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth_rightbottom
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth_righttop
+      position: {x: -0, y: 0.000000004539176, z: 0.00000011035298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth11
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth21
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth31
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth41
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:model:teeth51
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:Main
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:DeformationSystem
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:Root_M
+      position: {x: -0.010217254, y: 4.0988503, z: -0.40444076}
+      rotation: {x: 0.5322125, y: -0.46556616, z: -0.5322104, w: 0.46556434}
+      scale: {x: 1, y: 1.0000002, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:backRump_R
+      position: {x: -0.039929815, y: 0.4027075, z: -0.9574029}
+      rotation: {x: -0.05053615, y: 0.09567844, z: -0.9198712, w: 0.37699956}
+      scale: {x: 1.0000011, y: 1.000001, z: 1.0000008}
+      transformModified: 1
+    - name: zoltran12:backHip_R
+      position: {x: -1.8683282, y: 7.993605e-15, z: 7.9936056e-16}
+      rotation: {x: -0.106538266, y: -0.0042632744, z: 0.44127095, w: -0.8910171}
+      scale: {x: 0.9999997, y: 0.99999964, z: 0.99999964}
+      transformModified: 1
+    - name: zoltran12:backKnee_R
+      position: {x: -1.8012356, y: -2.664535e-15, z: 2.9309885e-15}
+      rotation: {x: 0.0044033304, y: -0.010599308, z: -0.21344723, w: -0.9768872}
+      scale: {x: 0.9999999, y: 1.0000005, z: 1.0000004}
+      transformModified: 1
+    - name: zoltran12:backAnkle_R
+      position: {x: -1.2078414, y: 6.3948845e-15, z: 1.478817e-14}
+      rotation: {x: -0.76279205, y: -0.6451969, z: 0.040191464, w: 0.015934335}
+      scale: {x: 0.99999964, y: 0.99999976, z: 0.99999964}
+      transformModified: 1
+    - name: zoltran12:backToes_R
+      position: {x: -0.15425333, y: 0.44408277, z: 3.730349e-15}
+      rotation: {x: -0.8219256, y: 0.56959486, z: 0.0000000037252894, w: -0.0000000081836316}
+      scale: {x: 1.0000001, y: 1.0000007, z: 1.0000002}
+      transformModified: 1
+    - name: zoltran12:backToesEnd_R
+      position: {x: -0.26282674, y: -1.5987211e-15, z: 5.32907e-15}
+      rotation: {x: 0.000000009092777, y: 0.000000016360666, z: -0.000000059604638,
+        w: 1}
+      scale: {x: 1.000001, y: 1.0000011, z: 1.0000008}
+      transformModified: 1
+    - name: zoltran12:Spine1_M
+      position: {x: -1.880442, y: 0.066799015, z: 0.11230861}
+      rotation: {x: -0.0000000037252903, y: -0, z: 0.1680463, w: 0.9857791}
+      scale: {x: 1.0000015, y: 1.0000429, z: 1.0000415}
+      transformModified: 1
+    - name: zoltran12:Chest_M
+      position: {x: -2.0121086, y: -0.00022041984, z: 0.0000000038602983}
+      rotation: {x: -0.0000000037161683, y: -2.6054217e-10, z: 0.23657897, w: -0.9716123}
+      scale: {x: 0.9999999, y: 1.000004, z: 1.0000013}
+      transformModified: 1
+    - name: zoltran12:frontRump_R
+      position: {x: -0.6722706, y: 0.11168629, z: -0.9731528}
+      rotation: {x: 0.3637851, y: 0.48345643, z: 0.44488266, w: -0.6603103}
+      scale: {x: 0.9999759, y: 1.0000226, z: 1.0000012}
+      transformModified: 1
+    - name: zoltran12:frontHip_R
+      position: {x: -1.3130238, y: 4.263256e-15, z: -5.861977e-15}
+      rotation: {x: 0.020356262, y: 0.1260505, z: 0.04578555, w: -0.9907576}
+      scale: {x: 0.9999999, y: 1.0000036, z: 0.9999981}
+      transformModified: 1
+    - name: zoltran12:frontKnee_R
+      position: {x: -1.273393, y: -7.9936056e-16, z: -8.260059e-15}
+      rotation: {x: 0.0024126058, y: -0.008011668, z: 0.04685381, w: 0.9988667}
+      scale: {x: 1.0000008, y: 0.99999976, z: 1.0000004}
+      transformModified: 1
+    - name: zoltran12:frontAnkle_R
+      position: {x: -2.2229838, y: 1.3855583e-14, z: -1.971756e-14}
+      rotation: {x: 0.92239136, y: -0.38555688, z: 0.015776174, w: -0.017062778}
+      scale: {x: 1.0000002, y: 1.0000006, z: 0.9999997}
+      transformModified: 1
+    - name: zoltran12:frontToes_R
+      position: {x: -0.3247122, y: 0.42435932, z: 4.263256e-15}
+      rotation: {x: -0.8090384, y: 0.5877558, z: 0.00000002142042, w: -0.000000021071173}
+      scale: {x: 1.0000013, y: 1.0000005, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:frontToesEnd_R
+      position: {x: -0.21563575, y: 9.325873e-16, z: -0.0000000017652707}
+      rotation: {x: -0.0000000135677105, y: -0.000000005108154, z: -0, w: 1}
+      scale: {x: 1.0000025, y: 1.0000039, z: 1.000002}
+      transformModified: 1
+    - name: zoltran12:Neck_M
+      position: {x: -1.7837968, y: -2.131628e-15, z: -6.228351e-15}
+      rotation: {x: -0, y: -0, z: 0.033147633, w: 0.9994505}
+      scale: {x: 1.000003, y: 0.9999985, z: 1.0000004}
+      transformModified: 1
+    - name: zoltran12:NeckPart1_M
+      position: {x: -0.21090297, y: 2.131628e-15, z: -1.7652545e-15}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000005, y: 1.0000008, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:NeckPart2_M
+      position: {x: -0.21090297, y: -2.131628e-15, z: -3.8968826e-15}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000054, y: 1.0000094, z: 1.000004}
+      transformModified: 1
+    - name: zoltran12:Head_M
+      position: {x: -0.21090297, y: 5.32907e-15, z: -6.328271e-15}
+      rotation: {x: 0.0000000010977351, y: -0.000000029782104, z: 0.66257995, w: 0.74899125}
+      scale: {x: 0.9999865, y: 1.0000095, z: 0.99999976}
+      transformModified: 1
+    - name: zoltran12:HeadEnd_M
+      position: {x: -0.6965778, y: -1.065814e-15, z: 4.3688003e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:Eye_R
+      position: {x: -0.2763484, y: 0.15876104, z: -0.5561859}
+      rotation: {x: -0.0001615976, y: -0.000225979, z: -0.581621, w: 0.8134599}
+      scale: {x: 1.0000123, y: 0.9999896, z: 1.0000008}
+      transformModified: 1
+    - name: zoltran12:EyeEnd_R
+      position: {x: -0.21989067, y: -6.9277914e-15, z: -5.995204e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:Eye_L
+      position: {x: -0.2763484, y: 0.15876104, z: 0.5561859}
+      rotation: {x: -0.00016163645, y: -0.00022608711, z: 0.581621, w: -0.8134599}
+      scale: {x: 1.0000119, y: 0.99998885, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:EyeEnd_L
+      position: {x: -0.21989067, y: -1.1191048e-14, z: -5.3956837e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:Ear_L
+      position: {x: -0.5379934, y: -0.23986955, z: 0.59195143}
+      rotation: {x: 0.166375, y: 0.09316271, z: 0.98077214, w: -0.04154714}
+      scale: {x: 1.00001, y: 0.99999136, z: 1.0000075}
+      transformModified: 1
+    - name: zoltran12:EarEnd_L
+      position: {x: 0.8201862, y: -1.5987211e-15, z: 3.3306689e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:Ear_R
+      position: {x: -0.5379934, y: -0.23986955, z: -0.59195143}
+      rotation: {x: 0.09316274, y: -0.16637494, z: 0.041547094, w: 0.98077214}
+      scale: {x: 1.0000069, y: 0.9999881, z: 1.0000064}
+      transformModified: 1
+    - name: zoltran12:EarEnd_R
+      position: {x: -0.8201862, y: -8.526512e-15, z: 3.3306689e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: zoltran12:Jaw_M
+      position: {x: 0.48373875, y: 0.27108413, z: -1.2589928e-14}
+      rotation: {x: -0.00000001113358, y: 0.000000034041303, z: -0.76353335, w: 0.6457684}
+      scale: {x: 0.99999964, y: 1.0000147, z: 1.0000037}
+      transformModified: 1
+    - name: zoltran12:JawEnd_M
+      position: {x: -1.1324943, y: -4.263256e-15, z: -3.1022565e-14}
+      rotation: {x: -0, y: -0, z: 3.7900158e-16, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 0.99999976}
+      transformModified: 1
+    - name: zoltran12:frontRump_L
+      position: {x: -0.6722706, y: 0.11168629, z: 0.9731528}
+      rotation: {x: -0.4834535, y: 0.36378348, z: -0.66031206, w: -0.4448846}
+      scale: {x: 0.99998945, y: 1.0000105, z: 1.0000006}
+      transformModified: 1
+    - name: zoltran12:frontHip_L
+      position: {x: 1.3130238, y: -2.131628e-15, z: -1.89182e-14}
+      rotation: {x: 0.020353755, y: 0.12605116, z: 0.04579162, w: -0.99075735}
+      scale: {x: 0.99999595, y: 1.0000072, z: 0.99999917}
+      transformModified: 1
+    - name: zoltran12:frontKnee_L
+      position: {x: 1.273393, y: -1.3322675e-15, z: -1.4654943e-15}
+      rotation: {x: 0.002412022, y: -0.008012954, z: 0.04686367, w: 0.9988662}
+      scale: {x: 0.9999937, y: 1.0000064, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:frontAnkle_L
+      position: {x: 2.2229838, y: -4.263256e-15, z: -1.1723954e-14}
+      rotation: {x: 0.92239124, y: -0.38555735, z: 0.015776265, w: -0.017061526}
+      scale: {x: 0.9999978, y: 1.0000027, z: 0.99999994}
+      transformModified: 1
+    - name: zoltran12:frontToes_L
+      position: {x: 0.3247122, y: -0.42435932, z: 2.797762e-15}
+      rotation: {x: 0.80903846, y: -0.58775574, z: -0.00000003352761, w: 0.00000001763692}
+      scale: {x: 0.9999947, y: 1.000006, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:frontToesEnd_L
+      position: {x: 0.21563575, y: 6.6613376e-16, z: 0.0000000017652696}
+      rotation: {x: -0.000000037535816, y: -0.000000024532342, z: -0, w: 1}
+      scale: {x: 1.0000005, y: 1, z: 1.0000002}
+      transformModified: 1
+    - name: zoltran12:backRump_L
+      position: {x: -0.039929815, y: 0.4027075, z: 0.9574029}
+      rotation: {x: -0.08353644, y: -0.038145777, z: 0.37768584, w: 0.9213685}
+      scale: {x: 1.0000011, y: 1.0000012, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:backHip_L
+      position: {x: 1.8683282, y: -5.462297e-15, z: -4.92939e-15}
+      rotation: {x: -0.009196653, y: -0.018662041, z: 0.44194716, w: -0.89679974}
+      scale: {x: 1.0000002, y: 1.0000006, z: 1.0000007}
+      transformModified: 1
+    - name: zoltran12:backKnee_L
+      position: {x: 1.8012356, y: 5.32907e-16, z: -1.065814e-15}
+      rotation: {x: 0.0048997565, y: -0.011794589, z: -0.21802443, w: -0.97585976}
+      scale: {x: 1.000001, y: 1.0000006, z: 1.0000011}
+      transformModified: 1
+    - name: zoltran12:backAnkle_L
+      position: {x: 1.2078414, y: -7.727152e-15, z: -1.6786572e-14}
+      rotation: {x: 0.76065624, y: 0.6448577, z: 0.036582995, w: -0.064979926}
+      scale: {x: 1.0000005, y: 1.0000006, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:backToes_L
+      position: {x: 0.15425335, y: -0.44408277, z: -5.861977e-15}
+      rotation: {x: -0.82192564, y: 0.5695948, z: -0.000000029802322, w: -0.000000007858034}
+      scale: {x: 1.0000006, y: 1.0000002, z: 1.0000005}
+      transformModified: 1
+    - name: zoltran12:backToesEnd_L
+      position: {x: 0.26282674, y: 2.5313084e-15, z: -6.1284308e-15}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 0.9999987, y: 1, z: 0.9999982}
+      transformModified: 1
+    - name: zoltran12:Tail0_M
+      position: {x: 0.80725247, y: 0.03415039, z: 1.3322676e-16}
+      rotation: {x: -0.06664625, y: 0.99777675, z: 0.000000003097508, w: 7.2413986e-10}
+      scale: {x: 1.0000033, y: 1.0000033, z: 1.0000023}
+      transformModified: 1
+    - name: zoltran12:Tail1_M
+      position: {x: -1.2923024, y: 1.2789769e-14, z: 3.863576e-15}
+      rotation: {x: 0.0000000030975156, y: 1.03218864e-10, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000013, z: 1.0000002}
+      transformModified: 1
+    - name: zoltran12:Tail2_M
+      position: {x: -1.3396716, y: -1.7053025e-14, z: 1.598721e-14}
+      rotation: {x: -1.103113e-10, y: 0.0000000016514966, z: 0.000000059604638, w: 1}
+      scale: {x: 1, y: 1.0000007, z: 1.0000002}
+      transformModified: 1
+    - name: zoltran12:Tail3_M
+      position: {x: -1.3171984, y: 3.1974422e-15, z: 2.5979217e-14}
+      rotation: {x: -0.000000003957524, y: -0.00000003330329, z: -0.002115235, w: 0.9999978}
+      scale: {x: 0.9999996, y: 0.9999989, z: 0.9999993}
+      transformModified: 1
+    - name: zoltran12:Tail4_M
+      position: {x: -1.2290401, y: 6.3948845e-15, z: 2.83773e-14}
+      rotation: {x: 0.000000003900626, y: 0.00000003412892, z: 0.0021152573, w: 0.9999978}
+      scale: {x: 1.0000005, y: 1.0000017, z: 1.000001}
+      transformModified: 1
+    - name: zoltran12:Tail5_M
+      position: {x: -1.2963514, y: 0, z: 2.4207302e-13}
+      rotation: {x: 1.10307735e-10, y: -0.0000000016514963, z: -0.000000052154054,
+        w: 1}
+      scale: {x: 1.0000005, y: 1.0000007, z: 1.0000006}
+      transformModified: 1
+    - name: zoltran12:Tail6_M
+      position: {x: -0.8822515, y: -4.263256e-15, z: 1.6861518e-13}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

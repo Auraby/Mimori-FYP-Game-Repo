@@ -1,0 +1,1119 @@
+fileFormatVersion: 2
+guid: 68fcf27e37c413f439104f31d2d12964
+timeCreated: 1486613187
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: model:backAnkle_L
+    100002: model:backAnkle_R
+    100004: model:backHip_L
+    100006: model:backHip_R
+    100008: model:backKnee_L
+    100010: model:backKnee_R
+    100012: model:backRump_L
+    100014: model:backRump_R
+    100016: model:backToes_L
+    100018: model:backToes_R
+    100020: model:backToesEnd_L
+    100022: model:backToesEnd_R
+    100024: model:Chest_M
+    100026: model:DeformationSystem
+    100028: model:Ear_L
+    100030: model:Ear_R
+    100032: model:EarEnd_L
+    100034: model:EarEnd_R
+    100036: model:Eye_L
+    100038: model:Eye_R
+    100040: model:EyeEnd_L
+    100042: model:EyeEnd_R
+    100044: model:frontAnkle_L
+    100046: model:frontAnkle_R
+    100048: model:frontHip_L
+    100050: model:frontHip_R
+    100052: model:frontKnee_L
+    100054: model:frontKnee_R
+    100056: model:frontRump_L
+    100058: model:frontRump_R
+    100060: model:frontToes_L
+    100062: model:frontToes_R
+    100064: model:frontToesEnd_L
+    100066: model:frontToesEnd_R
+    100068: model:Geometry
+    100070: model:Head_M
+    100072: model:HeadEnd_M
+    100074: model:Jaw_M
+    100076: model:JawEnd_M
+    100078: model:Main
+    100080: model:model:claw1
+    100082: model:model:claw10
+    100084: model:model:claw11
+    100086: model:model:claw12
+    100088: model:model:claw2
+    100090: model:model:claw20
+    100092: model:model:claw21
+    100094: model:model:claw22
+    100096: model:model:claw3
+    100098: model:model:claw30
+    100100: model:model:claw31
+    100102: model:model:claw32
+    100104: model:model:claw_leftback
+    100106: model:model:claw_leftfront
+    100108: model:model:claw_rightback
+    100110: model:model:claw_rightfront
+    100112: model:model:ear_left
+    100114: model:model:ear_right
+    100116: model:model:eye_left
+    100118: model:model:eye_right
+    100120: model:model:geo
+    100122: model:model:mainbody
+    100124: model:model:nose
+    100126: model:model:spike1
+    100128: model:model:spike2
+    100130: model:model:spike3
+    100132: model:model:spike4
+    100134: model:model:spike5
+    100136: model:model:spike6
+    100138: model:model:spike_back
+    100140: model:model:spike_front
+    100142: model:model:tailmid
+    100144: model:model:teeth1
+    100146: model:model:teeth10
+    100148: model:model:teeth11
+    100150: model:model:teeth12
+    100152: model:model:teeth2
+    100154: model:model:teeth20
+    100156: model:model:teeth21
+    100158: model:model:teeth22
+    100160: model:model:teeth3
+    100162: model:model:teeth30
+    100164: model:model:teeth31
+    100166: model:model:teeth32
+    100168: model:model:teeth4
+    100170: model:model:teeth40
+    100172: model:model:teeth41
+    100174: model:model:teeth42
+    100176: model:model:teeth5
+    100178: model:model:teeth50
+    100180: model:model:teeth51
+    100182: model:model:teeth52
+    100184: model:model:teeth_leftbottom
+    100186: model:model:teeth_lefttop
+    100188: model:model:teeth_rightbottom
+    100190: model:model:teeth_righttop
+    100192: model:Neck_M
+    100194: model:NeckPart1_M
+    100196: model:NeckPart2_M
+    100198: model:Root_M
+    100200: model:Spine1_M
+    100202: model:Tail0_M
+    100204: model:Tail1_M
+    100206: model:Tail2_M
+    100208: model:Tail3_M
+    100210: model:Tail4_M
+    100212: model:Tail5_M
+    100214: model:Tail6_M
+    100216: //RootNode
+    400000: model:backAnkle_L
+    400002: model:backAnkle_R
+    400004: model:backHip_L
+    400006: model:backHip_R
+    400008: model:backKnee_L
+    400010: model:backKnee_R
+    400012: model:backRump_L
+    400014: model:backRump_R
+    400016: model:backToes_L
+    400018: model:backToes_R
+    400020: model:backToesEnd_L
+    400022: model:backToesEnd_R
+    400024: model:Chest_M
+    400026: model:DeformationSystem
+    400028: model:Ear_L
+    400030: model:Ear_R
+    400032: model:EarEnd_L
+    400034: model:EarEnd_R
+    400036: model:Eye_L
+    400038: model:Eye_R
+    400040: model:EyeEnd_L
+    400042: model:EyeEnd_R
+    400044: model:frontAnkle_L
+    400046: model:frontAnkle_R
+    400048: model:frontHip_L
+    400050: model:frontHip_R
+    400052: model:frontKnee_L
+    400054: model:frontKnee_R
+    400056: model:frontRump_L
+    400058: model:frontRump_R
+    400060: model:frontToes_L
+    400062: model:frontToes_R
+    400064: model:frontToesEnd_L
+    400066: model:frontToesEnd_R
+    400068: model:Geometry
+    400070: model:Head_M
+    400072: model:HeadEnd_M
+    400074: model:Jaw_M
+    400076: model:JawEnd_M
+    400078: model:Main
+    400080: model:model:claw1
+    400082: model:model:claw10
+    400084: model:model:claw11
+    400086: model:model:claw12
+    400088: model:model:claw2
+    400090: model:model:claw20
+    400092: model:model:claw21
+    400094: model:model:claw22
+    400096: model:model:claw3
+    400098: model:model:claw30
+    400100: model:model:claw31
+    400102: model:model:claw32
+    400104: model:model:claw_leftback
+    400106: model:model:claw_leftfront
+    400108: model:model:claw_rightback
+    400110: model:model:claw_rightfront
+    400112: model:model:ear_left
+    400114: model:model:ear_right
+    400116: model:model:eye_left
+    400118: model:model:eye_right
+    400120: model:model:geo
+    400122: model:model:mainbody
+    400124: model:model:nose
+    400126: model:model:spike1
+    400128: model:model:spike2
+    400130: model:model:spike3
+    400132: model:model:spike4
+    400134: model:model:spike5
+    400136: model:model:spike6
+    400138: model:model:spike_back
+    400140: model:model:spike_front
+    400142: model:model:tailmid
+    400144: model:model:teeth1
+    400146: model:model:teeth10
+    400148: model:model:teeth11
+    400150: model:model:teeth12
+    400152: model:model:teeth2
+    400154: model:model:teeth20
+    400156: model:model:teeth21
+    400158: model:model:teeth22
+    400160: model:model:teeth3
+    400162: model:model:teeth30
+    400164: model:model:teeth31
+    400166: model:model:teeth32
+    400168: model:model:teeth4
+    400170: model:model:teeth40
+    400172: model:model:teeth41
+    400174: model:model:teeth42
+    400176: model:model:teeth5
+    400178: model:model:teeth50
+    400180: model:model:teeth51
+    400182: model:model:teeth52
+    400184: model:model:teeth_leftbottom
+    400186: model:model:teeth_lefttop
+    400188: model:model:teeth_rightbottom
+    400190: model:model:teeth_righttop
+    400192: model:Neck_M
+    400194: model:NeckPart1_M
+    400196: model:NeckPart2_M
+    400198: model:Root_M
+    400200: model:Spine1_M
+    400202: model:Tail0_M
+    400204: model:Tail1_M
+    400206: model:Tail2_M
+    400208: model:Tail3_M
+    400210: model:Tail4_M
+    400212: model:Tail5_M
+    400214: model:Tail6_M
+    400216: //RootNode
+    4300000: model:model:tailmid
+    4300002: model:model:nose
+    4300004: model:model:ear_right
+    4300006: model:model:ear_left
+    4300008: model:model:mainbody
+    4300010: model:model:eye_right
+    4300012: model:model:eye_left
+    4300014: model:model:claw1
+    4300016: model:model:claw2
+    4300018: model:model:claw3
+    4300020: model:model:claw12
+    4300022: model:model:claw22
+    4300024: model:model:claw32
+    4300026: model:model:claw11
+    4300028: model:model:claw21
+    4300030: model:model:claw31
+    4300032: model:model:claw10
+    4300034: model:model:claw20
+    4300036: model:model:claw30
+    4300038: model:model:teeth1
+    4300040: model:model:teeth2
+    4300042: model:model:teeth3
+    4300044: model:model:teeth4
+    4300046: model:model:teeth5
+    4300048: model:model:teeth12
+    4300050: model:model:teeth22
+    4300052: model:model:teeth32
+    4300054: model:model:teeth42
+    4300056: model:model:teeth52
+    4300058: model:model:teeth11
+    4300060: model:model:teeth21
+    4300062: model:model:teeth31
+    4300064: model:model:teeth41
+    4300066: model:model:teeth51
+    4300068: model:model:teeth10
+    4300070: model:model:teeth20
+    4300072: model:model:teeth30
+    4300074: model:model:teeth40
+    4300076: model:model:teeth50
+    4300078: model:model:spike4
+    4300080: model:model:spike5
+    4300082: model:model:spike6
+    4300084: model:model:spike1
+    4300086: model:model:spike2
+    4300088: model:model:spike3
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: model:model:claw1
+    13700002: model:model:claw10
+    13700004: model:model:claw11
+    13700006: model:model:claw12
+    13700008: model:model:claw2
+    13700010: model:model:claw20
+    13700012: model:model:claw21
+    13700014: model:model:claw22
+    13700016: model:model:claw3
+    13700018: model:model:claw30
+    13700020: model:model:claw31
+    13700022: model:model:claw32
+    13700024: model:model:ear_left
+    13700026: model:model:ear_right
+    13700028: model:model:eye_left
+    13700030: model:model:eye_right
+    13700032: model:model:mainbody
+    13700034: model:model:nose
+    13700036: model:model:spike1
+    13700038: model:model:spike2
+    13700040: model:model:spike3
+    13700042: model:model:spike4
+    13700044: model:model:spike5
+    13700046: model:model:spike6
+    13700048: model:model:tailmid
+    13700050: model:model:teeth1
+    13700052: model:model:teeth10
+    13700054: model:model:teeth11
+    13700056: model:model:teeth12
+    13700058: model:model:teeth2
+    13700060: model:model:teeth20
+    13700062: model:model:teeth21
+    13700064: model:model:teeth22
+    13700066: model:model:teeth3
+    13700068: model:model:teeth30
+    13700070: model:model:teeth31
+    13700072: model:model:teeth32
+    13700074: model:model:teeth4
+    13700076: model:model:teeth40
+    13700078: model:model:teeth41
+    13700080: model:model:teeth42
+    13700082: model:model:teeth5
+    13700084: model:model:teeth50
+    13700086: model:model:teeth51
+    13700088: model:model:teeth52
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 60
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: model:Root_M
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:backRump_L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:backRump_R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:backKnee_L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:backKnee_R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:backAnkle_L
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:backAnkle_R
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:Spine1_M
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:Chest_M
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:Neck_M
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:NeckPart2_M
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:frontRump_L
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:frontRump_R
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:frontHip_L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:frontHip_R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:frontKnee_L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:frontKnee_R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:frontAnkle_L
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:frontAnkle_R
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:backToes_L
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:backToes_R
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:Ear_L
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:Ear_R
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: model:Jaw_M
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Zoltranbeamroar(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Geometry
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:geo
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw_leftback
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 3.6280655e-17, y: 0.0000000073527016, z: -0.00000000493433, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw10
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw20
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw30
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw_leftfront
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.525523e-15, y: 0.00000006470445, z: 0.00000006994144, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw12
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw22
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw32
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw_rightback
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 3.6280664e-17, y: -0.0000000073527024, z: 0.0000000049343307,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw11
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw21
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw31
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw_rightfront
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -4.525522e-15, y: -0.000000064704444, z: -0.00000006994144, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:claw3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:ear_left
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:ear_right
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:eye_left
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:eye_right
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:mainbody
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:nose
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:spike_back
+      position: {x: -0, y: 0.000000004539176, z: 0.00000011035298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:spike4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:spike5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:spike6
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:spike_front
+      position: {x: -0, y: 0.000000004539176, z: 0.00000011035298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:spike1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:spike2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:spike3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:tailmid
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth_leftbottom
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth12
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth22
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth32
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth42
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth52
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth_lefttop
+      position: {x: -0, y: 0.000000004539176, z: 0.00000011035298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth10
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth20
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth30
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth40
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth50
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth_rightbottom
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth1
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth2
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth_righttop
+      position: {x: -0, y: 0.000000004539176, z: 0.00000011035298}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth11
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth21
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth31
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth41
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:model:teeth51
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Main
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:DeformationSystem
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Root_M
+      position: {x: -3.2651445e-30, y: 4.0990844, z: -0.40444052}
+      rotation: {x: 0.5322114, y: -0.46556526, z: -0.5322114, w: 0.46556526}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Spine1_M
+      position: {x: -1.8841738, y: -4.796163e-15, z: 8.3233687e-16}
+      rotation: {x: 0, y: 0, z: 0.16804627, w: 0.9857791}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Chest_M
+      position: {x: -2.0134473, y: 0.000000017944211, z: 2.7373087e-16}
+      rotation: {x: -4.5007807e-17, y: 7.3980374e-17, z: -0.23657896, w: 0.9716123}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Neck_M
+      position: {x: -1.7837968, y: -4.263256e-15, z: -7.535774e-15}
+      rotation: {x: 0, y: 0, z: 0.033147648, w: 0.9994505}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:NeckPart1_M
+      position: {x: -0.21090297, y: 4.263256e-15, z: -1.8921913e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:NeckPart2_M
+      position: {x: -0.21090297, y: -2.131628e-15, z: -4.046365e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Head_M
+      position: {x: -0.21090297, y: 4.263256e-15, z: -6.4823673e-15}
+      rotation: {x: 0, y: 0, z: 0.6625799, w: 0.74899125}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Eye_L
+      position: {x: -0.2763484, y: 0.15876104, z: 0.5561859}
+      rotation: {x: 0.00016164481, y: 0.00022607773, z: -0.58162105, w: 0.8134599}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:EyeEnd_L
+      position: {x: -0.21989067, y: -1.1191048e-14, z: -5.3956837e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Eye_R
+      position: {x: -0.2763484, y: 0.15876104, z: -0.5561859}
+      rotation: {x: -0.00016164481, y: -0.00022607773, z: -0.58162105, w: 0.8134599}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:EyeEnd_R
+      position: {x: -0.21989067, y: -6.9277914e-15, z: -5.995204e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:HeadEnd_M
+      position: {x: -0.6965778, y: -1.065814e-15, z: 4.3688003e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Ear_L
+      position: {x: -0.5379934, y: -0.23986955, z: 0.59195143}
+      rotation: {x: 0.16637495, y: 0.093162686, z: 0.98077214, w: -0.041547082}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:EarEnd_L
+      position: {x: 0.8201862, y: -1.5987211e-15, z: 3.3306689e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Ear_R
+      position: {x: -0.5379934, y: -0.23986955, z: -0.59195143}
+      rotation: {x: 0.09316268, y: -0.16637495, z: 0.04154702, w: 0.98077214}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:EarEnd_R
+      position: {x: -0.8201862, y: -8.526512e-15, z: 3.3306689e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Jaw_M
+      position: {x: 0.48373875, y: 0.27108413, z: -1.3961362e-14}
+      rotation: {x: 0, y: 0, z: -0.7635335, w: 0.64576834}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:JawEnd_M
+      position: {x: -1.1324943, y: -4.263256e-15, z: -3.1022565e-14}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontRump_L
+      position: {x: -0.6722706, y: 0.11168629, z: 0.9731528}
+      rotation: {x: 0.48345578, y: -0.36378273, z: 0.6603114, w: 0.4448838}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontHip_L
+      position: {x: 1.3130238, y: -1.5987211e-15, z: -1.6520117e-14}
+      rotation: {x: -0.020356024, y: -0.12605067, z: -0.045785595, w: 0.9907576}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontKnee_L
+      position: {x: 1.273393, y: -1.6237011e-15, z: -2.664535e-16}
+      rotation: {x: 0.002412347, y: -0.00801318, z: 0.04685652, w: 0.99886656}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontAnkle_L
+      position: {x: 2.2229838, y: -5.062617e-15, z: -9.3258726e-15}
+      rotation: {x: 0.92239267, y: -0.38555378, z: 0.015776372, w: -0.017060367}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontToes_L
+      position: {x: 0.3247122, y: -0.42435932, z: 3.0642154e-15}
+      rotation: {x: 0.80903834, y: -0.5877559, z: -3.598967e-17, w: 4.9539308e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontToesEnd_L
+      position: {x: 0.21563575, y: 6.6613376e-16, z: 0.0000000017652696}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontRump_R
+      position: {x: -0.6722706, y: 0.11168629, z: -0.9731528}
+      rotation: {x: -0.3637827, y: -0.48345584, z: -0.4448838, w: 0.6603114}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontHip_R
+      position: {x: -1.3130238, y: 4.263256e-15, z: -3.9968025e-15}
+      rotation: {x: -0.020356262, y: -0.12605059, z: -0.045785356, w: 0.9907576}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontKnee_R
+      position: {x: -1.273393, y: -1.3072876e-15, z: -7.993605e-15}
+      rotation: {x: 0.002412414, y: -0.008013337, z: 0.046856206, w: 0.9988666}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontAnkle_R
+      position: {x: -2.2229838, y: 1.5720757e-14, z: -1.89182e-14}
+      rotation: {x: 0.9223928, y: -0.3855537, z: 0.015776273, w: -0.01706034}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontToes_R
+      position: {x: -0.3247122, y: 0.42435932, z: 4.263256e-15}
+      rotation: {x: 0.80903834, y: -0.5877559, z: -3.5989666e-17, w: 4.953931e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:frontToesEnd_R
+      position: {x: -0.21563575, y: 9.325873e-16, z: -0.0000000017652707}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Tail0_M
+      position: {x: 0.80725247, y: 0.03415039, z: 2.2879468e-17}
+      rotation: {x: -0.5537458, y: 0.83268577, z: -8.4894446e-17, w: -1.708015e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Tail1_M
+      position: {x: -1.2923024, y: 1.3855583e-14, z: 1.5652987e-15}
+      rotation: {x: 0, y: 0, z: 0.083902396, w: 0.99647397}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Tail2_M
+      position: {x: -1.3396716, y: -1.4921397e-14, z: 1.9954809e-14}
+      rotation: {x: 0, y: -0, z: -0.00078729185, w: 0.9999997}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Tail3_M
+      position: {x: -1.3171984, y: 2.131628e-15, z: 3.712479e-14}
+      rotation: {x: 0, y: 0, z: 0.06704223, w: 0.99775016}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Tail4_M
+      position: {x: -1.2290401, y: 5.861977e-15, z: 2.5277117e-14}
+      rotation: {x: 0, y: 0, z: 0.08077704, w: 0.99673223}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Tail5_M
+      position: {x: -1.2963514, y: 2.664535e-15, z: 4.093919e-13}
+      rotation: {x: 0, y: 0, z: 0.045507826, w: 0.998964}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:Tail6_M
+      position: {x: -0.8822515, y: -4.263256e-15, z: 1.6861518e-13}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backRump_L
+      position: {x: -0.039929815, y: 0.4027075, z: 0.9574029}
+      rotation: {x: -0.08353656, y: -0.038145807, z: 0.37768576, w: 0.92136854}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backHip_L
+      position: {x: 1.8683282, y: -6.9277914e-15, z: -1.9984014e-16}
+      rotation: {x: 0.009196734, y: 0.018662022, z: -0.44194725, w: 0.8967998}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backKnee_L
+      position: {x: 1.8012356, y: 5.32907e-16, z: 1.3322676e-16}
+      rotation: {x: -0.004899953, y: 0.011794768, z: 0.21802473, w: 0.97585964}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backAnkle_L
+      position: {x: 1.2078414, y: -9.05942e-15, z: -1.438849e-14}
+      rotation: {x: 0.7606563, y: 0.6448576, z: 0.03658333, w: -0.0649799}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backToes_L
+      position: {x: 0.15425335, y: -0.44408277, z: -5.861977e-15}
+      rotation: {x: 0.82192564, y: -0.56959486, z: -3.4877624e-17, w: 5.0328428e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backToesEnd_L
+      position: {x: 0.26282674, y: 2.5313084e-15, z: -6.1284308e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backRump_R
+      position: {x: -0.039929815, y: 0.4027075, z: -0.9574029}
+      rotation: {x: -0.038145777, y: 0.08353656, z: -0.9213685, w: 0.37768584}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backHip_R
+      position: {x: -1.8683282, y: 5.861977e-15, z: 5.861977e-15}
+      rotation: {x: 0.009196734, y: 0.018662022, z: -0.44194725, w: 0.8967998}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backKnee_R
+      position: {x: -1.8012356, y: -4.796163e-15, z: 4.396483e-15}
+      rotation: {x: -0.0048998706, y: 0.011794746, z: 0.21802455, w: 0.97585976}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backAnkle_R
+      position: {x: -1.2078414, y: 9.05942e-15, z: 1.6786572e-14}
+      rotation: {x: 0.7606562, y: 0.64485776, z: 0.03658327, w: -0.064979844}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backToes_R
+      position: {x: -0.15425335, y: 0.44408277, z: 3.730349e-15}
+      rotation: {x: 0.82192564, y: -0.56959486, z: -3.4877624e-17, w: 5.0328428e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: model:backToesEnd_R
+      position: {x: -0.26282674, y: -1.5987211e-15, z: 5.32907e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
