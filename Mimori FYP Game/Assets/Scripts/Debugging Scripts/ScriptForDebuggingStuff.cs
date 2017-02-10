@@ -32,12 +32,14 @@ public class ScriptForDebuggingStuff : MonoBehaviour {
         {
             if(other.gameObject.name == "LeftHandCollider")
             {
+                EnmarController.instance.PlaySlamSound();
                 Level1Controller.instance.currentWallHealth -= 30;
                 dustParticleGO = (GameObject)Instantiate(dustParticle, leftSide.transform.position, leftSide.transform.rotation);
             }
 
             if (other.gameObject.name == "RightHandCollider")
             {
+                EnmarController.instance.PlaySlamSound();
                 Level1Controller.instance.currentWallHealth -= 30;
                 dustParticleGO = (GameObject)Instantiate(dustParticle, rightSide.transform.position, rightSide.transform.rotation);
             }

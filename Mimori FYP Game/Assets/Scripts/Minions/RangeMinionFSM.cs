@@ -107,7 +107,7 @@ public class RangeMinionFSM : MonoBehaviour {
 		{
 			if(stunTime<=0)
 			{
-                Player.inCombatCD = 10;
+                Player.inCombatCD = 5;
                 if (!goBack) {
 					if(!inAttackRange())
 					{
