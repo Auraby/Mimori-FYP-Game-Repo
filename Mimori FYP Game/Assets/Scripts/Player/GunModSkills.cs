@@ -69,7 +69,7 @@ public class GunModSkills : MonoBehaviour
 	{
 		//Debug.Log (originalSize+","+endSize);
 		//Charging Eye of Enmar's skill
-		if (gameObject.GetComponent<Shoot>().gunmodcounter == 0)
+		if (gameObject.GetComponent<Shoot>().gunmodcounter == 0 && gameObject.GetComponent<Health> ().manabar >= 100)
 		{
 			if (eoe != null)
 			{
@@ -80,6 +80,8 @@ public class GunModSkills : MonoBehaviour
 			{
 				if (Input.GetButton("Fire2"))
 				{
+					gameObject.GetComponent<Health> ().manabar -= 100;
+					gameObject.GetComponent<Health> ().manabarslider.value -= 100;
 					if (eoeChargeTime < 15)
 					{
 						eoeChargeTime += Time.deltaTime * 5;
@@ -136,7 +138,7 @@ public class GunModSkills : MonoBehaviour
 
 	public void SoulOfZoltran()
 	{
-		if (gameObject.GetComponent<Shoot>().gunmodcounter == 1)
+		if (gameObject.GetComponent<Shoot>().gunmodcounter == 1 && gameObject.GetComponent<Health> ().manabar >= 80)
 		{
 			if (Input.GetButtonDown("Fire2"))
 			{
@@ -153,6 +155,9 @@ public class GunModSkills : MonoBehaviour
 
 			if (castingDecoy)
 			{
+				gameObject.GetComponent<Health> ().manabar -= 80;
+				gameObject.GetComponent<Health> ().manabarslider.value -= 80;
+
 				RaycastHit hit;
 				Ray ray = new Ray(camera.transform.position, camera.transform.forward);
 				if (terrain.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity))
@@ -197,7 +202,7 @@ public class GunModSkills : MonoBehaviour
 
 	public void HeartOfIshira()
 	{
-		if (gameObject.GetComponent<Shoot>().gunmodcounter == 2)
+		if (gameObject.GetComponent<Shoot>().gunmodcounter == 2 && gameObject.GetComponent<Health> ().manabar >= 80)
 		{
 		if (Input.GetButton("Fire2"))
 		{
@@ -210,13 +215,15 @@ public class GunModSkills : MonoBehaviour
 
 		if (Input.GetButtonUp("Fire2"))
 		{
+
 			HoICD = 5;
 			HoiCharge.SetActive(false);
 			HoiMuzzleFlash.SetActive(true);
 			HoiLightning.SetActive(true);
 			startHoIDestroy = true;
 			isLightningStrike = true;
-
+				gameObject.GetComponent<Health> ().manabar -= 80;
+				gameObject.GetComponent<Health> ().manabarslider.value -= 80;
 			if(isLightningStrike == true)
 			{
 				RaycastHit hit;
