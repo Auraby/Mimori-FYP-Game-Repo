@@ -17,6 +17,7 @@ public class BulletController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+		playercurrdamage = playerbasedamage;
 	}
 	
 	// Update is called once per frame
@@ -29,14 +30,14 @@ public class BulletController : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 		if (player.GetComponent<SkillTree> ().unlockLifePassive1 && player.GetComponent<Health> ().currentHealth < player.GetComponent<Health> ().maxhealth / 2) {
-			playercurrdamage = playerbasedamage / 100 * 120;
+			playercurrdamage = playercurrdamage / 100 * 120;
 		} else {
 			playercurrdamage = playerbasedamage;
 		}
 		if (player.GetComponent<SkillTree> ().unlockManaPassive1 && player.GetComponent<Health> ().manabar >= player.GetComponent<Health> ().maxmana) {
 			if (fullychargedbullet > 0 && fullychargedbullet <= 2) {
 				fullychargedbulletactivated = true;
-				playercurrdamage = playerbasedamage * 2;	
+				playercurrdamage = playercurrdamage * 2;	
 			}
 		} else {
 			if (playercurrdamage == playerbasedamage * 2) {
@@ -49,18 +50,27 @@ public class BulletController : MonoBehaviour {
 			playerbasedamage = 25;
 		}
 		if (player.GetComponent<SkillTree> ().thunderrushactivated) {
-			playercurrdamage = playerbasedamage + 5;
+			playercurrdamage = playercurrdamage + 5;
+			player.GetComponent<Player> ().currfireDelay = player.GetComponent<Player> ().fireDelay / 100 * 120;
 		} else {
 			playercurrdamage = playerbasedamage;
+			player.GetComponent<Player> ().currfireDelay = player.GetComponent<Player> ().fireDelay;
 		}
 
 		if (player.GetComponent<SkillTree> ().berserkeractivated) {
-			playercurrdamage = playerbasedamage + 15;
+			playercurrdamage = playercurrdamage + 15;
 			playercurrtakendamage = playertakendamage + 15;
 		} else {
 			playercurrdamage = playerbasedamage;
 			playercurrtakendamage = playertakendamage;
 		}
+
+		if (player.GetComponent<SkillTree> ().sentrymodeactivated) {
+			playercurrdamage = playercurrdamage + 60;
+		} else {
+			playercurrdamage = playerbasedamage;
+		}
+			
 	}
 	void OnTriggerEnter(Collider other){
         if(Vector3.Distance(other.transform.position, player.transform.position) <= 40)
@@ -128,7 +138,11 @@ public class BulletController : MonoBehaviour {
 
         if (this.gameObject.tag == "EnemySkill") {
             if (other.gameObject.tag == "Player") {
-                other.GetComponent<Health>().currentHealth -= playercurrtakendamage;
+				if (player.GetComponent<SkillTree> ().manashieldup) {
+					other.GetComponent<Health> ().currentHealth -= 0;
+				} else {
+					other.GetComponent<Health> ().currentHealth -= playercurrtakendamage;
+				}
 				Destroy (this.gameObject);
             }
         }
