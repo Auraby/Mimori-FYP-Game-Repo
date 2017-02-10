@@ -92,6 +92,8 @@ public class SkillTree : MonoBehaviour {
 	public bool thunderrushactivated;
 	public bool berserkeractivated;
 	public bool sentrymodeactivated;
+	public bool toofastforyouactivated;
+
 	//Spell Effects prefab 
 	public GameObject skilleffect1;
 	public GameObject skilleffect2;
@@ -171,6 +173,9 @@ public class SkillTree : MonoBehaviour {
 	public GameObject slot3obj;
 	public GameObject slot4obj;
 
+	//skill effect particles prefab
+	public GameObject hunterbreatheffect_prefab;
+
 	public bool counterskillloop = false;
 
 	public bool manashieldup = false;
@@ -248,7 +253,13 @@ public class SkillTree : MonoBehaviour {
 			manashieldcd = 0;
 		}
 
-
+		if (toofastforyouactivated) {
+			playerobj.GetComponent<Health> ().manabar -= 8.0f;
+			playerobj.GetComponent<Health> ().manabarslider.value -= 8.0f;
+			if (playerobj.GetComponent<Health> ().manabar <= 0) {
+				toofastforyouactivated = false;
+			}
+		}
 
 		//SPELL ABILITIES
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
@@ -256,12 +267,15 @@ public class SkillTree : MonoBehaviour {
 			switch (slot1Skill) {
 				case "Health Skill3":
 					if (gameObject.GetComponent<Health> ().manabar >= 100) {
-						Skillspelleffect4 = (GameObject)Instantiate (skilleffect4, playerobj.transform.position, Quaternion.identity);
+						//Skillspelleffect4 = (GameObject)Instantiate (skilleffect4, playerobj.transform.position, Quaternion.identity);
 						//spell4.gameObject.transform.SetParent (playerobj.transform);
 						//Skillspelleffect4.transform.SetAsFirstSibling ();
 						spell1.gameObject.SetActive (true);
 						spell1activate = true;
 						hunterbreathactivated = true;
+						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, transform.rotation, playerobj.transform);
+						//hunterbreatheffect.transform.SetParent (playerobj.transform);
+						StartCoroutine (DestroyParticlesEffect (hunterbreatheffect, 3));
 						gameObject.GetComponent<Health> ().currentHealth += 30;
 						gameObject.GetComponent<Health> ().healthbarslider.value += 30;
 						gameObject.GetComponent<Health> ().manabar -= 100;
@@ -345,6 +359,7 @@ public class SkillTree : MonoBehaviour {
 					}
 					break;
 				case "Power Skill3":
+
 					if (gameObject.GetComponent<Health> ().manabar >= 70 && !spell1activate) {
 						Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
 						spell1.gameObject.SetActive (true);
@@ -363,9 +378,14 @@ public class SkillTree : MonoBehaviour {
 					break;
 
 				case "Speed Skill3":
-					Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
-					spell1.gameObject.SetActive (true);
-					spell1activate = true;
+					if (toofastforyouactivated = false) {
+						if (playergameobj.GetComponent<Health> ().manabar >= 8) {
+							toofastforyouactivated = true;
+						}
+					} else {
+						
+						toofastforyouactivated = false;
+					}
 					break;
 			}
 			}
@@ -559,6 +579,10 @@ public class SkillTree : MonoBehaviour {
 		yield return new WaitForSeconds (duration);
 		spellactivated = false;
 	}
+	IEnumerator DestroyParticlesEffect (GameObject particle, float duration){
+		yield return new WaitForSeconds (duration);
+		Destroy (particle);
+	}
 
 	/*IEnumerator SpellCoolDown (Image spellobj, float cd, bool spellactivated){
 		spellobj.gameObject.SetActive (true);
@@ -703,7 +727,7 @@ public class SkillTree : MonoBehaviour {
 			}
 		else if (eventsys.currentSelectedGameObject == SpeedPassive1) {
 				unlockSpeedPassive1 = true;
-			playerobj.GetComponent<Player> ().fireDelay -= 0.3f;
+				playerobj.GetComponent<Player> ().fireDelay -= 0.3f;
 			}
 		else if (eventsys.currentSelectedGameObject == SpeedActive2) {
 				unlockSpeedActive2 = true;

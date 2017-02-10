@@ -113,7 +113,11 @@ public class HordeMeleeMinion : MonoBehaviour
             GetComponent<Animation>()[attackClip.name].time<0.9*GetComponent<Animation>()[attackClip.name].length) 
 		{
             //opponent.getHit(damage);
-            player.GetComponent<Health>().currentHealth -= damage;
+			if (player.GetComponent<SkillTree> ().manashieldup) {
+				player.GetComponent<Health>().currentHealth -= 0;
+			} else {
+				player.GetComponent<Health>().currentHealth -= damage;
+			}
 			impacted = true;
 		}
 	}
