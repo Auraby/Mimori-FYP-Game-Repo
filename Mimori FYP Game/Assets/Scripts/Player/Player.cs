@@ -59,8 +59,11 @@ public class Player : MonoBehaviour {
 	Shader normal;
 	public Shader unoOutline;
 	RaycastHit tempHit;
-	public float shootDelay = 0;
+	public float shootrate = 0;
 
+	//Justin's shootrate
+	public float fireDelay = 0.6f;
+	public float currfireDelay;
     //Combat sounds
     public AudioClip combat;
     AudioClip originalClip;
@@ -81,7 +84,6 @@ public class Player : MonoBehaviour {
 				GameController.gameController.playerPositionZ
 			);
 		}
-
 		isIronSight = 0;
         FirstPersonController.isPaused = false;
 		Cursor.visible = false;
@@ -174,7 +176,7 @@ public class Player : MonoBehaviour {
         if (inCombatCD > 0) {
             inCombat = true;
         }
-
+		currfireDelay = fireDelay;
         if (inCombat)
         {
             if (!cSoundPlayed) {
@@ -201,8 +203,8 @@ public class Player : MonoBehaviour {
             inCombat = false;
         }
 
-		if (shootDelay > 0) {
-			shootDelay -= Time.deltaTime;
+		if (shootrate > 0) {
+			shootrate -= Time.deltaTime;
 		}
 
         //demo code
@@ -228,41 +230,19 @@ public class Player : MonoBehaviour {
         }
         //--------
 
-		if (Input.GetMouseButtonDown (2)) {
-			if (isIronSight < 1) {
-				isIronSight++;
-			} else {
-				isIronSight--;
-			}
-			/*if (isIronSight < 1) {
-				isIronSight ++;
-				gun.gameObject.SetActive (false);
-				gunEnd.gameObject.SetActive (false);
-				gun_IronSight.gameObject.SetActive (true);
-				gunEnd_IronSight.gameObject.SetActive (true);
-			} else {
-				isIronSight --;
-				gun.gameObject.SetActive (true);
-				gunEnd.gameObject.SetActive (true);
-				gun_IronSight.gameObject.SetActive (false);
-				gunEnd_IronSight.gameObject.SetActive (false);
-			}*/
-
-		}
-
 		if (isIronSight < 1) {
-			gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3(0.357f,gun.transform.localPosition.y,gun.transform.localPosition.z), Time.deltaTime * 8);
+			//gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3(0.357f,gun.transform.localPosition.y,gun.transform.localPosition.z), Time.deltaTime * 8);
 			fpc.m_WalkSpeed = 5.0f;
 			fpc.IronSight = false;
 		} else {
-			gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3 (0, gun.transform.localPosition.y, gun.transform.localPosition.z), Time.deltaTime * 8);
+			//gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3 (0, gun.transform.localPosition.y, gun.transform.localPosition.z), Time.deltaTime * 8);
 			//when ironsight , isWalking is enabled
 			fpc.m_IsWalking = true;
 			fpc.IronSight = true;
 			//fpc.m_RunSpeed = 2.0f;
 			//Disables The use of Sprinting Calls DisableSprint Function
 			//When IronSight Activated , Decrease WalkSpeed
-			fpc.m_WalkSpeed = 2.0f;
+			fpc.m_WalkSpeed = 0.0f;
 		}
 
 
@@ -293,11 +273,11 @@ public class Player : MonoBehaviour {
 
 		if (Input.GetButton ("Fire1"))
 		{
-			if (shootDelay <= 0 && !FirstPersonController.isPaused) {
+			if (shootrate <= 0 && !FirstPersonController.isPaused) {
 				//Check if Player has enabled IronSight
 				if (isIronSight >= 1) {
 					GameObject bullet_IronSight = (GameObject)Instantiate (bulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
-					bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.forward * 50;
+					bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.right * 150;
 				} else {
 					// Create the Bullet from the Bullet Prefab
 					GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
@@ -308,7 +288,7 @@ public class Player : MonoBehaviour {
 				}
 				// Destroy the bullet after 2 seconds
 				//Destroy(bulshoolet, 2.0f);
-				shootDelay = 0.2f;
+				shootrate = currfireDelay;
 			}
         }
 
@@ -368,6 +348,8 @@ public class Player : MonoBehaviour {
 
 		}
 
+
+
 		//Save Load Test
 		if(Input.GetKeyDown(KeyCode.F5)){
 			GameController.gameController.playerPositionX = transform.position.x;
@@ -386,4 +368,28 @@ public class Player : MonoBehaviour {
 			);
 		}
 	}
+
+	///Justin's Toggle COde
+	/*public void ToggleSentryMode(){
+			if (isIronSight < 1) {
+				isIronSight++;
+			} else {
+				isIronSight--;
+			}
+			if (isIronSight < 1) {
+				isIronSight++;
+				gun.gameObject.SetActive (false);
+				gunEnd.gameObject.SetActive (false);
+				gun_IronSight.gameObject.SetActive (true);
+				gunEnd_IronSight.gameObject.SetActive (true);
+			} else {
+				isIronSight--;
+				gun.gameObject.SetActive (true);
+				gunEnd.gameObject.SetActive (true);
+				gun_IronSight.gameObject.SetActive (false);
+				gunEnd_IronSight.gameObject.SetActive (false);
+			}
+
+		}*/
+
 }

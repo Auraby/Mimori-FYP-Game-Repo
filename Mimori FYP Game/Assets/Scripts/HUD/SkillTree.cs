@@ -91,7 +91,7 @@ public class SkillTree : MonoBehaviour {
 	public bool leechingbulletactivated;
 	public bool thunderrushactivated;
 	public bool berserkeractivated;
-
+	public bool sentrymodeactivated;
 	//Spell Effects prefab 
 	public GameObject skilleffect1;
 	public GameObject skilleffect2;
@@ -171,6 +171,10 @@ public class SkillTree : MonoBehaviour {
 	public GameObject slot3obj;
 	public GameObject slot4obj;
 
+	public bool counterskillloop = false;
+
+	public bool manashieldup = false;
+	public float manashieldcd = 0;
 	Slot slot;
 
 	// Use this for initialization
@@ -230,9 +234,21 @@ public class SkillTree : MonoBehaviour {
 
 		}
 
-		if (unlockManaPassive2 == true) {
-			///DO COVER ME SKILL HERE
+		if (unlockManaPassive2) {
+			if (playerobj.GetComponent<Health> ().manabar <= 0 && manashieldup == false && manashieldcd <= 0) {
+				manashieldup = true;
+				manashieldcd = 50.0f;
+				StartCoroutine (PassiveDurations (manashieldup, 5));
+			}
 		}
+
+		if (manashieldcd > 0) {
+			manashieldcd -= 1.0f * Time.deltaTime;
+		} else if (manashieldcd <= 0) {
+			manashieldcd = 0;
+		}
+
+
 
 		//SPELL ABILITIES
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
@@ -277,9 +293,31 @@ public class SkillTree : MonoBehaviour {
 
 					break;
 				case "Power Skill1":
-					Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
-					spell1.gameObject.SetActive (true);
-					spell1activate = true;
+
+					if (sentrymodeactivated == false) {
+						gameObject.GetComponent<Player> ().isIronSight = 1;
+						//gameObject.GetComponent<Player> ().ToggleSentryMode ();
+						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (false);
+						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (false);
+						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (true);
+						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (true);
+						gameObject.GetComponent<Player> ().currfireDelay += gameObject.GetComponent<Player> ().fireDelay += 2.0f;
+						sentrymodeactivated = true;
+					} else {
+						gameObject.GetComponent<Player> ().isIronSight = 0;
+						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (true);
+						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (true);
+						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (false);
+						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (false);
+						gameObject.GetComponent<Player> ().currfireDelay = gameObject.GetComponent<Player> ().fireDelay;
+						sentrymodeactivated = false;
+					}
+						//Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
+						//spell1.gameObject.SetActive (true);
+						//spell1activate = true;
+						//counterskillloop = true;
+						//sentrymodeactivated = true;
+						//sentrymodeactivated = false;
 					break;
 				case "Speed Skill1": //Thunder Rush
 					if (gameObject.GetComponent<Health> ().manabar >= 50 && !spell1activate) {
@@ -290,6 +328,7 @@ public class SkillTree : MonoBehaviour {
 						gameObject.GetComponent<Health> ().manabar -= 50;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 50;
 						Vector3 dashdirection = transform.forward;
+						playerobj.GetComponent<Player> ().currfireDelay = playerobj.GetComponent<Player> ().fireDelay / 100 * 120;
 						float dashlength = 50.0f;
 						if (Physics.Raycast (transform.position, dashdirection, out hit, 50.0f + playercolliderradius)) {
 							dashlength = hit.distance - playercolliderradius;
@@ -511,8 +550,14 @@ public class SkillTree : MonoBehaviour {
 
 	IEnumerator SpellDurations (Image spelldurationimage, bool spellactivated ,float duration){
 		yield return new WaitForSeconds (duration);
+
 		spellactivated = false;
 		spelldurationimage.gameObject.SetActive (false);
+	}
+
+	IEnumerator PassiveDurations (bool spellactivated ,float duration){
+		yield return new WaitForSeconds (duration);
+		spellactivated = false;
 	}
 
 	/*IEnumerator SpellCoolDown (Image spellobj, float cd, bool spellactivated){
@@ -658,6 +703,7 @@ public class SkillTree : MonoBehaviour {
 			}
 		else if (eventsys.currentSelectedGameObject == SpeedPassive1) {
 				unlockSpeedPassive1 = true;
+			playerobj.GetComponent<Player> ().fireDelay -= 0.3f;
 			}
 		else if (eventsys.currentSelectedGameObject == SpeedActive2) {
 				unlockSpeedActive2 = true;
