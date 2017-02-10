@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Shoot : MonoBehaviour {
 	// Use this for initialization
@@ -31,9 +32,9 @@ public class Shoot : MonoBehaviour {
 	public Image EnmarMod;
 	public Image ZoltranMod;
 	public Image IshiraMod;
-	public bool EnmarModTaken = false;
-	public bool ZoltranModTaken = false;
-	public bool IshiraModTaken = false;
+	public static bool EnmarModTaken = false;
+	public static bool ZoltranModTaken = false;
+	public static bool IshiraModTaken = false;
 
 	public GameObject[] GunModSlots = new GameObject[3];
 
@@ -58,9 +59,14 @@ public class Shoot : MonoBehaviour {
 		gun3bulletcst = 10.0f;
 
 		gunmodcounter = 0;
-		//check weaponswitch
-		EnmarModTaken = true;
-		ZoltranModTaken = true;
+        //check weaponswitch
+        if (SceneManager.GetActiveScene().name == "Mimori") {
+            EnmarModTaken = true;
+        }
+        if (SceneManager.GetActiveScene().name == "Temple of Aphelion") {
+            ZoltranModTaken = true;
+        }
+		
 		//IshiraModTaken = true;
 
 		Eupdatecounter = 1;

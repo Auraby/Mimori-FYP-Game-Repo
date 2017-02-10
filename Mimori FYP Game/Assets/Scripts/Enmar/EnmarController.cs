@@ -316,7 +316,8 @@ public class EnmarController : MonoBehaviour {
                                 {
                                     if (!chargingSoundPlayed) {
                                         GetComponent<AudioSource>().clip = charging;
-                                        GetComponent<AudioSource>().volume = 0.8f;
+                                        GetComponent<AudioSource>().volume = 0.7f;
+                                        GetComponent<AudioSource>().pitch = 1f;
                                         GetComponent<AudioSource>().Play();
                                         shootingSoundPlayed = false;
                                         chargingSoundPlayed = true;
@@ -358,7 +359,8 @@ public class EnmarController : MonoBehaviour {
                                 {
                                     if (!shootingSoundPlayed) {
                                         GetComponent<AudioSource>().clip = shooting;
-                                        GetComponent<AudioSource>().volume = 0.8f;
+                                        GetComponent<AudioSource>().volume = 0.7f;
+                                        GetComponent<AudioSource>().pitch = 1f;
                                         GetComponent<AudioSource>().Play();
                                         chargingSoundPlayed = false;
                                         shootingSoundPlayed = true;
@@ -526,6 +528,7 @@ public class EnmarController : MonoBehaviour {
         laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, rightSide.transform.position, rightSide.transform.rotation);
         GetComponent<AudioSource>().clip = slamRoar;
         GetComponent<AudioSource>().volume = 1f;
+        GetComponent<AudioSource>().pitch = 1f;
         GetComponent<AudioSource>().Play();
         //enmarState = FSMState.AttackDelayState;
     }
@@ -541,6 +544,7 @@ public class EnmarController : MonoBehaviour {
         laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, leftSide.transform.position, leftSide.transform.rotation);
         GetComponent<AudioSource>().clip = slamRoar;
         GetComponent<AudioSource>().volume = 1f;
+        GetComponent<AudioSource>().pitch = 1f;
         GetComponent<AudioSource>().Play();
         //iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
         //enmarState = FSMState.AttackDelayState;
@@ -599,6 +603,14 @@ public class EnmarController : MonoBehaviour {
         {
             dustParticlesGO = (GameObject)Instantiate(dustParticles, leftHand.transform.position, leftHand.transform.rotation);
         }
+        
+    }
+
+    public void PlaySlamSound() {
+        GetComponent<AudioSource>().clip = slam;
+        GetComponent<AudioSource>().pitch = 0.5f;
+        GetComponent<AudioSource>().volume = 1f;
+        GetComponent<AudioSource>().Play();
     }
 
     #region IEnumerators

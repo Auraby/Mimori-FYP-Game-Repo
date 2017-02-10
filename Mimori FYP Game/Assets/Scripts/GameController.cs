@@ -77,12 +77,17 @@ public class GameController : MonoBehaviour
         //Save Horde Progress
         pData.hCleared = hordeCleared;
         //Dialogues
+        pData.dialogueCountMimori = DialogueManager.mimoriDialogueCount;
         pData.dialogueCountGate = DialogueManager.enmarDialogueCount;
         pData.dialogueCountForest = DialogueManager.forestDialogueCount;
         pData.dialogueCountTemple = DialogueManager.templeIDialogueCount;
         //Boss Cleared or not
         pData.eDied = EnmarController.enmarDied;
         pData.zDied = StartZoltran.zoltranDied;
+        //Gun mod
+        pData.eoeUnlocked = Shoot.EnmarModTaken;
+        pData.sozUnlocked = Shoot.ZoltranModTaken;
+        pData.hoiUnlocked = Shoot.IshiraModTaken;
         //Write the object to the file & close it
         bf.Serialize(file, pData);
         file.Close();
@@ -112,12 +117,17 @@ public class GameController : MonoBehaviour
             //load horde progress
             hordeCleared = pData.hCleared;
             //Dialogues
+            DialogueManager.mimoriDialogueCount = pData.dialogueCountMimori;
             DialogueManager.enmarDialogueCount = pData.dialogueCountGate;
             DialogueManager.forestDialogueCount = pData.dialogueCountForest;
             DialogueManager.templeIDialogueCount = pData.dialogueCountTemple;
             //Boss Cleared or not
             EnmarController.enmarDied = pData.eDied;
             StartZoltran.zoltranDied = pData.zDied;
+            //Gun Mod
+            Shoot.EnmarModTaken = pData.eoeUnlocked;
+            Shoot.ZoltranModTaken = pData.sozUnlocked;
+            Shoot.IshiraModTaken = pData.hoiUnlocked;
         }
     }
 
@@ -141,6 +151,8 @@ class PlayerData
     //Gate of Telluris
     public bool eDied = false;
     public int dialogueCountGate;
+    //Outskirt
+    public int dialogueCountMimori;
     //Outpost Captured
     public bool o1Captured = false;
     public bool o2Captured = false;
@@ -153,4 +165,8 @@ class PlayerData
     public int dialogueCountForest;
     //Temple of Aphellion
     public int dialogueCountTemple;
+    //Gun Mod Unlocked
+    public bool eoeUnlocked = false;
+    public bool sozUnlocked = false;
+    public bool hoiUnlocked = false;
 }
