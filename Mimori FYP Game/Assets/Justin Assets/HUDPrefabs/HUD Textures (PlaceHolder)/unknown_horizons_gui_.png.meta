@@ -1,0 +1,325 @@
+fileFormatVersion: 2
+guid: 0cc9dc00899da8345b28a26162c2e3d1
+timeCreated: 1486705526
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: unknown_horizons_gui__0
+    21300002: unknown_horizons_gui__1
+    21300004: unknown_horizons_gui__2
+    21300006: unknown_horizons_gui__3
+    21300008: unknown_horizons_gui__4
+    21300010: unknown_horizons_gui__5
+    21300012: unknown_horizons_gui__6
+    21300014: unknown_horizons_gui__7
+    21300016: unknown_horizons_gui__8
+    21300018: unknown_horizons_gui__9
+    21300020: unknown_horizons_gui__10
+    21300022: unknown_horizons_gui__11
+    21300024: unknown_horizons_gui__12
+    21300026: unknown_horizons_gui__13
+    21300028: unknown_horizons_gui__14
+    21300030: unknown_horizons_gui__15
+    21300032: unknown_horizons_gui__16
+    21300034: unknown_horizons_gui__17
+    21300036: unknown_horizons_gui__18
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: unknown_horizons_gui__0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 288
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 286
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__2
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 295
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__3
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 302
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__4
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 295
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__5
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 239
+        width: 80
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__6
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 224
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__7
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 235
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__8
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 239
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__9
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 232
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__10
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 243
+        width: 66
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__11
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 195
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 182
+        width: 59
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__13
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 182
+        width: 43
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__14
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 156
+        width: 66
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__15
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 140
+        width: 129
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__16
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 119
+        width: 225
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__17
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 98
+        width: 78
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: unknown_horizons_gui__18
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 12
+        width: 249
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

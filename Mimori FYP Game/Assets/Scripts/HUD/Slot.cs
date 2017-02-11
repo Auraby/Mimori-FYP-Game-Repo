@@ -39,7 +39,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			DragHandler.SlotIsTaken [0] = true;
 			slotobjectlist [0] = DragHandler.itemBeingDragged.gameObject;
 			slotobjectisTaken[0] = true;
-			FPSctrl.GetComponent<SkillTree> ().slot1Skill = DragHandler.itemBeingDragged.gameObject.name;
+			FPSctrl.GetComponent<SkillTree> ().slot1Skill = slotobjectlist[0].name;
 			counterforloop [0] = 1;
 			
 
@@ -61,7 +61,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			DragHandler.SlotIsTaken [1] = true;
 			slotobjectisTaken[1] = true;
 			slotobjectlist [1] = DragHandler.itemBeingDragged.gameObject;
-			FPSctrl.GetComponent<SkillTree> ().slot2Skill = DragHandler.itemBeingDragged.gameObject.name;
+			FPSctrl.GetComponent<SkillTree> ().slot2Skill = slotobjectlist[1].name;
 			counterforloop [1] = 2;
 
 			if (currskill != null) {
@@ -81,7 +81,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			DragHandler.SlotIsTaken [2] = true;
 			slotobjectisTaken[2] = true;
 			slotobjectlist [2] = DragHandler.itemBeingDragged.gameObject;
-			FPSctrl.GetComponent<SkillTree> ().slot3Skill = DragHandler.itemBeingDragged.gameObject.name;
+			FPSctrl.GetComponent<SkillTree> ().slot3Skill = slotobjectlist[2].name;
 			counterforloop [2] = 3;
 			if (currskill != null) {
 				prevskill = currskill;
@@ -100,7 +100,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			DragHandler.SlotIsTaken [3] = true;
 			slotobjectisTaken[3] = true;
 			slotobjectlist [3] = DragHandler.itemBeingDragged.gameObject;
-			FPSctrl.GetComponent<SkillTree> ().slot4Skill = DragHandler.itemBeingDragged.gameObject.name;
+			FPSctrl.GetComponent<SkillTree> ().slot4Skill = slotobjectlist[3].name;
 			counterforloop [3] = 4;
 			Debug.Log ("ManageSlots4");
 			if (currskill != null) {
@@ -130,19 +130,37 @@ public class Slot : MonoBehaviour , IDropHandler{
 		//DeleteSlots ();
 	}
 		
+
 	public void DeleteSlots(){
 
 		for (int c = 0; c < slotobjectlist.Length; c++) {
 			if (slotobjectlist [c] == null) {
-				Debug.Log (c);
-				Debug.Log (slotobjectlist [c]);
-				Debug.Log ("NULL GAMEOBJECT");
+			//	Debug.Log (c);
+			//	Debug.Log (slotobjectlist [c]);
+			//	Debug.Log ("NULL GAMEOBJECT");
 			} else {
 				if (slotobjectlist [c].gameObject != null) {
 					if (slotobjectlist [c].gameObject.name.Contains (DragHandler.itemBeingDragged.gameObject.name)) {
 						Debug.Log ("GAMEOBJECT DELETED");
 						slotobjectisTaken [c] = false;
 						Destroy (slotobjectlist [c].gameObject);
+						switch (c) {
+						case 0:
+							FPSctrl.GetComponent<SkillTree> ().slot1Skill = "";
+							break;
+						case 1:
+							FPSctrl.GetComponent<SkillTree> ().slot2Skill = "";
+							break;
+						case 2:
+							FPSctrl.GetComponent<SkillTree> ().slot3Skill = "";
+							break;
+						case 3:
+							FPSctrl.GetComponent<SkillTree> ().slot4Skill = "";
+							break;
+						default:
+							break;
+						}
+
 						//break;
 					}
 				}
@@ -170,6 +188,41 @@ public class Slot : MonoBehaviour , IDropHandler{
 		
 	}
 
+	public void ClearSlots(){
+
+		for (int c = 0; c < slotobjectlist.Length; c++) {
+			if (slotobjectlist [c] == null) {
+				//	Debug.Log (c);
+				//	Debug.Log (slotobjectlist [c]);
+				//	Debug.Log ("NULL GAMEOBJECT");
+			} else {
+				if (slotobjectlist [c].gameObject != null) {
+					if (slotobjectlist [c].gameObject.name.Contains (DragHandler.itemBeingDragged.gameObject.name)) {
+						Debug.Log ("Skills Cleared");
+						slotobjectisTaken [c] = false;
+						DragHandler.slotchecklist [c] = 0;
+						DragHandler.SlotIsTaken [c] = false;
+						currskill = null;
+						prevskill = null;
+						counterforloop [c] = 0;
+						Destroy (slotobjectlist [c].gameObject);
+						FPSctrl.GetComponent<SkillTree> ().slot1Skill = "";
+						FPSctrl.GetComponent<SkillTree> ().slot2Skill = "";
+						FPSctrl.GetComponent<SkillTree> ().slot3Skill = "";
+						FPSctrl.GetComponent<SkillTree> ().slot4Skill = "";
+						
+
+						//break;
+					}
+				}
+
+			}
+		}
+
+		ManageSlots (newskill);
+
+	}
+
 
 	#region IDropHandler implementation
 
@@ -195,7 +248,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 			
 					DragHandler.itemBeingDragged.transform.position = this.gameObject.transform.position;
 				DragHandler.itemBeingDragged.transform.SetParent (this.gameObject.transform);
-					DragHandler.itemBeingDragged.transform.localScale = new Vector3 (DragHandler.itemBeingDragged.transform.localScale.x / 1.9f, DragHandler.itemBeingDragged.transform.localScale.y / 0.9f, DragHandler.itemBeingDragged.transform.localScale.z / 1.0f);
+					DragHandler.itemBeingDragged.transform.localScale = new Vector3 (DragHandler.itemBeingDragged.transform.localScale.x / 1.45f, DragHandler.itemBeingDragged.transform.localScale.y / 1.15f, DragHandler.itemBeingDragged.transform.localScale.z / 1.0f);
 					DragHandler.itemBeingDragged.GetComponent<DragHandler> ().enabled = false;
 					DragHandler.itemBeingDragged.transform.SetAsFirstSibling ();
 					//Debug.Log (DragHandler.SlotIsTaken [i]);
@@ -213,7 +266,7 @@ public class Slot : MonoBehaviour , IDropHandler{
 					//DragHandler.skillName [i] = DragHandler.itemBeingDragged.name;
 				    DragHandler.itemBeingDragged.transform.position = this.gameObject.transform.position;
 				    DragHandler.itemBeingDragged.transform.SetParent(this.gameObject.transform);
-				    DragHandler.itemBeingDragged.transform.localScale = new Vector3(DragHandler.itemBeingDragged.transform.localScale.x/1.9f, DragHandler.itemBeingDragged.transform.localScale.y/0.9f, DragHandler.itemBeingDragged.transform.localScale.z/1.0f);
+				    DragHandler.itemBeingDragged.transform.localScale = new Vector3(DragHandler.itemBeingDragged.transform.localScale.x/1.45f, DragHandler.itemBeingDragged.transform.localScale.y/1.15f, DragHandler.itemBeingDragged.transform.localScale.z/1.0f);
 					DragHandler.itemBeingDragged.GetComponent<DragHandler> ().enabled = false;
 				    DragHandler.itemBeingDragged.transform.SetAsFirstSibling ();
 					//Debug.Log (DragHandler.SlotIsTaken [i]);
