@@ -21,6 +21,7 @@ public class Player : MonoBehaviour {
 	public GameObject crosshair;
 	public GameObject gun;
 	public GameObject bulletPrefab;
+	public GameObject leechingbulletPrefab;
     public GameObject muzzleFlash;
 	public Transform gunEnd;
 	public Image eoeImg;
@@ -29,7 +30,14 @@ public class Player : MonoBehaviour {
 	public GameObject eoeParticle;
 
     public GameObject dialogueBox;
-
+	//Cannon Mechanics
+	public float ChargingTime;
+	public float ChargeFire = 3.0f;
+	public GameObject cannonChargingEffect;
+	public GameObject bullet_cannonPrefab;
+	public bool isCharging;
+	public GameObject ChargeBullet;
+	public bool bulletinstantiate;
 	//IronSights
 	//[Header("Iron Sights")]
 	public GameObject gun_IronSight;
@@ -38,7 +46,6 @@ public class Player : MonoBehaviour {
 
 	//objectives
 	public Text Objective;
-
 	//SkillTree /Pause Game
 	public Image SkillTreePanel;
 	[HideInInspector]
@@ -84,6 +91,8 @@ public class Player : MonoBehaviour {
 				GameController.gameController.playerPositionZ
 			);
 		}
+		currfireDelay = fireDelay;
+		shootrate = currfireDelay;
 		isIronSight = 0;
         FirstPersonController.isPaused = false;
 		Cursor.visible = false;
@@ -251,11 +260,28 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.K)) {
             this.gameObject.GetComponent<Health>().currentHealth = 100;
         }
+		if (Input.GetKeyDown (KeyCode.Z)) {
+			this.gameObject.GetComponent<SkillTree> ().checkSkillPoint = 5;
+		}
+		if (Input.GetKeyDown (KeyCode.X)) {
+			this.gameObject.GetComponent<SkillTree> ().checkSkillPoint = this.gameObject.GetComponent<SkillTree> ().skillpointspent;
+			this.gameObject.GetComponent<SkillTree> ().LockAllSpell ();
+		}
+
         //--------
 
 		if (isIronSight < 1) {
 			//gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3(0.357f,gun.transform.localPosition.y,gun.transform.localPosition.z), Time.deltaTime * 8);
-			//fpc.m_WalkSpeed = 5.0f;
+			//fpc.IronSight = false;
+			if (gameObject.GetComponent<SkillTree> ().Gunslinger) {
+				fpc.m_WalkSpeed = 13.0f;
+				fpc.m_RunSpeed += 18.0f;
+			} else if (gameObject.GetComponent<SkillTree> ().Spellslinger) {
+				fpc.m_WalkSpeed = 11.0f;
+				fpc.m_RunSpeed += 16.0f;
+			} else {
+				fpc.m_WalkSpeed = 10.0f;
+			}
 			fpc.IronSight = false;
 		} else {
 			//gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3 (0, gun.transform.localPosition.y, gun.transform.localPosition.z), Time.deltaTime * 8);
@@ -267,6 +293,7 @@ public class Player : MonoBehaviour {
 			//When IronSight Activated , Decrease WalkSpeed
 			fpc.m_WalkSpeed = 0.0f;
 		}
+
 
 
 		///Check If Tab is pressed
@@ -294,26 +321,95 @@ public class Player : MonoBehaviour {
 
 		Cursor.lockState = curseMode;
 
-		if (Input.GetButton ("Fire1"))
-		{
+		if (Input.GetButton ("Fire1")) {
 			if (shootrate <= 0 && !FirstPersonController.isPaused) {
 				//Check if Player has enabled IronSight
 				if (isIronSight >= 1) {
-					GameObject bullet_IronSight = (GameObject)Instantiate (bulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
-					bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.right * 150;
+					if (gameObject.GetComponent<SkillTree> ().leechingbulletactivated) {
+						GameObject bullet_leeching = (GameObject)Instantiate (leechingbulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
+						bullet_leeching.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
+					}else{
+						//GameObject bullet_IronSight = (GameObject)Instantiate (bullet_cannonPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
+						//transform.GetChild (0).GetComponent<AudioSource> ().Play ();
+						//bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.right * 150;
+					}
 				} else {
-					// Create the Bullet from the Bullet Prefab
-					GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
-                    //GameObject muzzle = (GameObject)Instantiate(muzzleFlash, gunEnd.position, gunEnd.rotation,gunEnd);
-                    transform.GetChild(0).GetComponent<AudioSource>().Play();
-					// Add velocity to the bullet
-					bullet.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
+					if (gameObject.GetComponent<SkillTree> ().leechingbulletactivated) {
+						GameObject bullet_leeching = (GameObject)Instantiate (leechingbulletPrefab, gunEnd.position, gunEnd.rotation);
+						bullet_leeching.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
+					} else {
+						// Create the Bullet from the Bullet Prefab
+						GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
+						//GameObject muzzle = (GameObject)Instantiate(muzzleFlash, gunEnd.position, gunEnd.rotation,gunEnd);
+						transform.GetChild (0).GetComponent<AudioSource> ().Play ();
+						// Add velocity to the bullet
+						bullet.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
+					}
 				}
 				// Destroy the bullet after 2 seconds
 				//Destroy(bulshoolet, 2.0f);
-				shootrate = currfireDelay;
+					shootrate = currfireDelay;
+	
 			}
-        }
+		} 
+
+		if (isIronSight >= 1) {
+			if (Input.GetMouseButtonDown (0)) {
+				if (!FirstPersonController.isPaused) {
+					isCharging = true;
+				}
+			}
+			if (Input.GetMouseButton (0)) {
+				if (isCharging) {
+					if (!FirstPersonController.isPaused) {
+						if (!bulletinstantiate && shootrate >= 0) {
+							GameObject ChargeBullet = Instantiate (cannonChargingEffect, gunEnd_IronSight.position, gunEnd.rotation) as GameObject;
+							ChargeBullet.name = ChargeBullet.name.Replace ("(Clone)", "");
+							ChargeBullet.transform.parent = transform;
+							bulletinstantiate = true;
+							//shootrate = 20.0f;
+						} 
+
+						//Destroy (ChargeBullet, 1.0f);
+					}
+					ChargingTime += 1.0f * Time.deltaTime;
+				//	shootrate = 6.0f;
+					if (ChargingTime >= ChargeFire) {
+						foreach (GameObject ChargeBullet in GameObject.FindGameObjectsWithTag("Cannon")) {
+							if (ChargeBullet.name == "Charging of the bullet") {
+								Destroy (ChargeBullet);
+							}
+						}
+					}
+				}
+			}
+			if (Input.GetMouseButtonUp (0)) {
+				ChargingTime = 0f;
+				//shootrate = 0f;
+				//GameObject bullet_IronSight = (GameObject)Instantiate (bullet_cannonPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
+				//transform.GetChild (0).GetComponent<AudioSource> ().Play ();
+				//bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.right * 50;
+				//isCharging = false;
+				isCharging = false;
+				bulletinstantiate = false;
+				foreach (GameObject ChargeBullet in GameObject.FindGameObjectsWithTag("Cannon")) {
+					if (ChargeBullet.name == "Charging of the bullet") {
+						Destroy (ChargeBullet);
+					}
+				}
+			}
+
+			if (ChargingTime >= ChargeFire && isCharging) {
+				Destroy (ChargeBullet, 1.0f);
+				isCharging = false;
+				bulletinstantiate = false;
+				GameObject bullet_IronSight = (GameObject)Instantiate (bullet_cannonPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
+				transform.GetChild (0).GetComponent<AudioSource> ().Play ();
+				bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.right * 150;
+
+				//Destroy (ChargeBullet);
+			}
+		}
 
 		//Debug.DrawRay(camera.transform.position, camera.transform.forward * 30, Color.yellow);
 		//Debug.DrawRay(gun.transform.position, gun.transform.forward * 30, Color.yellow);

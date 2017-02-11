@@ -80,7 +80,7 @@ public class Shoot : MonoBehaviour {
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			//Debug.Log ("Shoot");
-			IsCharging = true;
+			//IsCharging = true;
 			//gameObject.GetComponent<Health> ().manabarslider.value -= 5.0f;
 			//gameObject.GetComponent<Health> ().manabar -= 5.0f;
 		}

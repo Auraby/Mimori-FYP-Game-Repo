@@ -33,19 +33,22 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
 
 	public void OnBeginDrag (PointerEventData eventData)
 	{
-		if (isDraggedIntoSlot) {
-			Destroy (itemBeingDragged);
-			Destroy (itemBeingDragged_Duplicate);
-		}
-		if (gameObject.GetComponent<Button> ().IsInteractable()) {
-			itemBeingDragged = gameObject;
-			isDragging = true;
-			DuplicateSkillOnDrag ();
-			startPosition = transform.position;
-			startParent = transform.parent;
-			GetComponent<CanvasGroup> ().blocksRaycasts = false;
+			if (isDraggedIntoSlot) {
+				Destroy (itemBeingDragged);
+				Destroy (itemBeingDragged_Duplicate);
+			}
+	
+			if (gameObject.GetComponent<Button> ().IsInteractable ()) {
+				itemBeingDragged = gameObject;
+				isDragging = true;
+				DuplicateSkillOnDrag ();
+				startPosition = transform.position;
+				startParent = transform.parent;
+				GetComponent<CanvasGroup> ().blocksRaycasts = false;
 		
-		}
+			}
+
+
 	}
 		
 	#endregion
@@ -73,8 +76,10 @@ public class DragHandler : MonoBehaviour, IBeginDragHandler,IDragHandler,IEndDra
 	public void OnDrag (PointerEventData eventData)
 	{
 		if (gameObject.GetComponent<Button> ().IsInteractable ()) {
-			isDragging = true;
-			transform.position = Input.mousePosition;
+
+				isDragging = true;
+				transform.position = Input.mousePosition;
+
 		}
 	}
 	#endregion
