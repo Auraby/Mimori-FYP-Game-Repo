@@ -29,10 +29,17 @@ public class FarallonController : MonoBehaviour {
 
     public GameObject mouthEnd;
 
+    [Header("Animations")]
+    public Animator FaraAnim;
+
     [Header("Booleans")]
     public bool isWingDamaged = false;
     public bool isFlamePillar = false;
     public bool isFireBall = false;
+    public bool isFireBreath = false;
+    public bool isClawSlam = false;
+    public bool isCharge = false;
+    private bool afterCharge = false;
     [Space]
 
     [Header("Times")]
@@ -76,10 +83,14 @@ public class FarallonController : MonoBehaviour {
     [Header("Misc")]
     private int attackRNG;
     public float distToTarget;
+    private string landingSpotName;
 
     //Temp
+    [HideInInspector]
     public float strafeSpeed;
+    [HideInInspector]
     public float strafeSpeedTime;
+    [HideInInspector]
     public float strafeAngle;
     #endregion;
 
@@ -90,7 +101,7 @@ public class FarallonController : MonoBehaviour {
         currFaraState = FarallonStates.Flying;
         currHealth = MaxHealth;
         currWingHealth = WingMaxHealth;
-        breathattack.SetActive(false);
+        //breathattack.SetActive(false);
         instance = this;
 	}
 	
@@ -228,7 +239,7 @@ public class FarallonController : MonoBehaviour {
             case FarallonStates.Hover:
                 {
                     currFlyingState = FlyingStates.FindWaypoint;
-                    Hover();
+                    //Hover();
                     if (isWingDamaged == true)
                     {
                         currFaraState = FarallonStates.Ground;
@@ -280,6 +291,7 @@ public class FarallonController : MonoBehaviour {
                                     if (attackRNG == 1)
                                     {
                                         isFireBall = true;
+                                        FaraAnim.SetTrigger("HoverAtk");
                                         currHoverState = HoverStates.Attack;
                                     }
                                 }
@@ -324,8 +336,11 @@ public class FarallonController : MonoBehaviour {
                                         //Play animation
 
                                         //Shoot fireball
-                                        ShootFireBall();
-                                        StartCoroutine(WaitToSwitchHoverStates(2, HoverStates.Finished));
+                                        if (FaraAnim.GetCurrentAnimatorStateInfo(0).IsName("Flying"))
+                                        {
+                                            currHoverState = HoverStates.Finished;
+                                            FaraAnim.ResetTrigger("HoverAtk");
+                                        }
                                     }
 
                                 }
@@ -399,11 +414,13 @@ public class FarallonController : MonoBehaviour {
                     currHoverState = HoverStates.HoverIdle;
                     isWingDamaged = false;
                     currWingHealth = WingMaxHealth;
+                    isFireBall = false;
+                    isFlamePillar = false;
                     switch (currGroundState)
                     {
                         case GroundStates.FindLandingSpot:
                             {
-                                breathattack.SetActive(false);
+                                //breathattack.SetActive(false);
                                 #region Phase 1
                                 if (FarallonPhasesController.instance.currentPhase == FarallonPhasesController.Phases.Phase1)
                                 {
@@ -412,7 +429,9 @@ public class FarallonController : MonoBehaviour {
 
                                     if (currPosition != landingSpotsArray[landingspotNum].transform.position)
                                     {
+                                        landingSpotName = landingSpotsArray[landingspotNum].name;
                                         nextWaypoint = landingSpotsArray[landingspotNum].transform.position;
+                                        FaraAnim.SetBool("WingDamaged", true);
                                         currGroundState = GroundStates.FlyToLand;
                                     }
 
@@ -446,6 +465,7 @@ public class FarallonController : MonoBehaviour {
                                 if (FarallonPhasesController.instance.currentPhase == FarallonPhasesController.Phases.Phase1)
                                 {
                                     RotateTowardsTarget(nextWaypoint);
+                                    flightSpeed = 70;
                                     Fly(nextWaypoint);
                                     if (transform.position == nextWaypoint)
                                     {
@@ -492,8 +512,11 @@ public class FarallonController : MonoBehaviour {
                                     //Landing here
 
                                     //Then switch to idle
-
-                                    StartCoroutine(WaitToSwitchGroundStates(5, GroundStates.GroundIdle));
+                                    if(FaraAnim.GetCurrentAnimatorStateInfo(0).IsName("Improvised Idle"))
+                                    {
+                                        currGroundState = GroundStates.GroundIdle;
+                                    }
+                                    //StartCoroutine(WaitToSwitchGroundStates(5, GroundStates.GroundIdle));
                                 }
                                 #endregion
 
@@ -516,22 +539,76 @@ public class FarallonController : MonoBehaviour {
                         case GroundStates.GroundIdle:
                             {
                                 Debug.Log("Idle");
-
+                                FaraAnim.SetBool("WingDamaged", false);
                                 //To melee or fire breath
                                 #region Phase 1
                                 if (FarallonPhasesController.instance.currentPhase == FarallonPhasesController.Phases.Phase1)
                                 {
-                                    if(currHealth <= 750)
+                                    if (currHealth <= 750)
                                     {
                                         currGroundState = GroundStates.Flinching;
+                                    }
+
+                                    if(afterCharge == true)
+                                    {
+                                        if(landingSpotName == "LandingSpot")
+                                        {
+                                            RotateToADirection(landingSpotsArray[3].transform.position);
+                                        }
+
+                                        if(landingSpotName == "LandingSpot (1)")
+                                        {
+                                            RotateToADirection(landingSpotsArray[2].transform.position);
+                                        }
+
+                                        if (landingSpotName == "LandingSpot (2)")
+                                        {
+                                            RotateToADirection(landingSpotsArray[1].transform.position);
+                                        }
+
+                                        if (landingSpotName == "LandingSpot (3)")
+                                        {
+                                            RotateToADirection(landingSpotsArray[0].transform.position);
+                                        }
                                     }
 
                                     tempGroundTime += Time.deltaTime;
                                     if(tempGroundTime >= groundIdleTime)
                                     {
+                                        afterCharge = false;
+                                        attackRNG = IntRNG(3);
                                         distToTarget = Vector3.Distance(playerTarget.transform.position, transform.position);
+
+                                        if (attackRNG == 0)
+                                        {
+                                            //Attack based on choice
+                                            //FireBreath();
+                                            FaraAnim.SetTrigger("FireBreath");
+                                            isFireBreath = true;
+                                            currGroundState = GroundStates.Attack;
+                                            //StartCoroutine(WaitToSwitchGroundStates(3, GroundStates.GroundIdle));
+                                        }
+
+                                        if (attackRNG == 1)
+                                        {
+                                            //Claw attack
+                                            FaraAnim.SetTrigger("Slam");
+                                            isClawSlam = true;
+                                            currGroundState = GroundStates.Attack;
+                                            //StartCoroutine(WaitToSwitchGroundStates(3, GroundStates.GroundIdle));
+                                        }
+
+                                        if (attackRNG == 2)
+                                        {
+                                            //Claw attack
+                                            FaraAnim.SetTrigger("Charge");
+                                            isCharge = true;
+                                            currGroundState = GroundStates.Attack;
+                                            //StartCoroutine(WaitToSwitchGroundStates(3, GroundStates.GroundIdle));
+                                        }
+
                                         tempGroundTime = 0;
-                                        currGroundState = GroundStates.Attack;
+                                        
                                         
                                         //StartCoroutine(WaitToSwitchGroundStates(1, GroundStates.Attack));
                                     }
@@ -562,24 +639,38 @@ public class FarallonController : MonoBehaviour {
                                 #region Phase 1
                                 if (FarallonPhasesController.instance.currentPhase == FarallonPhasesController.Phases.Phase1)
                                 {
-                                    if (currHealth <= 750)
+                                    //if (currHealth <= 750)
+                                    //{
+                                    //    currGroundState = GroundStates.Flinching;
+                                    //}
+                                    if(isFireBreath == true)
                                     {
-                                        currGroundState = GroundStates.Flinching;
+                                        Debug.Log("Fire Breath");
+
                                     }
 
-                                    if (distToTarget > 70f)
+                                    if(isClawSlam == true)
                                     {
-                                        //Attack based on choice
-                                        FireBreath();
-                                        StartCoroutine(WaitToSwitchGroundStates(3, GroundStates.GroundIdle));
+                                        Debug.Log("Claw Slam");
+                                        //currGroundState = GroundStates.GroundIdle;
                                     }
 
-                                    if(distToTarget < 70)
+                                    if(isCharge == true)
                                     {
-                                        //Claw attack
-                                        StartCoroutine(WaitToSwitchGroundStates(3, GroundStates.GroundIdle));
+                                        Debug.Log("Charging");
+                                        StartCoroutine(ChargeForward(1));
+                                        afterCharge = true;
+                                        //currGroundState = GroundStates.GroundIdle;
                                     }
-                                    
+
+                                    if (FaraAnim.GetCurrentAnimatorStateInfo(0).IsName("Improvised Idle"))
+                                    {
+                                        currGroundState = GroundStates.GroundIdle;
+                                        isFireBreath = false;
+                                        isCharge = false;
+                                        isClawSlam = false;
+                                    }
+
                                 }
                                 #endregion
 
@@ -602,13 +693,14 @@ public class FarallonController : MonoBehaviour {
                         case GroundStates.Flinching:
                             {
                                 //Play animation and be invulnerable
+                                FaraAnim.SetTrigger("TakeOff");
                                 StartCoroutine(WaitToSwitchGroundStates(2, GroundStates.TakeOff));
                             }
                             break;
 
                         case GroundStates.TakeOff:
                             {
-                                breathattack.SetActive(false);
+                                //breathattack.SetActive(false);
                                 Debug.Log("taking off");
                                 #region Phase 1
                                 if (FarallonPhasesController.instance.currentPhase == FarallonPhasesController.Phases.Phase1)
@@ -668,6 +760,7 @@ public class FarallonController : MonoBehaviour {
         //flightSpeed = 2;
         ////transform.Translate(targetDirection);
         transform.position = Vector3.MoveTowards(transform.position, targetDirection, flightSpeed * Time.deltaTime);
+        //Debug.Log("Flying");
         //tempPosition = transform.position;
         //tempPosition.x += Math;
         //tempPosition.z += flightSpeed;
@@ -687,8 +780,9 @@ public class FarallonController : MonoBehaviour {
 
     public void RotateToADirection(Vector3 direction)
     {
-        //Vector3 targetDir = target - transform.position;
-        //targetDir.y = 0;
+        Vector3 targetDir = direction - transform.position;
+        targetDir.y = 0;
+        //rection.y = 0;
         float step = rotateSpeed * Time.deltaTime;
         Vector3 newDir = Vector3.RotateTowards(transform.forward, direction, step, 0.0f);
         Debug.DrawRay(transform.position, newDir, Color.red);
@@ -709,6 +803,7 @@ public class FarallonController : MonoBehaviour {
             {
                 fireballGO.transform.position = mouthEnd.transform.position;
                 fireballGO.GetComponent<Rigidbody>().velocity = mouthEnd.transform.forward * fbSpeed;
+                fireballGO.transform.LookAt(playerTarget.transform.position);
             }
         }
         
@@ -722,6 +817,35 @@ public class FarallonController : MonoBehaviour {
         float phase = Mathf.Sin(strafeSpeedTime / strafeSpeed);
         mouthEnd.transform.localRotation = Quaternion.Euler(new Vector3(0, (phase * strafeAngle), 0));
 
+        
+    }
+
+    public IEnumerator ChargeForward(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        if (landingSpotName == "LandingSpot")
+        {
+            transform.position = Vector3.MoveTowards(transform.position, landingSpotsArray[3].transform.position, chargeSpeed * Time.deltaTime);
+            
+        }
+
+        if (landingSpotName == "LandingSpot (1)")
+        {
+            transform.position = Vector3.MoveTowards(transform.position, landingSpotsArray[2].transform.position, chargeSpeed * Time.deltaTime);
+            //RotateToADirection(landingSpotsArray[2].transform.position);
+        }
+
+        if (landingSpotName == "LandingSpot (2)")
+        {
+            transform.position = Vector3.MoveTowards(transform.position, landingSpotsArray[1].transform.position, chargeSpeed * Time.deltaTime);
+            //RotateToADirection(landingSpotsArray[1].transform.position);
+        }
+
+        if (landingSpotName == "LandingSpot (3)")
+        {
+            transform.position = Vector3.MoveTowards(transform.position, landingSpotsArray[0].transform.position, chargeSpeed * Time.deltaTime);
+            //RotateToADirection(landingSpotsArray[0].transform.position);
+        }
         
     }
     #endregion
