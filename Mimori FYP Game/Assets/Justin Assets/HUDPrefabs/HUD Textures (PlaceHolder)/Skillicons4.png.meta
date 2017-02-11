@@ -1,0 +1,1053 @@
+fileFormatVersion: 2
+guid: 3c3ee2b0e30e4af4a9be1e237624e29c
+timeCreated: 1486754470
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Skillicons4_0
+    21300002: Skillicons4_1
+    21300004: Skillicons4_2
+    21300006: Skillicons4_3
+    21300008: Skillicons4_4
+    21300010: Skillicons4_5
+    21300012: Skillicons4_6
+    21300014: Skillicons4_7
+    21300016: Skillicons4_8
+    21300018: Skillicons4_9
+    21300020: Skillicons4_10
+    21300022: Skillicons4_11
+    21300024: Skillicons4_12
+    21300026: Skillicons4_13
+    21300028: Skillicons4_14
+    21300030: Skillicons4_15
+    21300032: Skillicons4_16
+    21300034: Skillicons4_17
+    21300036: Skillicons4_18
+    21300038: Skillicons4_19
+    21300040: Skillicons4_20
+    21300042: Skillicons4_21
+    21300044: Skillicons4_22
+    21300046: Skillicons4_23
+    21300048: Skillicons4_24
+    21300050: Skillicons4_25
+    21300052: Skillicons4_26
+    21300054: Skillicons4_27
+    21300056: Skillicons4_28
+    21300058: Skillicons4_29
+    21300060: Skillicons4_30
+    21300062: Skillicons4_31
+    21300064: Skillicons4_32
+    21300066: Skillicons4_33
+    21300068: Skillicons4_34
+    21300070: Skillicons4_35
+    21300072: Skillicons4_36
+    21300074: Skillicons4_37
+    21300076: Skillicons4_38
+    21300078: Skillicons4_39
+    21300080: Skillicons4_40
+    21300082: Skillicons4_41
+    21300084: Skillicons4_42
+    21300086: Skillicons4_43
+    21300088: Skillicons4_44
+    21300090: Skillicons4_45
+    21300092: Skillicons4_46
+    21300094: Skillicons4_47
+    21300096: Skillicons4_48
+    21300098: Skillicons4_49
+    21300100: Skillicons4_50
+    21300102: Skillicons4_51
+    21300104: Skillicons4_52
+    21300106: Skillicons4_53
+    21300108: Skillicons4_54
+    21300110: Skillicons4_55
+    21300112: Skillicons4_56
+    21300114: Skillicons4_57
+    21300116: Skillicons4_58
+    21300118: Skillicons4_59
+    21300120: Skillicons4_60
+    21300122: Skillicons4_61
+    21300124: Skillicons4_62
+    21300126: Skillicons4_63
+    21300128: Skillicons4_64
+    21300130: Skillicons4_65
+    21300132: Skillicons4_66
+    21300134: Skillicons4_67
+    21300136: Skillicons4_68
+    21300138: Skillicons4_69
+    21300140: Skillicons4_70
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Skillicons4_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_1
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_3
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_4
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_5
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_6
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_7
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_8
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 784
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_9
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 719
+        width: 64
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_10
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 712
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_11
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 713
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_12
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 713
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_13
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 713
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_14
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 713
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_15
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 712
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_16
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 713
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_17
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 713
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_18
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 713
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_19
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 641
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_20
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 642
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_21
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 642
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_22
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 642
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_23
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 642
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_24
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 642
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_25
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 641
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_26
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 642
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_27
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 642
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_28
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 647
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_29
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 570
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_30
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 570
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_31
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 570
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_32
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 569
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_33
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 571
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_34
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 570
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_35
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 570
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_36
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 570
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_37
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 569
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_38
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 575
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_39
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 499
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_40
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 499
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_41
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 499
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_42
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 499
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_43
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 499
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_44
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 499
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_45
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 499
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_46
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 498
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_47
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 498
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_48
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 502
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_49
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 428
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_50
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 427
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_51
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 428
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_52
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 427
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_53
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 428
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_54
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 428
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_55
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 427
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_56
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 428
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_57
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 428
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_58
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 430
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_59
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_60
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_61
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_62
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_63
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_64
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 356
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_65
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_66
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_67
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_68
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 357
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_69
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 286
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Skillicons4_70
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 286
+        width: 63
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
