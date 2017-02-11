@@ -105,7 +105,6 @@ public class Player : MonoBehaviour {
         if (other.gameObject.tag == "DialogueTrigger") {
             if (!dialogueBox.activeSelf) {
                 //Gate dialogue triggering
-                Debug.Log(SceneManager.GetActiveScene().name+","+other.gameObject.name+","+Level1Controller.instance.startTime);
                 if (SceneManager.GetActiveScene().name == "Gate of Telluris") {
                     if (other.gameObject.name == "dTrigger1") {
                         if (DialogueManager.enmarDialogueCount == 0 && Level1Controller.instance.startTime > 10)
@@ -116,12 +115,29 @@ public class Player : MonoBehaviour {
                         {
                             DialogueTriggered(other);
                         }
-                        if (DialogueManager.enmarDialogueCount == 2 && EnmarController.enmarDied)
+                        if (DialogueManager.enmarDialogueCount == 2 && Level1Controller.enmarAbsorbed)
                         {
                             DialogueTriggered(other);
                         }
                     }
                 }
+                //Mimori dialogue triggering
+                if (SceneManager.GetActiveScene().name == "Mimori") {
+                    if (DialogueManager.mimoriDialogueCount == 0 && other.gameObject.name == "dTrigger1") {
+                        DialogueTriggered(other);
+                    }
+
+                    if (DialogueManager.mimoriDialogueCount == 1 && other.gameObject.name == "dTrigger2")
+                    {
+                        DialogueTriggered(other);
+                    }
+
+                    if (DialogueManager.mimoriDialogueCount == 2 && other.gameObject.name == "dTrigger3")
+                    {
+                        DialogueTriggered(other);
+                    }
+                }
+
                 //Forest dialogue triggering
                 if (SceneManager.GetActiveScene().name == "Forest of Misery")
                 {
@@ -173,36 +189,43 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //check if in combat
-        if (inCombatCD > 0) {
-            inCombat = true;
-        }
-		currfireDelay = fireDelay;
-        if (inCombat)
-        {
-            if (!cSoundPlayed) {
-                bgm.clip = combat;
-                bgm.Play();
-                cSoundPlayed = true;
-                bgmPlayed = false;
+        if (SceneManager.GetActiveScene().name == "Mimori") {
+            if (inCombatCD > 0)
+            {
+                inCombat = true;
             }
-            
-            inCombatCD -= Time.deltaTime;
-        }
-        else {
-            if (!bgmPlayed) {
-                cSoundPlayed = false;
-                wSoundPlayed = false;
-                bgmPlayed = true;
-                bgm.clip = originalClip;
-                bgm.Play();
+            currfireDelay = fireDelay;
+            if (inCombat)
+            {
+                if (!cSoundPlayed)
+                {
+                    bgm.clip = combat;
+                    bgm.Play();
+                    cSoundPlayed = true;
+                    bgmPlayed = false;
+                }
+
+                inCombatCD -= Time.deltaTime;
+            }
+            else
+            {
+                if (!bgmPlayed)
+                {
+                    cSoundPlayed = false;
+                    wSoundPlayed = false;
+                    bgmPlayed = true;
+                    bgm.clip = originalClip;
+                    bgm.Play();
+                }
+            }
+
+            if (inCombatCD < 0)
+            {
+                inCombatCD = 0;
+                inCombat = false;
             }
         }
-
-        if (inCombatCD < 0) {
-            inCombatCD = 0;
-            inCombat = false;
-        }
-
+        
 		if (shootrate > 0) {
 			shootrate -= Time.deltaTime;
 		}
@@ -232,7 +255,7 @@ public class Player : MonoBehaviour {
 
 		if (isIronSight < 1) {
 			//gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3(0.357f,gun.transform.localPosition.y,gun.transform.localPosition.z), Time.deltaTime * 8);
-			fpc.m_WalkSpeed = 5.0f;
+			//fpc.m_WalkSpeed = 5.0f;
 			fpc.IronSight = false;
 		} else {
 			//gun.transform.localPosition = Vector3.Lerp (gun.transform.localPosition, new Vector3 (0, gun.transform.localPosition.y, gun.transform.localPosition.z), Time.deltaTime * 8);
@@ -262,7 +285,7 @@ public class Player : MonoBehaviour {
                 FirstPersonController.isPaused = false;
 				SkillTreePanel.gameObject.SetActive (false);
 				Cursor.visible = false;
-				//curseMode = CursorLockMode.Locked;
+				curseMode = CursorLockMode.Locked;
 				//unFreeze Time
 				Time.timeScale = 1;
 			}

@@ -6,6 +6,10 @@ public class NextScenePortal : MonoBehaviour {
     AsyncOperation aSyncOp;
     // Use this for initialization
     void Start () {
+        if (SceneManager.GetActiveScene().name == "Gate of Telluris")
+        {
+            aSyncOp = SceneManager.LoadSceneAsync("Mimori");
+        }
         if (SceneManager.GetActiveScene().name == "Mimori")
         {
             aSyncOp = SceneManager.LoadSceneAsync("Forest of Misery");

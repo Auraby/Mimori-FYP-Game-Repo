@@ -30,7 +30,10 @@ public class Level1Controller : MonoBehaviour {
     public Image bossImage;
     public Slider bossHealthSlider;
 
+    public GameObject EoEAbsorbParticle;
     public GameObject tempPortal;
+    public GameObject player;
+    public GameObject bgm;
 
     [Header("OpeningSequenceVariables")]
     public GameObject openingSequence;
@@ -46,9 +49,13 @@ public class Level1Controller : MonoBehaviour {
     public AsyncOperation aSyncOp;
 
     public static Level1Controller instance { get; set; }
+
+    float absorbingCD = 6f;
+    public static bool enmarAbsorbed = false;
+    Vector3 particleOriginalPos;
 	// Use this for initialization
 	void Start () {
-
+        EoEAbsorbParticle.transform.position = particleOriginalPos;
         instance = this;
         //Starting Cinematics
         objectiveSlider.gameObject.SetActive(false);
@@ -80,6 +87,23 @@ public class Level1Controller : MonoBehaviour {
 
         if (EnmarController.enmarDied)
         {
+            bgm.GetComponent<AudioSource>().volume -= Time.deltaTime / 5;
+            //Absorb enmar
+            if (absorbingCD > 0) {
+                absorbingCD -= Time.deltaTime;
+                if (absorbingCD <= 2) {
+                    Shoot.EnmarModTaken = true;
+                    EoEAbsorbParticle.transform.position = particleOriginalPos;
+                }
+                else
+                {
+                    EoEAbsorbParticle.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 2, player.transform.position.z);
+                }
+            } 
+            if (absorbingCD <= 0) {
+                enmarAbsorbed = true;
+            }
+            
             GameController.gameController.fightingBoss = false;
         }
         else {
