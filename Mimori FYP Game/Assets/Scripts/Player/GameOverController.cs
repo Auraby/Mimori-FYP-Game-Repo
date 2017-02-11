@@ -39,8 +39,18 @@ public class GameOverController : MonoBehaviour {
         //Lose Conditions here
         if (Health.instance.currentHealth <= 0)
         {
-            loseGame = true;
-            playerDie = true;
+			if(gameObject.GetComponent<SkillTree>().unlockLifePassive2){
+				if(gameObject.GetComponent<SkillTree>().deadoraliveactivated == false){
+					gameObject.GetComponent<SkillTree>().deadoraliveactivated = true;
+					gameObject.GetComponent<SkillTree>().StartCoroutine(gameObject.GetComponent<SkillTree>().PassiveDurations(gameObject.GetComponent<SkillTree>().deadoraliveactivated, gameObject.GetComponent<SkillTree>().deadoralivecd));
+					Health.instance.currentHealth += Health.instance.maxhealth / 2;
+					Health.instance.healthbarslider.value += Health.instance.maxhealth / 2;
+				}
+			}else{
+            	loseGame = true;
+            	playerDie = true;
+			
+			}
         }
 
         if (SceneManager.GetActiveScene().name == "Gate Of Telluris")

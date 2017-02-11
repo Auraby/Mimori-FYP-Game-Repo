@@ -8,7 +8,10 @@ public class BulletController : MonoBehaviour {
 
 	public float playertakendamage = 2.5f;
 	public float playercurrtakendamage;
+	public double constantTFFYdamage;
     private GameObject player;
+
+	public int stunchance;
 	//public SkillTree sktree;
 	private float liveTime = 1f;
 	public int fullychargedbullet = 2;
@@ -70,6 +73,13 @@ public class BulletController : MonoBehaviour {
 		} else {
 			playercurrdamage = playerbasedamage;
 		}
+		if (player.GetComponent<SkillTree> ().toofastforyouactivated) {
+			constantTFFYdamage = playercurrdamage += playercurrdamage / 100 * 100.5;
+			//player.gameObject.GetComponent<Player> ().currfireDelay -= 0.02;
+		} else {
+			playercurrdamage = playerbasedamage;
+			player.gameObject.GetComponent<Player> ().currfireDelay = player.gameObject.GetComponent<Player> ().fireDelay;
+		}
 			
 	}
 	void OnTriggerEnter(Collider other){
@@ -87,6 +97,16 @@ public class BulletController : MonoBehaviour {
 					if (fullychargedbulletactivated) {
 						fullychargedbullet--;
 					}
+					if (player.GetComponent<SkillTree> ().toofastforyouactivated) {
+						playercurrdamage += constantTFFYdamage;
+						player.gameObject.GetComponent<Player> ().currfireDelay -= 0.02f;
+					}
+					if (player.GetComponent<SkillTree> ().sentrymodeactivated) {
+						stunchance = Random.Range (0, 10);
+						if (stunchance >= 5) {
+							other.GetComponent<MeleeMinionFSM> ().getStun (3);
+						}
+					}
                     DestroyBullet();
                 }
                 else if (other.gameObject.tag == "RangeMinion")
@@ -98,6 +118,16 @@ public class BulletController : MonoBehaviour {
 					}
 					if (fullychargedbulletactivated) {
 						fullychargedbullet--;
+					}
+					if (player.GetComponent<SkillTree> ().toofastforyouactivated) {
+						playercurrdamage += constantTFFYdamage;
+						player.gameObject.GetComponent<Player> ().currfireDelay -= 0.02f;
+					}
+					if (player.GetComponent<SkillTree> ().sentrymodeactivated) {
+						stunchance = Random.Range (0, 10);
+						if (stunchance >= 5) {
+							other.GetComponent<MeleeMinionFSM> ().getStun (3);
+						}
 					}
                     DestroyBullet();
                 }
@@ -112,6 +142,16 @@ public class BulletController : MonoBehaviour {
 					if (fullychargedbulletactivated) {
 						fullychargedbullet--;
 					}
+					if (player.GetComponent<SkillTree> ().toofastforyouactivated) {
+						playercurrdamage += constantTFFYdamage;
+						player.gameObject.GetComponent<Player> ().currfireDelay -= 0.02f;
+					}
+					if (player.GetComponent<SkillTree> ().sentrymodeactivated) {
+						stunchance = Random.Range (0, 10);
+						if (stunchance >= 5) {
+							other.GetComponent<MeleeMinionFSM> ().getStun (3);
+						}
+					}
                     DestroyBullet();
                 }
                 else if (other.gameObject.tag == "HordeRangeMinion")
@@ -123,6 +163,16 @@ public class BulletController : MonoBehaviour {
 					}
 					if (fullychargedbulletactivated) {
 						fullychargedbullet--;
+					}
+					if (player.GetComponent<SkillTree> ().toofastforyouactivated) {
+						playercurrdamage += constantTFFYdamage;
+						player.gameObject.GetComponent<Player> ().currfireDelay -= 0.02f;
+					}
+					if (player.GetComponent<SkillTree> ().sentrymodeactivated) {
+						stunchance = Random.Range (0, 10);
+						if (stunchance >= 5) {
+							other.GetComponent<MeleeMinionFSM> ().getStun (3);
+						}
 					}
                     DestroyBullet();
                 }
