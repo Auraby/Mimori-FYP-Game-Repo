@@ -18,6 +18,10 @@ public class NextScenePortal : MonoBehaviour {
         {
             aSyncOp = SceneManager.LoadSceneAsync("Temple of Aphelion");
         }
+        if (SceneManager.GetActiveScene().name == "Temple of Aphelion")
+        {
+            aSyncOp = SceneManager.LoadSceneAsync("Lost Crater");
+        }
         aSyncOp.allowSceneActivation = false;
     }
 	
@@ -28,6 +32,7 @@ public class NextScenePortal : MonoBehaviour {
 
     void OnTriggerEnter(Collider others) {
         if (others.gameObject.tag == "Player") {
+            Debug.Log("GO");
             aSyncOp.allowSceneActivation = true;
         }
     }

@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class StartZoltran : MonoBehaviour {
-    public GameObject entranceBarrier, templeBarrier,zoltran;
+    public GameObject entranceBarrier, templeBarrier,zoltran, soulOfZoltran;
 
     public static bool zoltranDied = false;
     public static bool zoltranStart = false;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -16,11 +17,14 @@ public class StartZoltran : MonoBehaviour {
 	void Update () {
         if(zoltranDied)
         {
-            if (entranceBarrier.activeSelf) {
-                entranceBarrier.SetActive(false);
-                templeBarrier.SetActive(false);
+            if (!soulOfZoltran.activeSelf && !GameController.gameController.zoltranAbsorbed) {
+                soulOfZoltran.gameObject.SetActive(true);
             }
-            
+        }
+        if (entranceBarrier.activeSelf && GameController.gameController.zoltranAbsorbed)
+        {
+            entranceBarrier.SetActive(false);
+            templeBarrier.SetActive(false);
         }
         if (zoltranStart && !zoltranDied) {
             if (!entranceBarrier.activeSelf) {

@@ -17,7 +17,7 @@ public class DialogueManager : MonoBehaviour {
     public static int enmarDialogueCount = 0;
     public static int mimoriDialogueCount = 0;
     public static int templeIDialogueCount = 0;
-    public static int forestDialogueCount = 2;
+    public static int forestDialogueCount = 0;
 
     // Use this for initialization
     void Start () {

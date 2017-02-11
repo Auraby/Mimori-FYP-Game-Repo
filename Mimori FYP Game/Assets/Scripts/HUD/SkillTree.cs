@@ -107,17 +107,6 @@ public class SkillTree : MonoBehaviour {
 	private GameObject Skillspelleffect3;
 	private GameObject Skillspelleffect4;
 
-	//Journal Entries
-	public Button JournalEntryBtn1;
-	public Button JournalEntryBtn2;
-	public Button JournalEntryBtn3;
-	public Button JournalEntryBtn4;
-
-	public Text JournalEntryTXT1;
-	public Text JournalEntryTXT2;
-	public Text JournalEntryTXT3;
-	public Text JournalEntryTXT4;
-
 	//Stats
 	public float incSpeed; //firerate
 	public int deflectchance; //chance to deflect
@@ -131,7 +120,6 @@ public class SkillTree : MonoBehaviour {
 	public Image ThunderRushDurationImage;
 	public Image BerserkerDurationImage;
 	//public Toggle ChargeShot;
-	public int checkSkillPoint;
 	public Text SkillPointsTXT;
 	//public GameObject ErrorMessageTXT;
 
@@ -187,8 +175,8 @@ public class SkillTree : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//checkSkillPoint = 10;
-		checkSkillPoint = 0;
+		//GameController.gameController.checkSkillPoint = 10;
+		GameController.gameController.checkSkillPoint = 0;
 		playercolliderradius = playerobj.GetComponent<CapsuleCollider> ().radius;
 	}
 
@@ -200,7 +188,7 @@ public class SkillTree : MonoBehaviour {
 		{
 			//Display SkillTree
 		}
-		SkillPointsTXT.text = checkSkillPoint.ToString ();
+		SkillPointsTXT.text = GameController.gameController.checkSkillPoint.ToString ();
 		//Class-SPecific abilities Check
 		if (unlockLifePassive1 == true && unlockPowerActive1 == true && classChosen == false) {
 			Warborn = true;
@@ -942,57 +930,34 @@ public class SkillTree : MonoBehaviour {
 
 	}
 
-	public void OnTriggerEnter(Collider obj){
-		if (obj.gameObject.name == "JournalEntry1") {
-			JournalEntryBtn1.interactable = true;
-			JournalEntryTXT1.text = "Town Of Telluris";
-			Destroy (obj.gameObject);
-		}
-		if (obj.gameObject.name == "JournalEntry2") {
-			JournalEntryBtn2.interactable = true;
-			JournalEntryTXT2.text = "Forest Of Misery";
-			Destroy (obj.gameObject);
-		}
-		if (obj.gameObject.name == "JournalEntry3") {
-			JournalEntryBtn3.interactable = true;
-			JournalEntryTXT3.text = "Temple Of Ishira";
-			Destroy (obj.gameObject);
-		}
-		if (obj.gameObject.name == "JournalEntry4") {
-			JournalEntryBtn4.interactable = true;
-			JournalEntryTXT4.text = "Crator Of Farallon";
-			Destroy (obj.gameObject);
-		}
-	}
-
 	public void SelectSkillOnClick(){
 		
-		if (checkSkillPoint > 0) {
+		if (GameController.gameController.checkSkillPoint > 0) {
 			if (eventsys.currentSelectedGameObject.GetComponent<Button> ().interactable == true) {
 				if (eventsys.currentSelectedGameObject == HealthActive1 && unlockLifeActive1 == false) {
-					checkSkillPoint -= 1;
+					GameController.gameController.checkSkillPoint -= 1;
 					skillpointspent += 1;
 				
 				}  if (eventsys.currentSelectedGameObject == ManaActive1 && unlockManaActive1 == false) {
-					checkSkillPoint -= 1;
+					GameController.gameController.checkSkillPoint -= 1;
 					skillpointspent += 1;
 				}  if (eventsys.currentSelectedGameObject == PowerActive1 && unlockPowerActive1 == false) {
-					checkSkillPoint -= 1;
+					GameController.gameController.checkSkillPoint -= 1;
 					skillpointspent += 1;
 				}  if (eventsys.currentSelectedGameObject == PowerActive2 && unlockPowerActive2 == false) {
-					checkSkillPoint -= 1;
+					GameController.gameController.checkSkillPoint -= 1;
 					skillpointspent += 1;
 				}  if (eventsys.currentSelectedGameObject == SpeedActive1 && unlockSpeedActive1 == false) {
-					checkSkillPoint -= 1;
+					GameController.gameController.checkSkillPoint -= 1;
 					skillpointspent += 1;
 					SpeedPassive1_Btn.interactable = true;
 					PowerActive1_Btn.interactable = false;
 				}  if (eventsys.currentSelectedGameObject == SpeedActive2 && unlockSpeedActive1 == false) {
-					checkSkillPoint -= 1;
+					GameController.gameController.checkSkillPoint -= 1;
 					skillpointspent += 1;
 				} else {
 					if (eventsys.currentSelectedGameObject.tag == "PassiveSkill") {
-						checkSkillPoint -= 1;
+						GameController.gameController.checkSkillPoint -= 1;
 						skillpointspent += 1;
 
 					}
@@ -1002,7 +967,7 @@ public class SkillTree : MonoBehaviour {
 		}
 
 	
-			if (eventsys.currentSelectedGameObject == HealthUp && checkSkillPoint > 0) {
+			if (eventsys.currentSelectedGameObject == HealthUp && GameController.gameController.checkSkillPoint > 0) {
 				unlockHealthUp = true;
 				if (PassiveUpAmt <= 6) {
 				PassiveUpAmt++;
@@ -1019,7 +984,7 @@ public class SkillTree : MonoBehaviour {
 				}
 
 			}
-		else if(eventsys.currentSelectedGameObject == ManaUp && checkSkillPoint > 0){
+		else if(eventsys.currentSelectedGameObject == ManaUp && GameController.gameController.checkSkillPoint > 0){
 				unlockManaUp = true;
 			if (PassiveUpAmt <= 6) {
 				PassiveUpAmt++;
@@ -1034,67 +999,67 @@ public class SkillTree : MonoBehaviour {
 
 			}
 
-		else if (eventsys.currentSelectedGameObject == HealthPassive1 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == HealthPassive1 && GameController.gameController.checkSkillPoint > 0) {
 				unlockLifePassive1 = true;
 			HealthPassive2_Btn.interactable = true;
 			HealthPassive1_Btn.interactable = false;
 			ManaPassive1_Btn.interactable = false;
 		
 			}
-		else if (eventsys.currentSelectedGameObject == HealthPassive2 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == HealthPassive2 && GameController.gameController.checkSkillPoint > 0) {
 				unlockLifePassive2 = true;
 			HealthActive1_Btn.interactable = true;
 			HealthPassive2_Btn.interactable = false;
 
 			}
-		else if (eventsys.currentSelectedGameObject == HealthActive1 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == HealthActive1 && GameController.gameController.checkSkillPoint > 0) {
 				unlockLifeActive1 = true;
 			
 			}
-		else if (eventsys.currentSelectedGameObject == ManaPassive1 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == ManaPassive1 && GameController.gameController.checkSkillPoint > 0) {
 				unlockManaPassive1 = true;
 			ManaPassive2_Btn.interactable = true;
 			ManaPassive1_Btn.interactable = false;
 			HealthPassive1_Btn.interactable = false;
 			}
-		else if (eventsys.currentSelectedGameObject == ManaPassive2 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == ManaPassive2 && GameController.gameController.checkSkillPoint > 0) {
 				unlockManaPassive2 = true;
 				ManaActive1_Btn.interactable = true;
 				ManaPassive2_Btn.interactable = false;
 			}
-		else if (eventsys.currentSelectedGameObject == ManaActive1 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == ManaActive1 && GameController.gameController.checkSkillPoint > 0) {
 				unlockManaActive1 = true;
 			
 			}
 
-		else if (eventsys.currentSelectedGameObject == PowerActive1 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == PowerActive1 && GameController.gameController.checkSkillPoint > 0) {
 				unlockPowerActive1 = true;
 				PowerPassive1_Btn.interactable = true;
 				SpeedActive1_Btn.interactable = false;
 			}
-		else if (eventsys.currentSelectedGameObject == PowerPassive1 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == PowerPassive1 && GameController.gameController.checkSkillPoint > 0) {
 			unlockPowerPassive1 = true;
 			PowerActive2_Btn.interactable = true;
 			PowerPassive1_Btn.interactable = false;
 		
 			}
-		else if (eventsys.currentSelectedGameObject == PowerActive2 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == PowerActive2 && GameController.gameController.checkSkillPoint > 0) {
 				unlockPowerActive2 = true;
 			
 			}
 
-		else if (eventsys.currentSelectedGameObject == SpeedActive1 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == SpeedActive1 && GameController.gameController.checkSkillPoint > 0) {
 				unlockSpeedActive1 = true;
 			SpeedActive1_Btn.interactable = true;
 			PowerPassive1_Btn.interactable = false;
 			}
-		else if (eventsys.currentSelectedGameObject == SpeedPassive1 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == SpeedPassive1 && GameController.gameController.checkSkillPoint > 0) {
 				unlockSpeedPassive1 = true;
 				playerobj.GetComponent<Player> ().fireDelay -= 0.3f;
 				SpeedActive2_Btn.interactable = true;
 				SpeedPassive1_Btn.interactable = false;
 			}
-		else if (eventsys.currentSelectedGameObject == SpeedActive2 && checkSkillPoint > 0) {
+		else if (eventsys.currentSelectedGameObject == SpeedActive2 && GameController.gameController.checkSkillPoint > 0) {
 				unlockSpeedActive2 = true;
 			
 			}
@@ -1103,7 +1068,7 @@ public class SkillTree : MonoBehaviour {
 		else {
 			//ErrorMessageTXT.SetActive (true);
 		}
-		SkillPointsTXT.text = checkSkillPoint.ToString ();
+		SkillPointsTXT.text = GameController.gameController.checkSkillPoint.ToString ();
 	}
 
 	public bool checkifunlocked(GameObject spell){
