@@ -12,6 +12,7 @@ public class SoulOfZoltranSkillSelf : MonoBehaviour {
 	void Update () {
         duration -= Time.deltaTime;
         if (duration <= 0) {
+            GameObject.Find("FPSController (1)").tag = "Player";
             Destroy(this.gameObject);
         }
 	}
