@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: 52683f60497cab14184bb13d45e6907d
+timeCreated: 1486818698
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: joint100
+    100002: joint101
+    100004: joint102
+    100006: joint103
+    100008: joint104
+    100010: joint48
+    100012: joint49
+    100014: joint50
+    100016: joint51
+    100018: joint52
+    100020: joint53
+    100022: joint54
+    100024: joint55
+    100026: joint56
+    100028: joint57
+    100030: joint58
+    100032: joint59
+    100034: joint60
+    100036: joint61
+    100038: joint62
+    100040: joint63
+    100042: joint64
+    100044: joint65
+    100046: joint66
+    100048: joint67
+    100050: joint68
+    100052: joint69
+    100054: joint77
+    100056: joint80
+    100058: joint81
+    100060: joint82
+    100062: joint83
+    100064: joint84
+    100066: joint85
+    100068: joint86
+    100070: joint87
+    100072: joint88
+    100074: joint89
+    100076: joint90
+    100078: joint91
+    100080: joint92
+    100082: joint93
+    100084: joint94
+    100086: joint95
+    100088: joint96
+    100090: joint97
+    100092: joint98
+    100094: joint99
+    100096: Matcha2
+    100098: Matcha_geo
+    100100: Matcha_skel
+    100102: //RootNode
+    400000: joint100
+    400002: joint101
+    400004: joint102
+    400006: joint103
+    400008: joint104
+    400010: joint48
+    400012: joint49
+    400014: joint50
+    400016: joint51
+    400018: joint52
+    400020: joint53
+    400022: joint54
+    400024: joint55
+    400026: joint56
+    400028: joint57
+    400030: joint58
+    400032: joint59
+    400034: joint60
+    400036: joint61
+    400038: joint62
+    400040: joint63
+    400042: joint64
+    400044: joint65
+    400046: joint66
+    400048: joint67
+    400050: joint68
+    400052: joint69
+    400054: joint77
+    400056: joint80
+    400058: joint81
+    400060: joint82
+    400062: joint83
+    400064: joint84
+    400066: joint85
+    400068: joint86
+    400070: joint87
+    400072: joint88
+    400074: joint89
+    400076: joint90
+    400078: joint91
+    400080: joint92
+    400082: joint93
+    400084: joint94
+    400086: joint95
+    400088: joint96
+    400090: joint97
+    400092: joint98
+    400094: joint99
+    400096: Matcha2
+    400098: Matcha_geo
+    400100: Matcha_skel
+    400102: //RootNode
+    4300000: Matcha2
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: Matcha2
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 30
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -90,8 +90,9 @@ public class OutpostManager : MonoBehaviour
                 }
                 if (!Player.wSoundPlayed)
                 {
-                    bgm.clip = winning;
-                    bgm.Play();
+                    //bgm.clip = winning;
+                    //bgm.Play();
+                    GameController.gameController.checkSkillPoint++;
                     Player.wSoundPlayed = true;
                 }
                 defaultCircle.SetActive(false);

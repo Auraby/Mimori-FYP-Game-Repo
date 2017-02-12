@@ -12,6 +12,16 @@ public class GameController : MonoBehaviour
     public static bool loadingGame = false;
     public static GameController gameController;
 
+    //Skill point
+    public int checkSkillPoint;
+    //Gun Mods
+    public bool enmarAbsorbed = false;
+    public bool zoltranAbsorbed = false;
+    public bool ishiraAbsorbed = false;
+    //Journal status
+    public bool journal2Unlocked = false;
+    public bool journal3Unlocked = false;
+    public bool journal4Unlocked = false;
     //Combat status
     public bool fightingBoss = false;
     //Player Position
@@ -47,6 +57,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(enmarAbsorbed);
         if (SceneManager.GetActiveScene().name != "MainMenu")
         {
             currentScene = SceneManager.GetActiveScene().name;
@@ -81,13 +92,19 @@ public class GameController : MonoBehaviour
         pData.dialogueCountGate = DialogueManager.enmarDialogueCount;
         pData.dialogueCountForest = DialogueManager.forestDialogueCount;
         pData.dialogueCountTemple = DialogueManager.templeIDialogueCount;
+        //Skill point
+        pData.skillPoint = checkSkillPoint;
         //Boss Cleared or not
         pData.eDied = EnmarController.enmarDied;
         pData.zDied = StartZoltran.zoltranDied;
         //Gun mod
-        pData.eoeUnlocked = Shoot.EnmarModTaken;
-        pData.sozUnlocked = Shoot.ZoltranModTaken;
-        pData.hoiUnlocked = Shoot.IshiraModTaken;
+        pData.eoeUnlocked = enmarAbsorbed;
+        pData.sozUnlocked = zoltranAbsorbed;
+        pData.hoiUnlocked = ishiraAbsorbed;
+        //journals
+        pData.j2Unlocked = journal2Unlocked;
+        pData.j3Unlocked = journal3Unlocked;
+        pData.j4Unlocked = journal4Unlocked;
         //Write the object to the file & close it
         bf.Serialize(file, pData);
         file.Close();
@@ -121,13 +138,15 @@ public class GameController : MonoBehaviour
             DialogueManager.enmarDialogueCount = pData.dialogueCountGate;
             DialogueManager.forestDialogueCount = pData.dialogueCountForest;
             DialogueManager.templeIDialogueCount = pData.dialogueCountTemple;
+            //skill point
+            checkSkillPoint = pData.skillPoint;
             //Boss Cleared or not
             EnmarController.enmarDied = pData.eDied;
             StartZoltran.zoltranDied = pData.zDied;
             //Gun Mod
-            Shoot.EnmarModTaken = pData.eoeUnlocked;
-            Shoot.ZoltranModTaken = pData.sozUnlocked;
-            Shoot.IshiraModTaken = pData.hoiUnlocked;
+            enmarAbsorbed = pData.eoeUnlocked;
+            zoltranAbsorbed = pData.sozUnlocked;
+            ishiraAbsorbed = pData.hoiUnlocked;
         }
     }
 
@@ -143,7 +162,9 @@ public class GameController : MonoBehaviour
 [Serializable]
 class PlayerData
 {
+    //status
     public string curScene;
+    public int skillPoint;
     //Player Position
     public float playerPosX;
     public float playerPosY;
@@ -169,4 +190,8 @@ class PlayerData
     public bool eoeUnlocked = false;
     public bool sozUnlocked = false;
     public bool hoiUnlocked = false;
+    //Journal unlocked
+    public bool j2Unlocked = false;
+    public bool j3Unlocked = false;
+    public bool j4Unlocked = false;
 }
