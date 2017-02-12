@@ -201,9 +201,9 @@ public class EruptionController : MonoBehaviour {
                 {
                     eruptPositionsArray[i] = eruptPositionParent.transform.GetChild(i);
                 }
-                Debug.Log(eruptPositionParent.transform.childCount);
-                Debug.Log(eruptPositionsArray[i]);
-                Debug.Log(eruptPositionParent.transform.GetChild(i));
+                //Debug.Log(eruptPositionParent.transform.childCount);
+                //Debug.Log(eruptPositionsArray[i]);
+                //Debug.Log(eruptPositionParent.transform.GetChild(i));
            // }
             
             
