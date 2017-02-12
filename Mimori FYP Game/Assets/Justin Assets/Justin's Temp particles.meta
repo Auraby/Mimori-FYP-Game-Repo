@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Mimori FYP Game/Assets/Models/Temple/Corridor.meta
+guid: 0467eb90098393a449a7bd4a486a224c
+folderAsset: yes
+timeCreated: 1486698073
+=======
 guid: 62b326ad2be92d44f9522f79bece3949
 folderAsset: yes
 timeCreated: 1486729691
+>>>>>>> refs/remotes/origin/master:Mimori FYP Game/Assets/Justin Assets/Justin's Temp particles.meta
 licenseType: Free
 DefaultImporter:
   userData: 
