@@ -549,7 +549,574 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 68
+      lastFrame: 201
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: joint1
+        weight: 1
+      - path: joint1/joint2
+        weight: 1
+      - path: joint1/joint2/joint3
+        weight: 1
+      - path: joint1/joint2/joint3/joint4
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6/joint7
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint39
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint39/joint40
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint39/joint40/joint41
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint42
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint42/joint43
+        weight: 1
+      - path: joint1/joint2/joint3/joint4/joint5/joint6/joint7/joint8/joint42/joint43/joint44
+        weight: 1
+      - path: joint1/joint9
+        weight: 1
+      - path: joint1/joint9/joint10
+        weight: 1
+      - path: joint1/joint9/joint10/joint18
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint11
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint11/joint12
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint11/joint12/joint13
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint11/joint12/joint13/joint14
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint11/joint12/joint13/joint14/joint15
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint11/joint12/joint13/joint14/joint15/joint16
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint11/joint12/joint13/joint14/joint15/joint16/joint17
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint23 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint23 1/joint24 2
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint23 1/joint24 2/joint25 2
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint23 1/joint24 2/joint25 2/joint26 2
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint28 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint28 1/joint29 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint28 1/joint29 1/joint30 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint28 1/joint29 1/joint30 1/joint31 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint32 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint32 1/joint33 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint32 1/joint33 1/joint34 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint32 1/joint33 1/joint34 1/joint35 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint36 1
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint36 1/joint24 3
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint36 1/joint24 3/joint25 3
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint38/joint37/joint21 1/joint22 1/joint27
+          1/joint36 1/joint24 3/joint25 3/joint26 3
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint74
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint74/joint75
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint74/joint75/joint76
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint74/joint75/joint76/joint77
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint78
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint78/joint79
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint78/joint79/joint80
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint78/joint79/joint80/joint81
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint82
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint82/joint83
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint82/joint83/joint84
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint82/joint83/joint84/joint85
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint86
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint86/joint87
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint86/joint87/joint88
+        weight: 1
+      - path: joint1/joint9/joint10/joint18/joint69/joint70/joint71/joint72/joint73/joint86/joint87/joint88/joint89
+        weight: 1
+      - path: joint1/joint19
+        weight: 1
+      - path: joint1/joint19/joint20
+        weight: 1
+      - path: joint1/joint19/joint20/joint21
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint23
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint23/joint24
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint23/joint24/joint25
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint23/joint24/joint25/joint26
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint28
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint28/joint29
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint28/joint29/joint30
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint28/joint29/joint30/joint31
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint32
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint32/joint33
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint32/joint33/joint34
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint32/joint33/joint34/joint35
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint36
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint36/joint24 1
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint36/joint24 1/joint25
+          1
+        weight: 1
+      - path: joint1/joint19/joint20/joint21/joint22/joint27/joint36/joint24 1/joint25
+          1/joint26 1
+        weight: 1
+      - path: joint1/joint45
+        weight: 1
+      - path: joint1/joint45/joint46
+        weight: 1
+      - path: joint1/joint45/joint46/joint47
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/joint48
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/joint48/joint49
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/joint48/joint49/joint50
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/joint53
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/joint53/joint54
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/joint53/joint54/joint55
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/joint53/joint54/joint55/joint56
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/L_Wing_Clip_Bot_1
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/L_Wing_Clip_Bot_1/L_Wing_Clip_Bot_2
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/L_Wing_Clip_Top_1
+        weight: 1
+      - path: joint1/joint45/joint46/joint47/joint52/L_Wing_Clip_Top_1/L_Wing_Clip_Top_2
+        weight: 1
+      - path: joint1/joint57
+        weight: 1
+      - path: joint1/joint57/joint58
+        weight: 1
+      - path: joint1/joint57/joint58/joint59
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/joint61
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/joint61/joint62
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/joint61/joint62/joint63
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/joint61/joint62/joint63/joint64
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/joint65
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/joint65/joint66
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/joint65/joint66/joint67
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/joint65/joint66/joint67/joint68
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/R_Wing_Clip_Bot_1
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/R_Wing_Clip_Bot_1/R_Wing_Clip_Bot_2
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/R_Wing_Clip_Top_1
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/R_Wing_Clip_Top_1/R_Wing_Clip_Top_2
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/transform2
+        weight: 1
+      - path: joint1/joint57/joint58/joint59/joint60/transform3
+        weight: 1
+      - path: joint1/joint90
+        weight: 1
+      - path: joint1/joint90/joint91
+        weight: 1
+      - path: joint1/joint90/joint91/joint92
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint95
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint95/joint96
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint95/joint96/joint97
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint95/joint96/joint97/joint98
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint99
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint99/joint100
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint99/joint100/joint101
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint99/joint100/joint101/joint102
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint103
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint103/joint104
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint103/joint104/joint105
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint103/joint104/joint105/joint106
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint107
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint107/joint108
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint107/joint108/joint109
+        weight: 1
+      - path: joint1/joint90/joint91/joint92/joint93/joint94/joint107/joint108/joint109/joint110
+        weight: 1
+      - path: polySurface16
+        weight: 1
+      - path: Root_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/Butt_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/Butt_CTRL/Tail_1_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/Butt_CTRL/Tail_1_CTRL/Tail_2_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/Butt_CTRL/Tail_1_CTRL/Tail_2_CTRL/Tail_3_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/Butt_CTRL/Tail_1_CTRL/Tail_2_CTRL/Tail_3_CTRL/Tail_4_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/Butt_CTRL/Tail_1_CTRL/Tail_2_CTRL/Tail_3_CTRL/Tail_4_CTRL/Tail_5_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Backclaw_1_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Backclaw_1_Back_CTRL/L_Backclaw_2_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Backclaw_1_Back_CTRL/L_Backclaw_2_Back_CTRL/L_Backclaw_3_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Indexclaw_1_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Indexclaw_1_Back_CTRL/L_Indexclaw_2_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Indexclaw_1_Back_CTRL/L_Indexclaw_2_Back_CTRL/L_Indexclaw_3_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Middleclaw_1_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Middleclaw_1_Back_CTRL/L_Middleclaw_2_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Middleclaw_1_Back_CTRL/L_Middleclaw_2_Back_CTRL/L_Middleclaw_3_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Ringclaw_1_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Ringclaw_1_Back_CTRL/L_Ringclaw_2_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/L_Butt_CTRL/L_Thigh_Back_CTRL/L_Knee_Back_CTRL/L_Ankle_Back_CTRL/L_Ball_Back_CTRL/L_Ringclaw_1_Back_CTRL/L_Ringclaw_2_Back_CTRL/L_Ringclaw_3_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Backclaw_1_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Backclaw_1_Back_CTRL/R_Backclaw_2_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Backclaw_1_Back_CTRL/R_Backclaw_2_Back_CTRL/R_Backclaw_3_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Indexclaw_1_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Indexclaw_1_Back_CTRL/R_Indexclaw_2_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Indexclaw_1_Back_CTRL/R_Indexclaw_2_Back_CTRL/R_Indexclaw_3_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Middleclaw_1_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Middleclaw_1_Back_CTRL/R_Middleclaw_2_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Middleclaw_1_Back_CTRL/R_Middleclaw_2_Back_CTRL/R_Middleclaw_3_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Ringclaw_1_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Ringclaw_1_Back_CTRL/R_Ringclaw_2_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/Back_Swing_CTRL/Stomach_CTRL/Abdomen_CTRL/R_Butt_CTRL/R_Thigh_Back_CTRL/R_Knee_Back_CTRL/R_Ankle_Back_CTRL/R_Ball_Back_CTRL/R_Ringclaw_1_Back_CTRL/R_Ringclaw_2_Back_CTRL/R_Ringclaw_3_Back_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Backclaw_1_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Backclaw_1_Front_CTRL/L_Backclaw_2_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Backclaw_1_Front_CTRL/L_Backclaw_2_Front_CTRL/L_Backclaw_3_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Indexclaw_1_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Indexclaw_1_Front_CTRL/L_Indexclaw_2_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Indexclaw_1_Front_CTRL/L_Indexclaw_2_Front_CTRL/L_Indexclaw_3_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Middleclaw_1_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Middleclaw_1_Front_CTRL/L_Middleclaw_2_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Middleclaw_1_Front_CTRL/L_Middleclaw_2_Front_CTRL/L_Middleclaw_3_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Ringclaw_1_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Ringclaw_1_Front_CTRL/L_Ringclaw_2_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL/L_Thigh_Front_CTRL/L_Knee_Front_CTRL/L_Ankle_Front_CTRL/L_Ball_Front_CTRL/L_Ringclaw_1_Front_CTRL/L_Ringclaw_2_Front_CTRL/L_Ringclaw_3_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Backclaw_1_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Backclaw_1_Front_CTRL/R_Backclaw_2_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Backclaw_1_Front_CTRL/R_Backclaw_2_Front_CTRL/R_Backclaw_3_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Indexclaw_1_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Indexclaw_1_Front_CTRL/R_Indexclaw_2_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Indexclaw_1_Front_CTRL/R_Indexclaw_2_Front_CTRL/R_Indexclaw_3_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Middleclaw_1_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Middleclaw_1_Front_CTRL/R_Middleclaw_2_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Middleclaw_1_Front_CTRL/R_Middleclaw_2_Front_CTRL/R_Middleclaw_3_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Ringclaw_1_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Ringclaw_1_Front_CTRL/R_Ringclaw_2_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_clavicle_CTRL1/L_Thigh_Front_CTRL 1/R_Knee_Front_CTRL/R_Ankle_Front_CTRL/R_Ball_Front_CTRL/R_Ringclaw_1_Front_CTRL/R_Ringclaw_2_Front_CTRL/R_Ringclaw_3_Front_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL/L_wing_elbow_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL/L_wing_elbow_CTRL/L_wing_wrist_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL/L_wing_elbow_CTRL/L_wing_wrist_CTRL/L_wing_index_1_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL/L_wing_elbow_CTRL/L_wing_wrist_CTRL/L_wing_index_1_CTRL/L_wing_index_2_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL/L_wing_elbow_CTRL/L_wing_wrist_CTRL/L_wing_index_1_CTRL/L_wing_index_2_CTRL/L_wing_index_3_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL/L_wing_elbow_CTRL/L_wing_wrist_CTRL/L_wing_thumb_1_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL/L_wing_elbow_CTRL/L_wing_wrist_CTRL/L_wing_thumb_1_CTRL/L_wing_thumb_2_CTRL
+        weight: 1
+      - path: Root_CTRL/L_wing_clavicle_CTRL/L_wing_shoulder_CTRL/L_wing_elbow_CTRL/L_wing_wrist_CTRL/L_wing_thumb_1_CTRL/L_wing_thumb_2_CTRL/L_wing_thumb_3_CTRL
+        weight: 1
+      - path: Root_CTRL/L_Wing_Clip_Bot_2_CTRL
+        weight: 1
+      - path: Root_CTRL/L_Wing_Clip_Top_1_CTRL
+        weight: 1
+      - path: Root_CTRL/L_Wing_Clip_Top_2_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL/Neck_3_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL/Neck_3_CTRL/Neck_2_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL/Neck_3_CTRL/Neck_2_CTRL/Neck_1_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL/Neck_3_CTRL/Neck_2_CTRL/Neck_1_CTRL/Head_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL/Neck_3_CTRL/Neck_2_CTRL/Neck_1_CTRL/Head_CTRL/Lowerjaw_1_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL/Neck_3_CTRL/Neck_2_CTRL/Neck_1_CTRL/Head_CTRL/Lowerjaw_1_CTRL/Lowerjaw_2_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL/Neck_3_CTRL/Neck_2_CTRL/Neck_1_CTRL/Head_CTRL/Upperjaw_1_CTRL
+        weight: 1
+      - path: Root_CTRL/Neck_6_CTRL/Neck_5_CTRL/Neck_4_CTRL/Neck_3_CTRL/Neck_2_CTRL/Neck_1_CTRL/Head_CTRL/Upperjaw_1_CTRL/Upperjaw_2_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL/nurbsCircle170
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL/nurbsCircle170/R_wing_wrist_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL/nurbsCircle170/R_wing_wrist_CTRL/R_wing_index_1_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL/nurbsCircle170/R_wing_wrist_CTRL/R_wing_index_1_CTRL/R_wing_index_2_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL/nurbsCircle170/R_wing_wrist_CTRL/R_wing_index_1_CTRL/R_wing_index_2_CTRL/R_wing_index_3_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL/nurbsCircle170/R_wing_wrist_CTRL/R_wing_thumb_1_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL/nurbsCircle170/R_wing_wrist_CTRL/R_wing_thumb_1_CTRL/R_wing_thumb_2_CTRL
+        weight: 1
+      - path: Root_CTRL/R_wing_clavicle_CTRL/R_wing_shoulder_CTRL/nurbsCircle170/R_wing_wrist_CTRL/R_wing_thumb_1_CTRL/R_wing_thumb_2_CTRL/R_wing_thumb_3_CTRL
+        weight: 1
+      - path: Root_CTRL/R_Wing_Clip_Bot_1_CTRL
+        weight: 1
+      - path: Root_CTRL/R_Wing_Clip_Bot_2_CTRL
+        weight: 1
+      - path: Root_CTRL/R_Wing_Clip_Top_1_CTRL
+        weight: 1
+      - path: Root_CTRL/R_Wing_Clip_Top_2_CTRL
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
