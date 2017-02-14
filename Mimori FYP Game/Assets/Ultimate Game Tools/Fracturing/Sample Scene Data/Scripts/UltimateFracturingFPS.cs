@@ -83,7 +83,7 @@ public class UltimateFracturingFPS : MonoBehaviour
 
             if(Weapon) Weapon.GetComponent<Renderer>().enabled = false;
 
-            if(Input.GetKeyDown(KeyCode.Space))
+			if(Input.GetKeyDown(KeyCode.V))
             {
                 GameObject newObject = GameObject.Instantiate(ObjectToShoot) as GameObject;
                 newObject.transform.position   = this.transform.position;
@@ -125,6 +125,7 @@ public class UltimateFracturingFPS : MonoBehaviour
                 {
                     // Hit it!
                     chunkRaycast.Impact(hitInfo.point, ExplosionForce, ExplosionRadius, true);
+
                 }
             }
         }
