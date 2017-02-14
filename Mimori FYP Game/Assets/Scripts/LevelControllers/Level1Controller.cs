@@ -27,7 +27,7 @@ public class Level1Controller : MonoBehaviour {
     [Header("Boss Information")]
     public GameObject bossInfoPanel;
     public Text bossNameText;
-    public Image bossImage;
+    //public Image bossImage;
     public Slider bossHealthSlider;
 
     public GameObject EoEAbsorbParticle;

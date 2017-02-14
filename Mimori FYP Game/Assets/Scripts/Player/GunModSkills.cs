@@ -91,8 +91,8 @@ public class GunModSkills : MonoBehaviour
 				{
                     //eoeChargeTime = 0;
                     //eoeSkillPref.transform.localScale = originalSize;
-                    gameObject.GetComponent<Health>().manabar -= 1;
-                    gameObject.GetComponent<Health>().manabarslider.value -= 1;
+                    gameObject.GetComponent<Health>().manabar -= 60;
+                    gameObject.GetComponent<Health>().manabarslider.value -= 60;
                     eoeCD = 5;
                     Debug.Log("boom");
                     eoe = (GameObject)Instantiate(eoeSkillPref, gunEnd.position, gunEnd.rotation);
