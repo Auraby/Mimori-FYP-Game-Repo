@@ -163,6 +163,8 @@ public class EnmarController : MonoBehaviour {
         //enmarHead.transform.Rotate()
         isPlayerGrounded = FirstPersonController.instance.m_CharacterController.isGrounded;
 
+        CheatToSetEnmarHealthTo20();
+
         if(enmarCurrentHealth <= 0)
         {   
             enmarState = FSMState.Dying;
@@ -661,4 +663,12 @@ public class EnmarController : MonoBehaviour {
 
     #endregion
 
+
+    public void CheatToSetEnmarHealthTo20()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            enmarCurrentHealth = 20;
+        }
+    }
 }

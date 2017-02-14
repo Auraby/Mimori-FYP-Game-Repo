@@ -17,14 +17,14 @@ public class FireBallController : MonoBehaviour {
 
     void Update()
     {
-        //seconds += Time.deltaTime;
+        seconds += Time.deltaTime;
 
-        //if (seconds >= time)
-        //{
-        //    //Debug.Log("devolvido");
-        //    pooling.DevolveInstance(gameObject);
-        //    seconds = 0;
-        //}
+        if (seconds >= time)
+        {
+            //Debug.Log("devolvido");
+            pooling.DevolveInstance(gameObject);
+            seconds = 0;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -35,9 +35,9 @@ public class FireBallController : MonoBehaviour {
             pooling.DevolveInstance(gameObject);
         }
 
-        else
-        {
-            pooling.DevolveInstance(gameObject);
-        }
+        //else
+        //{
+        //    pooling.DevolveInstance(gameObject);
+        //}
     }
 }

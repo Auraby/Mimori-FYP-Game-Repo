@@ -204,6 +204,7 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        TelePlayerToGate();
         CheckJournalStatus();
         //check if in combat
         if (SceneManager.GetActiveScene().name == "Mimori") {
@@ -546,4 +547,14 @@ public class Player : MonoBehaviour {
 
 		}*/
 
+    void TelePlayerToGate()
+    {
+        if (SceneManager.GetActiveScene().name == "Temple of Aphelion")
+        {
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                transform.position = new Vector3(0, 55, 480);
+            }
+        }
+    }
 }
