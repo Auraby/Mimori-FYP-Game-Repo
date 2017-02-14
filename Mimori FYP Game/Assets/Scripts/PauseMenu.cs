@@ -84,7 +84,8 @@ public class PauseMenu : MonoBehaviour {
 
     public void ToMainMenu()
     {
-        aSyncOp.allowSceneActivation = true;
+        //aSyncOp.allowSceneActivation = true;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void ExitGame() {

@@ -27,7 +27,7 @@ public class Level1Controller : MonoBehaviour {
     [Header("Boss Information")]
     public GameObject bossInfoPanel;
     public Text bossNameText;
-    public Image bossImage;
+    //public Image bossImage;
     public Slider bossHealthSlider;
 
     public GameObject EoEAbsorbParticle;
@@ -51,7 +51,6 @@ public class Level1Controller : MonoBehaviour {
     public static Level1Controller instance { get; set; }
 
     float absorbingCD = 6f;
-    public static bool enmarAbsorbed = false;
     Vector3 particleOriginalPos;
 	// Use this for initialization
 	void Start () {
@@ -92,7 +91,7 @@ public class Level1Controller : MonoBehaviour {
             if (absorbingCD > 0) {
                 absorbingCD -= Time.deltaTime;
                 if (absorbingCD <= 2) {
-                    Shoot.EnmarModTaken = true;
+                    GameController.gameController.enmarAbsorbed = true;
                     EoEAbsorbParticle.transform.position = particleOriginalPos;
                 }
                 else
@@ -101,9 +100,12 @@ public class Level1Controller : MonoBehaviour {
                 }
             } 
             if (absorbingCD <= 0) {
-                enmarAbsorbed = true;
+                if (!GameController.gameController.enmarAbsorbed) {
+                    GameController.gameController.checkSkillPoint++;
+                    GameController.gameController.enmarAbsorbed = true;
+                }
+                
             }
-            
             GameController.gameController.fightingBoss = false;
         }
         else {
@@ -148,8 +150,8 @@ public class Level1Controller : MonoBehaviour {
 
             case LevelState.Playing:
                 {
-                    bossNameText.text = "Prevent Enmar from destroying the gate:";
-                    currObjective.text = "Prevent Enmar from destroying the gate:";
+                    bossNameText.text = "Enmar";
+                    currObjective.text = "Defend the gate";
                     objectiveSlider.gameObject.SetActive(true);
 
                     bossInfoPanel.SetActive(true);             

@@ -18,7 +18,7 @@ public class FoMController : MonoBehaviour {
     bool playedHordeBGM = false;
     bool playedZoltranBGM = false;
 	bool hordeOn = false;
-	float timeRemaining = 10f;
+	float timeRemaining = 30f;
 	float spawnCD;
     bool hordeSpawned = false;
 	// Use this for initialization
@@ -106,7 +106,7 @@ public class FoMController : MonoBehaviour {
 			blockPlayer.SetActive (true);
 			if (timeRemaining > 0) {
 				timeRemaining -= Time.deltaTime;
-				cdText.text = timeRemaining.ToString("F0");
+				cdText.text = "Survive for: "+timeRemaining.ToString("F0")+" seconds";
 				hordeOn = true;
 			}
 			if (timeRemaining <= 0) {

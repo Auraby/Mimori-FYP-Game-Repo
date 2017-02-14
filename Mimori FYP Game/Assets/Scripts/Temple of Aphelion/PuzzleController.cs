@@ -7,11 +7,13 @@ public class PuzzleController : MonoBehaviour {
     public GameObject[] plates;
     public GameObject door;
     public AudioClip opening;
+    public GameObject portal;
 
     public static bool on1 = false;
     public static bool on2 = false;
     public static bool on3 = false;
     public static bool on4 = false;
+    public static bool checkPuzzle = false;
 
     bool passChecked = false;
     float resetCD = 2f;
@@ -27,7 +29,8 @@ public class PuzzleController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (plates[3].GetComponent<Renderer>().material.color == Color.green && door.transform.position.y < 85) {
+        CheckPuzzleRightWrong();
+        if (plates[3].GetComponent<Renderer>().material.color == Color.green && door.transform.position.y < 60) {
             transform.Translate(Vector3.up * 3.9f * Time.deltaTime);
             if (!soundPlayed) {
                 GetComponent<AudioSource>().PlayOneShot(opening, 10);
@@ -35,8 +38,15 @@ public class PuzzleController : MonoBehaviour {
             }
             
         }
-
         ResetPlates();
+
+        if (GameController.gameController.ishiraAbsorbed)
+        {
+            portal.SetActive(true);
+        }
+        else {
+            portal.SetActive(false);
+        }
     }
 
     void ResetPlates() {
@@ -60,11 +70,12 @@ public class PuzzleController : MonoBehaviour {
             on2 = false;
             on3 = false;
             on4 = false;
+            checkPuzzle = false;
         }
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Player" && !passChecked) {
+    void CheckPuzzleRightWrong() {
+        if (checkPuzzle && !passChecked) {
             if (plates[3].GetComponent<Renderer>().material.color == Color.yellow &&
                 plates[0].GetComponent<Renderer>().material.color == Color.yellow &&
                 plates[2].GetComponent<Renderer>().material.color == Color.yellow &&

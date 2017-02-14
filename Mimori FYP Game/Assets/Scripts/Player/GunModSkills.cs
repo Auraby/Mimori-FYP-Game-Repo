@@ -8,7 +8,6 @@ public class GunModSkills : MonoBehaviour
 	//EoE
 	public GameObject eoeSkillPref;
 	public Transform gunEnd;
-	public Image eoeImg;
 
 	float eoeChargeTime;
 	float eoeDestroyTime;
@@ -55,7 +54,7 @@ public class GunModSkills : MonoBehaviour
 		if (SceneManager.GetActiveScene().name != "Gate of Telluris")
 		{
 			//EyeOfEnmar();
-			HeartOfIshira();
+			//HeartOfIshira();
 			if (SceneManager.GetActiveScene().name == "Forest of Misery")
 			{
 				//SoulOfZoltran();
@@ -71,6 +70,7 @@ public class GunModSkills : MonoBehaviour
 		//Charging Eye of Enmar's skill
 		if (gameObject.GetComponent<Shoot>().gunmodcounter == 0 && gameObject.GetComponent<Health> ().manabar >= 100)
 		{
+            Debug.Log(eoeChargeTime);
 			if (eoe != null)
 			{
 				scale = eoe.transform.localScale;
@@ -80,8 +80,6 @@ public class GunModSkills : MonoBehaviour
 			{
 				if (Input.GetButton("Fire2"))
 				{
-					gameObject.GetComponent<Health> ().manabar -= 100;
-					gameObject.GetComponent<Health> ().manabarslider.value -= 100;
 					if (eoeChargeTime < 15)
 					{
 						eoeChargeTime += Time.deltaTime * 5;
@@ -91,10 +89,13 @@ public class GunModSkills : MonoBehaviour
 				}
 				if (Input.GetButtonUp("Fire2"))
 				{
-					//eoeChargeTime = 0;
-					//eoeSkillPref.transform.localScale = originalSize;
-					eoeCD = 5;
-					eoe = (GameObject)Instantiate(eoeSkillPref, gunEnd.position, gunEnd.rotation);
+                    //eoeChargeTime = 0;
+                    //eoeSkillPref.transform.localScale = originalSize;
+                    gameObject.GetComponent<Health>().manabar -= 60;
+                    gameObject.GetComponent<Health>().manabarslider.value -= 60;
+                    eoeCD = 5;
+                    Debug.Log("boom");
+                    eoe = (GameObject)Instantiate(eoeSkillPref, gunEnd.position, gunEnd.rotation);
 					startDestroy = true;
 				}
 			}
@@ -155,9 +156,6 @@ public class GunModSkills : MonoBehaviour
 
 			if (castingDecoy)
 			{
-				gameObject.GetComponent<Health> ().manabar -= 80;
-				gameObject.GetComponent<Health> ().manabarslider.value -= 80;
-
 				RaycastHit hit;
 				Ray ray = new Ray(camera.transform.position, camera.transform.forward);
 				if (terrain.GetComponent<Collider>().Raycast(ray, out hit, Mathf.Infinity))
@@ -180,8 +178,10 @@ public class GunModSkills : MonoBehaviour
 				{
 					if (Vector3.Distance(lookPos, transform.position) <= 30)
 					{
-						tempDecoy.transform.position = castingOriginalPos;
-						GameObject dropDecoy = (GameObject)Instantiate(decoy, new Vector3(lookPos.x, lookPos.y + 2, lookPos.z), Quaternion.identity);
+                        gameObject.GetComponent<Health>().manabar -= 60;
+                        gameObject.GetComponent<Health>().manabarslider.value -= 60;
+                        tempDecoy.transform.position = castingOriginalPos;
+						GameObject dropDecoy = (GameObject)Instantiate(decoy, new Vector3(lookPos.x, lookPos.y, lookPos.z), Quaternion.identity);
 						castingDecoy = false;
 						dropDecoy.tag = "Player";
 						this.gameObject.tag = "PlayerTemp";

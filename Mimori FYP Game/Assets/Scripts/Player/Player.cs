@@ -22,16 +22,23 @@ public class Player : MonoBehaviour {
 	public GameObject gun;
 	public GameObject bulletPrefab;
 	public GameObject leechingbulletPrefab;
-    public GameObject muzzleFlash;
 	public Transform gunEnd;
-	public Image eoeImg;
-
-	public GameObject eoe;
-	public GameObject eoeParticle;
 
     public GameObject dialogueBox;
-	//Cannon Mechanics
-	public float ChargingTime;
+
+    //Journal Entries
+    public Button JournalEntryBtn1;
+    public Button JournalEntryBtn2;
+    public Button JournalEntryBtn3;
+    public Button JournalEntryBtn4;
+
+    public Text JournalEntryTXT1;
+    public Text JournalEntryTXT2;
+    public Text JournalEntryTXT3;
+    public Text JournalEntryTXT4;
+
+    //Cannon Mechanics
+    public float ChargingTime;
 	public float ChargeFire = 3.0f;
 	public GameObject cannonChargingEffect;
 	public GameObject bullet_cannonPrefab;
@@ -69,7 +76,7 @@ public class Player : MonoBehaviour {
 	public float shootrate = 0;
 
 	//Justin's shootrate
-	public float fireDelay = 0.6f;
+	public float fireDelay = 0.3f;
 	public float currfireDelay;
     //Combat sounds
     public AudioClip combat;
@@ -124,7 +131,7 @@ public class Player : MonoBehaviour {
                         {
                             DialogueTriggered(other);
                         }
-                        if (DialogueManager.enmarDialogueCount == 2 && Level1Controller.enmarAbsorbed)
+                        if (DialogueManager.enmarDialogueCount == 2 && GameController.gameController.enmarAbsorbed)
                         {
                             DialogueTriggered(other);
                         }
@@ -197,6 +204,8 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        TelePlayerToGate();
+        CheckJournalStatus();
         //check if in combat
         if (SceneManager.GetActiveScene().name == "Mimori") {
             if (inCombatCD > 0)
@@ -261,10 +270,10 @@ public class Player : MonoBehaviour {
             this.gameObject.GetComponent<Health>().currentHealth = 100;
         }
 		if (Input.GetKeyDown (KeyCode.Z)) {
-			this.gameObject.GetComponent<SkillTree> ().checkSkillPoint = 5;
+			GameController.gameController.checkSkillPoint = 5;
 		}
 		if (Input.GetKeyDown (KeyCode.X)) {
-			this.gameObject.GetComponent<SkillTree> ().checkSkillPoint = this.gameObject.GetComponent<SkillTree> ().skillpointspent;
+            GameController.gameController.checkSkillPoint = this.gameObject.GetComponent<SkillTree> ().skillpointspent;
 			this.gameObject.GetComponent<SkillTree> ().LockAllSpell ();
 		}
 
@@ -340,7 +349,6 @@ public class Player : MonoBehaviour {
 					} else {
 						// Create the Bullet from the Bullet Prefab
 						GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
-						//GameObject muzzle = (GameObject)Instantiate(muzzleFlash, gunEnd.position, gunEnd.rotation,gunEnd);
 						transform.GetChild (0).GetComponent<AudioSource> ().Play ();
 						// Add velocity to the bullet
 						bullet.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
@@ -421,7 +429,7 @@ public class Player : MonoBehaviour {
 			if (hit.collider.tag == "InteractObject" && Vector3.Distance (hit.transform.position, this.gameObject.transform.position) < 7) {
 				//Debug.Log (" Looking At " + hit.collider.name.ToString());
 				tempHit = hit;
-				if (tempHit.collider != null) {
+				if (tempHit.collider != null && tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>() != null) {
 					//tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.shader = outline;
 					tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.SetColor("_OutlineColor",Color.green);
 				}
@@ -430,20 +438,32 @@ public class Player : MonoBehaviour {
 					interactText.gameObject.SetActive(true);
 				}
 				if (Input.GetKeyDown (KeyCode.F)) {
-					if (hit.collider.name == "enmarDead") {
-						eoeParticle.SetActive (true);
-						eoe.SetActive (true);
-						//hit.collider.GetComponent<FadeObjectInOut> ().FadeOut (4f);
-						hit.collider.GetComponent<FadeObjectInOut>().interacted = true;
-						hit.collider.tag = "Untagged";
-					}
+                    if (hit.collider.name == "JournalEntry1")
+                    {
+                        GameController.gameController.houseTrapActivated = true;
+                        GameController.gameController.checkSkillPoint ++;
+                        hit.collider.gameObject.SetActive(false);
+                    }
+                    if (hit.collider.name == "JournalEntry2")
+                    {
+                        GameController.gameController.journal2Unlocked = true;
+                        GameController.gameController.checkSkillPoint++;
+                        Destroy(hit.collider.gameObject);
+                    }
+                    if (hit.collider.name == "JournalEntry3")
+                    {
+                        GameController.gameController.journal3Unlocked = true;
+                        GameController.gameController.checkSkillPoint++;
+                        Destroy(hit.collider.gameObject);
+                    }
+                    if (hit.collider.name == "JournalEntry4")
+                    {
+                        GameController.gameController.journal4Unlocked = true;
+                        GameController.gameController.checkSkillPoint++;
+                        Destroy(hit.collider.gameObject);
+                    }
 
-					if (hit.collider.name == "EoE") {
-						eoe.SetActive (false);
-						eoeImg.gameObject.SetActive (true);
-					}
-
-					if (hit.collider.name == "Door_a") {
+                    if (hit.collider.name == "Door_a") {
 						hit.collider.GetComponent<Animation> ().Play ();
                         hit.collider.GetComponent<AudioSource>().Play ();
 					}
@@ -454,9 +474,23 @@ public class Player : MonoBehaviour {
 						hit.collider.gameObject.SetActive(false);
 						FoMController.timerStart = true;
 					}
+                    if (hit.collider.name == "SoulOfZoltran") {
+                        GameController.gameController.zoltranAbsorbed = true;
+                        GameController.gameController.checkSkillPoint++;
+                        hit.collider.gameObject.SetActive(false);
+                    }
+                    if (hit.collider.name == "HeartOfIshira")
+                    {
+                        GameController.gameController.ishiraAbsorbed = true;
+                        GameController.gameController.checkSkillPoint++;
+                        hit.collider.gameObject.SetActive(false);
+                    }
+                    if (hit.collider.name == "PuzzleLever") {
+                        PuzzleController.checkPuzzle = true;
+                    }
 				}
 			} else {
-				if (tempHit.collider != null) {
+				if (tempHit.collider != null && tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>() != null) {
 					//tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.shader = unoOutline;
 					tempHit.collider.GetComponent<Collider>().GetComponent<Renderer>().material.SetColor("_OutlineColor",Color.black);
 				}
@@ -466,27 +500,29 @@ public class Player : MonoBehaviour {
 			}
 
 		}
-
-
-
-		//Save Load Test
-		if(Input.GetKeyDown(KeyCode.F5)){
-			GameController.gameController.playerPositionX = transform.position.x;
-			GameController.gameController.playerPositionY = transform.position.y;
-			GameController.gameController.playerPositionZ = transform.position.z;
-
-			GameController.gameController.Save ();
-		}
-
-		if(Input.GetKeyDown(KeyCode.F9)){
-			GameController.gameController.Load ();
-			transform.position = new Vector3 (
-				GameController.gameController.playerPositionX,
-				GameController.gameController.playerPositionY,
-				GameController.gameController.playerPositionZ
-			);
-		}
 	}
+
+    void CheckJournalStatus() {
+        if (GameController.gameController.houseTrapActivated && !JournalEntryBtn1.interactable) {
+            JournalEntryBtn1.interactable = true;
+            JournalEntryTXT1.text = "Town Of Telluris";
+        }
+        if (GameController.gameController.journal2Unlocked && !JournalEntryBtn2.interactable)
+        {
+            JournalEntryBtn2.interactable = true;
+            JournalEntryTXT2.text = "Forest Of Misery";
+        }
+        if (GameController.gameController.journal3Unlocked && !JournalEntryBtn3.interactable)
+        {
+            JournalEntryBtn3.interactable = true;
+            JournalEntryTXT3.text = "Temple Of Ishira";
+        }
+        if (GameController.gameController.journal4Unlocked && !JournalEntryBtn4.interactable)
+        {
+            JournalEntryBtn4.interactable = true;
+            JournalEntryTXT4.text = "Lost Crater";
+        }
+    }
 
 	///Justin's Toggle COde
 	/*public void ToggleSentryMode(){
@@ -511,4 +547,14 @@ public class Player : MonoBehaviour {
 
 		}*/
 
+    void TelePlayerToGate()
+    {
+        if (SceneManager.GetActiveScene().name == "Temple of Aphelion")
+        {
+            if (Input.GetKeyDown(KeyCode.B))
+            {
+                transform.position = new Vector3(0, 55, 480);
+            }
+        }
+    }
 }

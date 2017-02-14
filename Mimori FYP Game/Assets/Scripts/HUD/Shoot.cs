@@ -32,9 +32,9 @@ public class Shoot : MonoBehaviour {
 	public Image EnmarMod;
 	public Image ZoltranMod;
 	public Image IshiraMod;
-	public static bool EnmarModTaken = false;
-	public static bool ZoltranModTaken = false;
-	public static bool IshiraModTaken = false;
+	public bool EnmarModTaken = false;
+	public bool ZoltranModTaken = false;
+	public bool IshiraModTaken = false;
 
 	public GameObject[] GunModSlots = new GameObject[3];
 
@@ -63,13 +63,23 @@ public class Shoot : MonoBehaviour {
         if (SceneManager.GetActiveScene().name == "Mimori") {
             EnmarModTaken = true;
         }
+        if (SceneManager.GetActiveScene().name == "Forest of Misery")
+        {
+            EnmarModTaken = true;
+        }
         if (SceneManager.GetActiveScene().name == "Temple of Aphelion") {
+            EnmarModTaken = true;
             ZoltranModTaken = true;
         }
-		
-		//IshiraModTaken = true;
+        if (SceneManager.GetActiveScene().name == "Lost Crater")
+        {
+            EnmarModTaken = true;
+            ZoltranModTaken = true;
+            IshiraModTaken = true;
+        }
+        //IshiraModTaken = true;
 
-		Eupdatecounter = 1;
+        Eupdatecounter = 1;
 		Zupdatecounter = 1;
 		Iupdatecounter = 1;
 
@@ -78,36 +88,20 @@ public class Shoot : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
-			//Debug.Log ("Shoot");
-			//IsCharging = true;
-			//gameObject.GetComponent<Health> ().manabarslider.value -= 5.0f;
-			//gameObject.GetComponent<Health> ().manabar -= 5.0f;
-		}
-
-		//if (currGunIsAuto) {}
-			if (Input.GetMouseButton (0)) {
-				//Debug.Log ("Charging");
-			if (IsCharging && gameObject.GetComponent<Player>().isIronSight < 1) {
-				
-//					GameObject ChargeBullet = Instantiate (ChargingEffect, gameObject.GetComponent<Player> ().gunEnd.position, gameObject.GetComponent<Player> ().gunEnd.rotation) as GameObject;
-//					ChargeBullet.transform.parent = transform;
-//					Destroy (ChargeBullet, 1.0f);
-				}
-				//ChargingTime += Time.deltaTime;
-			}
-
-			
-
-		if (Input.GetMouseButtonUp (0)) {
-//			ChargingTime = 0f;
-//			Destroy (ChargeBullet, 1.0f);
-		}
-
-
-
-		//Check Counter If Exceeded
-		if (gunmodcounter > 2) {
+        Debug.Log(gunmodcounter);
+        if (GameController.gameController.enmarAbsorbed) {
+            EnmarModTaken = true;
+        }
+        if (GameController.gameController.zoltranAbsorbed)
+        {
+            ZoltranModTaken = true;
+        }
+        if (GameController.gameController.ishiraAbsorbed)
+        {
+            IshiraModTaken = true;
+        }
+        //Check Counter If Exceeded
+        if (gunmodcounter > 2) {
 			gunmodcounter = 0;
 		}
 		if (gunmodcounter < 0) {
@@ -118,9 +112,12 @@ public class Shoot : MonoBehaviour {
 			gameObject.GetComponent<GunModSkills> ().EyeOfEnmar ();
 		} else if (gunmodcounter == 1 && ZoltranModTaken == true) {
 			gameObject.GetComponent<GunModSkills> ().SoulOfZoltran ();
-		}
+		}else if (gunmodcounter == 2 && IshiraModTaken == true)
+        {
+            gameObject.GetComponent<GunModSkills>().SoulOfZoltran();
+        }
 
-		if (EnmarModTaken == true && Eupdatecounter == 1) {
+        if (EnmarModTaken == true && Eupdatecounter == 1) {
 			EnmarMod.gameObject.SetActive (true);
 			currModAmt = 1;
 			Eupdatecounter = 0;
