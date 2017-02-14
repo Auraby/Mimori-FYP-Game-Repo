@@ -403,7 +403,7 @@ public class SkillTree : MonoBehaviour {
 						gameObject.GetComponent<Health> ().healthbarslider.value += 30;
 						gameObject.GetComponent<Health> ().manabar -= 100;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 100;
-					} else if (spell1activate) {
+					} else if (spell2activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -411,7 +411,7 @@ public class SkillTree : MonoBehaviour {
 					}
 					break;
 				case "Mana Skill3":
-					if (gameObject.GetComponent<Health> ().manabar >= 35 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 35 && !spell2activate) {
 						Skillspelleffect2 = (GameObject)Instantiate (skilleffect1, playerobj.transform.position, Quaternion.identity);
 						spell2.gameObject.SetActive (true);
 						spell2activate = true;
@@ -421,7 +421,7 @@ public class SkillTree : MonoBehaviour {
 						leechingbulletDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (leechingbulletDurationImage,leechingbulletactivated, 10));
 						//StartCoroutine (SpellCoolDown (spell1,30, spell1activate));
-					} else if (spell1activate) {
+					} else if (spell2activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -457,7 +457,7 @@ public class SkillTree : MonoBehaviour {
 					//sentrymodeactivated = false;
 					break;
 				case "Speed Skill1": //Thunder Rush
-					if (gameObject.GetComponent<Health> ().manabar >= 50 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 50 && !spell2activate) {
 						Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
 						spell2.gameObject.SetActive (true);
 						spell2activate = true;
@@ -474,7 +474,7 @@ public class SkillTree : MonoBehaviour {
 
 						ThunderRushDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (ThunderRushDurationImage, thunderrushactivated, 5));
-					}else if (spell1activate) {
+					}else if (spell2activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -483,7 +483,7 @@ public class SkillTree : MonoBehaviour {
 					break;
 				case "Power Skill3":
 
-					if (gameObject.GetComponent<Health> ().manabar >= 70 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 70 && !spell2activate) {
 						Skillspelleffect2 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
 						spell2.gameObject.SetActive (true);
 						spell2activate = true;
@@ -492,7 +492,7 @@ public class SkillTree : MonoBehaviour {
 						gameObject.GetComponent<Health> ().manabarslider.value -= 70;
 						BerserkerDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (BerserkerDurationImage, berserkeractivated, 20));
-					} else if (spell1activate) {
+					} else if (spell2activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -532,7 +532,7 @@ public class SkillTree : MonoBehaviour {
 						gameObject.GetComponent<Health> ().healthbarslider.value += 30;
 						gameObject.GetComponent<Health> ().manabar -= 100;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 100;
-					} else if (spell1activate) {
+					} else if (spell3activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -540,7 +540,7 @@ public class SkillTree : MonoBehaviour {
 					}
 					break;
 				case "Mana Skill3":
-					if (gameObject.GetComponent<Health> ().manabar >= 35 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 35 && !spell3activate) {
 						Skillspelleffect3 = (GameObject)Instantiate (skilleffect1, playerobj.transform.position, Quaternion.identity);
 						spell3.gameObject.SetActive (true);
 						spell3activate = true;
@@ -550,7 +550,7 @@ public class SkillTree : MonoBehaviour {
 						leechingbulletDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (leechingbulletDurationImage,leechingbulletactivated, 10));
 						//StartCoroutine (SpellCoolDown (spell1,30, spell1activate));
-					} else if (spell1activate) {
+					} else if (spell3activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -586,7 +586,7 @@ public class SkillTree : MonoBehaviour {
 					//sentrymodeactivated = false;
 					break;
 				case "Speed Skill1": //Thunder Rush
-					if (gameObject.GetComponent<Health> ().manabar >= 50 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 50 && !spell3activate) {
 						Skillspelleffect3 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
 						spell3.gameObject.SetActive (true);
 						spell3activate = true;
@@ -603,7 +603,7 @@ public class SkillTree : MonoBehaviour {
 
 						ThunderRushDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (ThunderRushDurationImage, thunderrushactivated, 5));
-					}else if (spell1activate) {
+					}else if (spell3activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -612,7 +612,7 @@ public class SkillTree : MonoBehaviour {
 					break;
 				case "Power Skill3":
 
-					if (gameObject.GetComponent<Health> ().manabar >= 70 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 70 && !spell3activate) {
 						Skillspelleffect3 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
 						spell3.gameObject.SetActive (true);
 						spell3activate = true;
@@ -621,7 +621,7 @@ public class SkillTree : MonoBehaviour {
 						gameObject.GetComponent<Health> ().manabarslider.value -= 70;
 						BerserkerDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (BerserkerDurationImage, berserkeractivated, 20));
-					} else if (spell1activate) {
+					} else if (spell3activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -661,7 +661,7 @@ public class SkillTree : MonoBehaviour {
 						gameObject.GetComponent<Health> ().healthbarslider.value += 30;
 						gameObject.GetComponent<Health> ().manabar -= 100;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 100;
-					} else if (spell1activate) {
+					} else if (spell4activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -669,7 +669,7 @@ public class SkillTree : MonoBehaviour {
 					}
 					break;
 				case "Mana Skill3":
-					if (gameObject.GetComponent<Health> ().manabar >= 35 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 35 && !spell4activate) {
 						Skillspelleffect4 = (GameObject)Instantiate (skilleffect1, playerobj.transform.position, Quaternion.identity);
 						spell4.gameObject.SetActive (true);
 						spell4activate = true;
@@ -679,7 +679,7 @@ public class SkillTree : MonoBehaviour {
 						leechingbulletDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (leechingbulletDurationImage,leechingbulletactivated, 10));
 						//StartCoroutine (SpellCoolDown (spell1,30, spell1activate));
-					} else if (spell1activate) {
+					} else if (spell4activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -715,7 +715,7 @@ public class SkillTree : MonoBehaviour {
 					//sentrymodeactivated = false;
 					break;
 				case "Speed Skill1": //Thunder Rush
-					if (gameObject.GetComponent<Health> ().manabar >= 50 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 50 && !spell4activate) {
 						Skillspelleffect4 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
 						spell4.gameObject.SetActive (true);
 						spell4activate = true;
@@ -732,7 +732,7 @@ public class SkillTree : MonoBehaviour {
 
 						ThunderRushDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (ThunderRushDurationImage, thunderrushactivated, 5));
-					}else if (spell1activate) {
+					}else if (spell4activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
@@ -741,7 +741,7 @@ public class SkillTree : MonoBehaviour {
 					break;
 				case "Power Skill3":
 
-					if (gameObject.GetComponent<Health> ().manabar >= 70 && !spell1activate) {
+					if (gameObject.GetComponent<Health> ().manabar >= 70 && !spell4activate) {
 						Skillspelleffect4 = (GameObject)Instantiate (skilleffect3, playerobj.transform.position, Quaternion.identity);
 						spell4.gameObject.SetActive (true);
 						spell4activate = true;
@@ -750,7 +750,7 @@ public class SkillTree : MonoBehaviour {
 						gameObject.GetComponent<Health> ().manabarslider.value -= 70;
 						BerserkerDurationImage.gameObject.SetActive (true);
 						StartCoroutine (SpellDurations (BerserkerDurationImage, berserkeractivated, 20));
-					} else if (spell1activate) {
+					} else if (spell4activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
 					else {
