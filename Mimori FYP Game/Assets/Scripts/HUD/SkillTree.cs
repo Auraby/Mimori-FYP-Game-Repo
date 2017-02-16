@@ -7,6 +7,7 @@ using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using UnityStandardAssets.Characters.FirstPerson;
 
+
 public class SkillTree : MonoBehaviour {
 
 	//EventSystem
@@ -206,6 +207,7 @@ public class SkillTree : MonoBehaviour {
 		if (unlockLifePassive1 == true && unlockSpeedActive1 == true && classChosen == false) {
 			Gunslinger = true;
 			classChosen = true;
+			//Debug.Log ("Class Is Chosen");
 			playerobj.GetComponent<Player> ().fireDelay -= 1.5f;
 			playerobj.GetComponent<FirstPersonController>().m_WalkSpeed += 3.5f;
 			playerobj.GetComponent<FirstPersonController>().m_RunSpeed += 3.5f;
@@ -225,6 +227,7 @@ public class SkillTree : MonoBehaviour {
 		if (unlockManaPassive1 == true && unlockSpeedActive1 == true && classChosen == false ) {
 			classChosen = true;
 			Spellslinger = true;
+			//Debug.Log ("Class is Chosen");
 			gameObject.GetComponent<Health> ().maxmana += 20;
 			gameObject.GetComponent<Health> ().manabarslider.maxValue += 20;
 			playerobj.GetComponent<FirstPersonController>().m_WalkSpeed += 1.0f;
