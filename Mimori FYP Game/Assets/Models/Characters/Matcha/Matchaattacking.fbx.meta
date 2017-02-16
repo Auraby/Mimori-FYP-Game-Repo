@@ -110,7 +110,7 @@ ModelImporter:
     400100: Matcha_skel
     400102: //RootNode
     4300000: Matcha2
-    7400000: Take 001
+    7400000: MatchaAttack
     9500000: //RootNode
     11100000: //RootNode
     13700000: Matcha2
@@ -134,7 +134,139 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: MatchaAttack
+      takeName: Take 001
+      firstFrame: 31
+      lastFrame: 114
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Matcha_geo
+        weight: 1
+      - path: Matcha_geo/Matcha2
+        weight: 1
+      - path: Matcha_skel
+        weight: 1
+      - path: Matcha_skel/joint92
+        weight: 1
+      - path: Matcha_skel/joint92/joint48
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51/joint52
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51/joint52/joint53
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51/joint52/joint53/joint54
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51/joint52/joint53/joint54/joint55
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51/joint52/joint53/joint54/joint55/joint56
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51/joint52/joint53/joint54/joint55/joint56/joint57
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51/joint52/joint53/joint54/joint55/joint56/joint57/joint58
+        weight: 1
+      - path: Matcha_skel/joint92/joint48/joint49/joint50/joint51/joint52/joint53/joint54/joint55/joint56/joint57/joint58/joint80
+        weight: 1
+      - path: Matcha_skel/joint92/joint77
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61/joint62
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61/joint62/joint63
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61/joint64
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61/joint64/joint65
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61/joint66
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61/joint66/joint67
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61/joint68
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint59/joint60/joint61/joint68/joint69
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83/joint84
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83/joint84/joint85
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83/joint86
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83/joint86/joint87
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83/joint88
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83/joint88/joint89
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83/joint90
+        weight: 1
+      - path: Matcha_skel/joint92/joint77/joint81/joint82/joint83/joint90/joint91
+        weight: 1
+      - path: Matcha_skel/joint92/joint93
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96/joint97
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96/joint97/joint98
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96/joint99
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96/joint99/joint100
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96/joint99/joint100/joint101
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96/joint102
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96/joint102/joint103
+        weight: 1
+      - path: Matcha_skel/joint92/joint93/joint94/joint95/joint96/joint102/joint103/joint104
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
