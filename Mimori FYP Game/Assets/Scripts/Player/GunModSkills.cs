@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GunModSkills : MonoBehaviour
 {
 	//EoE
-	public GameObject eoeSkillPref;
+	public GameObject eoeSkillPref,eoeCharging;
 	public Transform gunEnd;
 
 	float eoeChargeTime;
@@ -15,7 +15,8 @@ public class GunModSkills : MonoBehaviour
 	bool startDestroy = false;
 	Vector3 originalSize;
 	Vector3 endSize;
-	GameObject eoe;
+	GameObject eoe,eoeCharge;
+    bool chargeInstantiated = false;
 
 	Vector3 scale;
 
@@ -68,7 +69,7 @@ public class GunModSkills : MonoBehaviour
 	{
 		//Debug.Log (originalSize+","+endSize);
 		//Charging Eye of Enmar's skill
-		if (gameObject.GetComponent<Shoot>().gunmodcounter == 0 && gameObject.GetComponent<Health> ().manabar >= 100)
+		if (gameObject.GetComponent<Shoot>().gunmodcounter == 0)
 		{
             Debug.Log(eoeChargeTime);
 			if (eoe != null)
@@ -78,23 +79,30 @@ public class GunModSkills : MonoBehaviour
 
 			if (eoeCD <= 0)
 			{
-				if (Input.GetButton("Fire2"))
+				if (Input.GetButton("Fire2") && gameObject.GetComponent<Health>().manabar >= 60)
 				{
 					if (eoeChargeTime < 15)
 					{
-						eoeChargeTime += Time.deltaTime * 5;
+                        if (!chargeInstantiated) {
+                            eoeCharge = (GameObject)Instantiate(eoeCharging, gunEnd.position, gunEnd.rotation);
+                            chargeInstantiated = true;
+                        }
+                        eoeChargeTime += Time.deltaTime * 5;
 						//endSize = new Vector3 (eoeChargeTime+1, eoeChargeTime+1, eoeChargeTime+1);
 						//eoeSkillPref.transform.localScale = Vector3.Lerp (originalSize, endSize, eoeChargeTime);
 					}
-				}
+                    eoeCharge.transform.position = gunEnd.transform.position;
+                }
 				if (Input.GetButtonUp("Fire2"))
 				{
+                    chargeInstantiated = false;
                     //eoeChargeTime = 0;
                     //eoeSkillPref.transform.localScale = originalSize;
                     gameObject.GetComponent<Health>().manabar -= 60;
                     gameObject.GetComponent<Health>().manabarslider.value -= 60;
                     eoeCD = 5;
                     Debug.Log("boom");
+                    Destroy(eoeCharge);
                     eoe = (GameObject)Instantiate(eoeSkillPref, gunEnd.position, gunEnd.rotation);
 					startDestroy = true;
 				}
@@ -105,9 +113,9 @@ public class GunModSkills : MonoBehaviour
 				//eoe.transform.localScale = Vector3.Lerp (originalSize, endSize, Time.deltaTime*10);
 				if (scale.x < eoeChargeTime)
 				{
-					scale.x += Time.deltaTime * 2.5f;
-					scale.y += Time.deltaTime * 2.5f;
-					scale.z += Time.deltaTime * 2.5f;
+					scale.x += Time.deltaTime * 4f;
+					scale.y += Time.deltaTime * 4f;
+					scale.z += Time.deltaTime * 4f;
 				}
 
 				if (eoeDestroyTime < 2)
