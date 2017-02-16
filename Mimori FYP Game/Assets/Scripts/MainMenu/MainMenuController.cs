@@ -29,13 +29,13 @@ public class MainMenuController : MonoBehaviour {
 
     //bool
     [Header("Bool Values")]
-    bool anyKeyPressed = false;
+    public bool anyKeyPressed = false;
 
-    bool playMMMoveinBool = false;
-    bool playMMMoveoutBool = false;
+    public bool playMMMoveinBool = false;
+    public bool playMMMoveoutBool = false;
 
-    bool playOMMoveInBool = false;
-    bool playOMMoveOutBool = false;
+    public bool playOMMoveInBool = false;
+    public bool playOMMoveOutBool = false;
 
     //Text blinking
     [Header("Text")]
