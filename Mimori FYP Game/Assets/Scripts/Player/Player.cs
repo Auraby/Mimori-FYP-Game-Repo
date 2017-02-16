@@ -284,10 +284,10 @@ public class Player : MonoBehaviour {
 			//fpc.IronSight = false;
 			if (gameObject.GetComponent<SkillTree> ().Gunslinger) {
 				fpc.m_WalkSpeed = 13.0f;
-				fpc.m_RunSpeed += 18.0f;
+				fpc.m_RunSpeed = 18.0f;
 			} else if (gameObject.GetComponent<SkillTree> ().Spellslinger) {
 				fpc.m_WalkSpeed = 11.0f;
-				fpc.m_RunSpeed += 16.0f;
+				fpc.m_RunSpeed = 16.0f;
 			} else {
 				fpc.m_WalkSpeed = 10.0f;
 			}

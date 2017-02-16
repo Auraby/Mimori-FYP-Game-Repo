@@ -88,7 +88,7 @@ public class Shoot : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(gunmodcounter);
+        //Debug.Log(gunmodcounter);
         if (GameController.gameController.enmarAbsorbed) {
             EnmarModTaken = true;
         }
