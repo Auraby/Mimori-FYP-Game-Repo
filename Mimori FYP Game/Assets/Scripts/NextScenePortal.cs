@@ -36,7 +36,6 @@ public class NextScenePortal : MonoBehaviour {
 	void Update () {
        // if (aSyncOp.allowSceneActivation == true)
        // {
-            Debug.Log(aSyncOp.progress);
        // }
 	}
 
