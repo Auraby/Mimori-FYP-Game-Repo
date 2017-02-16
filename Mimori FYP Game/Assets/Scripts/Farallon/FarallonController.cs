@@ -88,13 +88,20 @@ public class FarallonController : MonoBehaviour {
     public float chargeRotateSmooth = 0.5f;
     private Vector3 turnAroundAngle;
 
+    [Header("Slam Shockwave")]
+    public GameObject slamShockwave;
+    private GameObject slamShockwaveGO;
+    public Transform slamArea;
+
 
     [Header("Misc")]
-    private int attackRNG;
     public float distToTarget;
+    private int attackRNG;
     private string landingSpotName;
     public AudioSource dyingSound;
     public AudioSource shootfireballsound;
+    public float playerBulletDmg;
+    public Material farallonMat;
 
     //Temp
     [HideInInspector]
@@ -125,7 +132,7 @@ public class FarallonController : MonoBehaviour {
             //dyingSound.Play();
             currFaraState = FarallonStates.Dying;
         }
-        if(currWingHealth <= 0)
+        if(currWingHealth <= 0 || currHealth <= 500)
         {
             isWingDamaged = true;
         }
@@ -506,8 +513,9 @@ public class FarallonController : MonoBehaviour {
                                 if (FarallonPhasesController.instance.currentPhase == FarallonPhasesController.Phases.Phase1)
                                 {
                                     RotateTowardsTarget(nextWaypoint);
-                                    flightSpeed = 70;
-                                    FaraAnim.SetTrigger("Landing");
+                                    flightSpeed = 50;
+                                    //FaraAnim.SetTrigger("Landing");
+                                    FaraAnim.SetBool("WingDamaged", true);
                                     Fly(nextWaypoint);
                                     if (transform.position == nextWaypoint)
                                     {
@@ -981,6 +989,12 @@ public class FarallonController : MonoBehaviour {
         //transform.position = Vector3.MoveTowards(transform.position, localForward, chargeSpeed * Time.deltaTime);
         transform.position += transform.forward * Time.deltaTime * chargeSpeed;
     }
+
+    public void SlamAttack()
+    {
+        slamShockwaveGO = (GameObject)Instantiate(slamShockwave, new Vector3(slamArea.position.x - 14,slamArea.position.y + 1.5f,slamArea.position.z), slamShockwave.transform.rotation);
+        slamShockwaveGO.SetActive(true);
+    }
     #endregion
     //public void RotateToSpecificAngle(Vector3)
     #region Calculations
@@ -1008,7 +1022,8 @@ public class FarallonController : MonoBehaviour {
     {
         if (other.gameObject.tag == "Bullet")
         {
-            currHealth -= 20;
+            currHealth -= playerBulletDmg;
+            FarallonPhasesController.instance.faraHealthSlider.value -= playerBulletDmg;
         }
     }
     #endregion

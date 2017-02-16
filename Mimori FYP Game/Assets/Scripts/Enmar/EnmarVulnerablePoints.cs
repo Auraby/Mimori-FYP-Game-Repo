@@ -6,6 +6,7 @@ public class EnmarVulnerablePoints : MonoBehaviour {
     public enum BodyParts { Head, Body, Arm, Leg }
 
     public BodyParts currentBodyPart;
+    public Material enmarMaterial;
 
     public static EnmarVulnerablePoints instance { get; set; }
     // Use this for initialization
@@ -27,6 +28,8 @@ public class EnmarVulnerablePoints : MonoBehaviour {
                 case BodyParts.Head:
                     {
                         EnmarController.instance.enmarCurrentHealth -= 10;
+                        StartCoroutine(flashRed());
+                       
                     }
                     break;
 
@@ -50,5 +53,12 @@ public class EnmarVulnerablePoints : MonoBehaviour {
             }
         }
         
+    }
+
+    private IEnumerator flashRed()
+    {
+        enmarMaterial.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        enmarMaterial.color = Color.white;
     }
 }

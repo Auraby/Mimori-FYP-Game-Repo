@@ -22,7 +22,13 @@ public class Level1Controller : MonoBehaviour {
 
     public FracturedObject fracturedGate;
     public FracturedObject fracturedMetalGate;
-    //public fracture
+
+    //Wall getting destroyed
+    public GameObject cinematicCamera;
+    public GameObject playerObj;
+    //public GameObject hudCanvas;
+
+
 
     [Header("Boss Information")]
     public GameObject bossInfoPanel;
@@ -43,6 +49,8 @@ public class Level1Controller : MonoBehaviour {
     public float startTime;
     public float waitTime;
 
+
+    
     
 
     [HideInInspector]
@@ -171,6 +179,9 @@ public class Level1Controller : MonoBehaviour {
                 {
                     EnmarController.instance.enmarState = EnmarController.FSMState.GameOver;
                     StartCoroutine(WaitToExplode(10));
+                    playerObj.SetActive(false);
+                   // hudCanvas.SetActive(false);
+                    cinematicCamera.SetActive(true);
                     //fracturedMetalGate.Explode(fracturedMetalGate.gameObject.transform.position, 10);
                     //fracturedGate.CollapseChunks();
                     //fracturedMetalGate.CollapseChunks();
