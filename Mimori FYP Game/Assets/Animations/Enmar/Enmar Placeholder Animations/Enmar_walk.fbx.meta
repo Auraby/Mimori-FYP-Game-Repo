@@ -143,22 +143,15 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    animationImportErrors: 
-    animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'mixamorig:Spine2' is inbetween humanoid transforms
-      and has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: "\nRetargeting quality report for clip 'mixamo.com':\n\tLeftUpperArm
-      average position error 21.3 mm and maximum position error 34.6 mm at time 1:
-      1 (68.9%) Frame 31\n\tLeftLowerArm average position error 16.6 mm and maximum
-      position error 21.8 mm at time 1: 8 (84.4%) Frame 38\n\tLeftHand average position
-      error 13.8 mm and maximum position error 26.0 mm at time 1: 9 (86.7%) Frame
-      39\n\tRightUpperArm average position error 21.6 mm and maximum position error
-      28.7 mm at time 0: 7 (15.6%) Frame 7\n\tRightLowerArm average position error
-      17.0 mm and maximum position error 25.6 mm at time 1: 1 (68.9%) Frame 31\n\tRightHand
-      average position error 14.3 mm and maximum position error 23.7 mm at time 0:16
-      (35.6%) Frame 16\n\tHead average position error 18.5 mm and maximum position
-      error 24.7 mm at time 1: 1 (68.9%) Frame 31\n"
+    animationImportErrors: '
+
+      Imported file ''Enmar_walk'' conversion failed: Required human bone ''Hips''
+      not found
+
+
+'
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 1
     animationCompression: 3
     animationRotationError: 1
@@ -1027,7 +1020,8 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 323716ba37c6b8748a4581d720f80774,
+    type: 3}
   animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
