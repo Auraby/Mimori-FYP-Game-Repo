@@ -219,6 +219,12 @@ public class MainMenuController : MonoBehaviour {
         GetComponent<AudioSource>().Play();
     }
 
+    public void creditsButtonPressed()
+    {
+        GetComponent<AudioSource>().Play();
+        SceneManager.LoadScene("Credits");
+    }
+
     public void exitButtonPressed()
     {
         Application.Quit();
