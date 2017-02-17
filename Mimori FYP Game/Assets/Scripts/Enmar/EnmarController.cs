@@ -273,12 +273,12 @@ public class EnmarController : MonoBehaviour {
                     {
                         if(isRightHandAttack == true)
                         {
-                            iTween.RotateTo(gameObject, new Vector3(0, 143, 0), 3);
+                            iTween.RotateTo(gameObject, new Vector3(0, 142.484f, 0), 3);
                             
                         }
                         if(isLeftHandAttack == true)
                         {
-                            iTween.RotateTo(gameObject, new Vector3(0, 124, 0), 3);
+                            iTween.RotateTo(gameObject, new Vector3(0, 127.458f, 0), 3);
                             
                         }
 
@@ -348,7 +348,7 @@ public class EnmarController : MonoBehaviour {
                                         GetPlayerLocation();
                                         laserChargeTime = 0;
                                         Destroy(laserChargeGO);
-                                        laserOrigin.transform.LookAt(playerLastPos);
+                                        laserOrigin.transform.LookAt(new Vector3(playerLastPos.x,playerLastPos.y + 1.5f, playerLastPos.z));
                                         laserStatus = LaserState.Shooting;
 
                                     }
@@ -527,7 +527,7 @@ public class EnmarController : MonoBehaviour {
         enmarAnim.SetTrigger("AttackRight");
         shootingSoundPlayed = false;
         isRightHandAttack = true;
-        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, rightSide.transform.position, rightSide.transform.rotation);
+        StartCoroutine(DelayWarningCircleRight());
         GetComponent<AudioSource>().clip = slamRoar;
         GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().pitch = 1f;
@@ -543,7 +543,7 @@ public class EnmarController : MonoBehaviour {
         enmarAnim.SetTrigger("AttackLeft");
         shootingSoundPlayed = false;
         isLeftHandAttack = true;
-        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, leftSide.transform.position, leftSide.transform.rotation);
+        StartCoroutine(DelayWarningCircleLeft());
         GetComponent<AudioSource>().clip = slamRoar;
         GetComponent<AudioSource>().volume = 1f;
         GetComponent<AudioSource>().pitch = 1f;
@@ -635,7 +635,7 @@ public class EnmarController : MonoBehaviour {
         //float lerpValue = time / 3;
         //lerpValue = Mathf.Sin(lerpValue * Mathf.PI * 0.5f);
 
-        chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
+        //chargePulse.localScale = Vector3.Lerp(chargePulse.localScale, new Vector3(10, 10, 10), Time.deltaTime * 0.5f);
 
         if (laserChargeTime > 8)
         {
@@ -659,6 +659,19 @@ public class EnmarController : MonoBehaviour {
     {
         yield return new WaitForSeconds(sec);
         gameoverState = 4;
+    }
+
+    private IEnumerator DelayWarningCircleRight()
+    {
+        yield return new WaitForSeconds(2f);
+        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, rightSide.transform.position, rightSide.transform.rotation);
+    }
+
+    private IEnumerator DelayWarningCircleLeft()
+    {
+        yield return new WaitForSeconds(2f);
+        laserWarningCircleGO = (GameObject)Instantiate(laserWarningCircle, leftSide.transform.position, leftSide.transform.rotation);
+
     }
 
     #endregion

@@ -85,6 +85,7 @@ public class PauseMenu : MonoBehaviour {
     public void ToMainMenu()
     {
         //aSyncOp.allowSceneActivation = true;
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
     }
 
