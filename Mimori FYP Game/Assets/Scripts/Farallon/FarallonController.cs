@@ -132,7 +132,7 @@ public class FarallonController : MonoBehaviour {
             //dyingSound.Play();
             currFaraState = FarallonStates.Dying;
         }
-        if(currWingHealth <= 0 || currHealth <= 500)
+        if(currWingHealth <= 0)
         {
             isWingDamaged = true;
         }
@@ -1022,8 +1022,12 @@ public class FarallonController : MonoBehaviour {
     {
         if (other.gameObject.tag == "Bullet")
         {
-            currHealth -= playerBulletDmg;
-            FarallonPhasesController.instance.faraHealthSlider.value -= playerBulletDmg;
+            if(currFaraState == FarallonStates.Ground)
+            {
+                currHealth -= playerBulletDmg;
+                FarallonPhasesController.instance.faraHealthSlider.value -= playerBulletDmg;
+            }
+           
         }
     }
     #endregion

@@ -57,6 +57,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("enmar dialogue count: " + DialogueManager.enmarDialogueCount);
         Debug.Log(enmarAbsorbed);
         if (SceneManager.GetActiveScene().name != "MainMenu")
         {
@@ -156,6 +157,12 @@ public class GameController : MonoBehaviour
         {
             File.Delete(Application.persistentDataPath + "/PlayerInfo.mi");
         }
+
+        //Dialogues
+        DialogueManager.mimoriDialogueCount = 0;
+        DialogueManager.enmarDialogueCount = 0;
+        DialogueManager.forestDialogueCount = 0;
+        DialogueManager.templeIDialogueCount = 0;
     }
 }
 
