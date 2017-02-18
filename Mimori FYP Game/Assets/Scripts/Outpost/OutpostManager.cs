@@ -103,8 +103,8 @@ public class OutpostManager : MonoBehaviour
                 }
                 if (!Player.wSoundPlayed)
                 {
-                    //bgm.clip = winning;
-                    //bgm.Play();
+                    bgm.clip = winning;
+                    bgm.Play();
                     player.transform.position = teleBack.transform.position;
                     GameController.gameController.checkSkillPoint++;
                     Player.wSoundPlayed = true;

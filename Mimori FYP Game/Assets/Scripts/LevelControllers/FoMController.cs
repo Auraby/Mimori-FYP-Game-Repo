@@ -8,7 +8,7 @@ public class FoMController : MonoBehaviour {
 	public GameObject[] spawns;
 	public GameObject MeleeMinion, RangeMinion;
 	public static int minionCount;
-	public GameObject blockPlayer, magicBarrier;
+	public GameObject blockPlayer, magicBarrier, roarSoundTrigger;
     public GameObject generator;
     public AudioClip defaultBGM, hordeBGM, zoltranBGM;
     
@@ -45,6 +45,7 @@ public class FoMController : MonoBehaviour {
         if (GameController.gameController.hordeCleared) {
             generator.gameObject.SetActive(false);
             magicBarrier.gameObject.SetActive(false);
+            roarSoundTrigger.SetActive(true);
             if (playedHordeBGM) {
                 audio.volume -= Time.deltaTime;
             }

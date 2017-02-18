@@ -25,6 +25,8 @@ public class EnmarController : MonoBehaviour {
 
     public AudioClip slamRoar;
     public AudioClip slam;
+    public AudioClip stompSound;
+    public AudioClip dyingSound;
 
     public bool hasEnteredArea1 = false;
     public bool hasEnteredArea2 = false;
@@ -126,6 +128,7 @@ public class EnmarController : MonoBehaviour {
     public GameObject rightSide;
 
     bool isPlayerGrounded;
+    bool dyingSoundPlayed = false;
 
     private int gameoverState = 1;
     public Transform gameoverTargetPoint;
@@ -393,6 +396,13 @@ public class EnmarController : MonoBehaviour {
 
                 case FSMState.Dying:
                     {
+                        if (!dyingSoundPlayed) {
+                            GetComponent<AudioSource>().clip = slamRoar;
+                            GetComponent<AudioSource>().volume = 1f;
+                            GetComponent<AudioSource>().pitch = 1f;
+                            GetComponent<AudioSource>().Play();
+                            dyingSoundPlayed = true;
+                        }
                         enmarAnim.SetBool("EnmarDead", true);
                         enmarDied = true;
                         Destroy(laserChargeGO);
@@ -587,6 +597,10 @@ public class EnmarController : MonoBehaviour {
     public void shakeCamera()
     {
         player.GetComponent<CameraShake>().ShakeCamera(0.3f, 0.3f);
+        GetComponent<AudioSource>().clip = stompSound;
+        GetComponent<AudioSource>().volume = 1f;
+        GetComponent<AudioSource>().pitch = 1f;
+        GetComponent<AudioSource>().Play();
     }
 
     public void ResetRotation()
