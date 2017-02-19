@@ -35,6 +35,9 @@ public class ZoltranController : MonoBehaviour {
     //private float attackTime;
     //private int attackRNG;
     //private Transform playerTarget;
+    public AudioClip beamSound, dyingSound, shootingSound;
+    bool beamSoundPlayed = false, dyingSoundPlayed = false;
+
     [Header("Bullet Properties")]
     public ObjectPooling zoltranSoulShotPool;
     private GameObject soulShotGO;
@@ -539,7 +542,11 @@ public class ZoltranController : MonoBehaviour {
 
                             case ZoltranStates.Dying:
                                 {
-                                    
+                                    if (!dyingSoundPlayed) {
+                                        GetComponent<AudioSource>().clip = dyingSound;
+                                        GetComponent<AudioSource>().Play();
+                                        dyingSoundPlayed = true;
+                                    }
                                     StartZoltran.zoltranDied = true;
                                     GameController.gameController.fightingBoss = false;
                                     navAgent.Stop();
@@ -1015,6 +1022,12 @@ public class ZoltranController : MonoBehaviour {
 
         GameObject s2 = (GameObject)Instantiate(innerBeam, mouthEnd.transform.position, mouthEnd.transform.rotation);
         s1.GetComponent<BeamParam>().SetBeamParam(s1.GetComponent<BeamParam>());
+
+        if (!beamSoundPlayed) {
+            GetComponent<AudioSource>().clip = beamSound;
+            GetComponent<AudioSource>().Play();
+            beamSoundPlayed = true;
+        }
     }
 
     public void RushToPlayer()

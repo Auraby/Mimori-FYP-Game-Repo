@@ -65,7 +65,7 @@ public class Level1Controller : MonoBehaviour {
         EoEAbsorbParticle.transform.position = particleOriginalPos;
         instance = this;
         //Starting Cinematics
-        objectiveSlider.gameObject.SetActive(false);
+        //objectiveSlider.gameObject.SetActive(false);
         bossInfoPanel.SetActive(false);
 
         tempPortal.SetActive(false);
@@ -100,6 +100,7 @@ public class Level1Controller : MonoBehaviour {
                 absorbingCD -= Time.deltaTime;
                 if (absorbingCD <= 2) {
                     GameController.gameController.enmarAbsorbed = true;
+                    tempPortal.SetActive(true);
                     EoEAbsorbParticle.transform.position = particleOriginalPos;
                 }
                 else
@@ -121,7 +122,7 @@ public class Level1Controller : MonoBehaviour {
         }
 
         //Player health
-        if(Health.instance.currentHealth <= 0)
+        if(GetComponent<GameOverController>().playerDie == true)
         {
             playerDied = true;
             levelProgress = LevelState.Lose;
@@ -160,7 +161,7 @@ public class Level1Controller : MonoBehaviour {
                 {
                     bossNameText.text = "Enmar";
                     currObjective.text = "Defend the gate";
-                    objectiveSlider.gameObject.SetActive(true);
+                    //objectiveSlider.gameObject.SetActive(true);
 
                     bossInfoPanel.SetActive(true);             
                 }
@@ -169,9 +170,8 @@ public class Level1Controller : MonoBehaviour {
             case LevelState.Win:
                 {
                     currObjective.text = "Objective Completed";
-                    objectiveSlider.gameObject.SetActive(false);
+                    //objectiveSlider.gameObject.SetActive(false);
                     bossInfoPanel.SetActive(false);
-                    tempPortal.SetActive(true);
                 }
                 break;
 

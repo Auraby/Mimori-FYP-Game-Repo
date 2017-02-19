@@ -1,0 +1,469 @@
+fileFormatVersion: 2
+guid: f648360a5080ca44aa588445bb3a4abf
+timeCreated: 1487494235
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Ankle_L
+    100002: Ankle_R
+    100004: Chest_M
+    100006: DeformationSystem
+    100008: Elbow_L
+    100010: Elbow_R
+    100012: Eye_L
+    100014: Eye_R
+    100016: EyeEnd_L
+    100018: EyeEnd_R
+    100020: Geometry
+    100022: Head_M
+    100024: HeadEnd_M
+    100026: Hip_L
+    100028: Hip_R
+    100030: IndexFinger1_L
+    100032: IndexFinger1_R
+    100034: IndexFinger2_L
+    100036: IndexFinger2_R
+    100038: IndexFinger3_L
+    100040: IndexFinger3_R
+    100042: IndexFinger4_L
+    100044: IndexFinger4_R
+    100046: Jaw_M
+    100048: JawEnd_M
+    100050: Knee_L
+    100052: Knee_R
+    100054: //RootNode
+    100056: Main
+    100058: MiddleFinger1_L
+    100060: MiddleFinger1_R
+    100062: MiddleFinger2_L
+    100064: MiddleFinger2_R
+    100066: MiddleFinger3_L
+    100068: MiddleFinger3_R
+    100070: MiddleFinger4_L
+    100072: MiddleFinger4_R
+    100074: model:geo
+    100076: model:polySurface20
+    100078: model:polySurface21
+    100080: model:polySurface22
+    100082: model:polySurface23
+    100084: model:polySurface24
+    100086: model:polySurface25
+    100088: model:polySurface26
+    100090: model:polySurface27
+    100092: model:polySurface28
+    100094: model:polySurface29
+    100096: model:polySurface30
+    100098: Neck0_M
+    100100: Neck1_M
+    100102: Neck2_M
+    100104: Neck3_M
+    100106: Neck4_M
+    100108: Neck5_M
+    100110: RingFinger1_L
+    100112: RingFinger1_R
+    100114: RingFinger2_L
+    100116: RingFinger2_R
+    100118: RingFinger3_L
+    100120: RingFinger3_R
+    100122: RingFinger4_L
+    100124: RingFinger4_R
+    100126: Root_M
+    100128: Rump_L
+    100130: Rump_R
+    100132: Shoulder_L
+    100134: Shoulder_R
+    100136: Spear
+    100138: Spine1_M
+    100140: Spine2_M
+    100142: Tail0_M
+    100144: Tail1_M
+    100146: Tail2_M
+    100148: Tail3_M
+    100150: Tail4_M
+    100152: Tail5_M
+    100154: Tail6_M
+    100156: Toes1_L
+    100158: Toes1_R
+    100160: Toes_L
+    100162: Toes_R
+    100164: ToesEnd_L
+    100166: ToesEnd_R
+    100168: Wrist_L
+    100170: Wrist_R
+    400000: Ankle_L
+    400002: Ankle_R
+    400004: Chest_M
+    400006: DeformationSystem
+    400008: Elbow_L
+    400010: Elbow_R
+    400012: Eye_L
+    400014: Eye_R
+    400016: EyeEnd_L
+    400018: EyeEnd_R
+    400020: Geometry
+    400022: Head_M
+    400024: HeadEnd_M
+    400026: Hip_L
+    400028: Hip_R
+    400030: IndexFinger1_L
+    400032: IndexFinger1_R
+    400034: IndexFinger2_L
+    400036: IndexFinger2_R
+    400038: IndexFinger3_L
+    400040: IndexFinger3_R
+    400042: IndexFinger4_L
+    400044: IndexFinger4_R
+    400046: Jaw_M
+    400048: JawEnd_M
+    400050: Knee_L
+    400052: Knee_R
+    400054: //RootNode
+    400056: Main
+    400058: MiddleFinger1_L
+    400060: MiddleFinger1_R
+    400062: MiddleFinger2_L
+    400064: MiddleFinger2_R
+    400066: MiddleFinger3_L
+    400068: MiddleFinger3_R
+    400070: MiddleFinger4_L
+    400072: MiddleFinger4_R
+    400074: model:geo
+    400076: model:polySurface20
+    400078: model:polySurface21
+    400080: model:polySurface22
+    400082: model:polySurface23
+    400084: model:polySurface24
+    400086: model:polySurface25
+    400088: model:polySurface26
+    400090: model:polySurface27
+    400092: model:polySurface28
+    400094: model:polySurface29
+    400096: model:polySurface30
+    400098: Neck0_M
+    400100: Neck1_M
+    400102: Neck2_M
+    400104: Neck3_M
+    400106: Neck4_M
+    400108: Neck5_M
+    400110: RingFinger1_L
+    400112: RingFinger1_R
+    400114: RingFinger2_L
+    400116: RingFinger2_R
+    400118: RingFinger3_L
+    400120: RingFinger3_R
+    400122: RingFinger4_L
+    400124: RingFinger4_R
+    400126: Root_M
+    400128: Rump_L
+    400130: Rump_R
+    400132: Shoulder_L
+    400134: Shoulder_R
+    400136: Spear
+    400138: Spine1_M
+    400140: Spine2_M
+    400142: Tail0_M
+    400144: Tail1_M
+    400146: Tail2_M
+    400148: Tail3_M
+    400150: Tail4_M
+    400152: Tail5_M
+    400154: Tail6_M
+    400156: Toes1_L
+    400158: Toes1_R
+    400160: Toes_L
+    400162: Toes_R
+    400164: ToesEnd_L
+    400166: ToesEnd_R
+    400168: Wrist_L
+    400170: Wrist_R
+    2300000: Spear
+    3300000: Spear
+    4300000: Spear
+    4300002: model:polySurface21
+    4300004: model:polySurface22
+    4300006: model:polySurface23
+    4300008: model:polySurface24
+    4300010: model:polySurface25
+    4300012: model:polySurface26
+    4300014: model:polySurface27
+    4300016: model:polySurface28
+    4300018: model:polySurface29
+    4300020: model:polySurface30
+    7400000: K_Running
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: model:polySurface21
+    13700002: model:polySurface22
+    13700004: model:polySurface23
+    13700006: model:polySurface24
+    13700008: model:polySurface25
+    13700010: model:polySurface26
+    13700012: model:polySurface27
+    13700014: model:polySurface28
+    13700016: model:polySurface29
+    13700018: model:polySurface30
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: K_Running
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Geometry
+        weight: 1
+      - path: Geometry/model:geo
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface21
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface22
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface23
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface24
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface25
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface26
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface27
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface28
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface29
+        weight: 1
+      - path: Geometry/model:geo/model:polySurface20/model:polySurface30
+        weight: 1
+      - path: Main
+        weight: 1
+      - path: Main/DeformationSystem
+        weight: 1
+      - path: Main/DeformationSystem/Root_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_L/Hip_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_L/Hip_L/Knee_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_L/Hip_L/Knee_L/Ankle_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_L/Hip_L/Knee_L/Ankle_L/Toes_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_L/Hip_L/Knee_L/Ankle_L/Toes_L/Toes1_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_L/Hip_L/Knee_L/Ankle_L/Toes_L/Toes1_L/ToesEnd_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_R/Hip_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_R/Hip_R/Knee_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_R/Hip_R/Knee_R/Ankle_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_R/Hip_R/Knee_R/Ankle_R/Toes_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_R/Hip_R/Knee_R/Ankle_R/Toes_R/Toes1_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Rump_R/Hip_R/Knee_R/Ankle_R/Toes_R/Toes1_R/ToesEnd_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M/Head_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M/Head_M/Eye_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M/Head_M/Eye_L/EyeEnd_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M/Head_M/Eye_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M/Head_M/Eye_R/EyeEnd_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M/Head_M/HeadEnd_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M/Head_M/Jaw_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Neck0_M/Neck1_M/Neck2_M/Neck3_M/Neck4_M/Neck5_M/Head_M/Jaw_M/JawEnd_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L/IndexFinger3_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/IndexFinger1_L/IndexFinger2_L/IndexFinger3_L/IndexFinger4_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L/MiddleFinger3_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/MiddleFinger1_L/MiddleFinger2_L/MiddleFinger3_L/MiddleFinger4_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/RingFinger1_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/RingFinger1_L/RingFinger2_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/RingFinger1_L/RingFinger2_L/RingFinger3_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_L/Elbow_L/Wrist_L/RingFinger1_L/RingFinger2_L/RingFinger3_L/RingFinger4_L
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R/IndexFinger3_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/IndexFinger1_R/IndexFinger2_R/IndexFinger3_R/IndexFinger4_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R/MiddleFinger3_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/MiddleFinger1_R/MiddleFinger2_R/MiddleFinger3_R/MiddleFinger4_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/RingFinger1_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/RingFinger1_R/RingFinger2_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/RingFinger1_R/RingFinger2_R/RingFinger3_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/RingFinger1_R/RingFinger2_R/RingFinger3_R/RingFinger4_R
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Spine1_M/Spine2_M/Chest_M/Shoulder_R/Elbow_R/Wrist_R/Spear
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Tail0_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Tail0_M/Tail1_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Tail0_M/Tail1_M/Tail2_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Tail0_M/Tail1_M/Tail2_M/Tail3_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Tail0_M/Tail1_M/Tail2_M/Tail3_M/Tail4_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Tail0_M/Tail1_M/Tail2_M/Tail3_M/Tail4_M/Tail5_M
+        weight: 1
+      - path: Main/DeformationSystem/Root_M/Tail0_M/Tail1_M/Tail2_M/Tail3_M/Tail4_M/Tail5_M/Tail6_M
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 60
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
