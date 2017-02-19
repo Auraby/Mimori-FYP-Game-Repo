@@ -12,7 +12,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] public bool m_IsWalking;
+		[SerializeField] public bool m_IsRunning;
+		[SerializeField] public bool m_IsStanding;
         [SerializeField] public float m_WalkSpeed;
+		[SerializeField] public bool wasWalking;
+		[SerializeField] public float GetHorizontalMov;
+		[SerializeField] public float GetVerticalMov; 
         [SerializeField] public float m_RunSpeed;
         [SerializeField] [Range(0f, 1f)] public float m_RunstepLenghten;
         [SerializeField] public float m_JumpSpeed;
@@ -98,6 +103,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
                 m_PreviouslyGrounded = m_CharacterController.isGrounded;
             }
 
+			if (GetVerticalMov < 0 || GetVerticalMov > 0 || GetHorizontalMov < 0 || GetHorizontalMov > 0) {
+				m_IsStanding = false;
+				if (Input.GetKey (KeyCode.LeftShift)) {
+					m_IsRunning = true;
+				} else {
+					m_IsWalking = true;
+				}			
+			} else {
+				m_IsStanding = true;
+			}
+
+
+
+		
         }
 			
 
@@ -114,7 +133,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float speed;
             GetInput(out speed);
             // always move along the camera forward as it is the direction that it being aimed at
-            Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
+           	 Vector3 desiredMove = transform.forward*m_Input.y + transform.right*m_Input.x;
 
             // get a normal for the surface that is being touched to move along it
             RaycastHit hitInfo;
@@ -224,13 +243,19 @@ namespace UnityStandardAssets.Characters.FirstPerson
             float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
             float vertical = CrossPlatformInputManager.GetAxis("Vertical");
 
-            bool waswalking = m_IsWalking;
+			GetVerticalMov = vertical;
+			GetHorizontalMov = horizontal;
+
+
+
+           wasWalking = m_IsWalking;
 
 #if !MOBILE_INPUT
             // On standalone builds, walk/run speed is modified by a key press.
             // keep track of whether or not the character is walking or running
 			if(!IronSight){
-            m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+				m_IsWalking = !Input.GetKey(KeyCode.LeftShift);
+				m_IsRunning = Input.GetKey(KeyCode.LeftShift);
 			}
 #endif
             // set the desired speed to be walking or running
@@ -245,7 +270,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             // handle speed change to give an fov kick
             // only if the player is going to a run, is running and the fovkick is to be used
-            if (m_IsWalking != waswalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
+            if (m_IsWalking != wasWalking && m_UseFovKick && m_CharacterController.velocity.sqrMagnitude > 0)
             {
                 StopAllCoroutines();
                 StartCoroutine(!m_IsWalking ? m_FovKick.FOVKickUp() : m_FovKick.FOVKickDown());

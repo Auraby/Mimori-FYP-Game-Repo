@@ -25,6 +25,10 @@ public class Player : MonoBehaviour {
 	public Transform gunEnd;
 
     public GameObject dialogueBox;
+	//Gun Animator Component
+	Animator GunAnimator;
+	Animation GunAnimation;
+	public bool isShooting;
 
     //Journal Entries
     public Button JournalEntryBtn1;
@@ -88,6 +92,8 @@ public class Player : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		//GunAnimator = gun.gameObject.GetComponent<Animator> ();
+		GunAnimation = gun.gameObject.GetComponent<Animation> ();
         bgm = GameObject.Find("BGM").GetComponent<AudioSource>();
         originalClip = bgm.clip;
         //Continue Player
@@ -330,19 +336,13 @@ public class Player : MonoBehaviour {
 
 		Cursor.lockState = curseMode;
 
-		if (Input.GetButton ("Fire1")) {
+		if (gameObject.GetComponent<FirstPersonController> ().m_IsWalking && gameObject.GetComponent<Player>().isIronSight <= 0) {
+			gun.gameObject.GetComponent<Animator> ().SetBool ("isWalking", true);	
+			gun.gameObject.GetComponent<Animator> ().SetBool ("isRunning", true);
+		}
+
+		if (Input.GetButton ("Fire1") && !gameObject.GetComponent<SkillTree>().sentrymodeactivated) {
 			if (shootrate <= 0 && !FirstPersonController.isPaused) {
-				//Check if Player has enabled IronSight
-				if (isIronSight >= 1) {
-					if (gameObject.GetComponent<SkillTree> ().leechingbulletactivated) {
-						GameObject bullet_leeching = (GameObject)Instantiate (leechingbulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
-						bullet_leeching.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
-					}else{
-						//GameObject bullet_IronSight = (GameObject)Instantiate (bullet_cannonPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
-						//transform.GetChild (0).GetComponent<AudioSource> ().Play ();
-						//bullet_IronSight.GetComponent<Rigidbody> ().velocity = gunEnd_IronSight.right * 150;
-					}
-				} else {
 					if (gameObject.GetComponent<SkillTree> ().leechingbulletactivated) {
 						GameObject bullet_leeching = (GameObject)Instantiate (leechingbulletPrefab, gunEnd.position, gunEnd.rotation);
 						bullet_leeching.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
@@ -350,31 +350,56 @@ public class Player : MonoBehaviour {
 						// Create the Bullet from the Bullet Prefab
 						GameObject bullet = (GameObject)Instantiate (bulletPrefab, gunEnd.position, gunEnd.rotation);
 						transform.GetChild (0).GetComponent<AudioSource> ().Play ();
+				
 						// Add velocity to the bullet
+
 						bullet.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
 					}
-				}
+
+			
 				// Destroy the bullet after 2 seconds
 				//Destroy(bulshoolet, 2.0f);
 					shootrate = currfireDelay;
 	
 			}
+					} 
+
+		//if (Input.GetMouseButtonUp (0)) {
+		//	gun.gameObject.GetComponent<Animator> ().SetBool ("Firing", false);
+		//}
+
+		if (isIronSight <= 0) {
+			isShooting = Input.GetButton ("Fire1");
+			gun.gameObject.GetComponent<Animator> ().SetBool ("Firing", isShooting);
+
+			if (gameObject.GetComponent<FirstPersonController> ().m_IsStanding) {
+				gun.gameObject.GetComponent<Animator> ().SetBool ("isWalking", false);
+				gun.gameObject.GetComponent<Animator> ().SetBool ("isRunning", false);
+			}
+
 		} 
 
-		if (isIronSight >= 1) {
+		if (isIronSight >= 1 && gameObject.GetComponent<SkillTree>().sentrymodeactivated) {
+			//Debug.Log (FirstPersonController.isPaused);
 			if (Input.GetMouseButtonDown (0)) {
+				Debug.Log ("MOUSE IS HELD DOWN SENTRYMODE");
 				if (!FirstPersonController.isPaused) {
 					isCharging = true;
 				}
+				isCharging = true;
 			}
 			if (Input.GetMouseButton (0)) {
+				if (gameObject.GetComponent<SkillTree> ().leechingbulletactivated) {
+					GameObject bullet_leeching = (GameObject)Instantiate (leechingbulletPrefab, gunEnd_IronSight.position, gunEnd_IronSight.rotation);
+					bullet_leeching.GetComponent<Rigidbody> ().velocity = gunEnd.right * 150;
+				}
 				if (isCharging) {
 					if (!FirstPersonController.isPaused) {
-						if (!bulletinstantiate && shootrate >= 0) {
+						if (!bulletinstantiate) {
 							GameObject ChargeBullet = Instantiate (cannonChargingEffect, gunEnd_IronSight.position, gunEnd.rotation) as GameObject;
 							ChargeBullet.name = ChargeBullet.name.Replace ("(Clone)", "");
 							ChargeBullet.transform.parent = transform;
-							bulletinstantiate = true;
+							bulletinstantiate = true;	
 							//shootrate = 20.0f;
 						} 
 

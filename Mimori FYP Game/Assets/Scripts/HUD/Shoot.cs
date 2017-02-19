@@ -28,6 +28,8 @@ public class Shoot : MonoBehaviour {
 	public float ChargeFire;
 	public float ChargingTime;
 
+	//player
+	Player playercls;
 	//Gun Mods
 	public Image EnmarMod;
 	public Image ZoltranMod;
@@ -35,6 +37,9 @@ public class Shoot : MonoBehaviour {
 	public bool EnmarModTaken = false;
 	public bool ZoltranModTaken = false;
 	public bool IshiraModTaken = false;
+	public bool isSwitchingMod;
+	public bool isSwitchingMod2;
+	public bool isMainSwitchingMod;
 
 	public GameObject[] GunModSlots = new GameObject[3];
 
@@ -91,6 +96,7 @@ public class Shoot : MonoBehaviour {
         //Debug.Log(gunmodcounter);
         if (GameController.gameController.enmarAbsorbed) {
             EnmarModTaken = true;
+
         }
         if (GameController.gameController.zoltranAbsorbed)
         {
@@ -112,11 +118,10 @@ public class Shoot : MonoBehaviour {
 			gameObject.GetComponent<GunModSkills> ().EyeOfEnmar ();
 		} else if (gunmodcounter == 1 && ZoltranModTaken == true) {
 			gameObject.GetComponent<GunModSkills> ().SoulOfZoltran ();
-		}else if (gunmodcounter == 2 && IshiraModTaken == true)
-        {
-            gameObject.GetComponent<GunModSkills>().SoulOfZoltran();
-        }
+		} else if (gunmodcounter == 2 && IshiraModTaken == true) {
+			gameObject.GetComponent<GunModSkills> ().HeartOfIshira ();
 
+		}
         if (EnmarModTaken == true && Eupdatecounter == 1) {
 			EnmarMod.gameObject.SetActive (true);
 			currModAmt = 1;
@@ -132,6 +137,18 @@ public class Shoot : MonoBehaviour {
 			currModAmt = 3;
 			Iupdatecounter = 0;
 		}
+
+		isSwitchingMod = Input.GetKeyDown (KeyCode.Q);
+		isSwitchingMod2 = Input.GetKeyDown (KeyCode.E);
+
+		if (isSwitchingMod) {
+			isMainSwitchingMod = isSwitchingMod;
+		} else if (isSwitchingMod2) {
+			isMainSwitchingMod = isSwitchingMod2;
+		} else {
+			isMainSwitchingMod = false;
+		}
+
 
 		//next weapon
 		if (Input.GetKeyDown (KeyCode.Q)) {
@@ -192,7 +209,20 @@ public class Shoot : MonoBehaviour {
 				EnmarMod.gameObject.transform.SetParent (CurrMod.transform);
 				EnmarMod.gameObject.transform.position = CurrMod.gameObject.transform.position;
 				EnmarMod.gameObject.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
+				gameObject.GetComponent<Player>().gun = null;
+				//weapon1.gameObject.GetComponent<Animator>().SetBool("Switching", isMainSwitchingMod);
+				if (gameObject.GetComponent<Player> ().isIronSight < 1) {
 
+					weapon1.SetActive (true);
+					//weapon1.gameObject.GetComponent<Animator>().SetBool("Switching", isMainSwitchingMod);
+					weapon2.SetActive (false);
+
+					weapon3.SetActive (false);
+					gameObject.GetComponent<Player> ().gun = weapon1;
+					//gameObject.GetComponent<Player> ().gun.gameObject.GetComponent<Animator> ().SetBool ("Switching", isMainSwitchingMod);
+					weapon1.gameObject.GetComponent<Animator> ().SetBool ("Switching", isMainSwitchingMod);
+				}
+	
 			}
 			if (ZoltranMod != null && ZoltranModTaken == true) {
 				ZoltranMod.gameObject.transform.SetParent (NextMod.transform);
@@ -210,7 +240,19 @@ public class Shoot : MonoBehaviour {
 				ZoltranMod.gameObject.transform.SetParent (CurrMod.transform);
 				ZoltranMod.gameObject.transform.position = CurrMod.gameObject.transform.position;
 				ZoltranMod.gameObject.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
-			}
+				gameObject.GetComponent<Player>().gun = null;
+				if (gameObject.GetComponent<Player> ().isIronSight < 1) {
+					weapon1.SetActive (false);
+					//weapon2.gameObject.GetComponent<Animator>().SetBool("Switching", isMainSwitchingMod);
+					weapon2.SetActive (true);
+					//weapon2.gameObject.GetComponent<Animator>().SetBool("Switching", isMainSwitchingMod);
+					weapon3.SetActive (false);
+
+					gameObject.GetComponent<Player> ().gun = weapon2;
+					//gameObject.GetComponent<Player> ().gun.gameObject.GetComponent<Animator> ().SetBool ("Switching", isMainSwitchingMod);
+					weapon2.gameObject.GetComponent<Animator> ().SetBool ("Switching", isMainSwitchingMod);
+				}
+				}
 			if (IshiraMod != null && IshiraModTaken == true) {
 				IshiraMod.gameObject.transform.SetParent (NextMod.transform);
 				IshiraMod.gameObject.transform.position = NextMod.gameObject.transform.position;
@@ -227,7 +269,19 @@ public class Shoot : MonoBehaviour {
 				IshiraMod.gameObject.transform.SetParent (CurrMod.transform);
 				IshiraMod.gameObject.transform.position = CurrMod.gameObject.transform.position;
 				IshiraMod.gameObject.transform.localScale = new Vector3 (1.0f, 1.0f, 1.0f);
-			}
+				gameObject.GetComponent<Player>().gun = null;
+				if (gameObject.GetComponent<Player> ().isIronSight < 1) {
+					weapon1.SetActive (false);
+
+					weapon2.SetActive (false);
+
+					weapon3.SetActive (true);
+					//weapon2.gameObject.GetComponent<Animator>().SetBool("Switching", isMainSwitchingMod);
+					gameObject.GetComponent<Player> ().gun = weapon3;
+					//gameObject.GetComponent<Player> ().gun.gameObject.GetComponent<Animator> ().SetBool ("Switching", isMainSwitchingMod);
+					weapon2.gameObject.GetComponent<Animator> ().SetBool ("Switching", isMainSwitchingMod);
+				}
+				}
 			if (EnmarMod != null && EnmarModTaken == true) {
 				
 				EnmarMod.gameObject.transform.SetParent (NextMod.transform);
