@@ -104,6 +104,8 @@ public class GameOverController : MonoBehaviour {
 
             else
             {
+                gameoverTime += Time.deltaTime;
+
                 gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
                 gameoverText.CrossFadeAlpha(1, 3, false);
                 gameoverTextSubtitle.CrossFadeAlpha(1, 5, false);

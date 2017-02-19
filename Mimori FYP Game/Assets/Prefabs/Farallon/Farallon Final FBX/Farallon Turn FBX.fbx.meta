@@ -1,0 +1,605 @@
+fileFormatVersion: 2
+guid: 0b0200467d4d508438ed532edb825410
+timeCreated: 1487424075
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Abdomen_CTRL
+    100002: Back_Swing_CTRL
+    100004: bottom
+    100006: Butt_CTRL
+    100008: //RootNode
+    100010: Head_CTRL
+    100012: imagePlane2
+    100014: joint1
+    100016: joint10
+    100018: joint100
+    100020: joint101
+    100022: joint102
+    100024: joint103
+    100026: joint104
+    100028: joint105
+    100030: joint106
+    100032: joint107
+    100034: joint108
+    100036: joint109
+    100038: joint11
+    100040: joint110
+    100042: joint12
+    100044: joint13
+    100046: joint14
+    100048: joint15
+    100050: joint16
+    100052: joint17
+    100054: joint18
+    100056: joint19
+    100058: joint2
+    100060: joint20
+    100062: joint21
+    100064: joint21 1
+    100066: joint22
+    100068: joint22 1
+    100070: joint23
+    100072: joint23 1
+    100074: joint24
+    100076: joint24 1
+    100078: joint24 2
+    100080: joint24 3
+    100082: joint25
+    100084: joint25 1
+    100086: joint25 2
+    100088: joint25 3
+    100090: joint26
+    100092: joint26 1
+    100094: joint26 2
+    100096: joint26 3
+    100098: joint27
+    100100: joint27 1
+    100102: joint28
+    100104: joint28 1
+    100106: joint29
+    100108: joint29 1
+    100110: joint3
+    100112: joint30
+    100114: joint30 1
+    100116: joint31
+    100118: joint31 1
+    100120: joint32
+    100122: joint32 1
+    100124: joint33
+    100126: joint33 1
+    100128: joint34
+    100130: joint34 1
+    100132: joint35
+    100134: joint35 1
+    100136: joint36
+    100138: joint36 1
+    100140: joint37
+    100142: joint38
+    100144: joint39
+    100146: joint4
+    100148: joint40
+    100150: joint41
+    100152: joint42
+    100154: joint43
+    100156: joint44
+    100158: joint45
+    100160: joint46
+    100162: joint47
+    100164: joint48
+    100166: joint49
+    100168: joint5
+    100170: joint50
+    100172: joint51
+    100174: joint52
+    100176: joint53
+    100178: joint54
+    100180: joint55
+    100182: joint56
+    100184: joint57
+    100186: joint58
+    100188: joint59
+    100190: joint6
+    100192: joint60
+    100194: joint61
+    100196: joint62
+    100198: joint63
+    100200: joint64
+    100202: joint65
+    100204: joint66
+    100206: joint67
+    100208: joint68
+    100210: joint69
+    100212: joint7
+    100214: joint70
+    100216: joint71
+    100218: joint72
+    100220: joint73
+    100222: joint74
+    100224: joint75
+    100226: joint76
+    100228: joint77
+    100230: joint78
+    100232: joint79
+    100234: joint8
+    100236: joint80
+    100238: joint81
+    100240: joint82
+    100242: joint83
+    100244: joint84
+    100246: joint85
+    100248: joint86
+    100250: joint87
+    100252: joint88
+    100254: joint89
+    100256: joint9
+    100258: joint90
+    100260: joint91
+    100262: joint92
+    100264: joint93
+    100266: joint94
+    100268: joint95
+    100270: joint96
+    100272: joint97
+    100274: joint98
+    100276: joint99
+    100278: L_Ankle_Back_CTRL
+    100280: L_Ankle_Front_CTRL
+    100282: L_Backclaw_1_Back_CTRL
+    100284: L_Backclaw_1_Front_CTRL
+    100286: L_Backclaw_2_Back_CTRL
+    100288: L_Backclaw_2_Front_CTRL
+    100290: L_Backclaw_3_Back_CTRL
+    100292: L_Backclaw_3_Front_CTRL
+    100294: L_Ball_Back_CTRL
+    100296: L_Ball_Front_CTRL
+    100298: L_Butt_CTRL
+    100300: L_clavicle_CTRL
+    100302: L_clavicle_CTRL1
+    100304: L_Indexclaw_1_Back_CTRL
+    100306: L_Indexclaw_1_Front_CTRL
+    100308: L_Indexclaw_2_Back_CTRL
+    100310: L_Indexclaw_2_Front_CTRL
+    100312: L_Indexclaw_3_Back_CTRL
+    100314: L_Indexclaw_3_Front_CTRL
+    100316: L_Knee_Back_CTRL
+    100318: L_Knee_Front_CTRL
+    100320: L_Middleclaw_1_Back_CTRL
+    100322: L_Middleclaw_1_Front_CTRL
+    100324: L_Middleclaw_2_Back_CTRL
+    100326: L_Middleclaw_2_Front_CTRL
+    100328: L_Middleclaw_3_Back_CTRL
+    100330: L_Middleclaw_3_Front_CTRL
+    100332: L_Ringclaw_1_Back_CTRL
+    100334: L_Ringclaw_1_Front_CTRL
+    100336: L_Ringclaw_2_Back_CTRL
+    100338: L_Ringclaw_2_Front_CTRL
+    100340: L_Ringclaw_3_Back_CTRL
+    100342: L_Ringclaw_3_Front_CTRL
+    100344: L_Thigh_Back_CTRL
+    100346: L_Thigh_Front_CTRL
+    100348: L_Thigh_Front_CTRL 1
+    100350: L_wing_clavicle_CTRL
+    100352: L_Wing_Clip_Bot_1
+    100354: L_Wing_Clip_Bot_2
+    100356: L_Wing_Clip_Bot_2_CTRL
+    100358: L_Wing_Clip_Top_1
+    100360: L_Wing_Clip_Top_1_CTRL
+    100362: L_Wing_Clip_Top_2
+    100364: L_Wing_Clip_Top_2_CTRL
+    100366: L_wing_elbow_CTRL
+    100368: L_wing_index_1_CTRL
+    100370: L_wing_index_2_CTRL
+    100372: L_wing_index_3_CTRL
+    100374: L_wing_shoulder_CTRL
+    100376: L_wing_thumb_1_CTRL
+    100378: L_wing_thumb_2_CTRL
+    100380: L_wing_thumb_3_CTRL
+    100382: L_wing_wrist_CTRL
+    100384: left
+    100386: Lowerjaw_1_CTRL
+    100388: Lowerjaw_2_CTRL
+    100390: Neck_1_CTRL
+    100392: Neck_2_CTRL
+    100394: Neck_3_CTRL
+    100396: Neck_4_CTRL
+    100398: Neck_5_CTRL
+    100400: Neck_6_CTRL
+    100402: nurbsCircle170
+    100404: persp1
+    100406: polySurface16
+    100408: R_Ankle_Back_CTRL
+    100410: R_Ankle_Front_CTRL
+    100412: R_Backclaw_1_Back_CTRL
+    100414: R_Backclaw_1_Front_CTRL
+    100416: R_Backclaw_2_Back_CTRL
+    100418: R_Backclaw_2_Front_CTRL
+    100420: R_Backclaw_3_Back_CTRL
+    100422: R_Backclaw_3_Front_CTRL
+    100424: R_Ball_Back_CTRL
+    100426: R_Ball_Front_CTRL
+    100428: R_Butt_CTRL
+    100430: R_Indexclaw_1_Back_CTRL
+    100432: R_Indexclaw_1_Front_CTRL
+    100434: R_Indexclaw_2_Back_CTRL
+    100436: R_Indexclaw_2_Front_CTRL
+    100438: R_Indexclaw_3_Back_CTRL
+    100440: R_Indexclaw_3_Front_CTRL
+    100442: R_Knee_Back_CTRL
+    100444: R_Knee_Front_CTRL
+    100446: R_Middleclaw_1_Back_CTRL
+    100448: R_Middleclaw_1_Front_CTRL
+    100450: R_Middleclaw_2_Back_CTRL
+    100452: R_Middleclaw_2_Front_CTRL
+    100454: R_Middleclaw_3_Back_CTRL
+    100456: R_Middleclaw_3_Front_CTRL
+    100458: R_Ringclaw_1_Back_CTRL
+    100460: R_Ringclaw_1_Front_CTRL
+    100462: R_Ringclaw_2_Back_CTRL
+    100464: R_Ringclaw_2_Front_CTRL
+    100466: R_Ringclaw_3_Back_CTRL
+    100468: R_Ringclaw_3_Front_CTRL
+    100470: R_Thigh_Back_CTRL
+    100472: R_wing_clavicle_CTRL
+    100474: R_Wing_Clip_Bot_1
+    100476: R_Wing_Clip_Bot_1_CTRL
+    100478: R_Wing_Clip_Bot_2
+    100480: R_Wing_Clip_Bot_2_CTRL
+    100482: R_Wing_Clip_Top_1
+    100484: R_Wing_Clip_Top_1_CTRL
+    100486: R_Wing_Clip_Top_2
+    100488: R_Wing_Clip_Top_2_CTRL
+    100490: R_wing_index_1_CTRL
+    100492: R_wing_index_2_CTRL
+    100494: R_wing_index_3_CTRL
+    100496: R_wing_shoulder_CTRL
+    100498: R_wing_thumb_1_CTRL
+    100500: R_wing_thumb_2_CTRL
+    100502: R_wing_thumb_3_CTRL
+    100504: R_wing_wrist_CTRL
+    100506: Root_CTRL
+    100508: Stomach_CTRL
+    100510: sunDirection
+    100512: Tail_1_CTRL
+    100514: Tail_2_CTRL
+    100516: Tail_3_CTRL
+    100518: Tail_4_CTRL
+    100520: Tail_5_CTRL
+    100522: transform2
+    100524: transform3
+    100526: Upperjaw_1_CTRL
+    100528: Upperjaw_2_CTRL
+    400000: Abdomen_CTRL
+    400002: Back_Swing_CTRL
+    400004: bottom
+    400006: Butt_CTRL
+    400008: //RootNode
+    400010: Head_CTRL
+    400012: imagePlane2
+    400014: joint1
+    400016: joint10
+    400018: joint100
+    400020: joint101
+    400022: joint102
+    400024: joint103
+    400026: joint104
+    400028: joint105
+    400030: joint106
+    400032: joint107
+    400034: joint108
+    400036: joint109
+    400038: joint11
+    400040: joint110
+    400042: joint12
+    400044: joint13
+    400046: joint14
+    400048: joint15
+    400050: joint16
+    400052: joint17
+    400054: joint18
+    400056: joint19
+    400058: joint2
+    400060: joint20
+    400062: joint21
+    400064: joint21 1
+    400066: joint22
+    400068: joint22 1
+    400070: joint23
+    400072: joint23 1
+    400074: joint24
+    400076: joint24 1
+    400078: joint24 2
+    400080: joint24 3
+    400082: joint25
+    400084: joint25 1
+    400086: joint25 2
+    400088: joint25 3
+    400090: joint26
+    400092: joint26 1
+    400094: joint26 2
+    400096: joint26 3
+    400098: joint27
+    400100: joint27 1
+    400102: joint28
+    400104: joint28 1
+    400106: joint29
+    400108: joint29 1
+    400110: joint3
+    400112: joint30
+    400114: joint30 1
+    400116: joint31
+    400118: joint31 1
+    400120: joint32
+    400122: joint32 1
+    400124: joint33
+    400126: joint33 1
+    400128: joint34
+    400130: joint34 1
+    400132: joint35
+    400134: joint35 1
+    400136: joint36
+    400138: joint36 1
+    400140: joint37
+    400142: joint38
+    400144: joint39
+    400146: joint4
+    400148: joint40
+    400150: joint41
+    400152: joint42
+    400154: joint43
+    400156: joint44
+    400158: joint45
+    400160: joint46
+    400162: joint47
+    400164: joint48
+    400166: joint49
+    400168: joint5
+    400170: joint50
+    400172: joint51
+    400174: joint52
+    400176: joint53
+    400178: joint54
+    400180: joint55
+    400182: joint56
+    400184: joint57
+    400186: joint58
+    400188: joint59
+    400190: joint6
+    400192: joint60
+    400194: joint61
+    400196: joint62
+    400198: joint63
+    400200: joint64
+    400202: joint65
+    400204: joint66
+    400206: joint67
+    400208: joint68
+    400210: joint69
+    400212: joint7
+    400214: joint70
+    400216: joint71
+    400218: joint72
+    400220: joint73
+    400222: joint74
+    400224: joint75
+    400226: joint76
+    400228: joint77
+    400230: joint78
+    400232: joint79
+    400234: joint8
+    400236: joint80
+    400238: joint81
+    400240: joint82
+    400242: joint83
+    400244: joint84
+    400246: joint85
+    400248: joint86
+    400250: joint87
+    400252: joint88
+    400254: joint89
+    400256: joint9
+    400258: joint90
+    400260: joint91
+    400262: joint92
+    400264: joint93
+    400266: joint94
+    400268: joint95
+    400270: joint96
+    400272: joint97
+    400274: joint98
+    400276: joint99
+    400278: L_Ankle_Back_CTRL
+    400280: L_Ankle_Front_CTRL
+    400282: L_Backclaw_1_Back_CTRL
+    400284: L_Backclaw_1_Front_CTRL
+    400286: L_Backclaw_2_Back_CTRL
+    400288: L_Backclaw_2_Front_CTRL
+    400290: L_Backclaw_3_Back_CTRL
+    400292: L_Backclaw_3_Front_CTRL
+    400294: L_Ball_Back_CTRL
+    400296: L_Ball_Front_CTRL
+    400298: L_Butt_CTRL
+    400300: L_clavicle_CTRL
+    400302: L_clavicle_CTRL1
+    400304: L_Indexclaw_1_Back_CTRL
+    400306: L_Indexclaw_1_Front_CTRL
+    400308: L_Indexclaw_2_Back_CTRL
+    400310: L_Indexclaw_2_Front_CTRL
+    400312: L_Indexclaw_3_Back_CTRL
+    400314: L_Indexclaw_3_Front_CTRL
+    400316: L_Knee_Back_CTRL
+    400318: L_Knee_Front_CTRL
+    400320: L_Middleclaw_1_Back_CTRL
+    400322: L_Middleclaw_1_Front_CTRL
+    400324: L_Middleclaw_2_Back_CTRL
+    400326: L_Middleclaw_2_Front_CTRL
+    400328: L_Middleclaw_3_Back_CTRL
+    400330: L_Middleclaw_3_Front_CTRL
+    400332: L_Ringclaw_1_Back_CTRL
+    400334: L_Ringclaw_1_Front_CTRL
+    400336: L_Ringclaw_2_Back_CTRL
+    400338: L_Ringclaw_2_Front_CTRL
+    400340: L_Ringclaw_3_Back_CTRL
+    400342: L_Ringclaw_3_Front_CTRL
+    400344: L_Thigh_Back_CTRL
+    400346: L_Thigh_Front_CTRL
+    400348: L_Thigh_Front_CTRL 1
+    400350: L_wing_clavicle_CTRL
+    400352: L_Wing_Clip_Bot_1
+    400354: L_Wing_Clip_Bot_2
+    400356: L_Wing_Clip_Bot_2_CTRL
+    400358: L_Wing_Clip_Top_1
+    400360: L_Wing_Clip_Top_1_CTRL
+    400362: L_Wing_Clip_Top_2
+    400364: L_Wing_Clip_Top_2_CTRL
+    400366: L_wing_elbow_CTRL
+    400368: L_wing_index_1_CTRL
+    400370: L_wing_index_2_CTRL
+    400372: L_wing_index_3_CTRL
+    400374: L_wing_shoulder_CTRL
+    400376: L_wing_thumb_1_CTRL
+    400378: L_wing_thumb_2_CTRL
+    400380: L_wing_thumb_3_CTRL
+    400382: L_wing_wrist_CTRL
+    400384: left
+    400386: Lowerjaw_1_CTRL
+    400388: Lowerjaw_2_CTRL
+    400390: Neck_1_CTRL
+    400392: Neck_2_CTRL
+    400394: Neck_3_CTRL
+    400396: Neck_4_CTRL
+    400398: Neck_5_CTRL
+    400400: Neck_6_CTRL
+    400402: nurbsCircle170
+    400404: persp1
+    400406: polySurface16
+    400408: R_Ankle_Back_CTRL
+    400410: R_Ankle_Front_CTRL
+    400412: R_Backclaw_1_Back_CTRL
+    400414: R_Backclaw_1_Front_CTRL
+    400416: R_Backclaw_2_Back_CTRL
+    400418: R_Backclaw_2_Front_CTRL
+    400420: R_Backclaw_3_Back_CTRL
+    400422: R_Backclaw_3_Front_CTRL
+    400424: R_Ball_Back_CTRL
+    400426: R_Ball_Front_CTRL
+    400428: R_Butt_CTRL
+    400430: R_Indexclaw_1_Back_CTRL
+    400432: R_Indexclaw_1_Front_CTRL
+    400434: R_Indexclaw_2_Back_CTRL
+    400436: R_Indexclaw_2_Front_CTRL
+    400438: R_Indexclaw_3_Back_CTRL
+    400440: R_Indexclaw_3_Front_CTRL
+    400442: R_Knee_Back_CTRL
+    400444: R_Knee_Front_CTRL
+    400446: R_Middleclaw_1_Back_CTRL
+    400448: R_Middleclaw_1_Front_CTRL
+    400450: R_Middleclaw_2_Back_CTRL
+    400452: R_Middleclaw_2_Front_CTRL
+    400454: R_Middleclaw_3_Back_CTRL
+    400456: R_Middleclaw_3_Front_CTRL
+    400458: R_Ringclaw_1_Back_CTRL
+    400460: R_Ringclaw_1_Front_CTRL
+    400462: R_Ringclaw_2_Back_CTRL
+    400464: R_Ringclaw_2_Front_CTRL
+    400466: R_Ringclaw_3_Back_CTRL
+    400468: R_Ringclaw_3_Front_CTRL
+    400470: R_Thigh_Back_CTRL
+    400472: R_wing_clavicle_CTRL
+    400474: R_Wing_Clip_Bot_1
+    400476: R_Wing_Clip_Bot_1_CTRL
+    400478: R_Wing_Clip_Bot_2
+    400480: R_Wing_Clip_Bot_2_CTRL
+    400482: R_Wing_Clip_Top_1
+    400484: R_Wing_Clip_Top_1_CTRL
+    400486: R_Wing_Clip_Top_2
+    400488: R_Wing_Clip_Top_2_CTRL
+    400490: R_wing_index_1_CTRL
+    400492: R_wing_index_2_CTRL
+    400494: R_wing_index_3_CTRL
+    400496: R_wing_shoulder_CTRL
+    400498: R_wing_thumb_1_CTRL
+    400500: R_wing_thumb_2_CTRL
+    400502: R_wing_thumb_3_CTRL
+    400504: R_wing_wrist_CTRL
+    400506: Root_CTRL
+    400508: Stomach_CTRL
+    400510: sunDirection
+    400512: Tail_1_CTRL
+    400514: Tail_2_CTRL
+    400516: Tail_3_CTRL
+    400518: Tail_4_CTRL
+    400520: Tail_5_CTRL
+    400522: transform2
+    400524: transform3
+    400526: Upperjaw_1_CTRL
+    400528: Upperjaw_2_CTRL
+    4300000: polySurface16
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: polySurface16
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 150
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

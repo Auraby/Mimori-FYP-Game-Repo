@@ -55,13 +55,14 @@ public class FarallonPhasesController : MonoBehaviour {
 
     //End Phase Booleans
     public bool changeToCinematic = false;
-    public bool rotateCameraAlready = false;
+    public bool rotateCamera = false;
+    public bool rotateCameraDone = false;
     public bool isPortalComeOut = false;
 
 
     #endregion
 
-    AsyncOperation asyncOp;
+    //AsyncOperation asyncOp;
 
 
     public static FarallonPhasesController instance { get; set; }
@@ -72,8 +73,8 @@ public class FarallonPhasesController : MonoBehaviour {
         faraHealthSlider.value = FarallonController.instance.currHealth;
         faraWingHPSlider.value = FarallonController.instance.currWingHealth;
 
-        asyncOp = SceneManager.LoadSceneAsync("MainMenu");
-        asyncOp.allowSceneActivation = false;
+        //asyncOp = SceneManager.LoadSceneAsync("MainMenu");
+        //asyncOp.allowSceneActivation = false;
 	}
 	
 	// Update is called once per frame
@@ -140,9 +141,10 @@ public class FarallonPhasesController : MonoBehaviour {
                         whiteScreen.CrossFadeAlpha(0.0f, 0.001f, false);
                         winningText.CrossFadeAlpha(0.0f, 0.001f, false);
                         changeToCinematic = true;
+                        rotateCamera = true;
                     }
 
-                    if(changeToCinematic == true)
+                    if(rotateCamera == true)
                     {
                         tempEndTime += Time.deltaTime;
 
@@ -152,12 +154,14 @@ public class FarallonPhasesController : MonoBehaviour {
                             if(tempEndTime > 7)
                             {
                                 tempEndTime = 0;
-                                rotateCameraAlready = true;
+                                rotateCamera = false;
+                                rotateCameraDone = true;
+
                             }
                         }
                     }
 
-                    if(rotateCameraAlready == true)
+                    if(rotateCameraDone == true)
                     {
                         tempEndTime += Time.deltaTime;
 
@@ -166,7 +170,8 @@ public class FarallonPhasesController : MonoBehaviour {
                         if(tempEndTime > 3)
                         {
                             tempEndTime = 0;
-                            isPortalComeOut = true;                
+                            isPortalComeOut = true;
+                            rotateCameraDone = false;          
                         }
                     }
 
@@ -185,6 +190,11 @@ public class FarallonPhasesController : MonoBehaviour {
                         {
                             whiteScreen.CrossFadeAlpha(1f, 5, false);
                             winningText.CrossFadeAlpha(1f, 10f, false);
+                        }
+
+                        if(tempEndTime > 10)
+                        {
+                            SceneManager.LoadScene("Credits");
                         }
                         
                     }

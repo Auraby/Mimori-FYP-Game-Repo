@@ -12,4 +12,16 @@ public class FarallonChargeController : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(FarallonController.instance.currGroundState == FarallonController.GroundStates.Charge)
+        {
+            if(other.gameObject.tag == "Player")
+            {
+                Health.instance.currentHealth -= FarallonController.instance.chargeDamage;
+                Health.instance.healthbarslider.value -= FarallonController.instance.chargeDamage;
+            }
+        }
+    }
 }

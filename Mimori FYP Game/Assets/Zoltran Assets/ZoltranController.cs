@@ -108,6 +108,7 @@ public class ZoltranController : MonoBehaviour {
     public Transform waitingArea;
     public GameObject respawnPoints;
     public GameObject zolAura;
+    public Material zolMat;
     [HideInInspector]
     public float temptime = 0;
     NavMeshAgent navAgent;
@@ -1261,11 +1262,13 @@ public class ZoltranController : MonoBehaviour {
                 if (!isIllusion)
                 {
                     zCurrentHealth -= playerBulletDamage;
+                    StartCoroutine(flashRed());
                 }
 
                 else
                 {
                     zCurrentHealth -= (playerBulletDamage * 5);
+                    StartCoroutine(flashRed());
                 }
                 
             }
@@ -1273,6 +1276,7 @@ public class ZoltranController : MonoBehaviour {
             if (currentAttackMode == AttackMode.BulletHell)
             {
                 zCurrentBHHealth -= playerBulletDamage;
+                StartCoroutine(flashRed());
             }
         }
 
@@ -1382,19 +1386,26 @@ public class ZoltranController : MonoBehaviour {
         illusionTwo.SetActive(true);
         illuAppear = true;
     }
+
+    private IEnumerator flashRed()
+    {
+        zolMat.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        zolMat.color = Color.white;
+    }
     #endregion
 
     //GameObject terrain = GameObject.FindWithTag ("terrainHome");
-//  float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
-//  float xTerrainMax = terrain.GetComponent<Renderer>().bounds.max.x;
-//  float zTerrainMin = terrain.GetComponent<Renderer>().bounds.min.z;
-//  float zTerrainMax = terrain.GetComponent<Renderer>().bounds.max.z;
-//  Vector3 position = new Vector3(Random.Range(xTerrainMin, xTerrainMax), 0, Random.Range(zTerrainMin, zTerrainMax));
-//  NavMeshHit hit;
-//  NavMesh.SamplePosition(position, out hit, 10f, 1);
-//  position = hit.position;
-//  return position;
-   
+    //  float xTerrainMin = terrain.GetComponent<Renderer>().bounds.min.x;
+    //  float xTerrainMax = terrain.GetComponent<Renderer>().bounds.max.x;
+    //  float zTerrainMin = terrain.GetComponent<Renderer>().bounds.min.z;
+    //  float zTerrainMax = terrain.GetComponent<Renderer>().bounds.max.z;
+    //  Vector3 position = new Vector3(Random.Range(xTerrainMin, xTerrainMax), 0, Random.Range(zTerrainMin, zTerrainMax));
+    //  NavMeshHit hit;
+    //  NavMesh.SamplePosition(position, out hit, 10f, 1);
+    //  position = hit.position;
+    //  return position;
+
 }
 
 [System.Serializable]

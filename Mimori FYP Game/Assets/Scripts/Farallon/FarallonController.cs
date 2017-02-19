@@ -90,6 +90,8 @@ public class FarallonController : MonoBehaviour {
 
     [Header("Slam Shockwave")]
     public GameObject slamShockwave;
+    public GameObject slamDustParticle;
+    private GameObject slamDustParticleGO;
     private GameObject slamShockwaveGO;
     public Transform slamArea;
 
@@ -100,6 +102,7 @@ public class FarallonController : MonoBehaviour {
     private string landingSpotName;
     public AudioSource dyingSound;
     public AudioSource shootfireballsound;
+    public AudioSource fireBreathSound;
     public float playerBulletDmg;
     public Material farallonMat;
 
@@ -512,13 +515,18 @@ public class FarallonController : MonoBehaviour {
                                 #region Phase 1
                                 if (FarallonPhasesController.instance.currentPhase == FarallonPhasesController.Phases.Phase1)
                                 {
-                                    RotateTowardsTarget(nextWaypoint);
-                                    flightSpeed = 50;
+                                    //RotateTowardsTarget(nextWaypoint);
+                                    RotateToADirection(nextWaypoint);
+                                    Vector3 landingSpotRot = landingSpotsArray[landingspotNum].transform.GetChild(0).transform.position;
+                                    //landingSpotRot.x = 0;
+                                    RotateTowardsTarget(landingSpotRot);
+                                    flightSpeed = 60;
                                     //FaraAnim.SetTrigger("Landing");
                                     FaraAnim.SetBool("WingDamaged", true);
                                     Fly(nextWaypoint);
                                     if (transform.position == nextWaypoint)
                                     {
+                                        FaraAnim.SetTrigger("LandTurn");
                                         currPosition = transform.position;
                                         currGroundState = GroundStates.Landing;
 
@@ -552,7 +560,7 @@ public class FarallonController : MonoBehaviour {
                                 if (FarallonPhasesController.instance.currentPhase == FarallonPhasesController.Phases.Phase1)
                                 {
                                     Vector3 landingSpotRot = landingSpotsArray[landingspotNum].transform.GetChild(0).transform.position;
-                                    //landingSpotRot.y = 0;
+                                    //landingSpotRot.x = 0;
                                     RotateTowardsTarget(landingSpotRot);
                                     //RotateToADirection(landingSpotRot);
                                     //RotateToADirection(landingSpotsArray[landingspotNum].rotation.eulerAngles);
@@ -627,7 +635,7 @@ public class FarallonController : MonoBehaviour {
                                         {
                                             //Attack based on choice
                                             //FireBreath();
-                                            FaraAnim.SetTrigger("FireBreath");
+                                            FaraAnim.SetTrigger("FireBreath");                                          
                                             isFireBreath = true;
                                             currGroundState = GroundStates.Attack;
                                             //StartCoroutine(WaitToSwitchGroundStates(3, GroundStates.GroundIdle));
@@ -818,7 +826,7 @@ public class FarallonController : MonoBehaviour {
 
             case FarallonStates.Dying:
                 {
-
+                    StopBreath();
                 }
                 break;
 
@@ -866,6 +874,7 @@ public class FarallonController : MonoBehaviour {
     public void RotateToADirection(Vector3 direction)
     {
         Vector3 targetDir = direction - transform.position;
+        //targetDir.x = 0;
         targetDir.y = 0;
         //rection.y = 0;
         float step = rotateSpeed * Time.deltaTime;
@@ -934,11 +943,12 @@ public class FarallonController : MonoBehaviour {
     {
         //breathAttackGO = (GameObject)Instantiate(breathattack, mouthEnd.transform.position, mouthEnd.transform.rotation);
         breathattack.SetActive(true);
+        fireBreathSound.Play();
         //strafeSpeedTime += Time.deltaTime;
         //float phase = Mathf.Sin(strafeSpeedTime / strafeSpeed);
         //mouthEnd.transform.localRotation = Quaternion.Euler(new Vector3(0, (phase * strafeAngle), 0));
 
-        
+
     }
 
     public void StopBreath()
@@ -951,6 +961,7 @@ public class FarallonController : MonoBehaviour {
         Debug.Log("Start Charge");
         isCharge = true;
         currGroundState = GroundStates.Charge;
+        shootfireballsound.Play();
     }
 
     public void ChargeForward()
@@ -992,8 +1003,12 @@ public class FarallonController : MonoBehaviour {
 
     public void SlamAttack()
     {
-        slamShockwaveGO = (GameObject)Instantiate(slamShockwave, new Vector3(slamArea.position.x - 14,slamArea.position.y + 1.5f,slamArea.position.z), slamShockwave.transform.rotation);
+        //slamShockwaveGO = (GameObject)Instantiate(slamShockwave, new Vector3(slamArea.position.x - 14,slamArea.position.y + 1.5f,slamArea.position.z), slamShockwave.transform.rotation);
+        slamShockwaveGO = (GameObject)Instantiate(slamShockwave, new Vector3(slamArea.position.x , slamArea.position.y + 1.5f, slamArea.position.z), slamShockwave.transform.rotation);
         slamShockwaveGO.SetActive(true);
+
+        slamDustParticleGO = (GameObject)Instantiate(slamDustParticle, new Vector3(slamArea.position.x, slamArea.position.y + 1.5f, slamArea.position.z), slamDustParticle.transform.rotation);
+        slamDustParticleGO.SetActive(true);
     }
     #endregion
     //public void RotateToSpecificAngle(Vector3)
@@ -1024,6 +1039,7 @@ public class FarallonController : MonoBehaviour {
         {
             if(currFaraState == FarallonStates.Ground)
             {
+                StartCoroutine(flashRed());
                 currHealth -= playerBulletDmg;
                 FarallonPhasesController.instance.faraHealthSlider.value -= playerBulletDmg;
             }
@@ -1062,6 +1078,13 @@ public class FarallonController : MonoBehaviour {
         yield return new WaitForSeconds(sec);
         EruptionController.instance.isStartEruption = true;
 
+    }
+
+    private IEnumerator flashRed()
+    {
+        farallonMat.color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        farallonMat.color = Color.white;
     }
 
     #endregion
