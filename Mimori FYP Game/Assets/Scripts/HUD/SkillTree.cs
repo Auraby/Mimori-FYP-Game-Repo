@@ -102,6 +102,9 @@ public class SkillTree : MonoBehaviour {
 	public GameObject skilleffect3;
 	public GameObject skilleffect4;
 
+	//Berserk && Thunderrush UI Effect
+	public Image berserkUIeffect;
+	public Image thunderrushUIeffect;
 	//Temp Spell Storing
 	private GameObject Skillspelleffect1;
 	private GameObject Skillspelleffect2;
@@ -259,6 +262,12 @@ public class SkillTree : MonoBehaviour {
 			}
 		}
 
+		if (gameObject.GetComponent<Player> ().isIronSight < 1) {
+			gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (false);
+			gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (false);
+			sentrymodeactivated = false;
+		}
+			
 		//SPELL ABILITIES
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			if(slot1Skill != null){
@@ -271,7 +280,7 @@ public class SkillTree : MonoBehaviour {
 						spell1.gameObject.SetActive (true);
 						spell1activate = true;
 						hunterbreathactivated = true;
-						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, transform.rotation, playerobj.transform);
+						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, hunterbreatheffect_prefab.transform.rotation, playerobj.transform);
 						//hunterbreatheffect.transform.SetParent (playerobj.transform);
 						StartCoroutine (DestroyParticlesEffect (hunterbreatheffect, 3));
 						gameObject.GetComponent<Health> ().currentHealth += 30;
@@ -294,7 +303,7 @@ public class SkillTree : MonoBehaviour {
 						gameObject.GetComponent<Health> ().manabar -= 35;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 35;
 						leechingbulletDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (leechingbulletDurationImage,leechingbulletactivated, 10));
+						StartCoroutine (SpellDurations (leechingbulletDurationImage,leechingbulletactivated, 10.0f));
 						//StartCoroutine (SpellCoolDown (spell1,30, spell1activate));
 					} else if (spell1activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
@@ -311,11 +320,15 @@ public class SkillTree : MonoBehaviour {
 						//gameObject.GetComponent<Player> ().ToggleSentryMode ();
 						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon1.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon2.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon3.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (true);
 						//gameObject.GetComponent<Player> ().currfireDelay += gameObject.GetComponent<Player> ().fireDelay += 2.0f;
 						sentrymodeactivated = true;
-					} else {
+					}else{
+						Debug.Log ("sentryfalse");
 						gameObject.GetComponent<Player> ().isIronSight = 0;
 						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (true);
@@ -324,6 +337,7 @@ public class SkillTree : MonoBehaviour {
 						//gameObject.GetComponent<Player> ().currfireDelay = gameObject.GetComponent<Player> ().fireDelay;
 						sentrymodeactivated = false;
 					}
+						
 						//Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
 						//spell1.gameObject.SetActive (true);
 						//spell1activate = true;
@@ -337,6 +351,7 @@ public class SkillTree : MonoBehaviour {
 						spell1.gameObject.SetActive (true);
 						spell1activate = true;
 						thunderrushactivated = true;
+						thunderrushUIeffect.gameObject.SetActive (true);
 						gameObject.GetComponent<Health> ().manabar -= 50;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 50;
 						Vector3 dashdirection = transform.forward;
@@ -347,8 +362,8 @@ public class SkillTree : MonoBehaviour {
 						}
 						playerobj.transform.position = transform.position + (dashdirection * dashlength);
 					
-						ThunderRushDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (ThunderRushDurationImage, thunderrushactivated, 5));
+						//ThunderRushDurationImage.gameObject.SetActive (true);
+						StartCoroutine (SpellDurations (thunderrushUIeffect, thunderrushactivated, 5.0f));
 					}else if (spell1activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
@@ -363,10 +378,11 @@ public class SkillTree : MonoBehaviour {
 						spell1.gameObject.SetActive (true);
 						spell1activate = true;
 						berserkeractivated = true;
+						berserkUIeffect.gameObject.SetActive (true);
 						gameObject.GetComponent<Health> ().manabar -= 70;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 70;
-						BerserkerDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (BerserkerDurationImage, berserkeractivated, 20));
+						//BerserkerDurationImage.gameObject.SetActive (true);
+						StartCoroutine (SpellDurations (berserkUIeffect, berserkeractivated, 20.0f));
 					} else if (spell1activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
@@ -399,7 +415,7 @@ public class SkillTree : MonoBehaviour {
 						spell2.gameObject.SetActive (true);
 						spell2activate = true;
 						hunterbreathactivated = true;
-						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, transform.rotation, playerobj.transform);
+						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, hunterbreatheffect_prefab.transform.rotation, playerobj.transform);
 						//hunterbreatheffect.transform.SetParent (playerobj.transform);
 						StartCoroutine (DestroyParticlesEffect (hunterbreatheffect, 3));
 						gameObject.GetComponent<Health> ().currentHealth += 30;
@@ -439,17 +455,21 @@ public class SkillTree : MonoBehaviour {
 						//gameObject.GetComponent<Player> ().ToggleSentryMode ();
 						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon1.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon2.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon3.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (true);
-						gameObject.GetComponent<Player> ().currfireDelay += gameObject.GetComponent<Player> ().fireDelay += 2.0f;
+						//gameObject.GetComponent<Player> ().currfireDelay += gameObject.GetComponent<Player> ().fireDelay += 2.0f;
 						sentrymodeactivated = true;
-					} else {
+					}else{
+						Debug.Log ("sentryfalse");
 						gameObject.GetComponent<Player> ().isIronSight = 0;
 						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (false);
-						gameObject.GetComponent<Player> ().currfireDelay = gameObject.GetComponent<Player> ().fireDelay;
+						//gameObject.GetComponent<Player> ().currfireDelay = gameObject.GetComponent<Player> ().fireDelay;
 						sentrymodeactivated = false;
 					}
 					//Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
@@ -465,6 +485,7 @@ public class SkillTree : MonoBehaviour {
 						spell2.gameObject.SetActive (true);
 						spell2activate = true;
 						thunderrushactivated = true;
+						thunderrushUIeffect.gameObject.SetActive (true);
 						gameObject.GetComponent<Health> ().manabar -= 50;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 50;
 						Vector3 dashdirection = transform.forward;
@@ -476,7 +497,7 @@ public class SkillTree : MonoBehaviour {
 						playerobj.transform.position = transform.position + (dashdirection * dashlength);
 
 						ThunderRushDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (ThunderRushDurationImage, thunderrushactivated, 5));
+						StartCoroutine (SpellDurations (thunderrushUIeffect, thunderrushactivated, 5));
 					}else if (spell2activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
@@ -491,10 +512,11 @@ public class SkillTree : MonoBehaviour {
 						spell2.gameObject.SetActive (true);
 						spell2activate = true;
 						berserkeractivated = true;
+						berserkUIeffect.gameObject.SetActive (true);
 						gameObject.GetComponent<Health> ().manabar -= 70;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 70;
 						BerserkerDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (BerserkerDurationImage, berserkeractivated, 20));
+						StartCoroutine (SpellDurations (berserkUIeffect, berserkeractivated, 20));
 					} else if (spell2activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
@@ -528,7 +550,7 @@ public class SkillTree : MonoBehaviour {
 						spell3.gameObject.SetActive (true);
 						spell3activate = true;
 						hunterbreathactivated = true;
-						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, transform.rotation, playerobj.transform);
+						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, hunterbreatheffect_prefab.transform.rotation, playerobj.transform);
 						//hunterbreatheffect.transform.SetParent (playerobj.transform);
 						StartCoroutine (DestroyParticlesEffect (hunterbreatheffect, 3));
 						gameObject.GetComponent<Health> ().currentHealth += 30;
@@ -568,17 +590,21 @@ public class SkillTree : MonoBehaviour {
 						//gameObject.GetComponent<Player> ().ToggleSentryMode ();
 						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon1.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon2.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon3.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (true);
-						gameObject.GetComponent<Player> ().currfireDelay += gameObject.GetComponent<Player> ().fireDelay += 2.0f;
+						//gameObject.GetComponent<Player> ().currfireDelay += gameObject.GetComponent<Player> ().fireDelay += 2.0f;
 						sentrymodeactivated = true;
-					} else {
+					}else{
+						Debug.Log ("sentryfalse");
 						gameObject.GetComponent<Player> ().isIronSight = 0;
 						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (false);
-						gameObject.GetComponent<Player> ().currfireDelay = gameObject.GetComponent<Player> ().fireDelay;
+						//gameObject.GetComponent<Player> ().currfireDelay = gameObject.GetComponent<Player> ().fireDelay;
 						sentrymodeactivated = false;
 					}
 					//Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
@@ -594,6 +620,7 @@ public class SkillTree : MonoBehaviour {
 						spell3.gameObject.SetActive (true);
 						spell3activate = true;
 						thunderrushactivated = true;
+						thunderrushUIeffect.gameObject.SetActive (true);
 						gameObject.GetComponent<Health> ().manabar -= 50;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 50;
 						Vector3 dashdirection = transform.forward;
@@ -605,7 +632,7 @@ public class SkillTree : MonoBehaviour {
 						playerobj.transform.position = transform.position + (dashdirection * dashlength);
 
 						ThunderRushDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (ThunderRushDurationImage, thunderrushactivated, 5));
+						StartCoroutine (SpellDurations (thunderrushUIeffect, thunderrushactivated, 5));
 					}else if (spell3activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
@@ -620,10 +647,11 @@ public class SkillTree : MonoBehaviour {
 						spell3.gameObject.SetActive (true);
 						spell3activate = true;
 						berserkeractivated = true;
+						berserkUIeffect.gameObject.SetActive (true);
 						gameObject.GetComponent<Health> ().manabar -= 70;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 70;
 						BerserkerDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (BerserkerDurationImage, berserkeractivated, 20));
+						StartCoroutine (SpellDurations (berserkUIeffect, berserkeractivated, 20));
 					} else if (spell3activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
@@ -657,7 +685,7 @@ public class SkillTree : MonoBehaviour {
 						spell4.gameObject.SetActive (true);
 						spell4activate = true;
 						hunterbreathactivated = true;
-						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, transform.rotation, playerobj.transform);
+						GameObject hunterbreatheffect = (GameObject)Instantiate (hunterbreatheffect_prefab, playerobj.transform.position, hunterbreatheffect_prefab.transform.rotation, playerobj.transform);
 						//hunterbreatheffect.transform.SetParent (playerobj.transform);
 						StartCoroutine (DestroyParticlesEffect (hunterbreatheffect, 3));
 						gameObject.GetComponent<Health> ().currentHealth += 30;
@@ -697,17 +725,21 @@ public class SkillTree : MonoBehaviour {
 						//gameObject.GetComponent<Player> ().ToggleSentryMode ();
 						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon1.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon2.gameObject.SetActive (false);
+						gameObject.GetComponent<Shoot> ().weapon3.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (true);
-						gameObject.GetComponent<Player> ().currfireDelay += gameObject.GetComponent<Player> ().fireDelay += 2.0f;
+						//gameObject.GetComponent<Player> ().currfireDelay += gameObject.GetComponent<Player> ().fireDelay += 2.0f;
 						sentrymodeactivated = true;
-					} else {
+					}else{
+						Debug.Log ("sentryfalse");
 						gameObject.GetComponent<Player> ().isIronSight = 0;
 						gameObject.GetComponent<Player> ().gun.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gunEnd.gameObject.SetActive (true);
 						gameObject.GetComponent<Player> ().gun_IronSight.gameObject.SetActive (false);
 						gameObject.GetComponent<Player> ().gunEnd_IronSight.gameObject.SetActive (false);
-						gameObject.GetComponent<Player> ().currfireDelay = gameObject.GetComponent<Player> ().fireDelay;
+						//gameObject.GetComponent<Player> ().currfireDelay = gameObject.GetComponent<Player> ().fireDelay;
 						sentrymodeactivated = false;
 					}
 					//Skillspelleffect2 = (GameObject)Instantiate (skilleffect2, playerobj.transform.position, Quaternion.identity);
@@ -723,6 +755,7 @@ public class SkillTree : MonoBehaviour {
 						spell4.gameObject.SetActive (true);
 						spell4activate = true;
 						thunderrushactivated = true;
+						thunderrushUIeffect.gameObject.SetActive (true);
 						gameObject.GetComponent<Health> ().manabar -= 50;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 50;
 						Vector3 dashdirection = transform.forward;
@@ -734,7 +767,7 @@ public class SkillTree : MonoBehaviour {
 						playerobj.transform.position = transform.position + (dashdirection * dashlength);
 
 						ThunderRushDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (ThunderRushDurationImage, thunderrushactivated, 5));
+						StartCoroutine (SpellDurations (thunderrushUIeffect, thunderrushactivated, 5));
 					}else if (spell4activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}
@@ -749,10 +782,11 @@ public class SkillTree : MonoBehaviour {
 						spell4.gameObject.SetActive (true);
 						spell4activate = true;
 						berserkeractivated = true;
+						berserkUIeffect.gameObject.SetActive (true);
 						gameObject.GetComponent<Health> ().manabar -= 70;
 						gameObject.GetComponent<Health> ().manabarslider.value -= 70;
 						BerserkerDurationImage.gameObject.SetActive (true);
-						StartCoroutine (SpellDurations (BerserkerDurationImage, berserkeractivated, 20));
+						StartCoroutine (SpellDurations (berserkUIeffect, berserkeractivated, 20));
 					} else if (spell4activate) {
 						StartCoroutine (DisplayWarning ("Ability On Cooldown", 2));
 					}

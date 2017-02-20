@@ -71,7 +71,7 @@ public class GunModSkills : MonoBehaviour
 		//Charging Eye of Enmar's skill
 		if (gameObject.GetComponent<Shoot>().gunmodcounter == 0)
 		{
-            Debug.Log(eoeChargeTime);
+            //Debug.Log(eoeChargeTime);
 			if (eoe != null)
 			{
 				scale = eoe.transform.localScale;
@@ -101,7 +101,7 @@ public class GunModSkills : MonoBehaviour
                     gameObject.GetComponent<Health>().manabar -= 60;
                     gameObject.GetComponent<Health>().manabarslider.value -= 60;
                     eoeCD = 5;
-                    Debug.Log("boom");
+                   // Debug.Log("boom");
                     Destroy(eoeCharge);
                     eoe = (GameObject)Instantiate(eoeSkillPref, gunEnd.position, gunEnd.rotation);
 					startDestroy = true;
