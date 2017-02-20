@@ -19,7 +19,7 @@ public class GameOverController : MonoBehaviour {
     public bool playerDie = false;
     #endregion
     //Async
-    AsyncOperation asyncOp;
+    //AsyncOperation asyncOp;
 
     // Use this for initialization
     void Start () {
@@ -28,8 +28,8 @@ public class GameOverController : MonoBehaviour {
         gameoverText.canvasRenderer.SetAlpha(0.0f);
         gameoverTextSubtitle.canvasRenderer.SetAlpha(0.0f);
         //Async
-        asyncOp = SceneManager.LoadSceneAsync("MainMenu");
-        asyncOp.allowSceneActivation = false;
+        //asyncOp = SceneManager.LoadSceneAsync("MainMenu");
+        //asyncOp.allowSceneActivation = false;
         
     }
 	
@@ -39,7 +39,7 @@ public class GameOverController : MonoBehaviour {
         //Lose Conditions here
         if (Health.instance.currentHealth <= 0)
         {
-			if(gameObject.GetComponent<SkillTree>().unlockLifePassive2){
+			if(Health.instance.gameObject.GetComponent<SkillTree>().unlockLifePassive2){
 				if(gameObject.GetComponent<SkillTree>().deadoraliveactivated == false){
 					gameObject.GetComponent<SkillTree>().deadoraliveactivated = true;
 					gameObject.GetComponent<SkillTree>().StartCoroutine(gameObject.GetComponent<SkillTree>().PassiveDurations(gameObject.GetComponent<SkillTree>().deadoraliveactivated, gameObject.GetComponent<SkillTree>().deadoralivecd));
@@ -66,31 +66,73 @@ public class GameOverController : MonoBehaviour {
         #region Gameover screen
         if (loseGame == true)
         {
-            gameoverTime += Time.deltaTime;
+            
 
-            gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
-            gameoverText.CrossFadeAlpha(1, 3, false);
-            gameoverTextSubtitle.CrossFadeAlpha(1, 5, false);
-
-            // Change the subtitles according to how the game is lost
-            if (playerDie == true)
+            if (SceneManager.GetActiveScene().name == "Gate of Telluris")
             {
-                gameoverTextSubtitle.text = "You Died";
+                gameoverTime += Time.deltaTime;
+                if(gameoverTime > 20)
+                {
+                    gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
+                    gameoverText.CrossFadeAlpha(1, 3, false);
+                    gameoverTextSubtitle.CrossFadeAlpha(1, 5, false);
+
+                    // Change the subtitles according to how the game is lost
+                    if (playerDie == true)
+                    {
+                        gameoverTextSubtitle.text = "You Died";
+                    }
+
+                    if (SceneManager.GetActiveScene().name == "Gate Of Telluris")
+                    {
+                        if (Level1Controller.instance.wallDestroyed == true)
+                        {
+                            gameoverTextSubtitle.text = "Wall Destroyed";
+                        }
+                    }
+
+                    if (gameoverTime > 30)
+                    {
+                        //load checkpoint here(after a while) (if want do buttons then change the code)
+                        //asyncOp.allowSceneActivation = true;
+                        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                        Debug.Log("Loaded level");
+                    }
+                }
+                
             }
 
-            if (SceneManager.GetActiveScene().name == "Gate Of Telluris")
+            else
             {
-                if (Level1Controller.instance.wallDestroyed == true)
+                gameoverTime += Time.deltaTime;
+
+                gameoverBlackPanel.CrossFadeAlpha(1, 2, false);
+                gameoverText.CrossFadeAlpha(1, 3, false);
+                gameoverTextSubtitle.CrossFadeAlpha(1, 5, false);
+
+                // Change the subtitles according to how the game is lost
+                if (playerDie == true)
                 {
-                    gameoverTextSubtitle.text = "Wall Destroyed";
+                    gameoverTextSubtitle.text = "You Died";
+                }
+
+                //if (SceneManager.GetActiveScene().name == "Gate Of Telluris")
+                //{
+                //    if (Level1Controller.instance.wallDestroyed == true)
+                //    {
+                //        gameoverTextSubtitle.text = "Wall Destroyed";
+                //    }
+                //}
+
+                if (gameoverTime > gameOverWaitTime)
+                {
+                    //load checkpoint here(after a while) (if want do buttons then change the code)
+                    // asyncOp.allowSceneActivation = true;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
             }
 
-            if (gameoverTime > gameOverWaitTime)
-            {
-                //load checkpoint here(after a while) (if want do buttons then change the code)
-                asyncOp.allowSceneActivation = true;
-            }
+           
 
         }
         #endregion

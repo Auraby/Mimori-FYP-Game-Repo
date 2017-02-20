@@ -212,9 +212,11 @@ public class MainMenuController : MonoBehaviour {
     public void playGameButtonPressed()
     {
         //SceneManager.LoadScene("Mimori");
-		//If a save file exists, delete it
-		GameController.gameController.Delete();
-        aSyncOp.allowSceneActivation = true;
+        //If a save file exists, delete it
+        GameController.gameController.Delete();
+        //      aSyncOp.allowSceneActivation = true;
+
+        SceneManager.LoadScene("Cutscene");
 
         GetComponent<AudioSource>().Play();
     }

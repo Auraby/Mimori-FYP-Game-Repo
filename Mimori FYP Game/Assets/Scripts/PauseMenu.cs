@@ -14,6 +14,7 @@ public class PauseMenu : MonoBehaviour {
     public Image gameoverBlackPanel;
     public Text gameoverText, gameoverTextSubtitle;
     public Button saveGameBtn, loadGameBtn;
+    public GameObject optionsMenu;
 
     //CursorLockMode cursMode;
     AsyncOperation aSyncOp;
@@ -105,5 +106,15 @@ public class PauseMenu : MonoBehaviour {
         camera.enabled = true;
         Cursor.visible = false;
         Player.curseMode = CursorLockMode.Locked;
+    }
+
+    public void OptionsPressed()
+    {
+        optionsMenu.SetActive(true);
+    }
+
+    public void OptionsBackBtnPressed()
+    {
+        optionsMenu.SetActive(false);
     }
 }

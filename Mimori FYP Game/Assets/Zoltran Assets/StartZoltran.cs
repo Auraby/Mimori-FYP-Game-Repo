@@ -3,6 +3,7 @@ using System.Collections;
 
 public class StartZoltran : MonoBehaviour {
     public GameObject entranceBarrier, templeBarrier,zoltran, soulOfZoltran;
+    public GameObject zoltranHealthPanel, zoltranHealthManager;
 
     public static bool zoltranDied = false;
     public static bool zoltranStart = false;
@@ -19,6 +20,8 @@ public class StartZoltran : MonoBehaviour {
         {
             if (!soulOfZoltran.activeSelf && !GameController.gameController.zoltranAbsorbed) {
                 soulOfZoltran.gameObject.SetActive(true);
+                zoltranHealthPanel.SetActive(false);
+                zoltranHealthManager.SetActive(false);
             }
         }
         if (entranceBarrier.activeSelf && GameController.gameController.zoltranAbsorbed)
@@ -32,6 +35,8 @@ public class StartZoltran : MonoBehaviour {
                 entranceBarrier.gameObject.SetActive(true);
                 templeBarrier.gameObject.SetActive(true);
                 zoltran.gameObject.SetActive(true);
+                zoltranHealthPanel.SetActive(true);
+                zoltranHealthManager.SetActive(true);
             }
         }
 	}

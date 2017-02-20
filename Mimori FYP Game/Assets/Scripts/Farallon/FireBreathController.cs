@@ -36,6 +36,7 @@ public class FireBreathController : MonoBehaviour {
             if (other.gameObject.tag == "Player")
             {
                 Health.instance.currentHealth -= fireBreathDamage;
+                Health.instance.healthbarslider.value -= fireBreathDamage;
                 Debug.Log("Hit Player");
             }
 
